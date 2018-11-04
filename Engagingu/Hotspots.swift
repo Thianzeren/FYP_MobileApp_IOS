@@ -19,7 +19,9 @@ struct Hotspot: Decodable{ //create a Hotspot class use for the jsondecoder
 
 class Hotspots: UIViewController {
 
+
     @IBOutlet weak var mapView: MKMapView!
+    
     
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 9000

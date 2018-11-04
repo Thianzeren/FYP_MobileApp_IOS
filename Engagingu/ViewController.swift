@@ -2,10 +2,11 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
     //properties
+//    @IBOutlet weak var trailID: UITextField!
+//    @IBOutlet weak var name: UITextField!
+    
     @IBOutlet weak var trailID: UITextField!
     @IBOutlet weak var name: UITextField!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

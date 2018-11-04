@@ -10,7 +10,6 @@
 		AF6C8B42218D4CDF006AC6C0 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C8B3F218D4CDF006AC6C0 /* HomeController.swift */; };
 		AF6C8B43218D4CDF006AC6C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C8B40218D4CDF006AC6C0 /* ViewController.swift */; };
 		AF6C8B44218D4CDF006AC6C0 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C8B41218D4CDF006AC6C0 /* CameraViewController.swift */; };
-		AF6C8B47218D4E73006AC6C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF6C8B45218D4E73006AC6C0 /* Main.storyboard */; };
 		AF78DD0C2189878A00B0CF10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78DD0B2189878A00B0CF10 /* AppDelegate.swift */; };
 		AF78DD132189879600B0CF10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF78DD122189879600B0CF10 /* Assets.xcassets */; };
 		AF78DD162189879600B0CF10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF78DD142189879600B0CF10 /* LaunchScreen.storyboard */; };
@@ -62,6 +61,8 @@
 		AF78DD92218B759500B0CF10 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78DD91218B759500B0CF10 /* RestAPIManager.swift */; };
 		AF78DD93218B759500B0CF10 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78DD91218B759500B0CF10 /* RestAPIManager.swift */; };
 		AF78DD94218B759500B0CF10 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78DD91218B759500B0CF10 /* RestAPIManager.swift */; };
+		AFB00CC1218F047A008C6741 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFB00CBF218F047A008C6741 /* Main.storyboard */; };
+		AFB00CC3218F114B008C6741 /* mainPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB00CC2218F114B008C6741 /* mainPageController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,7 +86,6 @@
 		AF6C8B3F218D4CDF006AC6C0 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		AF6C8B40218D4CDF006AC6C0 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AF6C8B41218D4CDF006AC6C0 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		AF6C8B46218D4E73006AC6C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "../../../../Downloads/Telegram Desktop/Engaging U/Engaging U/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		AF78DD082189878A00B0CF10 /* Engagingu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Engagingu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF78DD0B2189878A00B0CF10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF78DD122189879600B0CF10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -123,6 +123,8 @@
 		AF78DD7D218A35BB00B0CF10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OldMain.storyboard; sourceTree = "<group>"; };
 		AF78DD8D218B3EED00B0CF10 /* Hotspots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hotspots.swift; sourceTree = "<group>"; };
 		AF78DD91218B759500B0CF10 /* RestAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPIManager.swift; sourceTree = "<group>"; };
+		AFB00CC0218F047A008C6741 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "../../../../Downloads/Telegram Desktop/Engaging U 2/Engaging U/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
+		AFB00CC2218F114B008C6741 /* mainPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainPageController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,11 +212,12 @@
 				AF78DD91218B759500B0CF10 /* RestAPIManager.swift */,
 				AF78DD8D218B3EED00B0CF10 /* Hotspots.swift */,
 				AF78DD0B2189878A00B0CF10 /* AppDelegate.swift */,
-				AF6C8B45218D4E73006AC6C0 /* Main.storyboard */,
+				AFB00CBF218F047A008C6741 /* Main.storyboard */,
 				AF78DD7C218A35BB00B0CF10 /* OldMain.storyboard */,
 				AF78DD142189879600B0CF10 /* LaunchScreen.storyboard */,
 				AF78DD122189879600B0CF10 /* Assets.xcassets */,
 				AF78DD172189879600B0CF10 /* Info.plist */,
+				AFB00CC2218F114B008C6741 /* mainPageController.swift */,
 			);
 			path = Engagingu;
 			sourceTree = "<group>";
@@ -371,7 +374,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF6C8B47218D4E73006AC6C0 /* Main.storyboard in Resources */,
+				AFB00CC1218F047A008C6741 /* Main.storyboard in Resources */,
 				AF78DD75218A1A0D00B0CF10 /* GooglePlacePicker.bundle in Resources */,
 				AF78DD162189879600B0CF10 /* LaunchScreen.storyboard in Resources */,
 				AF78DD132189879600B0CF10 /* Assets.xcassets in Resources */,
@@ -413,6 +416,7 @@
 				AF6C8B43218D4CDF006AC6C0 /* ViewController.swift in Sources */,
 				AF6C8B42218D4CDF006AC6C0 /* HomeController.swift in Sources */,
 				AF78DD0C2189878A00B0CF10 /* AppDelegate.swift in Sources */,
+				AFB00CC3218F114B008C6741 /* mainPageController.swift in Sources */,
 				AF78DD92218B759500B0CF10 /* RestAPIManager.swift in Sources */,
 				AF78DD8E218B3EED00B0CF10 /* Hotspots.swift in Sources */,
 				AF6C8B44218D4CDF006AC6C0 /* CameraViewController.swift in Sources */,
@@ -453,14 +457,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		AF6C8B45218D4E73006AC6C0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AF6C8B46218D4E73006AC6C0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AF78DD142189879600B0CF10 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -475,6 +471,14 @@
 				AF78DD7D218A35BB00B0CF10 /* Base */,
 			);
 			name = OldMain.storyboard;
+			sourceTree = "<group>";
+		};
+		AFB00CBF218F047A008C6741 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AFB00CC0218F047A008C6741 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
