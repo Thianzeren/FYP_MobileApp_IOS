@@ -10,9 +10,8 @@ import UIKit
 
 extension UITextField{
     func setBottomBorder(){
-        self.borderStyle = .none
-        self.layer.backgroundColor = UIColor.white.cgColor
-        self.layer.shadowColor = UIColor.darkGray.cgColor
+        
+        self.layer.shadowColor = UIColor.gray.cgColor
         self.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
         self.layer.shadowOpacity = 1.0
         self.layer.shadowRadius = 0.0
@@ -20,11 +19,10 @@ extension UITextField{
     }
 }
 
-class HomeController: UIViewController {
+class HomeController: UIViewController, UITextFieldDelegate {
     
+   
     @IBOutlet weak var trailIDInput: UITextField!
-    @IBOutlet var engaginguLogo: UIImageView!
-    
     
     
     override func viewDidLoad() {
@@ -36,15 +34,20 @@ class HomeController: UIViewController {
     
         // Do any additional setup after loading the view.
     }
+//    @IBAction func connectToTrailBtn(_ sender: Any) {
+//    }
     
     //actions after pressing connect btn
-    @IBAction func connectTrailBtn(_ sender: Any) {
-    }
-   
+    
     //navigation 
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        // Get the new view controller using segue.destination.
 //        // Pass the selected object to the new view controller.
 //    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
 
 }

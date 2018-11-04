@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("AIzaSyBNiFccpd9f1FKyMDrURLdUs8FdIYowQc4")
         GMSPlacesClient.provideAPIKey("AIzaSyBNiFccpd9f1FKyMDrURLdUs8FdIYowQc4")
         
-        window?.rootViewController = UITabBarController()
         return true
 
     }
