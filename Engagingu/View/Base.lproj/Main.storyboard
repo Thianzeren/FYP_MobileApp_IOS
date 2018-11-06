@@ -32,7 +32,6 @@
                                 <state key="normal" title="CONNECT"/>
                                 <connections>
                                     <action selector="connectBtn:" destination="B4o-9X-ol8" eventType="touchUpInside" id="cW0-ZM-7aJ"/>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="toNameSegue" id="Wmy-Jb-y7O"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Trail Pin" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mod-8l-Jcq">
@@ -55,6 +54,7 @@
                     </view>
                     <connections>
                         <outlet property="trailIDPin" destination="Mod-8l-Jcq" id="ki6-yL-CkS"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="toNameSegue" id="wLI-F4-fN4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ibk-Zf-PhE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -93,7 +93,6 @@
                                 <state key="normal" title="START"/>
                                 <connections>
                                     <action selector="startButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nG0-Ix-2VO"/>
-                                    <segue destination="I3j-hO-u2H" kind="show" identifier="toHomeSegue" id="uYM-Br-nFn"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -102,11 +101,12 @@
                     </view>
                     <connections>
                         <outlet property="usernameField" destination="Ytn-ez-YlQ" id="Waa-JO-zxr"/>
+                        <segue destination="I3j-hO-u2H" kind="presentation" identifier="toHomeSegue" id="7aV-xy-vVI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="94" y="-34"/>
+            <point key="canvasLocation" x="-14" y="-34"/>
         </scene>
         <!--Leaderboard-->
         <scene sceneID="LMm-C3-x7k">

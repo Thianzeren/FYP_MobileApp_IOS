@@ -10,8 +10,8 @@ import Foundation
     
 struct InstanceDAO { //create a Hotspot class use for the jsondecoder
     
-    var team_id: String = "0"
-    var instance_id: String = ""
-    var completedList: Array<String> = Array()
+    static var team_id: String = "0"
+    static var trail_instance_id: String = "defaultId"
+    static var completedList: Array<String> = Array()
     
 }

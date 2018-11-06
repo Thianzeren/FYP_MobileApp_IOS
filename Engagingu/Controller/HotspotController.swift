@@ -37,7 +37,7 @@ class Hotspots: UIViewController {
         URLSession.shared.dataTask(with: url){(data, response, error) in
             //check error
             //check response status ok
-            
+
             guard let data = data else { return }
             
             do {
