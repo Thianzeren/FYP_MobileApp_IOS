@@ -10,4 +10,6 @@
 class APIManager {
     
     let baseURL = "http://54.255.245.23:3000"
+    static let sharedInstance = APIManager()
+
 }
