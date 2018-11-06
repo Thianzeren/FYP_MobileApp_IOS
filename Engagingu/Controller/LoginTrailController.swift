@@ -19,23 +19,30 @@ extension UITextField{
     }
 }
 
-class HomeController: UIViewController, UITextFieldDelegate {
-    
+class LoginTrailController: UIViewController, UITextFieldDelegate {
    
-    @IBOutlet weak var trailIDInput: UITextField!
+    @IBOutlet weak var trailIDPin: UITextField!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        trailIDInput.delegate = self as? UITextFieldDelegate
-        
-        trailIDInput.setBottomBorder()
+        self.trailIDPin.delegate = self
+        trailIDPin.setBottomBorder()
     
         // Do any additional setup after loading the view.
     }
-//    @IBAction func connectToTrailBtn(_ sender: Any) {
-//    }
+    
+    @IBAction func connectBtn(_ sender: Any) {
+        
+        let trailID = trailIDPin.text!
+        
+        if(trailID == "1"){
+            performSegue(withIdentifier: "toNameSegue", sender: nil)
+        }
+        
+    }
+    
     
     //actions after pressing connect btn
     

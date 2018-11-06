@@ -6,7 +6,8 @@
 //  Copyright © 2018 Raylene. All rights reserved.
 //
 //
-//import Foundation
-//
 
-//}
+class APIManager {
+    
+    let baseURL = "http://54.255.245.23:3000"
+}

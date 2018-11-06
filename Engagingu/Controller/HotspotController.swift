@@ -31,7 +31,6 @@ class Hotspots: UIViewController {
         checkLocationServices()
         
         //json call
-        //json call
         let jsonUrlString = "http://54.255.245.23:3000/hotspot/getAllHotspots?trail_instance_id=1"
         guard let url = URL(string: jsonUrlString) else { return }
         

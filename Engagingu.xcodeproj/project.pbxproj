@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AF6C8B42218D4CDF006AC6C0 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C8B3F218D4CDF006AC6C0 /* HomeController.swift */; };
-		AF6C8B43218D4CDF006AC6C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C8B40218D4CDF006AC6C0 /* ViewController.swift */; };
+		AF6C8B42218D4CDF006AC6C0 /* LoginTrailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C8B3F218D4CDF006AC6C0 /* LoginTrailController.swift */; };
+		AF6C8B43218D4CDF006AC6C0 /* LoginNameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C8B40218D4CDF006AC6C0 /* LoginNameController.swift */; };
 		AF6C8B44218D4CDF006AC6C0 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C8B41218D4CDF006AC6C0 /* CameraViewController.swift */; };
 		AF78DD0C2189878A00B0CF10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78DD0B2189878A00B0CF10 /* AppDelegate.swift */; };
 		AF78DD132189879600B0CF10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF78DD122189879600B0CF10 /* Assets.xcassets */; };
@@ -54,13 +54,12 @@
 		AF78DD75218A1A0D00B0CF10 /* GooglePlacePicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AF78DD74218A1A0C00B0CF10 /* GooglePlacePicker.bundle */; };
 		AF78DD76218A1A0D00B0CF10 /* GooglePlacePicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AF78DD74218A1A0C00B0CF10 /* GooglePlacePicker.bundle */; };
 		AF78DD77218A1A0D00B0CF10 /* GooglePlacePicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AF78DD74218A1A0C00B0CF10 /* GooglePlacePicker.bundle */; };
-		AF78DD7E218A35BB00B0CF10 /* OldMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF78DD7C218A35BB00B0CF10 /* OldMain.storyboard */; };
-		AF78DD7F218A35BB00B0CF10 /* OldMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF78DD7C218A35BB00B0CF10 /* OldMain.storyboard */; };
-		AF78DD80218A35BB00B0CF10 /* OldMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF78DD7C218A35BB00B0CF10 /* OldMain.storyboard */; };
-		AF78DD8E218B3EED00B0CF10 /* Hotspots.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78DD8D218B3EED00B0CF10 /* Hotspots.swift */; };
+		AF78DD8E218B3EED00B0CF10 /* HotspotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78DD8D218B3EED00B0CF10 /* HotspotController.swift */; };
 		AF78DD92218B759500B0CF10 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78DD91218B759500B0CF10 /* RestAPIManager.swift */; };
 		AF78DD93218B759500B0CF10 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78DD91218B759500B0CF10 /* RestAPIManager.swift */; };
 		AF78DD94218B759500B0CF10 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78DD91218B759500B0CF10 /* RestAPIManager.swift */; };
+		E1A67DDE21913BB500581D1C /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A67DDD21913BB500581D1C /* File.swift */; };
+		E1A67DE321913DC300581D1C /* InstanceDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A67DE221913DC300581D1C /* InstanceDAO.swift */; };
 		E1DE91D2219085D70035ED9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1DE91D0219085D70035ED9C /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -82,8 +81,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AF6C8B3F218D4CDF006AC6C0 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
-		AF6C8B40218D4CDF006AC6C0 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AF6C8B3F218D4CDF006AC6C0 /* LoginTrailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTrailController.swift; sourceTree = "<group>"; };
+		AF6C8B40218D4CDF006AC6C0 /* LoginNameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNameController.swift; sourceTree = "<group>"; };
 		AF6C8B41218D4CDF006AC6C0 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		AF78DD082189878A00B0CF10 /* Engagingu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Engagingu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF78DD0B2189878A00B0CF10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,9 +118,10 @@
 		AF78DD6C218A198E00B0CF10 /* GooglePlacePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlacePicker.framework; sourceTree = "<group>"; };
 		AF78DD70218A19C900B0CF10 /* GooglePlaces.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GooglePlaces.bundle; sourceTree = "<group>"; };
 		AF78DD74218A1A0C00B0CF10 /* GooglePlacePicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GooglePlacePicker.bundle; sourceTree = "<group>"; };
-		AF78DD7D218A35BB00B0CF10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OldMain.storyboard; sourceTree = "<group>"; };
-		AF78DD8D218B3EED00B0CF10 /* Hotspots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hotspots.swift; sourceTree = "<group>"; };
+		AF78DD8D218B3EED00B0CF10 /* HotspotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotspotController.swift; sourceTree = "<group>"; };
 		AF78DD91218B759500B0CF10 /* RestAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPIManager.swift; sourceTree = "<group>"; };
+		E1A67DDD21913BB500581D1C /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		E1A67DE221913DC300581D1C /* InstanceDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceDAO.swift; sourceTree = "<group>"; };
 		E1DE91D1219085D70035ED9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -204,17 +204,13 @@
 		AF78DD0A2189878A00B0CF10 /* Engagingu */ = {
 			isa = PBXGroup;
 			children = (
-				AF6C8B41218D4CDF006AC6C0 /* CameraViewController.swift */,
-				AF6C8B3F218D4CDF006AC6C0 /* HomeController.swift */,
-				AF6C8B40218D4CDF006AC6C0 /* ViewController.swift */,
-				AF78DD91218B759500B0CF10 /* RestAPIManager.swift */,
-				AF78DD8D218B3EED00B0CF10 /* Hotspots.swift */,
+				E1A67DE121913C9200581D1C /* Model */,
+				E1A67DE021913C3100581D1C /* View */,
+				E1A67DDF21913C0500581D1C /* Controller */,
 				AF78DD0B2189878A00B0CF10 /* AppDelegate.swift */,
-				E1DE91D0219085D70035ED9C /* Main.storyboard */,
-				AF78DD7C218A35BB00B0CF10 /* OldMain.storyboard */,
-				AF78DD142189879600B0CF10 /* LaunchScreen.storyboard */,
 				AF78DD122189879600B0CF10 /* Assets.xcassets */,
 				AF78DD172189879600B0CF10 /* Info.plist */,
+				E1A67DDD21913BB500581D1C /* File.swift */,
 			);
 			path = Engagingu;
 			sourceTree = "<group>";
@@ -265,6 +261,35 @@
 				AF78DD4A218A126800B0CF10 /* Accelerate.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E1A67DDF21913C0500581D1C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AF6C8B3F218D4CDF006AC6C0 /* LoginTrailController.swift */,
+				AF6C8B40218D4CDF006AC6C0 /* LoginNameController.swift */,
+				AF78DD8D218B3EED00B0CF10 /* HotspotController.swift */,
+				AF6C8B41218D4CDF006AC6C0 /* CameraViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E1A67DE021913C3100581D1C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E1DE91D0219085D70035ED9C /* Main.storyboard */,
+				AF78DD142189879600B0CF10 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E1A67DE121913C9200581D1C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AF78DD91218B759500B0CF10 /* RestAPIManager.swift */,
+				E1A67DE221913DC300581D1C /* InstanceDAO.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,7 +400,6 @@
 				AF78DD75218A1A0D00B0CF10 /* GooglePlacePicker.bundle in Resources */,
 				AF78DD162189879600B0CF10 /* LaunchScreen.storyboard in Resources */,
 				AF78DD132189879600B0CF10 /* Assets.xcassets in Resources */,
-				AF78DD7E218A35BB00B0CF10 /* OldMain.storyboard in Resources */,
 				AF78DD46218A11CD00B0CF10 /* GoogleMaps.bundle in Resources */,
 				AF78DD71218A19C900B0CF10 /* GooglePlaces.bundle in Resources */,
 			);
@@ -388,7 +412,6 @@
 				AF78DD76218A1A0D00B0CF10 /* GooglePlacePicker.bundle in Resources */,
 				AF78DD72218A19C900B0CF10 /* GooglePlaces.bundle in Resources */,
 				AF78DD47218A11CD00B0CF10 /* GoogleMaps.bundle in Resources */,
-				AF78DD7F218A35BB00B0CF10 /* OldMain.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,7 +422,6 @@
 				AF78DD77218A1A0D00B0CF10 /* GooglePlacePicker.bundle in Resources */,
 				AF78DD73218A19C900B0CF10 /* GooglePlaces.bundle in Resources */,
 				AF78DD48218A11CD00B0CF10 /* GoogleMaps.bundle in Resources */,
-				AF78DD80218A35BB00B0CF10 /* OldMain.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,11 +432,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF6C8B43218D4CDF006AC6C0 /* ViewController.swift in Sources */,
-				AF6C8B42218D4CDF006AC6C0 /* HomeController.swift in Sources */,
+				AF6C8B43218D4CDF006AC6C0 /* LoginNameController.swift in Sources */,
+				AF6C8B42218D4CDF006AC6C0 /* LoginTrailController.swift in Sources */,
+				E1A67DDE21913BB500581D1C /* File.swift in Sources */,
 				AF78DD0C2189878A00B0CF10 /* AppDelegate.swift in Sources */,
 				AF78DD92218B759500B0CF10 /* RestAPIManager.swift in Sources */,
-				AF78DD8E218B3EED00B0CF10 /* Hotspots.swift in Sources */,
+				E1A67DE321913DC300581D1C /* InstanceDAO.swift in Sources */,
+				AF78DD8E218B3EED00B0CF10 /* HotspotController.swift in Sources */,
 				AF6C8B44218D4CDF006AC6C0 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -459,14 +483,6 @@
 				AF78DD152189879600B0CF10 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		AF78DD7C218A35BB00B0CF10 /* OldMain.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AF78DD7D218A35BB00B0CF10 /* Base */,
-			);
-			name = OldMain.storyboard;
 			sourceTree = "<group>";
 		};
 		E1DE91D0219085D70035ED9C /* Main.storyboard */ = {

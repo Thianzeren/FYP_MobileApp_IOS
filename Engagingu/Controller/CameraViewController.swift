@@ -46,6 +46,6 @@ extension CameraViewController : UIImagePickerControllerDelegate{
     }
    
 }
-extension ViewController: UINavigationControllerDelegate{
-    
-}
+//extension ViewController: UINavigationControllerDelegate{
+//    
+//}
