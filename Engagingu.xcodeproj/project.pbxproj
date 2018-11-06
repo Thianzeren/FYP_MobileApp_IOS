@@ -61,7 +61,7 @@
 		AF78DD92218B759500B0CF10 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78DD91218B759500B0CF10 /* RestAPIManager.swift */; };
 		AF78DD93218B759500B0CF10 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78DD91218B759500B0CF10 /* RestAPIManager.swift */; };
 		AF78DD94218B759500B0CF10 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78DD91218B759500B0CF10 /* RestAPIManager.swift */; };
-		AFB00CC1218F047A008C6741 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFB00CBF218F047A008C6741 /* Main.storyboard */; };
+		E1DE91D2219085D70035ED9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1DE91D0219085D70035ED9C /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,7 +122,7 @@
 		AF78DD7D218A35BB00B0CF10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OldMain.storyboard; sourceTree = "<group>"; };
 		AF78DD8D218B3EED00B0CF10 /* Hotspots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hotspots.swift; sourceTree = "<group>"; };
 		AF78DD91218B759500B0CF10 /* RestAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPIManager.swift; sourceTree = "<group>"; };
-		AFB00CC0218F047A008C6741 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "../../../../Downloads/Telegram Desktop/Engaging U 2/Engaging U/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
+		E1DE91D1219085D70035ED9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,7 +210,7 @@
 				AF78DD91218B759500B0CF10 /* RestAPIManager.swift */,
 				AF78DD8D218B3EED00B0CF10 /* Hotspots.swift */,
 				AF78DD0B2189878A00B0CF10 /* AppDelegate.swift */,
-				AFB00CBF218F047A008C6741 /* Main.storyboard */,
+				E1DE91D0219085D70035ED9C /* Main.storyboard */,
 				AF78DD7C218A35BB00B0CF10 /* OldMain.storyboard */,
 				AF78DD142189879600B0CF10 /* LaunchScreen.storyboard */,
 				AF78DD122189879600B0CF10 /* Assets.xcassets */,
@@ -371,7 +371,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFB00CC1218F047A008C6741 /* Main.storyboard in Resources */,
+				E1DE91D2219085D70035ED9C /* Main.storyboard in Resources */,
 				AF78DD75218A1A0D00B0CF10 /* GooglePlacePicker.bundle in Resources */,
 				AF78DD162189879600B0CF10 /* LaunchScreen.storyboard in Resources */,
 				AF78DD132189879600B0CF10 /* Assets.xcassets in Resources */,
@@ -469,10 +469,10 @@
 			name = OldMain.storyboard;
 			sourceTree = "<group>";
 		};
-		AFB00CBF218F047A008C6741 /* Main.storyboard */ = {
+		E1DE91D0219085D70035ED9C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				AFB00CC0218F047A008C6741 /* Base */,
+				E1DE91D1219085D70035ED9C /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -531,7 +531,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -586,7 +586,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
