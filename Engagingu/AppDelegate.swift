@@ -20,9 +20,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
         [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        self.window = UIWindow(frame: UIScreen.main.bounds)
         
-        GMSServices.provideAPIKey("AIzaSyBNiFccpd9f1FKyMDrURLdUs8FdIYowQc4")
-        GMSPlacesClient.provideAPIKey("AIzaSyBNiFccpd9f1FKyMDrURLdUs8FdIYowQc4")
+        let storyboard = UIStoryboard(name: "Main", bundle:nil)
+        var wasLoggedIn = true
+        
+        let def = UserDefaults.standard
+        let team_id = def.string(forKey: "team_id")
+        let trail_instance_id = def.string(forKey: "trail_instance_id")
+        
+        if(team_id ?? "").isEmpty || (trail_instance_id ?? "").isEmpty{
+            wasLoggedIn = false
+        }
+        
+        if (wasLoggedIn) {
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+            InstanceDAO.team_id = team_id!
+            InstanceDAO.trail_instance_id = trail_instance_id!
+            window?.rootViewController = initialViewController
+            window?.makeKeyAndVisible()
+        }else{
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "LoginTrailController")
+            window?.rootViewController = initialViewController
+            window?.makeKeyAndVisible()
+        }
         
         return true
 

@@ -56,8 +56,6 @@
 		AF78DD77218A1A0D00B0CF10 /* GooglePlacePicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AF78DD74218A1A0C00B0CF10 /* GooglePlacePicker.bundle */; };
 		AF78DD8E218B3EED00B0CF10 /* HotspotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78DD8D218B3EED00B0CF10 /* HotspotController.swift */; };
 		AF78DD92218B759500B0CF10 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78DD91218B759500B0CF10 /* RestAPIManager.swift */; };
-		AF78DD93218B759500B0CF10 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78DD91218B759500B0CF10 /* RestAPIManager.swift */; };
-		AF78DD94218B759500B0CF10 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78DD91218B759500B0CF10 /* RestAPIManager.swift */; };
 		E1A67DDE21913BB500581D1C /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A67DDD21913BB500581D1C /* File.swift */; };
 		E1A67DE321913DC300581D1C /* InstanceDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A67DE221913DC300581D1C /* InstanceDAO.swift */; };
 		E1DE91D2219085D70035ED9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1DE91D0219085D70035ED9C /* Main.storyboard */; };
@@ -447,7 +445,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF78DD93218B759500B0CF10 /* RestAPIManager.swift in Sources */,
 				AF78DD212189879600B0CF10 /* EngaginguTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,7 +453,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF78DD94218B759500B0CF10 /* RestAPIManager.swift in Sources */,
 				AF78DD2C2189879600B0CF10 /* EngaginguUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
