@@ -34,6 +34,7 @@ class LoginTrailController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         // Get trail instance id from DB and store in DAO
         let jsonUrlString = "http://54.255.245.23:3000/getInstance"
+        
         guard let url = URL(string: jsonUrlString) else {return}
         print(url);
 

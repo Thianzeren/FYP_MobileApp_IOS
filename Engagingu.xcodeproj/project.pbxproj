@@ -58,6 +58,7 @@
 		AF78DD92218B759500B0CF10 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78DD91218B759500B0CF10 /* RestAPIManager.swift */; };
 		E1A67DDE21913BB500581D1C /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A67DDD21913BB500581D1C /* File.swift */; };
 		E1A67DE321913DC300581D1C /* InstanceDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A67DE221913DC300581D1C /* InstanceDAO.swift */; };
+		E1A67DE721941EBA00581D1C /* StoryboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A67DE621941EBA00581D1C /* StoryboardController.swift */; };
 		E1DE91D2219085D70035ED9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1DE91D0219085D70035ED9C /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +121,7 @@
 		AF78DD91218B759500B0CF10 /* RestAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPIManager.swift; sourceTree = "<group>"; };
 		E1A67DDD21913BB500581D1C /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		E1A67DE221913DC300581D1C /* InstanceDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceDAO.swift; sourceTree = "<group>"; };
+		E1A67DE621941EBA00581D1C /* StoryboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardController.swift; sourceTree = "<group>"; };
 		E1DE91D1219085D70035ED9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -268,6 +270,7 @@
 				AF6C8B40218D4CDF006AC6C0 /* LoginNameController.swift */,
 				AF78DD8D218B3EED00B0CF10 /* HotspotController.swift */,
 				AF6C8B41218D4CDF006AC6C0 /* CameraViewController.swift */,
+				E1A67DE621941EBA00581D1C /* StoryboardController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 			files = (
 				AF6C8B43218D4CDF006AC6C0 /* LoginNameController.swift in Sources */,
 				AF6C8B42218D4CDF006AC6C0 /* LoginTrailController.swift in Sources */,
+				E1A67DE721941EBA00581D1C /* StoryboardController.swift in Sources */,
 				E1A67DDE21913BB500581D1C /* File.swift in Sources */,
 				AF78DD0C2189878A00B0CF10 /* AppDelegate.swift in Sources */,
 				AF78DD92218B759500B0CF10 /* RestAPIManager.swift in Sources */,

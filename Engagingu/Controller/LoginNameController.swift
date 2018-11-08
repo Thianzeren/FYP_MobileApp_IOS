@@ -79,6 +79,7 @@ class LoginNameController: UIViewController, UITextFieldDelegate {
                     let def = UserDefaults.standard
                     def.set(InstanceDAO.team_id, forKey: "team_id")
                     def.set(InstanceDAO.trail_instance_id, forKey: "trail_instance_id")
+                    def.set(InstanceDAO.username, forKey: "username")
                     def.synchronize()
                     print(InstanceDAO.team_id)
 
