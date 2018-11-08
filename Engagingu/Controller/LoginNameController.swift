@@ -42,13 +42,13 @@ class LoginNameController: UIViewController, UITextFieldDelegate {
         //With local post method
         httpPost(jsonData: jsonData)
         
-        performSegue(withIdentifier: "toHomeSegue", sender: nil)
+        performSegue(withIdentifier: "toGroupSegue", sender: nil)
         
     }
     
     func httpPost(jsonData: Data){
         if !jsonData.isEmpty {
-
+            
             guard let url = URL(string: "http://54.255.245.23:3000/user/register") else {
 
                 print("Error: cannot create URL")

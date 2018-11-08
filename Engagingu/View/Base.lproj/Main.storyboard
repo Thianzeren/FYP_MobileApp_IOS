@@ -59,7 +59,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ibk-Zf-PhE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-794.39999999999998" y="-33.733133433283363"/>
+            <point key="canvasLocation" x="-3802" y="1381"/>
         </scene>
         <!--Login Name Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -101,12 +101,65 @@
                     </view>
                     <connections>
                         <outlet property="usernameField" destination="Ytn-ez-YlQ" id="Waa-JO-zxr"/>
-                        <segue destination="I3j-hO-u2H" kind="presentation" identifier="toHomeSegue" id="7aV-xy-vVI"/>
+                        <segue destination="Tcw-WA-gZ7" kind="presentation" identifier="toGroupSegue" id="XL6-6y-Ueu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-14" y="-34"/>
+            <point key="canvasLocation" x="-2617" y="1381"/>
+        </scene>
+        <!--Team Allocation Controller-->
+        <scene sceneID="vka-3M-DIc">
+            <objects>
+                <viewController storyboardIdentifier="TeamAllocationController" title="Team Allocation Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Tcw-WA-gZ7" customClass="TeamAllocationController" customModule="Engagingu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qyk-pd-UY6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dCz-au-dSQ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.61176470589999998" green="0.61568627450000002" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <navigationItem title="Engaging U" id="wOj-UC-HKC"/>
+                                </items>
+                            </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="You are in group:" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsD-Bw-n1b">
+                                <rect key="frame" x="67" y="157" width="240" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YC6-BE-57Z">
+                                <rect key="frame" x="158" y="521" width="59" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.61176470588235299" green="0.61568627450980395" blue="0.63137254901960782" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="OK!"/>
+                                <connections>
+                                    <action selector="okayBtn:" destination="Tcw-WA-gZ7" eventType="touchUpInside" id="d4Q-iw-NcH"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tM9-R2-VVQ">
+                                <rect key="frame" x="67" y="276" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="84"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="3j5-kB-4wl"/>
+                    </view>
+                    <connections>
+                        <outlet property="groupNumber" destination="tM9-R2-VVQ" id="0C4-Wb-OzV"/>
+                        <segue destination="I3j-hO-u2H" kind="presentation" identifier="toHomeSegue" id="BOa-2C-iMB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X6b-69-t07" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1399.2" y="1379.4602698650676"/>
         </scene>
         <!--Leaderboard-->
         <scene sceneID="LMm-C3-x7k">
@@ -154,7 +207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="agI-nO-FqU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="621.60000000000002" y="859.52023988005999"/>
+            <point key="canvasLocation" x="1342" y="1601"/>
         </scene>
         <!--Hotspot-->
         <scene sceneID="Oe3-bl-O4a">
@@ -191,14 +244,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="tPo-by-8iw"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="HotSpot" badgeValue="Location" id="Et2-ij-RZQ"/>
+                    <tabBarItem key="tabBarItem" title="HotSpot" id="Et2-ij-RZQ"/>
                     <connections>
                         <outlet property="mapView" destination="aWw-03-V2w" id="Ksx-uu-1tt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K5y-w3-4jS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1621.5999999999999" y="784.85757121439292"/>
+            <point key="canvasLocation" x="1342" y="2384"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="5yY-md-iUG">
@@ -230,7 +283,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XMm-pA-chP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2445.5999999999999" y="796.55172413793105"/>
+            <point key="canvasLocation" x="3177" y="2383"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="CKV-s3-0mV">
@@ -250,7 +303,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Yk-MJ-DT7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="780" y="-40"/>
+            <point key="canvasLocation" x="-47" y="1379"/>
         </scene>
         <!--Badges-->
         <scene sceneID="YSJ-Qj-srR">
@@ -276,7 +329,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Kg-pd-dVA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1522" y="-489"/>
+            <point key="canvasLocation" x="1342" y="851"/>
         </scene>
         <!--Submissions-->
         <scene sceneID="CwK-QI-MDk">
@@ -323,7 +376,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yXT-g0-gud" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2160.8000000000002" y="-9.4452773613193415"/>
+            <point key="canvasLocation" x="1343" y="98"/>
         </scene>
     </scenes>
     <resources>
