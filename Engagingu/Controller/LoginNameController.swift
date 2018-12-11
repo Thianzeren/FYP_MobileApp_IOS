@@ -42,7 +42,7 @@ class LoginNameController: UIViewController, UITextFieldDelegate {
         //With local post method
         httpPost(jsonData: jsonData)
         
-        performSegue(withIdentifier: "toGroupSegue", sender: nil)
+        performSegue(withIdentifier: "toTutorialSegue", sender: nil)
         
     }
     

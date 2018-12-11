@@ -23,46 +23,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let storyboard = UIStoryboard(name: "Main", bundle:nil)
         let usernameArray: [String] = [];
-        var wasLoggedIn = true
+        var wasLoggedIn = false
         
         let def = UserDefaults.standard
         let team_id = def.string(forKey: "team_id")
         let trail_instance_id = def.string(forKey: "trail_instance_id")
-//        let username = def.string(forKey: "username")
+        let username = def.string(forKey: "username")
         
-//        //Retrieve all usernames from DB to check if user has entered before
-//        let jsonUrlString = "http://54.255.245.23:3000/user/retrieveAllUsers"
-//
-//        guard let url = URL(string: jsonUrlString) else {return false}
-//        print(url);
-//
-//        URLSession.shared.dataTask(with: url){ (data, response, err) in
-//
-//            guard let data = data else {return}
-//
-//            let jsonStr = String(data:data, encoding: .utf8)
-//            print(jsonStr)
-//
-//            do{
-//                guard let jsonObj = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:[String]] else {return}
-//
-//                print(jsonObj)
-//
-//                guard let usernameArray = jsonObj["username"] else {return}
-//
-//            }catch let jsonErr {
-//                print ("Error serializing json:" + jsonErr.localizedDescription)
-//            }
-//
-//            }.resume()
-//
-//        print(team_id)
-//        print(trail_instance_id)
-//        print(username)
+        //Retrieve all usernames from DB to check if user has entered before
+        let jsonUrlString = "http://54.255.245.23:3000/user/retrieveAllUsers"
+
+        guard let url = URL(string: jsonUrlString) else {return false}
+        print(url);
+
+        URLSession.shared.dataTask(with: url){ (data, response, err) in
+
+            guard let data = data else {return}
+
+            let jsonStr = String(data:data, encoding: .utf8)
+            print(jsonStr)
+
+            do{
+                guard let jsonObj = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:[String]] else {return}
+
+                print(jsonObj)
+
+                guard let usernameArray = jsonObj["username"] else {return}
+
+            }catch let jsonErr {
+                print ("Error serializing json:" + jsonErr.localizedDescription)
+            }
+
+            }.resume()
+
+        print(team_id)
+        print(trail_instance_id)
+        print(username)
         
-//        print(usernameArray.contains(username ?? ""))
-        if(team_id ?? "").isEmpty || (trail_instance_id ?? "").isEmpty {
-            wasLoggedIn = false
+        print(usernameArray.contains(username ?? ""))
+        if !(team_id ?? "").isEmpty && !(trail_instance_id ?? "").isEmpty && (usernameArray.contains(username ?? "")){
+            wasLoggedIn = true
         }
         
         if (wasLoggedIn) {

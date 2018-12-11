@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="B4o-9X-ol8">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login Trail Controller-->
+        <!--LoginTrailController-->
         <scene sceneID="Z4T-TG-QWC">
             <objects>
-                <viewController storyboardIdentifier="LoginTrailController" id="B4o-9X-ol8" customClass="LoginTrailController" customModule="Engagingu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginTrailController" title="LoginTrailController" id="B4o-9X-ol8" customClass="LoginTrailController" customModule="Engagingu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jxK-oK-RFI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -59,7 +59,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ibk-Zf-PhE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3802" y="1381"/>
+            <point key="canvasLocation" x="-5764" y="734"/>
         </scene>
         <!--Login Name Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -101,12 +101,152 @@
                     </view>
                     <connections>
                         <outlet property="usernameField" destination="Ytn-ez-YlQ" id="Waa-JO-zxr"/>
-                        <segue destination="Tcw-WA-gZ7" kind="presentation" identifier="toGroupSegue" id="XL6-6y-Ueu"/>
+                        <segue destination="qc6-Yk-rZl" kind="presentation" identifier="toTutorialSegue" id="hmv-kY-3fO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2617" y="1381"/>
+            <point key="canvasLocation" x="-4876" y="734"/>
+        </scene>
+        <!--Storyboard Controller 1-->
+        <scene sceneID="MiT-Vo-0HO">
+            <objects>
+                <viewController title="Storyboard Controller 1" id="qc6-Yk-rZl" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5IM-QM-Chj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QxV-lj-mqz">
+                                <rect key="frame" x="285" y="579" width="68" height="76"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="LJJ-8r-YNp" kind="presentation" id="F5a-yU-gRI"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Story Introduction 1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Xcm-uV-xgt">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="keC-RH-0ag"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hnx-WB-E2C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5764" y="1472.1139430284859"/>
+        </scene>
+        <!--Storyboard Controller 2-->
+        <scene sceneID="6br-UY-0ta">
+            <objects>
+                <viewController title="Storyboard Controller 2" id="LJJ-8r-YNp" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zkz-hC-TLY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Story Introduction 2.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="daI-l2-4Zx">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brJ-qp-fK9">
+                                <rect key="frame" x="306" y="585" width="53" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="ijU-pS-vSE" kind="presentation" id="Lxu-os-Mmu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="XfH-Ua-ys7"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kCw-cm-0Qe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4876" y="1471.2143928035982"/>
+        </scene>
+        <!--Tutorial Controller 1-->
+        <scene sceneID="G7H-0i-E45">
+            <objects>
+                <viewController title="Tutorial Controller 1" id="ijU-pS-vSE" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bM4-2g-Wkk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Tutorial 1.png" translatesAutoresizingMaskIntoConstraints="NO" id="Gv8-w0-9OJ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pok-8y-WNm">
+                                <rect key="frame" x="313" y="591" width="46" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="L6q-YG-sOQ" kind="presentation" id="Jh2-LE-vOh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="L2v-bT-zCd"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="43V-vL-9qT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5764" y="2244.8275862068967"/>
+        </scene>
+        <!--Tutorial Controller 2-->
+        <scene sceneID="Lzp-n6-JBV">
+            <objects>
+                <viewController title="Tutorial Controller 2" id="L6q-YG-sOQ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n1T-Uv-6q2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Tutorial 2.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="rnQ-qX-LcH">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gky-cR-0cA">
+                                <rect key="frame" x="313" y="591" width="46" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="Ofy-Cn-5q5" kind="presentation" id="wt7-6n-q4d"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="9X3-eb-5jN"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4tb-Cl-z2E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4876" y="2244.8275862068967"/>
+        </scene>
+        <!--Tutorial Controller 3-->
+        <scene sceneID="IbP-iq-qpJ">
+            <objects>
+                <viewController title="Tutorial Controller 3" id="Ofy-Cn-5q5" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ml5-cS-wcK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Tutorial 3.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="2Zr-wZ-I9N">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RgS-t9-gq7">
+                                <rect key="frame" x="313" y="589" width="46" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="Tcw-WA-gZ7" kind="presentation" id="1q1-yh-br6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="dTj-0K-aYc"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dwb-HQ-YB7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3991.1999999999998" y="2244.8275862068967"/>
         </scene>
         <!--Team Allocation Controller-->
         <scene sceneID="vka-3M-DIc">
@@ -124,13 +264,6 @@
                                     <navigationItem title="Engaging U" id="wOj-UC-HKC"/>
                                 </items>
                             </navigationBar>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="You are in group:" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsD-Bw-n1b">
-                                <rect key="frame" x="67" y="157" width="240" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YC6-BE-57Z">
                                 <rect key="frame" x="158" y="521" width="59" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -148,6 +281,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="84"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="You are in group:" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsD-Bw-n1b">
+                                <rect key="frame" x="67" y="157" width="240" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="3j5-kB-4wl"/>
@@ -159,7 +299,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X6b-69-t07" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1399.2" y="1379.4602698650676"/>
+            <point key="canvasLocation" x="-898" y="1380"/>
         </scene>
         <!--Leaderboard-->
         <scene sceneID="LMm-C3-x7k">
@@ -380,6 +520,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Story Introduction 1.jpg" width="450" height="800"/>
+        <image name="Story Introduction 2.jpg" width="450" height="800"/>
+        <image name="Tutorial 1.png" width="450" height="800"/>
+        <image name="Tutorial 2.jpg" width="450" height="800"/>
+        <image name="Tutorial 3.jpg" width="450" height="800"/>
         <image name="engagingulogo" width="250" height="183"/>
     </resources>
 </document>
