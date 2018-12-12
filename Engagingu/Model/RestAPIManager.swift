@@ -20,6 +20,7 @@ class RestAPIManager {
 
             guard let url = URL(string: URLStr) else {
                 print("Error: cannot create URL")
+                semaphore.signal()
                 return [:]
             }
 
@@ -34,12 +35,14 @@ class RestAPIManager {
             let task = session.dataTask(with: request) { data, response, error in
                 guard let data = data, error == nil else{
                     print(error?.localizedDescription ?? "No data")
+                    semaphore.signal()
                     return
                 }
 
                 do{
                     guard let responseDict = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:Any] else {
                         print("Error: no json response received")
+                        semaphore.signal()
                         return
                     }
 
@@ -69,6 +72,7 @@ class RestAPIManager {
         
         guard let url = URL(string: URLStr) else {
             print("URL cannot be generated ffrom URLStr")
+            semaphore.signal()
             return [:]
         }
 
@@ -76,6 +80,7 @@ class RestAPIManager {
 
             guard let data = data else {
                 print("No data received from GET request")
+                semaphore.signal()
                 return
             }
 
@@ -96,6 +101,7 @@ class RestAPIManager {
                 semaphore.signal()
             }catch let jsonErr {
                 print ("Error serializing json:" + jsonErr.localizedDescription)
+                semaphore.signal()
             }
             
         }.resume()

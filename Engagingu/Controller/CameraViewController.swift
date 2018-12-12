@@ -12,7 +12,6 @@ class CameraViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     
-    
     let pickerController = UIImagePickerController()
     
     

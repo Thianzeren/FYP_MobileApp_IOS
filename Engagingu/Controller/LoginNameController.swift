@@ -42,8 +42,10 @@ class LoginNameController: UIViewController, UITextFieldDelegate {
 
         let team_id = responseDict["team_id"] as? Int
         print(team_id)
-        InstanceDAO.team_id = String(team_id!)
-        print(InstanceDAO.team_id)
+        
+        if let id = team_id {
+            InstanceDAO.team_id = String(id)
+        }
         
         let def = UserDefaults.standard
         def.set(InstanceDAO.team_id, forKey: "team_id")

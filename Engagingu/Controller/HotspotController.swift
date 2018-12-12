@@ -22,7 +22,6 @@ class Hotspots: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     
-    
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 9000
     

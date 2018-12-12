@@ -54,7 +54,7 @@
                     </view>
                     <connections>
                         <outlet property="trailIDPin" destination="Mod-8l-Jcq" id="ki6-yL-CkS"/>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="toNameSegue" id="wLI-F4-fN4"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toNameSegue" id="wLI-F4-fN4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ibk-Zf-PhE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -101,7 +101,7 @@
                     </view>
                     <connections>
                         <outlet property="usernameField" destination="Ytn-ez-YlQ" id="Waa-JO-zxr"/>
-                        <segue destination="qc6-Yk-rZl" kind="presentation" identifier="toTutorialSegue" id="hmv-kY-3fO"/>
+                        <segue destination="qc6-Yk-rZl" kind="show" identifier="toTutorialSegue" id="hmv-kY-3fO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -120,7 +120,7 @@
                                 <rect key="frame" x="285" y="579" width="68" height="76"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <segue destination="LJJ-8r-YNp" kind="presentation" id="F5a-yU-gRI"/>
+                                    <segue destination="LJJ-8r-YNp" kind="show" id="F5a-yU-gRI"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Story Introduction 1" translatesAutoresizingMaskIntoConstraints="NO" id="Xcm-uV-xgt">
@@ -152,7 +152,7 @@
                                 <rect key="frame" x="306" y="585" width="53" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <segue destination="ijU-pS-vSE" kind="presentation" id="Lxu-os-Mmu"/>
+                                    <segue destination="ijU-pS-vSE" kind="show" id="Lxu-os-Mmu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -180,7 +180,7 @@
                                 <rect key="frame" x="313" y="591" width="46" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <segue destination="L6q-YG-sOQ" kind="presentation" id="Jh2-LE-vOh"/>
+                                    <segue destination="L6q-YG-sOQ" kind="show" id="Jh2-LE-vOh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -208,7 +208,7 @@
                                 <rect key="frame" x="313" y="591" width="46" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <segue destination="Ofy-Cn-5q5" kind="presentation" id="wt7-6n-q4d"/>
+                                    <segue destination="Ofy-Cn-5q5" kind="show" id="wt7-6n-q4d"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -236,7 +236,7 @@
                                 <rect key="frame" x="313" y="589" width="46" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <segue destination="Tcw-WA-gZ7" kind="presentation" id="1q1-yh-br6"/>
+                                    <segue destination="Tcw-WA-gZ7" kind="show" id="1q1-yh-br6"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -294,7 +294,7 @@
                     </view>
                     <connections>
                         <outlet property="groupNumber" destination="tM9-R2-VVQ" id="0C4-Wb-OzV"/>
-                        <segue destination="I3j-hO-u2H" kind="presentation" identifier="toHomeSegue" id="BOa-2C-iMB"/>
+                        <segue destination="I3j-hO-u2H" kind="show" identifier="toHomeSegue" id="BOa-2C-iMB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X6b-69-t07" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -444,15 +444,15 @@
         <!--Tab Bar Controller-->
         <scene sceneID="CKV-s3-0mV">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarController" id="I3j-hO-u2H" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="I3j-hO-u2H" customClass="TabBarController" customModule="Engagingu" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4ap-C3-ysz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="89u-9U-weD" kind="relationship" relationship="viewControllers" id="pfI-kf-XTz"/>
                         <segue destination="rEC-eW-Ute" kind="relationship" relationship="viewControllers" id="ljd-rg-j7a"/>
+                        <segue destination="89u-9U-weD" kind="relationship" relationship="viewControllers" id="pfI-kf-XTz"/>
                         <segue destination="osV-WK-YJK" kind="relationship" relationship="viewControllers" id="2fS-jk-8hV"/>
                         <segue destination="lNW-ni-kzI" kind="relationship" relationship="viewControllers" id="6Qq-vp-eqi"/>
                         <segue destination="LOL-co-cF1" kind="relationship" relationship="viewControllers" id="GZL-0p-0hG"/>
