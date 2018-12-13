@@ -12,11 +12,12 @@ import GooglePlaces
 
 class MapController: UIViewController {
     
+    var defaultCoordinates = [1,2968, 103.8522]
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
     var mapView: GMSMapView!
     var placesClient: GMSPlacesClient!
-    var zoomlevel: Float = 15.0
+    var zoomLevel: Float = 15.0
     
     override func viewDidLoad() {
         
@@ -27,21 +28,38 @@ class MapController: UIViewController {
         locationManager.startUpdatingLocation()
         locationManager.delegate = self
         
-        placesClient = GMSPlacesClient.shared()
+        let camera = GMSCameraPosition.camera(withLatitude: locationManager.location?.coordinate.latitude ?? defaultCoordinates[0],
+                                              longitude: locationManager.location?.coordinate.longitude ?? defaultCoordinates[1],
+                                              zoom: zoomLevel)
         
-        // Creates a GMSCameraPosition that tells the map to display
-        // the coordinate -33.86, 151.20, zoom 6.0
-        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        view = mapView
+        mapView = GMSMapView.map(withFrame: view.bounds, camera: camera)
+        mapView.settings.myLocationButton = true
+        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mapView.isMyLocationEnabled = true
         
-        // Creates a marker in the centre of the map
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
-        marker.map = mapView
+        // Add the map to the view, hide it until we've got a location update.
+        view.addSubview(mapView)
+        mapView.isHidden = true
         
+        let hotspots = InstanceDAO.hotspotDict
+        
+        for (name, hotspot) in hotspots{
+            print("name: \(name)")
+            
+            let coordinates = hotspot.coordinates
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2D(latitude: Double(coordinates[0]) ?? defaultCoordinates[0] , longitude: Double(coordinates[1]) ?? defaultCoordinates[1])
+            marker.title = name
+            marker.snippet = "Click me to start mission!"
+            marker.map = mapView
+            
+        }
+        
+//        let marker = GMSMarker()
+//        marker.position = CLLocationCoordinate2D(latitude: 1.2953, longitude: 103.8506)
+//        marker.title = "LKCSchoolOfBusiness"
+//        marker.snippet = "hotspot1"
+//        marker.map = mapView
         
     }
 
@@ -55,36 +73,47 @@ class MapController: UIViewController {
     }
     */
     
-    func checkLocationAuthorization(){
-        switch CLLocationManager.authorizationStatus(){// 5 cases to handle
-        case .authorizedAlways, .authorizedWhenInUse: //app can get your location when app is in the background
-            //what we want, do map stuff here
-            break
-            
-        case .denied: //dont allow. location needs to be turned on in settings after user clicks deny
-            //show alert to guide them on how to turn on permission
-            break
-            
-        case .notDetermined: //user haven't picked allow or dont allow
-            //request the permission here
-            locationManager.requestAlwaysAuthorization()
-            locationManager.requestWhenInUseAuthorization()
-            break
-            
-        case .restricted: //user cannot change app's status
-            // show them alert
-            break
-        }
-    }
 }
 
 extension MapController: CLLocationManagerDelegate{
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
+    // Handle incoming location events.
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location: CLLocation = locations.last!
+        print("Location: \(location)")
+        
+        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
+                                              longitude: location.coordinate.longitude,
+                                              zoom: zoomLevel)
+        
+        if mapView.isHidden {
+            mapView.isHidden = false
+            mapView.camera = camera
+        } else {
+            mapView.animate(to: camera)
+        }
         
     }
     
+    // Handle authorization for the location manager.
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        
-        checkLocationAuthorization()
+        switch status {
+        case .restricted:
+            print("Location access was restricted.")
+        case .denied:
+            print("User denied access to location.")
+            // Display the map using the default location.
+            mapView.isHidden = false
+        case .notDetermined:
+            print("Location status not determined.")
+        case .authorizedAlways: fallthrough
+        case .authorizedWhenInUse:
+            print("Location status is OK.")
+        }
+    }
+    
+    // Handle location manager errors.
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        locationManager.stopUpdatingLocation()
+        print("Error: \(error)")
     }
 }

@@ -40,6 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let jsonUrlString = "http://54.255.245.23:3000/user/retrieveAllUsers"
         
         let usernameDict = RestAPIManager.syncHttpGet(URLStr: jsonUrlString)
+        
+        //Process Response
         if let usernameArr = usernameDict["username"] as? [String]{
             print(team_id)
             print(trail_instance_id)
@@ -65,6 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             let responseDict = RestAPIManager.syncHttpGet(URLStr: jsonUrlString)
             
+            //Process response
             let trail_instance_id = responseDict["trail_instance_id"] as? String
             if let id = trail_instance_id {
                 print(id)

@@ -10,12 +10,12 @@ import UIKit
 import MapKit
 import CoreLocation
 
-struct Hotspot: Decodable{ //create a Hotspot class use for the jsondecoder
-    
-    let coordinates: [String]
-    let name: String
-    let narrative: String
-}
+//struct Hotspot: Decodable{ //create a Hotspot class use for the jsondecoder
+//
+//    let coordinates: [String]
+//    let name: String
+//    let narrative: String
+//}
 
 class Hotspots: UIViewController {
 

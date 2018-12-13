@@ -114,6 +114,31 @@ class RestAPIManager {
         return result
     }
     
-    
+    static func httpGetHotspots(URLStr: String){
+        
+        guard let url = URL(string: URLStr) else { return }
+        
+        URLSession.shared.dataTask(with: url){(data, response, error) in
+            //check error
+            //check response status ok
+            
+            guard let data = data else { return }
+            
+            do {
+                let hotspots = try
+                    JSONDecoder().decode([Hotspot].self, from: data)
+                
+                for hotspot in hotspots{
+                    InstanceDAO.hotspotDict[hotspot.name] = hotspot
+                }
+                
+            } catch let jsonErr{
+                print("Error serializing json:", jsonErr)
+            }
+            
+            
+        }.resume()
+        
+    }
     
 }

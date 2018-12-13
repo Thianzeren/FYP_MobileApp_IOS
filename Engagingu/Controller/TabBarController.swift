@@ -12,6 +12,11 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let jsonUrlString = "http://54.255.245.23:3000/hotspot/getAllHotspots?trail_instance_id=" + InstanceDAO.trail_instance_id
+        
+        RestAPIManager.httpGetHotspots(URLStr: jsonUrlString)
+        
         self.selectedIndex = 4
         // Do any additional setup after loading the view.
     }

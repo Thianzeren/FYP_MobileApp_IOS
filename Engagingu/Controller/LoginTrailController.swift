@@ -30,10 +30,12 @@ class LoginTrailController: UIViewController, UITextFieldDelegate {
         self.trailIDPin.delegate = self
         trailIDPin.setBottomBorder()
         
-        // Do any additional setup after loading the view.
+        //Listen for keyboard events, addObserers. Obbservers are removed when > IOS 9
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object:nil)
         
     }
-    
     
     //navigation
     //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -60,6 +62,26 @@ class LoginTrailController: UIViewController, UITextFieldDelegate {
             alert.dismiss(animated: true, completion: nil)
         }))
         self.present(alert, animated: true, completion:nil)
+    }
+    
+    @objc func keyboardWillChange(notification: Notification){
+//        print("Keyboard will show: \(notification.name.rawValue)")
+        
+        // Get keyboard height
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            
+            // Check if notification is related to show/change frame
+            if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification{
+                
+                // Shift frame upwards by rect height
+                view.frame.origin.y = -1 * keyboardHeight
+            }else{
+                view.frame.origin.y = 0
+            }
+
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
