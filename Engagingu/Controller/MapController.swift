@@ -10,7 +10,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-class MapController: UIViewController {
+class MapController: UIViewController, GMSMapViewDelegate {
     
     var defaultCoordinates = [1,2968, 103.8522]
     var locationManager = CLLocationManager()
@@ -18,6 +18,7 @@ class MapController: UIViewController {
     var mapView: GMSMapView!
     var placesClient: GMSPlacesClient!
     var zoomLevel: Float = 15.0
+    var selectedMarker: GMSMarker!
     
     override func viewDidLoad() {
         
@@ -36,6 +37,7 @@ class MapController: UIViewController {
         mapView.settings.myLocationButton = true
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.isMyLocationEnabled = true
+        mapView.delegate = self
         
         // Add the map to the view, hide it until we've got a location update.
         view.addSubview(mapView)
@@ -50,28 +52,38 @@ class MapController: UIViewController {
             let marker = GMSMarker()
             marker.position = CLLocationCoordinate2D(latitude: Double(coordinates[0]) ?? defaultCoordinates[0] , longitude: Double(coordinates[1]) ?? defaultCoordinates[1])
             marker.title = name
+            marker.userData = hotspot.narrative
             marker.snippet = "Click me to start mission!"
             marker.map = mapView
             
         }
         
+//        // For Testing
 //        let marker = GMSMarker()
 //        marker.position = CLLocationCoordinate2D(latitude: 1.2953, longitude: 103.8506)
-//        marker.title = "LKCSchoolOfBusiness"
-//        marker.snippet = "hotspot1"
+//        marker.title = "Placeholder Testing Marker"
+//        marker.snippet = "Testing Snippet"
 //        marker.map = mapView
         
     }
+    
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        
+        selectedMarker = marker
+        performSegue(withIdentifier: "toNarrativeSegue", sender: self)
+    }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        let destVC = segue.destination as! NarrativeViewController
+        
+        destVC.headerText = selectedMarker.title!
+        destVC.narrativeText = selectedMarker.userData as! String
     }
-    */
     
 }
 

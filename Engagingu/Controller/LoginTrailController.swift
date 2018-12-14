@@ -47,7 +47,8 @@ class LoginTrailController: UIViewController, UITextFieldDelegate {
         
         let trailID = trailIDPin.text!
         
-        if(trailID == InstanceDAO.trail_instance_id){
+        // Remember to remove "fypadmin" checl
+        if(trailID == InstanceDAO.trail_instance_id || trailID == "fypadmin"){
             performSegue(withIdentifier: "toNameSegue", sender: nil)
         }else{
             createAlert(title: "Incorrect or Missing Pin Please Try Again", message: "")

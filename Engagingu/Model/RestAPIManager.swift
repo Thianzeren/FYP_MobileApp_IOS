@@ -116,13 +116,18 @@ class RestAPIManager {
     
     static func httpGetHotspots(URLStr: String){
         
+        let semaphore = DispatchSemaphore(value: 0)
+        
         guard let url = URL(string: URLStr) else { return }
         
         URLSession.shared.dataTask(with: url){(data, response, error) in
             //check error
             //check response status ok
             
-            guard let data = data else { return }
+            guard let data = data else {
+                semaphore.signal()
+                return
+            }
             
             do {
                 let hotspots = try
@@ -132,12 +137,49 @@ class RestAPIManager {
                     InstanceDAO.hotspotDict[hotspot.name] = hotspot
                 }
                 
+                print("HOTSPOT")
+                print(InstanceDAO.hotspotDict)
+                
+                semaphore.signal()
+            } catch let jsonErr{
+                print("Error serializing json:", jsonErr)
+                semaphore.signal()
+            }
+            
+            
+        }.resume()
+        
+        semaphore.wait()
+        
+    }
+    
+    static func httpGetQuizzes(URLStr: String){
+        
+        guard let url = URL(string: URLStr) else { return }
+        
+        URLSession.shared.dataTask(with: url){(data, response, error) in
+            //check error
+            //check response status ok
+            
+            guard let data = data else { return }
+            
+            do {
+                let quizzes = try
+                    JSONDecoder().decode([HotspotQuiz].self, from: data)
+                
+                for quiz in quizzes{
+                    InstanceDAO.quizDict[quiz.hotspot] = quiz
+                }
+                
+                print("QUIZZES")
+                print(InstanceDAO.quizDict)
+                
             } catch let jsonErr{
                 print("Error serializing json:", jsonErr)
             }
             
             
-        }.resume()
+            }.resume()
         
     }
     

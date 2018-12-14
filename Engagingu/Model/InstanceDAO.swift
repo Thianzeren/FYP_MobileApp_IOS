@@ -15,6 +15,8 @@ struct InstanceDAO {
     static var username: String = "defaultName"
     static var completedList: Array<String> = Array()
     static var hotspotDict: [String:Hotspot] = [:]
+    static var quizDict: [String:HotspotQuiz] = [:]
+    
 }
 
 struct Hotspot: Decodable{ //create a Hotspot class use for the jsondecoder
@@ -22,4 +24,18 @@ struct Hotspot: Decodable{ //create a Hotspot class use for the jsondecoder
     let coordinates: [String]
     let name: String
     let narrative: String
+}
+
+struct HotspotQuiz: Decodable{
+    
+    let hotspot: String
+    
+    struct Quiz: Decodable{
+        let quiz_question: String
+        let quiz_answer: Int
+        let quiz_options: [String]
+    }
+    
+    let quiz: [Quiz]
+    
 }

@@ -36,6 +36,8 @@
 		AF78DD92218B759500B0CF10 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78DD91218B759500B0CF10 /* RestAPIManager.swift */; };
 		E174C3DB21BFC5BF008CD241 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = E174C3DA21BFC5BE008CD241 /* Podfile */; };
 		E176A13E21C1487F005A5C30 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176A13D21C1487F005A5C30 /* TabBarController.swift */; };
+		E176A14221C290E1005A5C30 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176A14121C290E1005A5C30 /* QuizViewController.swift */; };
+		E176A14421C2936D005A5C30 /* NarrativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176A14321C2936D005A5C30 /* NarrativeViewController.swift */; };
 		E1A67DE321913DC300581D1C /* InstanceDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A67DE221913DC300581D1C /* InstanceDAO.swift */; };
 		E1A67DE921944C6B00581D1C /* TeamAllocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A67DE821944C6B00581D1C /* TeamAllocationController.swift */; };
 		E1DE91D2219085D70035ED9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1DE91D0219085D70035ED9C /* Main.storyboard */; };
@@ -99,6 +101,8 @@
 		DF573A3D860BDBBA777F2706 /* Pods-EngaginguUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EngaginguUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EngaginguUITests/Pods-EngaginguUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E174C3DA21BFC5BE008CD241 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E176A13D21C1487F005A5C30 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		E176A14121C290E1005A5C30 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
+		E176A14321C2936D005A5C30 /* NarrativeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NarrativeViewController.swift; sourceTree = "<group>"; };
 		E1A67DE221913DC300581D1C /* InstanceDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceDAO.swift; sourceTree = "<group>"; };
 		E1A67DE821944C6B00581D1C /* TeamAllocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamAllocationController.swift; sourceTree = "<group>"; };
 		E1DE91D1219085D70035ED9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -254,6 +258,8 @@
 				E1A67DE821944C6B00581D1C /* TeamAllocationController.swift */,
 				E1F5133721BFC24B00964726 /* MapController.swift */,
 				E176A13D21C1487F005A5C30 /* TabBarController.swift */,
+				E176A14121C290E1005A5C30 /* QuizViewController.swift */,
+				E176A14321C2936D005A5C30 /* NarrativeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -516,6 +522,7 @@
 				AF6C8B43218D4CDF006AC6C0 /* LoginNameController.swift in Sources */,
 				AF6C8B42218D4CDF006AC6C0 /* LoginTrailController.swift in Sources */,
 				AF78DD0C2189878A00B0CF10 /* AppDelegate.swift in Sources */,
+				E176A14221C290E1005A5C30 /* QuizViewController.swift in Sources */,
 				E176A13E21C1487F005A5C30 /* TabBarController.swift in Sources */,
 				AF78DD92218B759500B0CF10 /* RestAPIManager.swift in Sources */,
 				E1A67DE921944C6B00581D1C /* TeamAllocationController.swift in Sources */,
@@ -523,6 +530,7 @@
 				AF78DD8E218B3EED00B0CF10 /* HotspotController.swift in Sources */,
 				E1F5133821BFC24B00964726 /* MapController.swift in Sources */,
 				AF6C8B44218D4CDF006AC6C0 /* CameraViewController.swift in Sources */,
+				E176A14421C2936D005A5C30 /* NarrativeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
