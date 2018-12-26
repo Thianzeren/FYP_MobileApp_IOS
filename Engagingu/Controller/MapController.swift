@@ -56,6 +56,12 @@ class MapController: UIViewController, GMSMapViewDelegate {
             marker.snippet = "Click me to start mission!"
             marker.map = mapView
             
+            if(InstanceDAO.completedList.contains(name)){
+                marker.icon = GMSMarker.markerImage(with: .green)
+                marker.title = nil
+                marker.snippet = nil
+            }
+            
         }
         
 //        // For Testing

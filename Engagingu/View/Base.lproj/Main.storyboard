@@ -354,7 +354,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aCY-6T-GJG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2444" y="2343"/>
+            <point key="canvasLocation" x="2452" y="2343"/>
         </scene>
         <!--Quiz View Controller-->
         <scene sceneID="Y5W-4h-dwP">
@@ -377,77 +377,87 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2F-Vh-H0i">
-                                <rect key="frame" x="37" y="318" width="300" height="30"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="k2F-Vh-H0i">
+                                <rect key="frame" x="67" y="172" width="300" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="MCQ Answer 1"/>
                                 <connections>
-                                    <action selector="selectAnswer:" destination="HZK-Eh-fgl" eventType="touchUpInside" id="oa2-nz-Iv6"/>
                                     <action selector="selectFirstAnswer:" destination="HZK-Eh-fgl" eventType="touchUpInside" id="SeE-IO-MYK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhX-7F-u1A">
-                                <rect key="frame" x="37" y="372" width="300" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhX-7F-u1A">
+                                <rect key="frame" x="67" y="246" width="300" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="MCQ Answer 2"/>
                                 <connections>
                                     <action selector="selectSecondAnswer:" destination="HZK-Eh-fgl" eventType="touchUpInside" id="dyB-E8-aU6"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4b-oH-jUV">
-                                <rect key="frame" x="37" y="429" width="300" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4b-oH-jUV">
+                                <rect key="frame" x="67" y="329" width="300" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="MCQ Answer 3"/>
                                 <connections>
                                     <action selector="selectThirdAnswer:" destination="HZK-Eh-fgl" eventType="touchUpInside" id="NmX-pj-0Ua"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q6x-BB-fKh">
-                                <rect key="frame" x="37" y="482" width="300" height="30"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5nj-Rw-gRF">
+                                <rect key="frame" x="36" y="195" width="15" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A70-wI-KiD">
+                                <rect key="frame" x="36" y="269" width="15" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SQL-B3-aLG">
+                                <rect key="frame" x="36" y="352" width="15" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l3a-b2-GbS">
+                                <rect key="frame" x="36" y="437" width="15" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Etv-Ew-kwc">
+                                <rect key="frame" x="132" y="607" width="111" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Confirm Answer"/>
+                                <connections>
+                                    <action selector="submitAnswer:" destination="HZK-Eh-fgl" eventType="touchUpInside" id="egu-mX-VuJ"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Question" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gBX-Jq-anJ">
+                                <rect key="frame" x="67" y="82" width="240" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LfR-A9-OsD">
+                                <rect key="frame" x="113" y="496" width="149" height="79"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q6x-BB-fKh">
+                                <rect key="frame" x="67" y="414" width="300" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="MCQ Answer 4"/>
                                 <connections>
                                     <action selector="selectFourthAnswer:" destination="HZK-Eh-fgl" eventType="touchUpInside" id="d9x-od-1bp"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5nj-Rw-gRF">
-                                <rect key="frame" x="42" y="326" width="15" height="15"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A70-wI-KiD">
-                                <rect key="frame" x="42" y="381" width="15" height="15"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SQL-B3-aLG">
-                                <rect key="frame" x="42" y="439" width="15" height="15"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l3a-b2-GbS">
-                                <rect key="frame" x="42" y="492" width="15" height="15"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Etv-Ew-kwc">
-                                <rect key="frame" x="132" y="581" width="110" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Confirm Answer"/>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Question" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gBX-Jq-anJ">
-                                <rect key="frame" x="67" y="145" width="240" height="63"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Nze-QU-7q1"/>
                     </view>
                     <connections>
                         <outlet property="confirmButton" destination="Etv-Ew-kwc" id="QTs-aw-Jpt"/>
+                        <outlet property="confirmText" destination="LfR-A9-OsD" id="1jL-G6-rBS"/>
                         <outlet property="firstAnswer" destination="k2F-Vh-H0i" id="XXG-0Y-mRv"/>
                         <outlet property="firstAnswerSquare" destination="5nj-Rw-gRF" id="xOX-hl-bds"/>
                         <outlet property="fourthAnswer" destination="Q6x-BB-fKh" id="N52-he-PHn"/>
@@ -458,6 +468,7 @@
                         <outlet property="thirdAnswer" destination="J4b-oH-jUV" id="L2G-RC-ymk"/>
                         <outlet property="thirdAnswerSquare" destination="SQL-B3-aLG" id="xdC-mQ-qLm"/>
                         <outlet property="topNavBar" destination="JeH-7m-Lwm" id="Ajj-0s-RtS"/>
+                        <segue destination="I3j-hO-u2H" kind="show" identifier="toTabBarSegue" id="ktQ-6i-oEp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5W4-q8-yoy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -734,4 +745,7 @@
         <image name="Tutorial 3" width="450" height="800"/>
         <image name="engagingulogo" width="250" height="183"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ktQ-6i-oEp"/>
+    </inferredMetricsTieBreakers>
 </document>

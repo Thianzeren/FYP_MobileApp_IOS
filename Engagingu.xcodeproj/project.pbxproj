@@ -32,7 +32,6 @@
 		AF78DD63218A135000B0CF10 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF78DD62218A135000B0CF10 /* QuartzCore.framework */; };
 		AF78DD65218A135700B0CF10 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF78DD64218A135700B0CF10 /* SystemConfiguration.framework */; };
 		AF78DD67218A136200B0CF10 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF78DD66218A136200B0CF10 /* UIKit.framework */; };
-		AF78DD8E218B3EED00B0CF10 /* HotspotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78DD8D218B3EED00B0CF10 /* HotspotController.swift */; };
 		AF78DD92218B759500B0CF10 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78DD91218B759500B0CF10 /* RestAPIManager.swift */; };
 		E106B49A21C3BE35001DEB88 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = E106B49921C3BE35001DEB88 /* Podfile */; };
 		E176A13E21C1487F005A5C30 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176A13D21C1487F005A5C30 /* TabBarController.swift */; };
@@ -95,7 +94,6 @@
 		AF78DD62218A135000B0CF10 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AF78DD64218A135700B0CF10 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		AF78DD66218A136200B0CF10 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		AF78DD8D218B3EED00B0CF10 /* HotspotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotspotController.swift; sourceTree = "<group>"; };
 		AF78DD91218B759500B0CF10 /* RestAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPIManager.swift; sourceTree = "<group>"; };
 		C72385D4ED204E3E11D145AB /* Pods-Engagingu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Engagingu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Engagingu/Pods-Engagingu.debug.xcconfig"; sourceTree = "<group>"; };
 		DF573A3D860BDBBA777F2706 /* Pods-EngaginguUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EngaginguUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EngaginguUITests/Pods-EngaginguUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -253,7 +251,6 @@
 			children = (
 				AF6C8B3F218D4CDF006AC6C0 /* LoginTrailController.swift */,
 				AF6C8B40218D4CDF006AC6C0 /* LoginNameController.swift */,
-				AF78DD8D218B3EED00B0CF10 /* HotspotController.swift */,
 				AF6C8B41218D4CDF006AC6C0 /* CameraViewController.swift */,
 				E1A67DE821944C6B00581D1C /* TeamAllocationController.swift */,
 				E1F5133721BFC24B00964726 /* MapController.swift */,
@@ -527,7 +524,6 @@
 				AF78DD92218B759500B0CF10 /* RestAPIManager.swift in Sources */,
 				E1A67DE921944C6B00581D1C /* TeamAllocationController.swift in Sources */,
 				E1A67DE321913DC300581D1C /* InstanceDAO.swift in Sources */,
-				AF78DD8E218B3EED00B0CF10 /* HotspotController.swift in Sources */,
 				E1F5133821BFC24B00964726 /* MapController.swift in Sources */,
 				AF6C8B44218D4CDF006AC6C0 /* CameraViewController.swift in Sources */,
 				E176A14421C2936D005A5C30 /* NarrativeViewController.swift in Sources */,

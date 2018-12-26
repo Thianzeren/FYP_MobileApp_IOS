@@ -114,6 +114,97 @@ class RestAPIManager {
         return result
     }
     
+    static func asyncHttpGet(URLStr: String) -> [String:Any]{
+        
+        var result: [String:Any] = [:]
+        
+        guard let url = URL(string: URLStr) else {
+            print("URL cannot be generated ffrom URLStr")
+            return [:]
+        }
+        
+        URLSession.shared.dataTask(with: url){ (data, response, err) in
+            
+            guard let data = data else {
+                print("No data received from GET request")
+                return
+            }
+            
+            //Debug Print
+            let jsonStr = String(data:data, encoding: .utf8)
+            print("Json Response")
+            print(jsonStr)
+            
+            do{
+                guard let resultDict = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:Any] else {
+                    return
+                }
+                
+                //                print("Result Dict:")
+                //                print(resultDict)
+                result = resultDict
+                
+            }catch let jsonErr {
+                print ("Error serializing json:" + jsonErr.localizedDescription)
+            }
+            
+            }.resume()
+        
+        //        print("RESULT:")
+        //        print(result)
+        
+        return result
+    }
+    
+    static func asyncHttpPost(jsonData: Data, URLStr: String) -> [String:Any]{
+        
+        var result: [String:Any] = [:]
+        //let jsonStr = String(data: jsonData, encoding: String.Encoding.utf8) ?? "Data could not be printed"
+        
+        if !jsonData.isEmpty{
+            
+            guard let url = URL(string: URLStr) else {
+                print("Error: cannot create URL")
+                return [:]
+            }
+            
+            var request = URLRequest(url: url)
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpMethod = "POST"
+            request.httpBody = jsonData
+            
+            //Create and run a URLSession data task
+            let config = URLSessionConfiguration.default
+            let session = URLSession(configuration: config)
+            let task = session.dataTask(with: request) { data, response, error in
+                guard let data = data, error == nil else{
+                    print(error?.localizedDescription ?? "No data")
+                    return
+                }
+                
+                do{
+                    guard let responseDict = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:Any] else {
+                        print("Error: no json response received")
+                        return
+                    }
+                    
+                    print(responseDict)
+                    result = responseDict
+                    
+                }catch let jsonErr{
+                    print ("Error serializing json:" + jsonErr.localizedDescription)
+                }
+                
+            }
+            task.resume();
+            
+        }
+        
+        print(result)
+        return result
+    }
+    
+    
     static func httpGetHotspots(URLStr: String){
         
         let semaphore = DispatchSemaphore(value: 0)
@@ -137,8 +228,8 @@ class RestAPIManager {
                     InstanceDAO.hotspotDict[hotspot.name] = hotspot
                 }
                 
-                print("HOTSPOT")
-                print(InstanceDAO.hotspotDict)
+//                print("HOTSPOT")
+//                print(InstanceDAO.hotspotDict)
                 
                 semaphore.signal()
             } catch let jsonErr{
@@ -179,7 +270,7 @@ class RestAPIManager {
             }
             
             
-            }.resume()
+        }.resume()
         
     }
     
