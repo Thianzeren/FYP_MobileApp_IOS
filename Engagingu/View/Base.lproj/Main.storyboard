@@ -326,7 +326,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Start Mission"/>
                                 <connections>
-                                    <segue destination="HZK-Eh-fgl" kind="show" identifier="toQuizSegue" id="ESf-xI-BrU"/>
+                                    <action selector="startMission:" destination="r6W-4B-Nay" eventType="touchUpInside" id="2IW-iE-qLr"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OJD-4w-M1g">
@@ -350,11 +350,13 @@
                         <outlet property="header" destination="kf0-A9-PlF" id="9RJ-v2-VI5"/>
                         <outlet property="narrative" destination="E7O-vX-65Q" id="OlN-jn-RFg"/>
                         <outlet property="topNavBar" destination="YVn-SE-MPX" id="rLy-Cz-VDg"/>
+                        <segue destination="f3a-cw-mlh" kind="show" identifier="toCameraSegue" id="m2r-cO-B2l"/>
+                        <segue destination="HZK-Eh-fgl" kind="show" identifier="toQuizSegue" id="eTA-5U-0Oz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aCY-6T-GJG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2452" y="2343"/>
+            <point key="canvasLocation" x="1342" y="3187"/>
         </scene>
         <!--Quiz View Controller-->
         <scene sceneID="Y5W-4h-dwP">
@@ -473,7 +475,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5W4-q8-yoy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3568.8000000000002" y="2342.8785607196405"/>
+            <point key="canvasLocation" x="2327" y="3187"/>
         </scene>
         <!--Team Allocation Controller-->
         <scene sceneID="vka-3M-DIc">
@@ -641,7 +643,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XMm-pA-chP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2362" y="98"/>
+            <point key="canvasLocation" x="2327" y="4006"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="CKV-s3-0mV">
@@ -746,6 +748,7 @@
         <image name="engagingulogo" width="250" height="183"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="eTA-5U-0Oz"/>
         <segue reference="ktQ-6i-oEp"/>
     </inferredMetricsTieBreakers>
 </document>

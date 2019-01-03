@@ -91,6 +91,7 @@ class RestAPIManager {
             
             do{
                 guard let resultDict = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:Any] else {
+                    semaphore.signal()
                     return
                 }
                 
@@ -274,4 +275,33 @@ class RestAPIManager {
         
     }
     
+    static func httpGetSelfies(URLStr: String){
+        
+        guard let url = URL(string: URLStr) else { return }
+        
+        URLSession.shared.dataTask(with: url){(data, response, error) in
+            //check error
+            //check response status ok
+            
+            guard let data = data else { return }
+            
+            do {
+                let selfies = try
+                    JSONDecoder().decode([Selfie].self, from: data)
+                
+                for selfie in selfies{
+                    InstanceDAO.selfieDict[selfie.hotspot] = selfie.question
+                }
+                
+                print("SELFIES")
+                print(InstanceDAO.selfieDict)
+                
+            } catch let jsonErr{
+                print("Error serializing json:", jsonErr)
+            }
+            
+            
+            }.resume()
+        
+    }
 }

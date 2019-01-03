@@ -23,6 +23,12 @@ class TabBarController: UITabBarController {
         
         RestAPIManager.httpGetQuizzes(URLStr: jsonUrlString)
         
+        // Get hotspot selfies
+        jsonUrlString = "http://54.255.245.23:3000/upload/getSubmissionQuestion?trail_instance_id=" + InstanceDAO.trail_instance_id
+        
+        RestAPIManager.httpGetSelfies(URLStr: jsonUrlString)
+
+        
         self.selectedIndex = 0
         // Do any additional setup after loading the view.
     }

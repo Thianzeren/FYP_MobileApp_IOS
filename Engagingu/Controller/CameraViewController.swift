@@ -11,11 +11,14 @@ import UIKit
 class CameraViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
+    var hotspot: String = ""
     
     let pickerController = UIImagePickerController()
     
-    
     override func viewDidLoad() {
+        let question = InstanceDAO.selfieDict[hotspot]
+        
+        
         super.viewDidLoad()
          // Do any additional setup after loading the view.
         
