@@ -16,6 +16,7 @@ class NarrativeViewController: UIViewController {
     
     var headerText = "Header"
     var narrativeText = "Narrative"
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,7 @@ class NarrativeViewController: UIViewController {
         narrative.isScrollEnabled = false
         header.text! = headerText
         narrative.text! = narrativeText
-        
+       
         //topNavBar.title = "EngagingU"
         // Do any additional setup after loading the view.
     }

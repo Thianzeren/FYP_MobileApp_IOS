@@ -255,8 +255,8 @@
 				E1A67DE821944C6B00581D1C /* TeamAllocationController.swift */,
 				E1F5133721BFC24B00964726 /* MapController.swift */,
 				E176A13D21C1487F005A5C30 /* TabBarController.swift */,
-				E176A14121C290E1005A5C30 /* QuizViewController.swift */,
 				E176A14321C2936D005A5C30 /* NarrativeViewController.swift */,
+				E176A14121C290E1005A5C30 /* QuizViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

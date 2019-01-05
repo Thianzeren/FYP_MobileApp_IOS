@@ -16,26 +16,36 @@ struct Quiz: Decodable{
 
 class QuizViewController: UIViewController {
 
-    @IBOutlet weak var topNavBar: UINavigationBar!
+    //@IBOutlet weak var topNavBar: UINavigationBar!
     @IBOutlet weak var question: UITextView!
     
     // Outlet for buttons
+    /*
+    @IBOutlet weak var firstAnswer: UIButton!
+    @IBOutlet weak var secondAnswer: UIButton!
+    @IBOutlet weak var thirdAnswer: UIButton!
+    @IBOutlet weak var fourthAnswer: UIButton!
+    */
+    
     @IBOutlet weak var firstAnswer: UIButton!
     @IBOutlet weak var secondAnswer: UIButton!
     @IBOutlet weak var thirdAnswer: UIButton!
     @IBOutlet weak var fourthAnswer: UIButton!
     
     // Outlet for Squares to change colour
+    /*
     @IBOutlet weak var firstAnswerSquare: UIView!
     @IBOutlet weak var secondAnswerSquare: UIView!
     @IBOutlet weak var thirdAnswerSquare: UIView!
     @IBOutlet weak var fourthAnswerSquare: UIView!
-    
+    */
     // Outlet for confirm text of right or wrong answer
     @IBOutlet weak var confirmText: UITextView!
-    
     // Outlet for confirm button
     @IBOutlet weak var confirmButton: UIButton!
+    // Outlet for Q&A
+    @IBOutlet weak var questionLabel: UILabel!
+    
     
     var questionBank: [HotspotQuiz.Quiz] = []
     var hotspot: String = ""
@@ -53,7 +63,7 @@ class QuizViewController: UIViewController {
     
     override func viewDidLoad() {
 
-        topNavBar.topItem!.title = "Engaging U"
+        //topNavBar.topItem!.title = "Engaging U"
         
         firstAnswer.setTitle(nil, for: .normal)
         secondAnswer.setTitle(nil, for: .normal)
@@ -71,24 +81,32 @@ class QuizViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+   
     @IBAction func selectFirstAnswer(_ sender: Any) {
         // Change selected Answer
         selectedAnswer = 1
         
         // Change colour of highlight text
-        firstAnswer.setTitleColor(UIColor.green, for: .normal)
-        
+        //firstAnswer.setTitleColor(UIColor.green, for: .normal)
+        firstAnswer.backgroundColor = UIColor.green
         // Change colour of answer square
-        firstAnswerSquare.backgroundColor = UIColor.green
+        //firstAnswerSquare.backgroundColor = UIColor.green
         
         // Change other button text to nil
+        /*
         secondAnswer.setTitleColor(nil, for: .normal)
         thirdAnswer.setTitleColor(nil, for: .normal)
         fourthAnswer.setTitleColor(nil, for: .normal)
-        
+         */
+        //change the other button background to grey
+        secondAnswer.backgroundColor = UIColor.lightGray
+        thirdAnswer.backgroundColor = UIColor.lightGray
+        fourthAnswer.backgroundColor = UIColor.lightGray
+        /*
         secondAnswerSquare.backgroundColor = UIColor.black
         thirdAnswerSquare.backgroundColor = UIColor.black
         fourthAnswerSquare.backgroundColor = UIColor.black
+        */
     }
     
     @IBAction func selectSecondAnswer(_ sender: Any) {
@@ -96,19 +114,25 @@ class QuizViewController: UIViewController {
         selectedAnswer = 2
         
         // Change colour of highlight text
-        secondAnswer.setTitleColor(UIColor.green, for: .normal)
-        
+        //secondAnswer.setTitleColor(UIColor.green, for: .normal)
+        secondAnswer.backgroundColor = UIColor.green
         // Change colour of answer square
-        secondAnswerSquare.backgroundColor = UIColor.green
+        //secondAnswerSquare.backgroundColor = UIColor.green
         
         // Change other button text colours to default
+        /*
         firstAnswer.setTitleColor(nil, for: .normal)
         thirdAnswer.setTitleColor(nil, for: .normal)
         fourthAnswer.setTitleColor(nil, for: .normal)
-        
+         */
+        firstAnswer.backgroundColor = UIColor.lightGray
+        thirdAnswer.backgroundColor = UIColor.lightGray
+        fourthAnswer.backgroundColor = UIColor.lightGray
+        /*
         firstAnswerSquare.backgroundColor = UIColor.black
         thirdAnswerSquare.backgroundColor = UIColor.black
         fourthAnswerSquare.backgroundColor = UIColor.black
+         */
     }
     
     @IBAction func selectThirdAnswer(_ sender: Any) {
@@ -116,19 +140,25 @@ class QuizViewController: UIViewController {
         selectedAnswer = 3
         
         // Change colour of highlight text
-        thirdAnswer.setTitleColor(UIColor.green, for: .normal)
-        
+        //thirdAnswer.setTitleColor(UIColor.green, for: .normal)
+        thirdAnswer.backgroundColor = UIColor.green
         // Change colour of answer square
-        thirdAnswerSquare.backgroundColor = UIColor.green
+        //thirdAnswerSquare.backgroundColor = UIColor.green
         
         // Change other button colours to nil
+        /*
         firstAnswer.setTitleColor(nil, for: .normal)
         secondAnswer.setTitleColor(nil, for: .normal)
         fourthAnswer.setTitleColor(nil, for: .normal)
-        
+         */
+        secondAnswer.backgroundColor = UIColor.lightGray
+        firstAnswer.backgroundColor = UIColor.lightGray
+        fourthAnswer.backgroundColor = UIColor.lightGray
+        /*
         firstAnswerSquare.backgroundColor = UIColor.black
         secondAnswerSquare.backgroundColor = UIColor.black
         fourthAnswerSquare.backgroundColor = UIColor.black
+        */
     }
     
     @IBAction func selectFourthAnswer(_ sender: Any) {
@@ -136,19 +166,25 @@ class QuizViewController: UIViewController {
         selectedAnswer = 4
         
         // Change colour of highlight text
-        fourthAnswer.setTitleColor(UIColor.green, for: .normal)
-        
+        //fourthAnswer.setTitleColor(UIColor.green, for: .normal)
+        fourthAnswer.backgroundColor = UIColor.green
         // Change colour of answer square
-        fourthAnswerSquare.backgroundColor = UIColor.green
+        //fourthAnswerSquare.backgroundColor = UIColor.green
         
         // Change other button colours to nil
+        /*
         firstAnswer.setTitleColor(nil, for: .normal)
         secondAnswer.setTitleColor(nil, for: .normal)
         thirdAnswer.setTitleColor(nil, for: .normal)
-        
+        */
+        secondAnswer.backgroundColor = UIColor.lightGray
+        thirdAnswer.backgroundColor = UIColor.lightGray
+        firstAnswer.backgroundColor = UIColor.lightGray
+        /*
         firstAnswerSquare.backgroundColor = UIColor.black
         secondAnswerSquare.backgroundColor = UIColor.black
         thirdAnswerSquare.backgroundColor = UIColor.black
+        */
     }
     
     func updateQuiz(){
@@ -173,7 +209,11 @@ class QuizViewController: UIViewController {
                 secondAnswer.setTitle(option, for: .normal)
             }else if(count==2){
                 thirdAnswer.setTitle(option, for: .normal)
+                //celine added this one line below
+                fourthAnswer.isHidden = true
             }else{
+                //celine added this one line below
+                fourthAnswer.isHidden = false
                 fourthAnswer.setTitle(option, for: .normal)
             }
             
@@ -220,12 +260,12 @@ class QuizViewController: UIViewController {
             secondAnswer.isHidden = true
             thirdAnswer.isHidden = true
             fourthAnswer.isHidden = true
-            
+            /*
             firstAnswerSquare.isHidden = true
             secondAnswerSquare.isHidden = true
             thirdAnswerSquare.isHidden = true
             fourthAnswerSquare.isHidden = true
-            
+            */
             // Change button text to "Complete Quiz"
             confirmButton.setTitle("Complete Quiz", for: .normal)
             confirmText.text = nil
@@ -235,21 +275,30 @@ class QuizViewController: UIViewController {
             let congratsText = "Congratulations, you got " + String(score) + "/" + String(numOfQuestions) + " Correct!"
             question.text = congratsText
             
+            //hide Q&A label
+            questionLabel.isHidden = true
+            
         }else if(hasSeenCorrectAnswer){
             
             questionNumber += 1
 
             //Reset choice colors
+            /*
             firstAnswer.setTitleColor(nil, for: .normal)
             secondAnswer.setTitleColor(nil, for: .normal)
             thirdAnswer.setTitleColor(nil, for: .normal)
             fourthAnswer.setTitleColor(nil, for: .normal)
-            
+             */
+            firstAnswer.backgroundColor = UIColor.lightGray
+            secondAnswer.backgroundColor = UIColor.lightGray
+            thirdAnswer.backgroundColor = UIColor.lightGray
+            fourthAnswer.backgroundColor = UIColor.lightGray
+            /*
             firstAnswerSquare.backgroundColor = UIColor.black
             secondAnswerSquare.backgroundColor = UIColor.black
             thirdAnswerSquare.backgroundColor = UIColor.black
             fourthAnswerSquare.backgroundColor = UIColor.black
-            
+            */
             updateQuiz()
             
             hasSeenCorrectAnswer = false
@@ -268,35 +317,43 @@ class QuizViewController: UIViewController {
             }else{
                 
                 if(selectedAnswer == 1){
-                    firstAnswer.setTitleColor(UIColor.red, for: .normal)
-                    firstAnswerSquare.backgroundColor = UIColor.red
+                    //firstAnswer.setTitleColor(UIColor.red, for: .normal)
+                    firstAnswer.backgroundColor = UIColor.red
+                    //firstAnswerSquare.backgroundColor = UIColor.red
                     
                 }else if(selectedAnswer == 2){
-                    secondAnswer.setTitleColor(UIColor.red, for: .normal)
-                    secondAnswerSquare.backgroundColor = UIColor.red
+                    //secondAnswer.setTitleColor(UIColor.red, for: .normal)
+                    secondAnswer.backgroundColor = UIColor.red
+                    //secondAnswerSquare.backgroundColor = UIColor.red
                     
                 }else if(selectedAnswer == 3){
-                    thirdAnswer.setTitleColor(UIColor.red, for: .normal)
-                    thirdAnswerSquare.backgroundColor = UIColor.red
+                    //thirdAnswer.setTitleColor(UIColor.red, for: .normal)
+                    thirdAnswer.backgroundColor = UIColor.red
+                    //thirdAnswerSquare.backgroundColor = UIColor.red
                     
                 }else{
-                    fourthAnswer.setTitleColor(UIColor.red, for: .normal)
-                    fourthAnswerSquare.backgroundColor = UIColor.red
+                    //fourthAnswer.setTitleColor(UIColor.red, for: .normal)
+                    fourthAnswer.backgroundColor = UIColor.red
+                    //fourthAnswerSquare.backgroundColor = UIColor.red
                 }
                 
-                
+                //show the correct ans in green
                 if(questionAnswer == 1){
-                    firstAnswer.setTitleColor(UIColor.green, for: .normal)
-                    firstAnswerSquare.backgroundColor = UIColor.green
+                    //firstAnswer.setTitleColor(UIColor.green, for: .normal)
+                    firstAnswer.backgroundColor = UIColor.green
+                    //firstAnswerSquare.backgroundColor = UIColor.green
                 }else if(questionAnswer == 2){
-                    secondAnswer.setTitleColor(UIColor.green, for: .normal)
-                    secondAnswerSquare.backgroundColor = UIColor.green
+                    //secondAnswer.setTitleColor(UIColor.green, for: .normal)
+                    secondAnswer.backgroundColor = UIColor.green
+                    //secondAnswerSquare.backgroundColor = UIColor.green
                 }else if(questionAnswer == 3){
-                    thirdAnswer.setTitleColor(UIColor.green, for: .normal)
-                    thirdAnswerSquare.backgroundColor = UIColor.green
+                    //thirdAnswer.setTitleColor(UIColor.green, for: .normal)
+                    thirdAnswer.backgroundColor = UIColor.green
+                    //thirdAnswerSquare.backgroundColor = UIColor.green
                 }else{
-                    fourthAnswer.setTitleColor(UIColor.green, for: .normal)
-                    fourthAnswerSquare.backgroundColor = UIColor.green
+                    //fourthAnswer.setTitleColor(UIColor.green, for: .normal)
+                    fourthAnswer.backgroundColor = UIColor.green
+                   // fourthAnswerSquare.backgroundColor = UIColor.green
                 }
                 
                 confirmText.text = "Incorrect"
