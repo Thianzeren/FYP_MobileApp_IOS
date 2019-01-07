@@ -45,3 +45,5 @@ struct Selfie: Decodable{
     let hotspot: String
     let question: String
 }
+
+
