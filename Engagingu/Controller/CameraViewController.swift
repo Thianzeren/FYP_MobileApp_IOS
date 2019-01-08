@@ -140,7 +140,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
             
             // add an action (button)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
-                print("you have pressed the ok button")
+                self.performSegue(withIdentifier: "toMapSegue", sender: nil)
             }))
             
             // show the alert

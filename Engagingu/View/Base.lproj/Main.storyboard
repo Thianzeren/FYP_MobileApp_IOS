@@ -372,7 +372,7 @@
                                     <constraint firstAttribute="width" constant="203" id="vJu-nA-Dwh"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="gJq-er-Rn7" kind="show" identifier="toQuizSegue" id="bTv-z5-1Qj"/>
+                                    <action selector="startMission:" destination="r6W-4B-Nay" eventType="touchUpInside" id="Wmd-1D-fOM"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -400,6 +400,7 @@
                     <connections>
                         <outlet property="header" destination="kf0-A9-PlF" id="9RJ-v2-VI5"/>
                         <outlet property="narrative" destination="E7O-vX-65Q" id="OlN-jn-RFg"/>
+                        <segue destination="f3a-cw-mlh" kind="show" identifier="toCameraSegue" id="mJZ-13-Vg4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aCY-6T-GJG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -607,7 +608,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YC6-BE-57Z">
-                                <rect key="frame" x="93.666666666666671" y="545" width="187.66666666666663" height="30"/>
+                                <rect key="frame" x="93.666666666666671" y="516.33333333333326" width="187.66666666666663" height="30"/>
                                 <color key="backgroundColor" red="0.1203592052" green="0.6588235294" blue="0.089466442859999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="OK"/>
@@ -616,13 +617,13 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" keyboardDismissMode="interactive" editable="NO" text="1" textAlignment="center" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tM9-R2-VVQ">
-                                <rect key="frame" x="93.666666666666671" y="354.33333333333331" width="187.66666666666663" height="143.33333333333331"/>
+                                <rect key="frame" x="93.666666666666671" y="331.66666666666669" width="187.66666666666663" height="137.33333333333331"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="34"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are in group:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niV-AI-mEA">
-                                <rect key="frame" x="95" y="211" width="225" height="81"/>
+                                <rect key="frame" x="95" y="191" width="225" height="78.333333333333314"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -731,7 +732,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZjG-jC-902">
-                                <rect key="frame" x="67" y="194" width="240" height="128"/>
+                                <rect key="frame" x="67" y="194" width="240" height="330"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Omp-fd-xwx">
@@ -739,20 +740,37 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Take Picture"/>
                                 <connections>
-                                    <action selector="takePicture:" destination="f3a-cw-mlh" eventType="touchUpInside" id="8Ty-ZG-Dj5"/>
+                                    <action selector="chooseImage:" destination="f3a-cw-mlh" eventType="touchUpInside" id="EXd-VL-wda"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVE-VG-MiW">
+                                <rect key="frame" x="140" y="685" width="95" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Upload Image"/>
+                                <connections>
+                                    <action selector="uploadImage:" destination="f3a-cw-mlh" eventType="touchUpInside" id="I6J-dY-Bsv"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2g2-2B-JdI">
+                                <rect key="frame" x="67" y="44" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="skH-I3-8I6"/>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="ZjG-jC-902" id="Guk-cm-v5J"/>
+                        <outlet property="selfieQuestion" destination="2g2-2B-JdI" id="fiI-83-0qz"/>
+                        <segue destination="LOL-co-cF1" kind="show" identifier="toMapSegue" id="PRn-zK-rzF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XMm-pA-chP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2362" y="98"/>
+            <point key="canvasLocation" x="-1191" y="2959"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="CKV-s3-0mV">
@@ -864,5 +882,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ARb-hh-ZZs"/>
+        <segue reference="PRn-zK-rzF"/>
     </inferredMetricsTieBreakers>
 </document>

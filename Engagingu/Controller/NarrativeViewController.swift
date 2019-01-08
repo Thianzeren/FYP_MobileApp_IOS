@@ -12,7 +12,7 @@ class NarrativeViewController: UIViewController {
 
     @IBOutlet weak var header: UITextView!
     @IBOutlet weak var narrative: UITextView!
-    @IBOutlet weak var topNavBar: UINavigationItem!
+//    @IBOutlet weak var topNavBar: UINavigationItem!
     
     var headerText = "Header"
     var narrativeText = "Narrative"
@@ -31,6 +31,8 @@ class NarrativeViewController: UIViewController {
     }
     
     @IBAction func startMission(_ sender: Any) {
+        print("HEADER TEXT")
+        print(headerText)
         if(InstanceDAO.quizDict[headerText] != nil){
             performSegue(withIdentifier: "toQuizSegue", sender: nil)
         }else{
@@ -55,7 +57,7 @@ class NarrativeViewController: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         
-        if(InstanceDAO.quizDict[headerText] != nil){
+        if(segue.identifier == "toQuizSegue"){
             let destVC = segue.destination as! QuizViewController
             destVC.hotspot = headerText
         }else{
