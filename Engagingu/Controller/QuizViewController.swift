@@ -226,6 +226,7 @@ class QuizViewController: UIViewController {
         
     }
     
+   
     @IBAction func submitAnswer(_ sender: Any) {
         
         // Submit button has 4 situations:
