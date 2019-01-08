@@ -96,8 +96,6 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
             request.httpMethod = "POST"
             request.httpBody = dataBody
             
-            print("SENDING POST REQUEST")
-            
             // Send post request
             let semaphore = DispatchSemaphore(value: 0)
             var result: [String:Any] = [:]
@@ -141,7 +139,9 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
             let alert = UIAlertController(title: "Upload Successful", message: "Image has been uploaded successfully", preferredStyle: UIAlertController.Style.alert)
             
             // add an action (button)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
+                print("you have pressed the ok button")
+            }))
             
             // show the alert
             self.present(alert, animated: true, completion: nil)
@@ -203,14 +203,10 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        var imageBeforeFix = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        image = fixOrientation(img: imageBeforeFix!)
         imageView.image = image
         
         picker.dismiss(animated: true, completion: nil)
@@ -219,7 +215,26 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-
+    
+    func fixOrientation(img: UIImage) -> UIImage {
+        if (img.imageOrientation == .up) {
+            return img
+        }
+        
+        UIGraphicsBeginImageContextWithOptions(img.size, false, img.scale)
+        let rect = CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height)
+        img.draw(in: rect)
+        
+        let normalizedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return normalizedImage
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 }
 
 extension Data {
