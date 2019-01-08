@@ -27,11 +27,21 @@ class NarrativeViewController: UIViewController {
        
         //topNavBar.title = "EngagingU"
         // Do any additional setup after loading the view.
+        
+    }
+    
+    @IBAction func startMission(_ sender: Any) {
+        if(InstanceDAO.quizDict[headerText] != nil){
+            performSegue(withIdentifier: "toQuizSegue", sender: nil)
+        }else{
+            performSegue(withIdentifier: "toCameraSegue", sender: nil)
+        }
     }
     //Allow scrolliing after first line shown
     override func viewDidAppear(_ animated: Bool) {
         narrative.isScrollEnabled = true
     }
+    
     
     @IBAction func backToPreviousView(_ sender: Any) {
         print("Back button Tapped")
@@ -44,9 +54,14 @@ class NarrativeViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        let destVC = segue.destination as! QuizViewController
         
-        destVC.hotspot = headerText
+        if(InstanceDAO.quizDict[headerText] != nil){
+            let destVC = segue.destination as! QuizViewController
+            destVC.hotspot = headerText
+        }else{
+            let destVC = segue.destination as! CameraViewController
+            destVC.hotspot = headerText
+        }
         
     }
 

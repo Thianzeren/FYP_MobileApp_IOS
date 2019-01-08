@@ -15,13 +15,21 @@ class TabBarController: UITabBarController {
         
         // Get hotspot location
         var jsonUrlString = "http://54.255.245.23:3000/hotspot/getAllHotspots?trail_instance_id=" + InstanceDAO.trail_instance_id
-        
         RestAPIManager.httpGetHotspots(URLStr: jsonUrlString)
+        print("HOTSPOT LOCATIONS")
+        print(InstanceDAO.hotspotDict)
         
         // Get hotspot quizzes
         jsonUrlString = "http://54.255.245.23:3000/quiz/getQuizzes?trail_instance_id=" + InstanceDAO.trail_instance_id
-        
         RestAPIManager.httpGetQuizzes(URLStr: jsonUrlString)
+        print("QUIZZES")
+        print(InstanceDAO.quizDict)
+        
+        // Get hotspot selfies
+        jsonUrlString = "http://54.255.245.23:3000/upload/getSubmissionQuestion?trail_instance_id=" + InstanceDAO.trail_instance_id
+        RestAPIManager.httpGetSelfies(URLStr: jsonUrlString)
+        print("HOTSPOTS")
+        print(InstanceDAO.selfieDict)
         
         self.selectedIndex = 0
         // Do any additional setup after loading the view.

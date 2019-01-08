@@ -50,6 +50,10 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>To be used for uploading selfies for game purpose</string>
+	<key>NSCameraUsageDescription</key>
+	<string>To be used to take selfies for game purpose</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

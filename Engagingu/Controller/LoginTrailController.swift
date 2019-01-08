@@ -47,6 +47,11 @@ class LoginTrailController: UIViewController, UITextFieldDelegate {
         
         let trailID = trailIDPin.text!
         
+        // Shortcut to camera for testing
+        if(trailID == "camera"){
+            performSegue(withIdentifier: "toCameraSegue", sender: nil)
+        }
+        
         // Remember to remove "fypadmin" checl
         if(trailID == InstanceDAO.trail_instance_id || trailID == "fypadmin"){
             performSegue(withIdentifier: "toNameSegue", sender: nil)

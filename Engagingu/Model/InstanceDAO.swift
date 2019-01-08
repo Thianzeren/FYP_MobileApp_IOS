@@ -16,6 +16,7 @@ struct InstanceDAO {
     static var completedList: Array<String> = Array()
     static var hotspotDict: [String:Hotspot] = [:]
     static var quizDict: [String:HotspotQuiz] = [:]
+    static var selfieDict: [String:String] = [:]
     
 }
 
@@ -39,3 +40,10 @@ struct HotspotQuiz: Decodable{
     let quiz: [Quiz]
     
 }
+
+struct Selfie: Decodable{
+    let hotspot: String
+    let question: String
+}
+
+
