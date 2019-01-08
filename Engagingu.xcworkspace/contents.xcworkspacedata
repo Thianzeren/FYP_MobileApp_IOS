@@ -4,6 +4,75 @@
    <FileRef
       location = "group:Engagingu.xcodeproj">
    </FileRef>
+   <Group
+      location = "group:Engagingu"
+      name = "Engagingu">
+      <FileRef
+         location = "group:Podfile">
+      </FileRef>
+      <Group
+         location = "group:Engagingu/Model"
+         name = "Model">
+         <FileRef
+            location = "group:Engagingu/Model/RestAPIManager.swift">
+         </FileRef>
+         <FileRef
+            location = "group:Engagingu/Model/InstanceDAO.swift">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Engagingu/View"
+         name = "View">
+         <Group
+            location = "group:Engagingu/View"
+            name = "Main.storyboard">
+            <FileRef
+               location = "group:Engagingu/View/Base.lproj/Main.storyboard">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:Engagingu/View"
+            name = "LaunchScreen.storyboard">
+            <FileRef
+               location = "group:Engagingu/View/Base.lproj/LaunchScreen.storyboard">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:Engagingu/Controller"
+         name = "Controller">
+         <FileRef
+            location = "group:Engagingu/Controller/LoginTrailController.swift">
+         </FileRef>
+         <FileRef
+            location = "group:Engagingu/Controller/LoginNameController.swift">
+         </FileRef>
+         <FileRef
+            location = "group:Engagingu/Controller/CameraViewController.swift">
+         </FileRef>
+         <FileRef
+            location = "group:Engagingu/Controller/TeamAllocationController.swift">
+         </FileRef>
+         <FileRef
+            location = "group:Engagingu/Controller/MapController.swift">
+         </FileRef>
+         <FileRef
+            location = "group:Engagingu/Controller/TabBarController.swift">
+         </FileRef>
+         <FileRef
+            location = "group:Engagingu/Controller/QuizViewController.swift">
+         </FileRef>
+         <FileRef
+            location = "group:Engagingu/Controller/NarrativeViewController.swift">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:Engagingu/AppDelegate.swift">
+      </FileRef>
+      <FileRef
+         location = "group:Engagingu/Info.plist">
+      </FileRef>
+   </Group>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
