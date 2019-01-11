@@ -401,6 +401,7 @@
                         <outlet property="header" destination="kf0-A9-PlF" id="9RJ-v2-VI5"/>
                         <outlet property="narrative" destination="E7O-vX-65Q" id="OlN-jn-RFg"/>
                         <segue destination="f3a-cw-mlh" kind="show" identifier="toCameraSegue" id="mJZ-13-Vg4"/>
+                        <segue destination="gJq-er-Rn7" kind="show" identifier="toQuizSegue" id="57u-1m-vdm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aCY-6T-GJG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -476,18 +477,6 @@
                                     <action selector="selectFourthAnswer:" destination="gJq-er-Rn7" eventType="touchUpInside" id="vT8-5f-LO3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikr-vw-GHf">
-                                <rect key="frame" x="111.66666666666667" y="706" width="151.66666666666663" height="52"/>
-                                <color key="backgroundColor" red="0.1203592052" green="0.6588235294" blue="0.089466442859999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="18"/>
-                                <state key="normal" title="Confirm Answer">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="submitAnswer:" destination="gJq-er-Rn7" eventType="touchUpInside" id="FmV-yQ-D7a"/>
-                                    <segue destination="I3j-hO-u2H" kind="custom" id="ARb-hh-ZZs"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ThY-9D-Oxz">
                                 <rect key="frame" x="111.66666666666667" y="706" width="151.66666666666663" height="52"/>
                                 <color key="backgroundColor" red="0.1203592052" green="0.6588235294" blue="0.089466442859999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -546,8 +535,6 @@
                             <constraint firstItem="exm-XT-fUf" firstAttribute="bottom" secondItem="ThY-9D-Oxz" secondAttribute="bottom" constant="20" id="Sfg-t2-3kL"/>
                             <constraint firstItem="NnT-oY-Jon" firstAttribute="trailing" secondItem="exm-XT-fUf" secondAttribute="trailing" id="VVH-TS-Dhy"/>
                             <constraint firstItem="5a1-pA-OpZ" firstAttribute="top" secondItem="Htp-zb-5hz" secondAttribute="bottom" constant="8" id="bm3-yD-DLy"/>
-                            <constraint firstItem="6h1-eQ-7xt" firstAttribute="centerX" secondItem="ikr-vw-GHf" secondAttribute="centerX" id="cVI-fO-st1"/>
-                            <constraint firstItem="ikr-vw-GHf" firstAttribute="top" secondItem="ThY-9D-Oxz" secondAttribute="top" id="d8c-m5-W8b"/>
                             <constraint firstItem="6h1-eQ-7xt" firstAttribute="centerX" secondItem="cPj-Pk-P4F" secondAttribute="centerX" id="dof-Yp-y4f"/>
                             <constraint firstItem="cPj-Pk-P4F" firstAttribute="centerX" secondItem="exm-XT-fUf" secondAttribute="centerX" id="gKe-7L-t6O"/>
                             <constraint firstItem="ThY-9D-Oxz" firstAttribute="height" secondItem="Mke-Lb-A9L" secondAttribute="height" multiplier="0.08" constant="-12.880000000000003" id="gmY-A1-vmU"/>
@@ -555,8 +542,6 @@
                             <constraint firstItem="DQR-Gr-lKg" firstAttribute="trailing" secondItem="exm-XT-fUf" secondAttribute="trailing" id="lR6-UR-Xtc"/>
                             <constraint firstItem="Htp-zb-5hz" firstAttribute="top" secondItem="6h1-eQ-7xt" secondAttribute="bottom" constant="9" id="lsa-mg-unv"/>
                             <constraint firstItem="5a1-pA-OpZ" firstAttribute="height" secondItem="Mke-Lb-A9L" secondAttribute="height" multiplier="0.15" id="mQk-7p-ISl"/>
-                            <constraint firstItem="ikr-vw-GHf" firstAttribute="bottom" secondItem="ThY-9D-Oxz" secondAttribute="bottom" id="njW-ep-862"/>
-                            <constraint firstItem="ikr-vw-GHf" firstAttribute="leading" secondItem="ThY-9D-Oxz" secondAttribute="leading" id="q3i-Yl-eLT"/>
                             <constraint firstItem="5a1-pA-OpZ" firstAttribute="width" secondItem="Mke-Lb-A9L" secondAttribute="width" multiplier="0.9" id="qgL-aO-eOq"/>
                             <constraint firstItem="NnT-oY-Jon" firstAttribute="leading" secondItem="exm-XT-fUf" secondAttribute="leading" id="rDn-Fn-I1P"/>
                             <constraint firstItem="xAQ-6k-haS" firstAttribute="trailing" secondItem="exm-XT-fUf" secondAttribute="trailing" id="rbr-WA-a6v"/>
@@ -570,7 +555,7 @@
                     </view>
                     <connections>
                         <outlet property="QuestionLabel" destination="Htp-zb-5hz" id="pVj-4H-hor"/>
-                        <outlet property="confirmButton" destination="ikr-vw-GHf" id="w3c-mA-KUB"/>
+                        <outlet property="confirmButton" destination="ThY-9D-Oxz" id="eGS-uk-oys"/>
                         <outlet property="confirmText" destination="cPj-Pk-P4F" id="JTd-4c-DNK"/>
                         <outlet property="firstAnswer" destination="NnT-oY-Jon" id="WFW-HU-9Ac"/>
                         <outlet property="fourthAnswer" destination="DQR-Gr-lKg" id="NdC-Ko-6tt"/>
@@ -731,49 +716,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Omp-fd-xwx">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Omp-fd-xwx">
                                 <rect key="frame" x="145" y="593" width="85" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Take Picture"/>
                                 <connections>
                                     <action selector="chooseImage:" destination="f3a-cw-mlh" eventType="touchUpInside" id="EXd-VL-wda"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVE-VG-MiW">
-                                <rect key="frame" x="140" y="685" width="95" height="30"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2g2-2B-JdI">
+                                <rect key="frame" x="68" y="44" width="239" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZjG-jC-902">
+                                <rect key="frame" x="37" y="169" width="301" height="400"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVE-VG-MiW">
+                                <rect key="frame" x="140" y="631" width="95" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Upload Image"/>
                                 <connections>
                                     <action selector="uploadImage:" destination="f3a-cw-mlh" eventType="touchUpInside" id="I6J-dY-Bsv"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2g2-2B-JdI">
-                                <rect key="frame" x="68" y="44" width="239" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="vpZ-KR-wuP"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZjG-jC-902">
-                                <rect key="frame" x="37" y="169" width="301" height="400"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="TQ2-qo-Ehh"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="2g2-2B-JdI" firstAttribute="centerX" secondItem="Omp-fd-xwx" secondAttribute="centerX" id="0iQ-04-OwJ"/>
-                            <constraint firstItem="ZjG-jC-902" firstAttribute="top" secondItem="skH-I3-8I6" secondAttribute="top" constant="125" id="CQi-38-OHc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="2g2-2B-JdI" secondAttribute="trailing" constant="52" id="JBH-ET-SbV"/>
-                            <constraint firstItem="2g2-2B-JdI" firstAttribute="top" secondItem="IjX-ut-x9l" secondAttribute="topMargin" id="La6-kd-8Nd"/>
-                            <constraint firstItem="ZjG-jC-902" firstAttribute="leading" secondItem="skH-I3-8I6" secondAttribute="leading" constant="37" id="RUb-Z8-IVY"/>
-                            <constraint firstItem="2g2-2B-JdI" firstAttribute="leading" secondItem="IjX-ut-x9l" secondAttribute="leadingMargin" constant="52" id="Xfr-8M-cGH"/>
-                            <constraint firstItem="ZjG-jC-902" firstAttribute="centerX" secondItem="Omp-fd-xwx" secondAttribute="centerX" id="by2-e6-1Sj"/>
-                            <constraint firstItem="iVE-VG-MiW" firstAttribute="top" secondItem="Omp-fd-xwx" secondAttribute="bottom" constant="62" id="fgD-lI-B93"/>
-                            <constraint firstItem="2g2-2B-JdI" firstAttribute="centerX" secondItem="iVE-VG-MiW" secondAttribute="centerX" id="kWi-sW-Noj"/>
-                            <constraint firstItem="Omp-fd-xwx" firstAttribute="top" secondItem="ZjG-jC-902" secondAttribute="bottom" constant="24" id="qLt-8w-LIZ"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="skH-I3-8I6"/>
                     </view>
                     <connections>
@@ -923,6 +894,6 @@
         <image name="tutorial 2 (new).png" width="279" height="490"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BOa-2C-iMB"/>
+        <segue reference="QYZ-9e-9zh"/>
     </inferredMetricsTieBreakers>
 </document>
