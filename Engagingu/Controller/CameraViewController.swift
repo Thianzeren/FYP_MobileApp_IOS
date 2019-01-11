@@ -79,7 +79,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
             let parameters = jsonDict
             print(parameters)
             
-            guard let photo = Media(withImage: image!, forKey: "image") else {
+            guard let photo = Media(withImage: image!, forKey: "image",hotspot: hotspot, question: question) else {
                 return
             }
             
@@ -205,7 +205,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        var imageBeforeFix = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        let imageBeforeFix = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         image = fixOrientation(img: imageBeforeFix!)
         imageView.image = image
         

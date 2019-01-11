@@ -6,9 +6,60 @@
 //  Copyright © 2018 Raylene. All rights reserved.
 //
 //
+import UIKit
 import Foundation
 
 class RestAPIManager {
+    
+    static func syncHttpGet(URLStr: String) -> [String:Any]{
+        
+        var result: [String:Any] = [:]
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        guard let url = URL(string: URLStr) else {
+            print("URL cannot be generated ffrom URLStr")
+            semaphore.signal()
+            return [:]
+        }
+        
+        URLSession.shared.dataTask(with: url){ (data, response, err) in
+            
+            guard let data = data else {
+                print("No data received from GET request")
+                semaphore.signal()
+                return
+            }
+            
+            //Debug Print
+            let jsonStr = String(data:data, encoding: .utf8)
+            print("Json Response")
+            print(jsonStr)
+            
+            do{
+                guard let resultDict = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:Any] else {
+                    semaphore.signal()
+                    return
+                }
+                
+                //                print("Result Dict:")
+                //                print(resultDict)
+                result = resultDict
+                
+                semaphore.signal()
+            }catch let jsonErr {
+                print ("Error serializing json:" + jsonErr.localizedDescription)
+                semaphore.signal()
+            }
+            
+            }.resume()
+        
+        semaphore.wait()
+        
+        //        print("RESULT:")
+        //        print(result)
+        
+        return result
+    }
     
     static func syncHttpPost(jsonData: Data, URLStr: String) -> [String:Any]{
         
@@ -62,56 +113,6 @@ class RestAPIManager {
         }
         
         print(result)
-        return result
-    }
-
-    static func syncHttpGet(URLStr: String) -> [String:Any]{
-        
-        var result: [String:Any] = [:]
-        let semaphore = DispatchSemaphore(value: 0)
-        
-        guard let url = URL(string: URLStr) else {
-            print("URL cannot be generated ffrom URLStr")
-            semaphore.signal()
-            return [:]
-        }
-
-        URLSession.shared.dataTask(with: url){ (data, response, err) in
-
-            guard let data = data else {
-                print("No data received from GET request")
-                semaphore.signal()
-                return
-            }
-
-            //Debug Print
-            let jsonStr = String(data:data, encoding: .utf8)
-            print("Json Response")
-            print(jsonStr)
-            
-            do{
-                guard let resultDict = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:Any] else {
-                    semaphore.signal()
-                    return
-                }
-                
-//                print("Result Dict:")
-//                print(resultDict)
-                result = resultDict
-                
-                semaphore.signal()
-            }catch let jsonErr {
-                print ("Error serializing json:" + jsonErr.localizedDescription)
-                semaphore.signal()
-            }
-            
-        }.resume()
-        
-        semaphore.wait()
-        
-//        print("RESULT:")
-//        print(result)
-        
         return result
     }
     
@@ -301,7 +302,72 @@ class RestAPIManager {
             }
             
             
-            }.resume()
+        }.resume()
+        
+    }
+    
+    static func httpGetImageURLs(URLStr: String){
+        
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        guard let url = URL(string: URLStr) else { return }
+        
+        URLSession.shared.dataTask(with: url){(data, response, error) in
+            //check error
+            //check response status ok
+            
+            guard let data = data else {
+                semaphore.signal
+                return
+            }
+            
+            do {
+                let urls = try
+                    JSONDecoder().decode([ImageURL].self, from: data)
+                
+                for url in urls{
+                    InstanceDAO.urlDict[url.hotspot] = url
+                }
+                
+                print("IMAGEURLS")
+                print(InstanceDAO.urlDict)
+                semaphore.signal()
+                
+            } catch let jsonErr{
+                print("Error serializing json:", jsonErr)
+                semaphore.signal()
+            }
+            
+            
+        }.resume()
+        
+        semaphore.wait()
+        
+    }
+    
+    static func httpGetImage(URLStr: String, hotspot: String, question: String){
+        
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        guard let url = URL(string: URLStr) else { return }
+        
+        URLSession.shared.dataTask(with: url){(data, response, error) in
+            //check error
+            //check response status ok
+            
+            guard let data = data else {
+                semaphore.signal
+                return
+            }
+
+            InstanceDAO.submissionDict[hotspot] = Media(withImage: UIImage(data: data)!, forKey: "image", hotspot: hotspot, question: question)
+            
+            semaphore.signal()
+            
+            
+        }.resume()
+        
+        semaphore.wait()
         
     }
 
