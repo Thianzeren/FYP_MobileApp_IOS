@@ -15,12 +15,24 @@ struct InstanceDAO {
     static var trail_instance_id: String = "defaultId"
     static var username: String = "defaultName"
     static var completedList: Array<String> = Array()
-    static var hotspotDict: [String:Hotspot] = [:]
-    static var quizDict: [String:HotspotQuiz] = [:]
-    static var selfieDict: [String:String] = [:]
-    static var urlDict: [String:ImageURL] = [:]
-    static var submissionDict: [String:Media] = [:]
     
+    // Key: Hotspot name, Value: Hotspot object
+    static var hotspotDict: [String:Hotspot] = [:]
+    
+    // Key: Hotspot name, Value: HotspotQuiz object
+    static var quizDict: [String:HotspotQuiz] = [:]
+    
+    // Key: Hotspot name, Value: Selfie Question
+    static var selfieDict: [String:String] = [:]
+    
+    // Key: Hotspot name, Value: ImageURL Object
+    static var urlDict: [String:ImageURL] = [:]
+    static var submissions: [Media] = []
+    
+    // Key: Team number, Value: hotspot name
+    static var startHotspots: [String:String] = [:]
+    
+    static var isFirstTime: Bool = true
 }
 
 struct Hotspot: Decodable{ //create a Hotspot class use for the jsondecoder
@@ -44,6 +56,12 @@ struct HotspotQuiz: Decodable{
     
 }
 
+struct Quiz: Decodable{
+    let quiz_question: String
+    let quiz_answer: Int
+    let quiz_options: [String]
+}
+
 struct Selfie: Decodable{
     let hotspot: String
     let question: String
@@ -53,6 +71,11 @@ struct ImageURL: Decodable{
     let submissionURL: String
     let hotspot: String
     let question: String
+}
+
+struct TeamStartHotspot: Decodable{
+    let team: Int
+    let startingHotspot: String
 }
 
 struct Media{
@@ -69,7 +92,7 @@ struct Media{
         
         // Get current time stamp
         let dateFormatter : DateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.dateFormat = "yyyy-MM-ddHH:mm:ss"
         let date = Date()
         let dateString = dateFormatter.string(from: date)
         

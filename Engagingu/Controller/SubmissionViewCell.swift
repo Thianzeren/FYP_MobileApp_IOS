@@ -12,6 +12,12 @@ class SubmissionViewCell: UITableViewCell {
 
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var photoImageLabel: UILabel!
+    @IBOutlet weak var photoImageQuestionLabel: UILabel!
     
+    func setImage(image: Media){
+        photoImageView.image = UIImage(data: image.data)
+        photoImageLabel.text = image.hotspot
+        photoImageQuestionLabel.text = image.question
+    }
     
 }

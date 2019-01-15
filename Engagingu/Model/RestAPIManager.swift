@@ -206,7 +206,6 @@ class RestAPIManager {
         return result
     }
     
-    
     static func httpGetHotspots(URLStr: String){
         
         let semaphore = DispatchSemaphore(value: 0)
@@ -243,6 +242,36 @@ class RestAPIManager {
         }.resume()
         
         semaphore.wait()
+        
+    }
+    
+    static func httpGetStartingHotspots(URLStr: String){
+        
+        guard let url = URL(string: URLStr) else { return }
+        
+        URLSession.shared.dataTask(with: url){(data, response, error) in
+            //check error
+            //check response status ok
+            
+            guard let data = data else { return }
+            
+            do {
+                let teamStartHotspots = try
+                    JSONDecoder().decode([TeamStartHotspot].self, from: data)
+                
+                for teamStartHotspot in teamStartHotspots{
+                    InstanceDAO.startHotspots[String(teamStartHotspot.team)] = teamStartHotspot.startingHotspot
+                }
+                
+                print("TEAM START HOTSPOT")
+                print(InstanceDAO.startHotspots)
+                
+            } catch let jsonErr{
+                print("Error serializing json:", jsonErr)
+            }
+            
+            
+        }.resume()
         
     }
     
@@ -349,18 +378,23 @@ class RestAPIManager {
         
         let semaphore = DispatchSemaphore(value: 0)
         
-        guard let url = URL(string: URLStr) else { return }
+        guard let url = URL(string: URLStr) else {
+            print("URL CANNOT BE CREATED")
+            return
+            
+        }
         
         URLSession.shared.dataTask(with: url){(data, response, error) in
             //check error
             //check response status ok
             
             guard let data = data else {
-                semaphore.signal
+                print("NO DATA RETRIEVED")
+                semaphore.signal()
                 return
             }
 
-            InstanceDAO.submissionDict[hotspot] = Media(withImage: UIImage(data: data)!, forKey: "image", hotspot: hotspot, question: question)
+            InstanceDAO.submissions.append(Media(withImage: UIImage(data: data)!, forKey: "image", hotspot: hotspot, question: question)!)
             
             semaphore.signal()
             

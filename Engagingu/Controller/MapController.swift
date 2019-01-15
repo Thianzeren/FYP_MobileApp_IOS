@@ -43,26 +43,8 @@ class MapController: UIViewController, GMSMapViewDelegate {
         view.addSubview(mapView)
         mapView.isHidden = true
         
-        let hotspots = InstanceDAO.hotspotDict
-        
-        for (name, hotspot) in hotspots{
-            print("name: \(name)")
-            
-            let coordinates = hotspot.coordinates
-            let marker = GMSMarker()
-            marker.position = CLLocationCoordinate2D(latitude: Double(coordinates[0]) ?? defaultCoordinates[0] , longitude: Double(coordinates[1]) ?? defaultCoordinates[1])
-            marker.title = name
-            marker.userData = hotspot.narrative
-            marker.snippet = "Click me to start mission!"
-            marker.map = mapView
-            
-            if(InstanceDAO.completedList.contains(name)){
-                marker.icon = GMSMarker.markerImage(with: .green)
-                marker.title = nil
-                marker.snippet = nil
-            }
-            
-        }
+        // Refresh hotspots
+        initiateHotspots()
         
 //        // For Testing
 //        let marker = GMSMarker()
@@ -73,10 +55,59 @@ class MapController: UIViewController, GMSMapViewDelegate {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        print("View Did Appear Map Controller")
+        initiateHotspots()
+    }
+    
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         
         selectedMarker = marker
         performSegue(withIdentifier: "toNarrativeSegue", sender: self)
+    }
+    
+    func initiateHotspots() {
+        
+        mapView.clear()
+        
+        let hotspots = InstanceDAO.hotspotDict
+        let startHotspots = InstanceDAO.startHotspots
+        
+        if(InstanceDAO.isFirstTime){
+            
+            let teamStartHotspot = startHotspots[InstanceDAO.team_id]
+            let hotspot = hotspots[teamStartHotspot!]
+            
+            let coordinates = hotspot!.coordinates
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2D(latitude: Double(coordinates[0]) ?? defaultCoordinates[0] , longitude: Double(coordinates[1]) ?? defaultCoordinates[1])
+            marker.title = hotspot!.name
+            marker.userData = hotspot!.narrative
+            marker.snippet = "Click me to start mission!"
+            marker.map = mapView
+
+        }else {
+            
+            for (name, hotspot) in hotspots{
+                print("name: \(name)")
+                
+                let coordinates = hotspot.coordinates
+                let marker = GMSMarker()
+                marker.position = CLLocationCoordinate2D(latitude: Double(coordinates[0]) ?? defaultCoordinates[0] , longitude: Double(coordinates[1]) ?? defaultCoordinates[1])
+                marker.title = name
+                marker.userData = hotspot.narrative
+                marker.snippet = "Click me to start mission!"
+                marker.map = mapView
+                
+                if(InstanceDAO.completedList.contains(name)){
+                    marker.icon = GMSMarker.markerImage(with: .green)
+                    marker.title = nil
+                    marker.snippet = nil
+                }
+            
+            }
+        }
+        
     }
 
     // MARK: - Navigation

@@ -47,6 +47,10 @@ class LoginNameController: UIViewController, UITextFieldDelegate {
             InstanceDAO.team_id = String(id)
         }
         
+        // Get starting hotspots
+        let startHotspotURL = "http://54.255.245.23:3000/team/startingHotspot?trail_instance_id=" + InstanceDAO.trail_instance_id
+        RestAPIManager.httpGetStartingHotspots(URLStr: startHotspotURL)
+        
         performSegue(withIdentifier: "toTutorialSegue", sender: nil)
         
     }

@@ -587,6 +587,7 @@
                         <outlet property="questionLabel" destination="Htp-zb-5hz" id="kSY-hk-WcS"/>
                         <outlet property="secondAnswer" destination="jZC-Vs-YyE" id="ls1-ul-fjU"/>
                         <outlet property="thirdAnswer" destination="xAQ-6k-haS" id="2Tt-iT-zJL"/>
+                        <segue destination="I3j-hO-u2H" kind="show" identifier="toTabBarSegue" id="Zbx-TQ-bIF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fge-QA-egX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -617,7 +618,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YC6-BE-57Z">
-                                <rect key="frame" x="93.666666666666671" y="545" width="187.66666666666663" height="30"/>
+                                <rect key="frame" x="93.666666666666671" y="516.33333333333326" width="187.66666666666663" height="30"/>
                                 <color key="backgroundColor" red="0.1203592052" green="0.6588235294" blue="0.089466442859999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="OK"/>
@@ -626,13 +627,13 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" keyboardDismissMode="interactive" editable="NO" text="1" textAlignment="center" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tM9-R2-VVQ">
-                                <rect key="frame" x="93.666666666666671" y="354.33333333333331" width="187.66666666666663" height="143.33333333333331"/>
+                                <rect key="frame" x="93.666666666666671" y="331.66666666666669" width="187.66666666666663" height="137.33333333333331"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="34"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are in group:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niV-AI-mEA">
-                                <rect key="frame" x="95" y="211" width="225" height="81"/>
+                                <rect key="frame" x="95" y="191" width="225" height="78.333333333333314"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -844,10 +845,10 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H3C-64-cCQ">
-                                <rect key="frame" x="0.0" y="64" width="375" height="665"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="659"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="hrD-pT-ILl" customClass="SubmissionViewCell" customModule="Engagingu" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SubmissionViewCell" rowHeight="80" id="hrD-pT-ILl" customClass="SubmissionViewCell" customModule="Engagingu" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hrD-pT-ILl" id="c7d-Bc-NN4">
@@ -870,17 +871,30 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Xtr-in-krR">
+                                                    <rect key="frame" x="12" y="38" width="259" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="259" id="62o-g2-ZYT"/>
+                                                        <constraint firstAttribute="height" constant="32" id="7DI-hi-Y5I"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="Xtr-in-krR" firstAttribute="centerX" secondItem="c7d-Bc-NN4" secondAttribute="centerX" constant="-46" id="AG2-Y4-Zsv"/>
                                                 <constraint firstItem="3eJ-i9-iKK" firstAttribute="centerY" secondItem="c7d-Bc-NN4" secondAttribute="centerY" id="Njk-nd-trD"/>
                                                 <constraint firstItem="3eJ-i9-iKK" firstAttribute="leading" secondItem="BcX-fA-Lp8" secondAttribute="trailing" constant="12" id="c28-aC-zbE"/>
                                                 <constraint firstItem="BcX-fA-Lp8" firstAttribute="leading" secondItem="c7d-Bc-NN4" secondAttribute="leading" constant="12" id="kPW-cE-k7h"/>
                                                 <constraint firstItem="BcX-fA-Lp8" firstAttribute="centerY" secondItem="c7d-Bc-NN4" secondAttribute="centerY" constant="-20" id="l7Y-TD-BGL"/>
                                                 <constraint firstAttribute="trailing" secondItem="3eJ-i9-iKK" secondAttribute="trailing" constant="12" id="lK3-EY-Gbb"/>
+                                                <constraint firstItem="Xtr-in-krR" firstAttribute="centerY" secondItem="c7d-Bc-NN4" secondAttribute="centerY" constant="14.17" id="m84-Ev-GkO"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="photoImageLabel" destination="BcX-fA-Lp8" id="4pf-Gp-hx4"/>
+                                            <outlet property="photoImageQuestionLabel" destination="Xtr-in-krR" id="uoI-sc-9NE"/>
                                             <outlet property="photoImageView" destination="3eJ-i9-iKK" id="NYc-g7-zNO"/>
                                         </connections>
                                     </tableViewCell>
@@ -889,7 +903,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="H3C-64-cCQ" firstAttribute="top" secondItem="OG1-qY-Kah" secondAttribute="top" constant="64" id="94b-gM-9aq"/>
+                            <constraint firstItem="H3C-64-cCQ" firstAttribute="top" secondItem="OG1-qY-Kah" secondAttribute="top" constant="70" id="94b-gM-9aq"/>
                             <constraint firstAttribute="trailing" secondItem="H3C-64-cCQ" secondAttribute="trailing" id="BvC-Q3-f6p"/>
                             <constraint firstAttribute="bottom" secondItem="H3C-64-cCQ" secondAttribute="bottom" constant="83" id="lz8-JR-JRX"/>
                             <constraint firstItem="H3C-64-cCQ" firstAttribute="leading" secondItem="OG1-qY-Kah" secondAttribute="leading" id="rfL-X4-ItC"/>
@@ -897,6 +911,9 @@
                         <viewLayoutGuide key="safeArea" id="RHE-3Q-Pel"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Submissions" image="Submissions TabBar" id="HdQ-Fy-yAi"/>
+                    <connections>
+                        <outlet property="tableView" destination="H3C-64-cCQ" id="fzf-MN-AJK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yXT-g0-gud" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -918,6 +935,6 @@
         <image name="tutorial 2 (new).png" width="279" height="490"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QYZ-9e-9zh"/>
+        <segue reference="Zbx-TQ-bIF"/>
     </inferredMetricsTieBreakers>
 </document>

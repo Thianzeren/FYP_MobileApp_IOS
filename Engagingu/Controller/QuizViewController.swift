@@ -8,12 +8,6 @@
 
 import UIKit
 
-struct Quiz: Decodable{
-    let quiz_question: String
-    let quiz_answer: Int
-    let quiz_options: [String]
-}
-
 class QuizViewController: UIViewController {
 
     //@IBOutlet weak var topNavBar: UINavigationBar!
@@ -250,12 +244,14 @@ class QuizViewController: UIViewController {
             let urlStr = "http://54.255.245.23:3000/team/updateScore"
             RestAPIManager.asyncHttpPost(jsonData: jsonData, URLStr: urlStr)
             
+            // Update CompletedList & isFirstTime check
             InstanceDAO.completedList.append(hotspot)
+            InstanceDAO.isFirstTime = false
             
             //Perform segue
             performSegue(withIdentifier: "toTabBarSegue", sender: nil)
             
-        }else if(questionNumber == questionBank.count - 1 && hasSeenCorrectAnswer){
+        }else if(questionNumber == questionBank.count - 1 && hasSeenCorrectAnswer){ //If answered last question
             // Hide answer buttons and squares
             firstAnswer.isHidden = true
             secondAnswer.isHidden = true
@@ -278,6 +274,9 @@ class QuizViewController: UIViewController {
             
             //hide Q&A label
             questionLabel.isHidden = true
+            
+            // Add hotspot to completed list
+            InstanceDAO.completedList.append(hotspot)
             
         }else if(hasSeenCorrectAnswer){
             

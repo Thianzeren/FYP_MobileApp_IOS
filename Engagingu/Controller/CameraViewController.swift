@@ -145,6 +145,11 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
             
             // show the alert
             self.present(alert, animated: true, completion: nil)
+            
+            // Update completed list & isFirstTime
+            InstanceDAO.completedList.append(hotspot)
+            InstanceDAO.isFirstTime = false
+            
         }else{
             // create the alert
             let alert = UIAlertController(title: "Upload Unsuccessful", message: "Please reupload your image", preferredStyle: UIAlertController.Style.alert)
