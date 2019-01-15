@@ -137,6 +137,30 @@
             </objects>
             <point key="canvasLocation" x="-4876" y="734"/>
         </scene>
+        <!--DrawingController-->
+        <scene sceneID="QpA-39-H2y">
+            <objects>
+                <viewController title="DrawingController" id="nvB-nJ-bbL" customClass="DrawingController" customModule="Engagingu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kxr-Z1-yLn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="frd-7b-0ZL">
+                                <rect key="frame" x="16" y="217" width="343" height="492"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="RSj-1k-sqi"/>
+                    </view>
+                    <connections>
+                        <outlet property="drawing" destination="frd-7b-0ZL" id="V7s-wr-fLg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fht-BX-jp4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6639.1999999999998" y="1468.9655172413793"/>
+        </scene>
         <!--Storyboard Controller 1-->
         <scene sceneID="MiT-Vo-0HO">
             <objects>
@@ -156,7 +180,7 @@
                                     <constraint firstAttribute="width" constant="117" id="LBJ-zR-zPz"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="LJJ-8r-YNp" kind="show" id="CZG-k3-CSC"/>
+                                    <segue destination="LJJ-8r-YNp" kind="show" id="civ-rk-QdG"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" bouncesZoom="NO" keyboardDismissMode="interactive" editable="NO" textAlignment="center" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dim-aV-mSB">
