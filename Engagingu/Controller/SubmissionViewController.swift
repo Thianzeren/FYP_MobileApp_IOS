@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol TableViewCellDelegate: class {
+    // Declare a delegate function holding a reference to `UICollectionViewCell` instance
+    func tableViewCell(_ cell: SubmissionViewCell, buttonTapped: UIButton)
+}
+
 class SubmissionViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -95,19 +100,43 @@ class SubmissionViewController: UIViewController {
 
 }
 
-extension SubmissionViewController: UITableViewDataSource, UITableViewDelegate {
+extension SubmissionViewController: UITableViewDataSource, UITableViewDelegate, TableViewCellDelegate {
+    func tableViewCell(_ cell: SubmissionViewCell, buttonTapped: UIButton) {
+        // You have the cell where the touch event happend, you can get the indexPath like the below
+        let indexPath = self.tableView.indexPath(for: cell)
+        // Call `performSegue`
+        self.performSegue(withIdentifier: "toPopUpSegue", sender: indexPath)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "toPopUpSegue"){
+            var destinationVC = segue.destination as! SubmissionPopUpController
+            
+            let indexPath = sender as! IndexPath
+            
+            let media = InstanceDAO.submissions[indexPath.row]
+            
+            // To put view hierarcy on screen to load view, if not view is not loaded
+            let destinationView = destinationVC.view
+            
+            destinationVC.hotspotLabel.text = media.hotspot
+            destinationVC.questionLabel.text = media.question
+            destinationVC.imageView.image = UIImage(data: media.data)
+            
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return InstanceDAO.submissions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let image = InstanceDAO.submissions[indexPath.row]
+        let media = InstanceDAO.submissions[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "SubmissionViewCell") as! SubmissionViewCell
         
-        cell.setImage(image: image)
-        
+        cell.setImage(image: media)
+        cell.delegate = self
         return cell
     }
     

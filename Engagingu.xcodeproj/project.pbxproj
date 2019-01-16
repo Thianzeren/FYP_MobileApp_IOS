@@ -36,6 +36,7 @@
 		AF78DD92218B759500B0CF10 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78DD91218B759500B0CF10 /* RestAPIManager.swift */; };
 		E106B49A21C3BE35001DEB88 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = E106B49921C3BE35001DEB88 /* Podfile */; };
 		E10D9FB421DF042900C6D682 /* SubmissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10D9FB321DF042900C6D682 /* SubmissionViewController.swift */; };
+		E1500BC621EECB0F0032E8FA /* SubmissionPopUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1500BC521EECB0F0032E8FA /* SubmissionPopUpController.swift */; };
 		E176A13E21C1487F005A5C30 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176A13D21C1487F005A5C30 /* TabBarController.swift */; };
 		E176A14221C290E1005A5C30 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176A14121C290E1005A5C30 /* QuizViewController.swift */; };
 		E176A14421C2936D005A5C30 /* NarrativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176A14321C2936D005A5C30 /* NarrativeViewController.swift */; };
@@ -103,6 +104,7 @@
 		DF573A3D860BDBBA777F2706 /* Pods-EngaginguUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EngaginguUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EngaginguUITests/Pods-EngaginguUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E106B49921C3BE35001DEB88 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		E10D9FB321DF042900C6D682 /* SubmissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionViewController.swift; sourceTree = "<group>"; };
+		E1500BC521EECB0F0032E8FA /* SubmissionPopUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionPopUpController.swift; sourceTree = "<group>"; };
 		E176A13D21C1487F005A5C30 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E176A14121C290E1005A5C30 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		E176A14321C2936D005A5C30 /* NarrativeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NarrativeViewController.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				E176A14321C2936D005A5C30 /* NarrativeViewController.swift */,
 				E10D9FB321DF042900C6D682 /* SubmissionViewController.swift */,
 				E1B5927F21E597E600643DF7 /* SubmissionViewCell.swift */,
+				E1500BC521EECB0F0032E8FA /* SubmissionPopUpController.swift */,
 				AF18BD0B21ED8E1A000B475D /* DrawingController.swift */,
 			);
 			path = Controller;
@@ -527,6 +530,7 @@
 			files = (
 				AF6C8B43218D4CDF006AC6C0 /* LoginNameController.swift in Sources */,
 				AF6C8B42218D4CDF006AC6C0 /* LoginTrailController.swift in Sources */,
+				E1500BC621EECB0F0032E8FA /* SubmissionPopUpController.swift in Sources */,
 				AF78DD0C2189878A00B0CF10 /* AppDelegate.swift in Sources */,
 				E176A14221C290E1005A5C30 /* QuizViewController.swift in Sources */,
 				E176A13E21C1487F005A5C30 /* TabBarController.swift in Sources */,

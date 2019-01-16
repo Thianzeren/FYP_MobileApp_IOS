@@ -9,15 +9,24 @@
 import UIKit
 
 class SubmissionViewCell: UITableViewCell {
-
-    @IBOutlet weak var photoImageView: UIImageView!
+    
+    weak var delegate: TableViewCellDelegate?
+    
+    @IBOutlet weak var photoImage: UIButton!
     @IBOutlet weak var photoImageLabel: UILabel!
     @IBOutlet weak var photoImageQuestionLabel: UILabel!
     
     func setImage(image: Media){
-        photoImageView.image = UIImage(data: image.data)
+//        photoImage.setImage(UIImage(data: image.data), for: UIControl.State.normal)
+        photoImage.setBackgroundImage(UIImage(data: image.data), for: UIControl.State.normal)
         photoImageLabel.text = image.hotspot
         photoImageQuestionLabel.text = image.question
     }
+
+    @IBAction func showPopUp(_ sender: Any) {
+        
+        self.delegate?.tableViewCell(self, buttonTapped: photoImage)
+    }
+    
     
 }
