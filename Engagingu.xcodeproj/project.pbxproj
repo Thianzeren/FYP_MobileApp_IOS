@@ -34,6 +34,9 @@
 		AF78DD65218A135700B0CF10 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF78DD64218A135700B0CF10 /* SystemConfiguration.framework */; };
 		AF78DD67218A136200B0CF10 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF78DD66218A136200B0CF10 /* UIKit.framework */; };
 		AF78DD92218B759500B0CF10 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78DD91218B759500B0CF10 /* RestAPIManager.swift */; };
+		AFAF5FB021EF8DE800E29FD1 /* roboto-condensed.light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFAF5FAF21EF8DE800E29FD1 /* roboto-condensed.light.ttf */; };
+		AFAF5FB121EF8E0300E29FD1 /* roboto-condensed.regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFAF5FAE21EF8DC300E29FD1 /* roboto-condensed.regular.ttf */; };
+		AFAF5FB221EF918D00E29FD1 /* roboto-condensed.regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF78DD172189879600B0CF10 /* roboto-condensed.regular.ttf */; };
 		E106B49A21C3BE35001DEB88 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = E106B49921C3BE35001DEB88 /* Podfile */; };
 		E10D9FB421DF042900C6D682 /* SubmissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10D9FB321DF042900C6D682 /* SubmissionViewController.swift */; };
 		E1500BC621EECB0F0032E8FA /* SubmissionPopUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1500BC521EECB0F0032E8FA /* SubmissionPopUpController.swift */; };
@@ -77,7 +80,7 @@
 		AF78DD082189878A00B0CF10 /* Engagingu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Engagingu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF78DD0B2189878A00B0CF10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF78DD152189879600B0CF10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		AF78DD172189879600B0CF10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF78DD172189879600B0CF10 /* roboto-condensed.regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "roboto-condensed.regular.ttf"; sourceTree = "<group>"; };
 		AF78DD1C2189879600B0CF10 /* EngaginguTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EngaginguTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF78DD202189879600B0CF10 /* EngaginguTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngaginguTests.swift; sourceTree = "<group>"; };
 		AF78DD222189879600B0CF10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -100,6 +103,8 @@
 		AF78DD64218A135700B0CF10 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		AF78DD66218A136200B0CF10 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AF78DD91218B759500B0CF10 /* RestAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPIManager.swift; sourceTree = "<group>"; };
+		AFAF5FAE21EF8DC300E29FD1 /* roboto-condensed.regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "roboto-condensed.regular.ttf"; sourceTree = "<group>"; };
+		AFAF5FAF21EF8DE800E29FD1 /* roboto-condensed.light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "roboto-condensed.light.ttf"; sourceTree = "<group>"; };
 		C72385D4ED204E3E11D145AB /* Pods-Engagingu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Engagingu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Engagingu/Pods-Engagingu.debug.xcconfig"; sourceTree = "<group>"; };
 		DF573A3D860BDBBA777F2706 /* Pods-EngaginguUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EngaginguUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EngaginguUITests/Pods-EngaginguUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E106B49921C3BE35001DEB88 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
@@ -185,6 +190,7 @@
 				AF78DD092189878A00B0CF10 /* Products */,
 				AF78DD49218A126800B0CF10 /* Frameworks */,
 				4E44F6E38A76A86833DE4375 /* Pods */,
+				AFAF5F9C21EF8D0600E29FD1 /* Fonts */,
 			);
 			sourceTree = "<group>";
 		};
@@ -206,7 +212,7 @@
 				E1A67DE021913C3100581D1C /* View */,
 				E1A67DDF21913C0500581D1C /* Controller */,
 				AF78DD0B2189878A00B0CF10 /* AppDelegate.swift */,
-				AF78DD172189879600B0CF10 /* Info.plist */,
+				AF78DD172189879600B0CF10 /* roboto-condensed.regular.ttf */,
 			);
 			path = Engagingu;
 			sourceTree = "<group>";
@@ -253,6 +259,15 @@
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
+		};
+		AFAF5F9C21EF8D0600E29FD1 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				AFAF5FAF21EF8DE800E29FD1 /* roboto-condensed.light.ttf */,
+				AFAF5FAE21EF8DC300E29FD1 /* roboto-condensed.regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = SOURCE_ROOT;
 		};
 		E1A67DDF21913C0500581D1C /* Controller */ = {
 			isa = PBXGroup;
@@ -408,9 +423,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1DE91D2219085D70035ED9C /* Main.storyboard in Resources */,
+				AFAF5FB021EF8DE800E29FD1 /* roboto-condensed.light.ttf in Resources */,
 				AF78DD162189879600B0CF10 /* LaunchScreen.storyboard in Resources */,
 				E106B49A21C3BE35001DEB88 /* Podfile in Resources */,
 				E1F5132721BFA05700964726 /* Assets.xcassets in Resources */,
+				AFAF5FB121EF8E0300E29FD1 /* roboto-condensed.regular.ttf in Resources */,
+				AFAF5FB221EF918D00E29FD1 /* roboto-condensed.regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
