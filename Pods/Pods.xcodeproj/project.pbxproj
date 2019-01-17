@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -42,13 +42,13 @@
 		0F3E74EC03E35C8CB23C922ECBEF419F /* Pods-EngaginguUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-EngaginguUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		19338E833B756E556C74609D9539A99B /* Pods-Engagingu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Engagingu-umbrella.h"; sourceTree = "<group>"; };
 		196064AFC770F13322439A69925F9FC9 /* Pods-EngaginguUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EngaginguUITests.release.xcconfig"; sourceTree = "<group>"; };
-		1C22AA27F13FAE650F0F70BCCA921920 /* Pods_EngaginguTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_EngaginguTests.framework; path = "Pods-EngaginguTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C22AA27F13FAE650F0F70BCCA921920 /* Pods_EngaginguTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EngaginguTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C6200385182862E9168588E60B1CD37 /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
-		3227CDA1B55D0D36AFB8049252A42880 /* Pods_EngaginguUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_EngaginguUITests.framework; path = "Pods-EngaginguUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3227CDA1B55D0D36AFB8049252A42880 /* Pods_EngaginguUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EngaginguUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3686C489EC1880839DAE66E167F1260F /* Pods-EngaginguUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-EngaginguUITests-dummy.m"; sourceTree = "<group>"; };
 		49D49EC24204370A8173A2146611F9B1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D36779ED7A0C193E9D3060E2C1B0244 /* Pods-Engagingu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Engagingu-dummy.m"; sourceTree = "<group>"; };
-		4F983DE287D22F3A04107B9D2DD405C6 /* Pods_Engagingu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Engagingu.framework; path = "Pods-Engagingu.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F983DE287D22F3A04107B9D2DD405C6 /* Pods_Engagingu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Engagingu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5167A5F06EDC6D25CAA16D5A7F6C4B03 /* Pods-EngaginguTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-EngaginguTests-dummy.m"; sourceTree = "<group>"; };
 		5404B092886282289722306D6356A412 /* Pods-EngaginguUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EngaginguUITests-resources.sh"; sourceTree = "<group>"; };
 		62ACCBBC44138B84CEC39F0D28DB2012 /* Pods-EngaginguTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-EngaginguTests-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -57,7 +57,7 @@
 		70324FDF1FBB41BEA92DE76E00BD3E96 /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlaces.framework; path = Frameworks/GooglePlaces.framework; sourceTree = "<group>"; };
 		7EA81EB0219114D8FE12060B514F6569 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8439CDDA6AB9A16702DB56AE03762B6C /* Pods-EngaginguUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EngaginguUITests-frameworks.sh"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; };
 		9ACF6BA241B608D3142C555984B0BCAF /* Pods-EngaginguTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EngaginguTests.release.xcconfig"; sourceTree = "<group>"; };
 		9B41D4A5E83B371DA6E9F0A5621ADB47 /* Pods-EngaginguTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EngaginguTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		9C78D1517E16105BE60CE105C491BE3B /* Pods-Engagingu-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Engagingu-frameworks.sh"; sourceTree = "<group>"; };
@@ -113,7 +113,6 @@
 				475420FA59EFC8377CF994A338979247 /* Frameworks */,
 				09DB508F39D8BE758EA4A7B9047268E9 /* Resources */,
 			);
-			name = GooglePlaces;
 			path = GooglePlaces;
 			sourceTree = "<group>";
 		};
@@ -131,7 +130,6 @@
 				B2F22323EA3B1ADB4F96376E3F709A68 /* Base */,
 				488E301C4ACDDA928635C4886F5F6158 /* Maps */,
 			);
-			name = GoogleMaps;
 			path = GoogleMaps;
 			sourceTree = "<group>";
 		};
@@ -494,11 +492,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-EngaginguTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-EngaginguTests/Pods-EngaginguTests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -532,11 +526,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-Engagingu/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Engagingu/Pods-Engagingu.modulemap";
 				OTHER_LDFLAGS = "";
@@ -571,11 +561,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-EngaginguUITests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-EngaginguUITests/Pods-EngaginguUITests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -610,11 +596,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-EngaginguTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-EngaginguTests/Pods-EngaginguTests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -686,8 +668,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -711,11 +692,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-Engagingu/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Engagingu/Pods-Engagingu.modulemap";
 				OTHER_LDFLAGS = "";
@@ -749,11 +726,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-EngaginguUITests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-EngaginguUITests/Pods-EngaginguUITests.modulemap";
 				OTHER_LDFLAGS = "";

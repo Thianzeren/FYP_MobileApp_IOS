@@ -4,7 +4,7 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>roboto-condensed.light.ttf</string>
+		<string>roboto-condensed.light.tff</string>
 		<string>roboto-condensed.regular.ttf</string>
 	</array>
 	<key>NSPhotoLibraryAddUsageDescription</key>
