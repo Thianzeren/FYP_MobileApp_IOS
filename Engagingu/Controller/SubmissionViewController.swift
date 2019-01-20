@@ -9,8 +9,8 @@
 import UIKit
 
 protocol TableViewCellDelegate: class {
-    // Declare a delegate function holding a reference to `UICollectionViewCell` instance
-    func tableViewCell(_ cell: SubmissionViewCell, buttonTapped: UIButton)
+    // Declare a delegate function holding a reference to `SubmissionTableViewCell` instance
+    func tableViewCell(_ cell: SubmissionTableViewCell, buttonTapped: UIButton)
 }
 
 class SubmissionViewController: UIViewController {
@@ -86,7 +86,7 @@ class SubmissionViewController: UIViewController {
     }
     
     func loadWaitScreen() {
-        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let alert = UIAlertController(title: nil, message: "Loading...", preferredStyle: .alert)
         
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
@@ -101,7 +101,7 @@ class SubmissionViewController: UIViewController {
 }
 
 extension SubmissionViewController: UITableViewDataSource, UITableViewDelegate, TableViewCellDelegate {
-    func tableViewCell(_ cell: SubmissionViewCell, buttonTapped: UIButton) {
+    func tableViewCell(_ cell: SubmissionTableViewCell, buttonTapped: UIButton) {
         // You have the cell where the touch event happend, you can get the indexPath like the below
         let indexPath = self.tableView.indexPath(for: cell)
         // Call `performSegue`
@@ -110,14 +110,14 @@ extension SubmissionViewController: UITableViewDataSource, UITableViewDelegate, 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "toPopUpSegue"){
-            var destinationVC = segue.destination as! SubmissionPopUpController
+            let destinationVC = segue.destination as! SubmissionPopUpController
             
             let indexPath = sender as! IndexPath
             
             let media = InstanceDAO.submissions[indexPath.row]
             
             // To put view hierarcy on screen to load view, if not view is not loaded
-            let destinationView = destinationVC.view
+            _ = destinationVC.view
             
             destinationVC.hotspotLabel.text = media.hotspot
             destinationVC.questionLabel.text = media.question
@@ -133,7 +133,7 @@ extension SubmissionViewController: UITableViewDataSource, UITableViewDelegate, 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let media = InstanceDAO.submissions[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SubmissionViewCell") as! SubmissionViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SubmissionTableViewCell") as! SubmissionTableViewCell
         
         cell.setImage(image: media)
         cell.delegate = self

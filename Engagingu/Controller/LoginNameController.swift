@@ -1,3 +1,4 @@
+import SocketIO
 import UIKit
 
 class LoginNameController: UIViewController, UITextFieldDelegate {
@@ -51,6 +52,13 @@ class LoginNameController: UIViewController, UITextFieldDelegate {
         let startHotspotURL = "http://54.255.245.23:3000/team/startingHotspot?trail_instance_id=" + InstanceDAO.trail_instance_id
         RestAPIManager.httpGetStartingHotspots(URLStr: startHotspotURL)
         
+        // Save to UserDefaults for session
+        // saveCredentialsToSession()
+        
+        // Connect Socket to Server
+        SocketHandler.addHandlers()
+        SocketHandler.connectSocket()
+        
         performSegue(withIdentifier: "toTutorialSegue", sender: nil)
         
     }
@@ -62,8 +70,7 @@ class LoginNameController: UIViewController, UITextFieldDelegate {
         def.set(InstanceDAO.trail_instance_id, forKey: "trail_instance_id")
         def.set(InstanceDAO.username, forKey: "username")
         def.synchronize()
-        
-        
+    
     }
     
     func createAlert (title:String, message:String){

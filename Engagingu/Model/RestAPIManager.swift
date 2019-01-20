@@ -405,4 +405,46 @@ class RestAPIManager {
         
     }
 
+    static func httpGetLeaderboard(URLStr: String){
+        
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        guard let url = URL(string: URLStr) else {
+            semaphore.signal()
+            return
+        }
+
+        URLSession.shared.dataTask(with: url){(data, response, error) in
+            //check error
+            //check response status ok
+
+            guard let data = data else {
+                semaphore.signal()
+                return
+            }
+
+            do {
+                let leaderboards = try
+                    JSONDecoder().decode([Leaderboard].self, from: data)
+
+                for leaderboard in leaderboards{
+                    InstanceDAO.leaderboardDict[String(leaderboard.team)] = leaderboard.hotspots_completed
+                }
+
+                print("LEADERBOARD")
+                print(InstanceDAO.leaderboardDict)
+                
+                semaphore.signal()
+
+            } catch let jsonErr{
+                print("Error serializing json:", jsonErr)
+            }
+
+
+        }.resume()
+        
+        semaphore.wait()
+
+    }
+    
 }

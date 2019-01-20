@@ -7,6 +7,7 @@ target 'Engagingu' do
   use_frameworks!
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'Socket.IO-Client-Swift'
 
   # Pods for Engagingu
 

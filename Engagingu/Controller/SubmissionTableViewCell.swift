@@ -1,5 +1,5 @@
 //
-//  SubmissionViewCell.swift
+//  SubmissionTableViewCell.swift
 //  Engagingu
 //
 //  Created by Nicholas on 9/1/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SubmissionViewCell: UITableViewCell {
+class SubmissionTableViewCell: UITableViewCell {
     
     weak var delegate: TableViewCellDelegate?
     
