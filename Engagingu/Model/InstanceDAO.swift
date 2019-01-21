@@ -35,6 +35,9 @@ struct InstanceDAO {
     // Key: Team number, Value: no. of hotspots completed
     static var leaderboardDict: [String:Int] = [:]
     
+    // Array of activity objects
+    static var activityArr: [Activity] = []
+    
     // Check if is first time entering
     static var isFirstTime: Bool = true
 }
@@ -85,6 +88,18 @@ struct TeamStartHotspot: Decodable{
 struct Leaderboard: Decodable{
     let team: Int
     let hotspots_completed: Int
+}
+
+struct Activity: Decodable{
+    let team: String
+    let hotspot: String
+    let time: String
+    
+    init(team: String, hotspot: String, time: String){
+        self.team = team
+        self.hotspot = hotspot
+        self.time = time
+    }
 }
 
 struct Media{

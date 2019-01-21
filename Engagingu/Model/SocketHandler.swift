@@ -33,19 +33,22 @@ class SocketHandler {
             print("socket connected")
         }
         
-        socket.on("connect") {data, ack in
+        socket.on("activityFeed") {data, ack in
 
-            print("SOCKET BODY FROM randomconnect")
+            print("SOCKET BODY FROM activityFeed")
             print(data)
-            print(ack)
             
-            //            guard let cur = data[0] as? Double else { return }
-            //
-            //            self.socket.emitWithAck("canUpdate", cur).timingOut(after: 0) {data in
-            //                self.socket.emit("update", ["amount": cur + 2.50])
-            //            }
-            //
-            //            ack.with("Got your currentAmount", "dude")
+            do{
+                let jsonData = data as? [[String:String]]
+                let msg = jsonData![0]
+                let activity = Activity(team: msg["team"] ?? "team", hotspot: msg["hotspot"] ?? "hotspot", time: msg["time"] ?? "time")
+                
+                InstanceDAO.activityArr.append(activity)
+                
+            }catch let jsonErr{
+                
+                print("Error serializing json:", jsonErr)
+            }
         }
         
         socket.onAny {print("Got event: \($0.event), with items: \($0.items!)")}

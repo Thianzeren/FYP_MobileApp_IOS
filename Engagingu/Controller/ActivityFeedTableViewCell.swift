@@ -10,15 +10,15 @@ import UIKit
 
 class ActivityFeedTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet weak var teamLabel: UILabel!
+    @IBOutlet weak var hotspotLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    
+    func setActivity(team: String, hotspot: String, time: String) {
+        
+        teamLabel.text = "Team " + team + " has completed hotspot:"
+        hotspotLabel.text = hotspot
+        timeLabel.text = time
+        
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

@@ -10,21 +10,45 @@ import UIKit
 
 class ActivityFeedController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    
+    var activityArr: [Activity] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        activityArr = InstanceDAO.activityArr
     }
-    */
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.reloadData()
+    }
 
+}
+
+extension ActivityFeedController: UITableViewDataSource, UITableViewDelegate{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return activityArr.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let activity = activityArr[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityFeedTableViewCell") as! ActivityFeedTableViewCell
+        
+        cell.setActivity(team: activity.team, hotspot: activity.hotspot, time: activity.time)
+        
+        return cell
+        
+    }
+    
+    
 }
