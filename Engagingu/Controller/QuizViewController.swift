@@ -38,9 +38,7 @@ class QuizViewController: UIViewController {
     // Outlet for confirm button
     @IBOutlet weak var confirmButton: UIButton!
     // Outlet for Q&A
-    @IBOutlet weak var questionLabel: UILabel!
-    
-    
+    @IBOutlet weak var questionLabel: UITextView!
     var questionBank: [HotspotQuiz.Quiz] = []
     var hotspot: String = ""
     var questionNumber: Int = 0
@@ -72,7 +70,7 @@ class QuizViewController: UIViewController {
         
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+       
     }
     
    
