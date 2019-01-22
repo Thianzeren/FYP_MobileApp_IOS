@@ -702,41 +702,65 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KEp-NG-THR">
-                                <rect key="frame" x="67" y="218" width="241" height="376"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KEp-NG-THR">
+                                <rect key="frame" x="67" y="218" width="235" height="376"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hotspot Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7W-nV-dVI">
-                                        <rect key="frame" x="8" y="16" width="225" height="16"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <nil key="textColor"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hotspot Name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7W-nV-dVI">
+                                        <rect key="frame" x="11.666666666666671" y="0.0" width="207" height="35"/>
+                                        <color key="backgroundColor" red="0.08235294118" green="0.10980392160000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A7K-95-h3I">
-                                        <rect key="frame" x="64" y="320" width="113" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Download Photo"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question Text" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bn-mH-WbL">
+                                        <rect key="frame" x="13" y="42.333333333333314" width="201" height="105"/>
+                                        <color key="backgroundColor" red="0.08235294118" green="0.10980392160000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A7K-95-h3I">
+                                        <rect key="frame" x="68" y="338" width="98.000000000000014" height="30"/>
+                                        <color key="backgroundColor" red="0.08235294118" green="0.10980392160000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="15"/>
+                                        <state key="normal" title="Download Photo">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="downloadImage:" destination="2dd-87-4A5" eventType="touchUpInside" id="uE7-dv-GwW"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gxa-lZ-uIX">
-                                        <rect key="frame" x="45" y="87" width="151" height="202"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gxa-lZ-uIX">
+                                        <rect key="frame" x="18" y="165" width="198" height="165"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="H7W-nV-dVI" firstAttribute="width" secondItem="KEp-NG-THR" secondAttribute="width" multiplier="0.9" constant="-4.5" id="7Q3-Pm-Oby"/>
+                                    <constraint firstItem="Gxa-lZ-uIX" firstAttribute="top" secondItem="8bn-mH-WbL" secondAttribute="bottom" constant="17.666666666666686" id="DK5-0B-xXf"/>
+                                    <constraint firstItem="8bn-mH-WbL" firstAttribute="top" secondItem="H7W-nV-dVI" secondAttribute="bottom" constant="7.3333333333333321" id="Ha3-77-aQt"/>
+                                    <constraint firstItem="Gxa-lZ-uIX" firstAttribute="width" secondItem="KEp-NG-THR" secondAttribute="width" multiplier="0.9" constant="-13.5" id="KFP-M6-DHc"/>
+                                    <constraint firstItem="A7K-95-h3I" firstAttribute="leading" secondItem="KEp-NG-THR" secondAttribute="leading" constant="68" id="Mvl-c3-N3F"/>
+                                    <constraint firstItem="8bn-mH-WbL" firstAttribute="width" secondItem="H7W-nV-dVI" secondAttribute="width" multiplier="0.9" constant="14.699999999999989" id="Pgf-LB-Q3V"/>
+                                    <constraint firstItem="Gxa-lZ-uIX" firstAttribute="centerX" secondItem="KEp-NG-THR" secondAttribute="centerX" constant="-0.5" id="SkM-Ho-eoq"/>
+                                    <constraint firstItem="H7W-nV-dVI" firstAttribute="centerX" secondItem="KEp-NG-THR" secondAttribute="centerX" constant="-2.5" id="Xm1-hh-6Oc"/>
+                                    <constraint firstItem="H7W-nV-dVI" firstAttribute="height" secondItem="KEp-NG-THR" secondAttribute="height" multiplier="0.1" constant="-2.6000000000000014" id="Y4q-4a-oz0"/>
+                                    <constraint firstItem="H7W-nV-dVI" firstAttribute="top" secondItem="KEp-NG-THR" secondAttribute="top" id="d9w-Wg-7ol"/>
+                                    <constraint firstItem="8bn-mH-WbL" firstAttribute="centerX" secondItem="KEp-NG-THR" secondAttribute="centerX" constant="-4" id="eb9-uW-9UO"/>
+                                    <constraint firstItem="8bn-mH-WbL" firstAttribute="height" secondItem="KEp-NG-THR" secondAttribute="height" multiplier="0.2" constant="29.799999999999997" id="grR-Bf-5vV"/>
+                                    <constraint firstItem="Gxa-lZ-uIX" firstAttribute="height" secondItem="KEp-NG-THR" secondAttribute="height" multiplier="0.6" constant="-60.599999999999994" id="mL2-H2-3gh"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="A7K-95-h3I" secondAttribute="trailing" constant="20" symbolic="YES" id="pcR-da-c4C"/>
+                                    <constraint firstAttribute="trailing" secondItem="Gxa-lZ-uIX" secondAttribute="trailing" constant="19" id="w9d-W4-qJU"/>
+                                    <constraint firstAttribute="bottom" secondItem="A7K-95-h3I" secondAttribute="bottom" constant="8" id="yuP-RB-cSJ"/>
+                                </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Question Text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bn-mH-WbL">
-                                <rect key="frame" x="75" y="268" width="225" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.83550126903553301" green="0.83550126903553301" blue="0.83550126903553301" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="KEp-NG-THR" firstAttribute="leading" secondItem="iYw-Ak-g67" secondAttribute="leading" constant="67" id="Ran-FP-9we"/>
+                            <constraint firstItem="KEp-NG-THR" firstAttribute="top" secondItem="iYw-Ak-g67" secondAttribute="top" constant="198" id="dtX-kM-bzg"/>
+                            <constraint firstItem="iYw-Ak-g67" firstAttribute="bottom" secondItem="KEp-NG-THR" secondAttribute="bottom" constant="142" id="uLj-hA-3wM"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="iYw-Ak-g67"/>
                     </view>
                     <connections>
@@ -748,7 +772,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cmA-J1-oTs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2596" y="97.536945812807886"/>
+            <point key="canvasLocation" x="2594.202898550725" y="97.010869565217405"/>
         </scene>
         <!--Drawing Controller Scene-->
         <scene sceneID="d6F-t3-qk1">
