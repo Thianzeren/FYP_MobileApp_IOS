@@ -84,6 +84,17 @@ extension LeaderboardController: UITableViewDataSource, UITableViewDelegate {
         
         cell.setLabels(teamLabel: teamID, hotspotLabel: String(teamCompletedHotspots))
         
+        //colour for top 3 teams
+        if (indexPath.row == 0) {
+            cell.backgroundColor = UIColor.orange
+        }
+        if (indexPath.row == 1){
+            cell.backgroundColor = UIColor.lightGray
+        }
+        if (indexPath.row == 2){
+            cell.backgroundColor = UIColor.brown
+        }
         return cell
     }
+    
 }
