@@ -10,6 +10,7 @@ import UIKit
 
 class NarrativeViewController: UIViewController {
 
+   
     @IBOutlet weak var header: UITextView!
     @IBOutlet weak var narrative: UITextView!
 //    @IBOutlet weak var topNavBar: UINavigationItem!
@@ -68,3 +69,4 @@ class NarrativeViewController: UIViewController {
     }
 
 }
+

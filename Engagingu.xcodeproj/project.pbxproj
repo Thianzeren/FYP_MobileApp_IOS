@@ -11,6 +11,7 @@
 		08FC480384A78EFC8E4A4E15 /* Pods_Engagingu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23C83CB32480427436B31067 /* Pods_Engagingu.framework */; };
 		5D31BF4900488589D5682B03 /* Pods_EngaginguUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F218129057F039B1BDFE358B /* Pods_EngaginguUITests.framework */; };
 		AF18BD0C21ED8E1A000B475D /* DrawingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF18BD0B21ED8E1A000B475D /* DrawingController.swift */; };
+		AF3DBCEF21F7077E005FBE40 /* TutorialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3DBCEE21F7077E005FBE40 /* TutorialController.swift */; };
 		AF6C8B42218D4CDF006AC6C0 /* LoginTrailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C8B3F218D4CDF006AC6C0 /* LoginTrailController.swift */; };
 		AF6C8B43218D4CDF006AC6C0 /* LoginNameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C8B40218D4CDF006AC6C0 /* LoginNameController.swift */; };
 		AF6C8B44218D4CDF006AC6C0 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C8B41218D4CDF006AC6C0 /* CameraViewController.swift */; };
@@ -78,6 +79,7 @@
 		85DE15961F91F3EEAF32347C /* Pods-EngaginguUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EngaginguUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EngaginguUITests/Pods-EngaginguUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9E4318A0C78FB865C1DE9961 /* Pods-Engagingu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Engagingu.release.xcconfig"; path = "Pods/Target Support Files/Pods-Engagingu/Pods-Engagingu.release.xcconfig"; sourceTree = "<group>"; };
 		AF18BD0B21ED8E1A000B475D /* DrawingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingController.swift; sourceTree = "<group>"; };
+		AF3DBCEE21F7077E005FBE40 /* TutorialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialController.swift; sourceTree = "<group>"; };
 		AF6C8B3F218D4CDF006AC6C0 /* LoginTrailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTrailController.swift; sourceTree = "<group>"; };
 		AF6C8B40218D4CDF006AC6C0 /* LoginNameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNameController.swift; sourceTree = "<group>"; };
 		AF6C8B41218D4CDF006AC6C0 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				E12FEFA421F2F3090074F877 /* LeaderboardTableViewCell.swift */,
 				E12FEFA221F2ECFA0074F877 /* ActivityFeedController.swift */,
 				E12FEFA621F2F3210074F877 /* ActivityFeedTableViewCell.swift */,
+				AF3DBCEE21F7077E005FBE40 /* TutorialController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 				E12FEFA721F2F3210074F877 /* ActivityFeedTableViewCell.swift in Sources */,
 				E1A67DE321913DC300581D1C /* InstanceDAO.swift in Sources */,
 				E12FEFA521F2F3090074F877 /* LeaderboardTableViewCell.swift in Sources */,
+				AF3DBCEF21F7077E005FBE40 /* TutorialController.swift in Sources */,
 				E10D9FB421DF042900C6D682 /* SubmissionViewController.swift in Sources */,
 				E1F5133821BFC24B00964726 /* MapController.swift in Sources */,
 				AF18BD0C21ED8E1A000B475D /* DrawingController.swift in Sources */,

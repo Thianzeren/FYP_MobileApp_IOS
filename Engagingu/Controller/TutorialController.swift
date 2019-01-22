@@ -1,39 +1,31 @@
 //
-//  TeamAllocationController.swift
+//  TutorialController.swift
 //  Engagingu
 //
-//  Created by Nicholas on 8/11/18.
-//  Copyright © 2018 Raylene. All rights reserved.
+//  Created by Raylene on 22/1/19.
+//  Copyright © 2019 Raylene. All rights reserved.
 //
 
 import UIKit
 
-class TeamAllocationController: UIViewController {
+class TutorialController: UIViewController {
+
+  
+    @IBOutlet weak var introduction: UILabel!
     
-    @IBOutlet weak var groupInstructions: UILabel!
-    @IBOutlet weak var groupNumber: UITextView!
-    
+    @IBOutlet weak var welcomeMessage: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        groupNumber.text = "TEAM " + InstanceDAO.team_id
+
+        welcomeMessage.font = optimisedfindAdaptiveFontWithName(fontName: "Roboto Condensed", message: welcomeMessage, minSize: 10, maxSize: 50)
+        print("\(String(describing: welcomeMessage.font))")
         
-        groupInstructions.font = optimisedfindAdaptiveFontWithName(fontName: "Roboto Condensed", message: groupInstructions, minSize: 10, maxSize: 50)
-        print("\(String(describing: groupInstructions.font))")
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    
-    @IBAction func okayBtn(_ sender: Any) {
-        
-        performSegue(withIdentifier: "toHomeSegue", sender: nil)
-        
+        introduction.font = optimisedfindAdaptiveFontWithName(fontName: "Roboto Condensed", message: introduction, minSize: 10, maxSize: 50)
+        print("\(String(describing: introduction.font))")
     }
     
 
-    //fit to height of label
+   //fit to height of label
     func optimisedfindAdaptiveFontWithName(fontName:String, message:UILabel!, minSize:CGFloat,maxSize:CGFloat) -> UIFont!
     {
         
@@ -60,8 +52,8 @@ class TeamAllocationController: UIViewController {
             }
         }
         
-        
-        //returning the size -1 (to have enought space right and left)
         return UIFont(name: fontName, size: tempMin - 1)
     }
+
+
 }
