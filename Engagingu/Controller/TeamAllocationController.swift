@@ -17,7 +17,7 @@ class TeamAllocationController: UIViewController {
         super.viewDidLoad()
         groupNumber.text = "TEAM " + InstanceDAO.team_id
         
-        groupInstructions.font = optimisedfindAdaptiveFontWithName(fontName: "Roboto Condensed", message: groupInstructions, minSize: 10, maxSize: 50)
+        groupInstructions.font = optimisedfindAdaptiveFontWithName(fontName: "Roboto Condensed", message: groupInstructions, minSize: 10, maxSize: 38)
         print("\(String(describing: groupInstructions.font))")
     }
     

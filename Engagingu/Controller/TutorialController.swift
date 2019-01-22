@@ -17,10 +17,10 @@ class TutorialController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        welcomeMessage.font = optimisedfindAdaptiveFontWithName(fontName: "Roboto Condensed", message: welcomeMessage, minSize: 10, maxSize: 50)
+        welcomeMessage.font = optimisedfindAdaptiveFontWithName(fontName: "Roboto Condensed", message: welcomeMessage, minSize: 10, maxSize: 32)
         print("\(String(describing: welcomeMessage.font))")
         
-        introduction.font = optimisedfindAdaptiveFontWithName(fontName: "Roboto Condensed", message: introduction, minSize: 10, maxSize: 50)
+        introduction.font = optimisedfindAdaptiveFontWithName(fontName: "Roboto Condensed", message: introduction, minSize: 10, maxSize: 32)
         print("\(String(describing: introduction.font))")
     }
     

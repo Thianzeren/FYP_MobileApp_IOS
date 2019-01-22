@@ -25,9 +25,11 @@ class NarrativeViewController: UIViewController {
         narrative.isScrollEnabled = false
         header.text! = headerText
         narrative.text! = narrativeText
-       
+        
         //topNavBar.title = "EngagingU"
         // Do any additional setup after loading the view.
+        
+        
         
     }
     
@@ -46,11 +48,6 @@ class NarrativeViewController: UIViewController {
     }
     
     
-    @IBAction func backToPreviousView(_ sender: Any) {
-        print("Back button Tapped")
-        dismiss(animated: true, completion: nil)
-    }
-    
 //     MARK: - Navigation
 
 //     In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -67,6 +64,6 @@ class NarrativeViewController: UIViewController {
         }
         
     }
-
+    
+    
 }
-
