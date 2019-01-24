@@ -39,6 +39,7 @@
 		AFAF5FB121EF8E0300E29FD1 /* roboto-condensed.regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFAF5FAE21EF8DC300E29FD1 /* roboto-condensed.regular.ttf */; };
 		E106B49A21C3BE35001DEB88 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = E106B49921C3BE35001DEB88 /* Podfile */; };
 		E10D9FB421DF042900C6D682 /* SubmissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10D9FB321DF042900C6D682 /* SubmissionViewController.swift */; };
+		E124529221F8B9E20036AC87 /* AnagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E124529121F8B9E20036AC87 /* AnagramViewController.swift */; };
 		E12FEFA121F1D9B10074F877 /* LeaderboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12FEFA021F1D9B10074F877 /* LeaderboardController.swift */; };
 		E12FEFA321F2ECFA0074F877 /* ActivityFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12FEFA221F2ECFA0074F877 /* ActivityFeedController.swift */; };
 		E12FEFA521F2F3090074F877 /* LeaderboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12FEFA421F2F3090074F877 /* LeaderboardTableViewCell.swift */; };
@@ -114,6 +115,7 @@
 		DF573A3D860BDBBA777F2706 /* Pods-EngaginguUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EngaginguUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EngaginguUITests/Pods-EngaginguUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E106B49921C3BE35001DEB88 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		E10D9FB321DF042900C6D682 /* SubmissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionViewController.swift; sourceTree = "<group>"; };
+		E124529121F8B9E20036AC87 /* AnagramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnagramViewController.swift; sourceTree = "<group>"; };
 		E12FEF9E21F094440074F877 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E12FEFA021F1D9B10074F877 /* LeaderboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardController.swift; sourceTree = "<group>"; };
 		E12FEFA221F2ECFA0074F877 /* ActivityFeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFeedController.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				E12FEFA221F2ECFA0074F877 /* ActivityFeedController.swift */,
 				E12FEFA621F2F3210074F877 /* ActivityFeedTableViewCell.swift */,
 				AF3DBCEE21F7077E005FBE40 /* TutorialController.swift */,
+				E124529121F8B9E20036AC87 /* AnagramViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -601,6 +604,7 @@
 				AF3DBCEF21F7077E005FBE40 /* TutorialController.swift in Sources */,
 				E10D9FB421DF042900C6D682 /* SubmissionViewController.swift in Sources */,
 				E1F5133821BFC24B00964726 /* MapController.swift in Sources */,
+				E124529221F8B9E20036AC87 /* AnagramViewController.swift in Sources */,
 				AF18BD0C21ED8E1A000B475D /* DrawingController.swift in Sources */,
 				AF6C8B44218D4CDF006AC6C0 /* CameraViewController.swift in Sources */,
 				E1B5928021E597E600643DF7 /* SubmissionTableViewCell.swift in Sources */,

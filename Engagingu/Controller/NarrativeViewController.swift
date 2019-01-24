@@ -36,10 +36,13 @@ class NarrativeViewController: UIViewController {
     @IBAction func startMission(_ sender: Any) {
         print("HEADER TEXT")
         print(headerText)
+        
         if(InstanceDAO.quizDict[headerText] != nil){
             performSegue(withIdentifier: "toQuizSegue", sender: nil)
-        }else{
+        }else if(InstanceDAO.selfieDict[headerText] != nil){
             performSegue(withIdentifier: "toCameraSegue", sender: nil)
+        }else if(InstanceDAO.anagramDict[headerText] != nil){
+            performSegue(withIdentifier: "toAnagramSegue", sender: nil)
         }
     }
     //Allow scrolliing after first line shown
@@ -56,11 +59,24 @@ class NarrativeViewController: UIViewController {
         // Pass the selected object to the new view controller.
         
         if(segue.identifier == "toQuizSegue"){
+            
             let destVC = segue.destination as! QuizViewController
             destVC.hotspot = headerText
-        }else{
+            
+        }else if(segue.identifier == "toCameraSegue"){
+            
             let destVC = segue.destination as! CameraViewController
             destVC.hotspot = headerText
+            
+        }else if(segue.identifier == "toAnagramSegue"){
+            
+            let destVC = segue.destination as! AnagramViewController
+            
+            destVC.hotspot = headerText
+            destVC.hiddenWord = InstanceDAO.anagramDict[headerText] ?? ""
+            destVC.clue = ""
+            
+            
         }
         
     }

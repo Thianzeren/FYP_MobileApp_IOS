@@ -447,4 +447,50 @@ class RestAPIManager {
 
     }
     
+    static func httpGetAnagram(URLStr: String){
+        
+        print("ANAGRAMURL")
+        print(URLStr)
+        
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        guard let url = URL(string: URLStr) else {
+            semaphore.signal()
+            print("URL cannot be created")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url){(data, response, error) in
+            //check error
+            //check response status ok
+            
+            guard let data = data else {
+                semaphore.signal()
+                print("No data available")
+                return
+            }
+            
+            do {
+                let anagrams = try
+                    JSONDecoder().decode([Anagram].self, from: data)
+                
+                for anagram in anagrams{
+                    InstanceDAO.anagramDict[anagram.hotspot] = anagram.anagram
+                }
+                
+                print("ANAGRAM")
+                print(InstanceDAO.anagramDict)
+                
+                semaphore.signal()
+                
+            } catch let jsonErr{
+                print("Error serializing json:", jsonErr)
+            }
+            
+            
+        }.resume()
+        
+        semaphore.wait()
+        
+    }
 }

@@ -25,6 +25,9 @@ struct InstanceDAO {
     // Key: Hotspot name, Value: Selfie Question
     static var selfieDict: [String:String] = [:]
     
+    // Key: Hotspot name, Value: Anagram Word
+    static var anagramDict: [String:String] = [:]
+    
     // Key: Hotspot name, Value: ImageURL Object
     static var urlDict: [String:ImageURL] = [:]
     static var submissions: [Media] = []
@@ -100,6 +103,12 @@ struct Activity: Decodable{
         self.hotspot = hotspot
         self.time = time
     }
+}
+
+struct Anagram: Decodable{
+    
+    let hotspot: String
+    let anagram: String
 }
 
 struct Media{
