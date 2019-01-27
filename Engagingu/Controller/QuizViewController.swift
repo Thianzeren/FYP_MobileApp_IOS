@@ -39,7 +39,7 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIButton!
     // Outlet for Q&A
     @IBOutlet weak var questionLabel: UITextView!
-    var questionBank: [HotspotQuiz.Quiz] = []
+    var questionBank: [Quiz] = []
     var hotspot: String = ""
     var questionNumber: Int = 0
     var score: Int = 0
@@ -180,7 +180,7 @@ class QuizViewController: UIViewController {
     }
     
     func updateQuiz(){
-        let quiz: HotspotQuiz.Quiz = questionBank[questionNumber]
+        let quiz = questionBank[questionNumber]
         let quiz_question: String = quiz.quiz_question
         let quiz_options: [String] = quiz.quiz_options
         let quiz_answer: Int = quiz.quiz_answer
@@ -239,8 +239,11 @@ class QuizViewController: UIViewController {
                 print("Error: cannot create jsonData")
             }
             
-            let urlStr = "http://54.255.245.23:3000/team/updateScore"
-            RestAPIManager.asyncHttpPost(jsonData: jsonData, URLStr: urlStr)
+            guard let updateScoreURL = InstanceDAO.serverEndpoints["updateScore"] else {
+                print("Unable to get server endpoint for updateScoreURL")
+                return
+            }
+            RestAPIManager.asyncHttpPost(jsonData: jsonData, URLStr: updateScoreURL)
             
             // Update CompletedList & isFirstTime check
             InstanceDAO.completedList.append(hotspot)

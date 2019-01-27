@@ -8,6 +8,8 @@
 
 import UIKit
 import Foundation
+import GoogleMaps
+import GooglePlaces
     
 struct InstanceDAO {
     
@@ -15,6 +17,23 @@ struct InstanceDAO {
     static var trail_instance_id: String = "defaultId"
     static var username: String = "defaultName"
     static var completedList: Array<String> = Array()
+    
+    static var serverEndpoints: [String:String] = [
+        "getInstanceId" : "http://54.255.245.23:3000/getInstance",
+        "registerUser" : "http://54.255.245.23:3000/user/register",
+        "getStartingHotspots" : "http://54.255.245.23:3000/team/startingHotspot?trail_instance_id=",
+        "getAllHotspots" : "http://54.255.245.23:3000/hotspot/getAllHotspots?trail_instance_id=",
+        "getAllQuizzes" : "http://54.255.245.23:3000/quiz/getQuizzes?trail_instance_id=",
+        "getAllSelfies" : "http://54.255.245.23:3000/upload/getSubmissionQuestion?trail_instance_id=",
+        "getAllAnagrams" : "http://54.255.245.23:3000/anagram/getAnagrams?trail_instance_id=",
+        "getAllDragAndDrops" : "http://54.255.245.23:3000/draganddrop/getDragAndDrop?trail_instance_id=",
+        "uploadSubmission" : "http://54.255.245.23:3000/upload/uploadSubmission",
+        "updateScore" : "http://54.255.245.23:3000/team/updateScore",
+        "getAllSubmissionsURL" : "http://54.255.245.23:3000/upload/getAllSubmissionURL?team=",
+        "getSubmission" : "http://54.255.245.23:3000/upload/getSubmission?url=",
+        "getLeaderboard" : "http://54.255.245.23:3000/team/hotspotStatus?trail_instance_id="
+    ]
+    
     
     // Key: Hotspot name, Value: Hotspot object
     static var hotspotDict: [String:Hotspot] = [:]
@@ -28,8 +47,13 @@ struct InstanceDAO {
     // Key: Hotspot name, Value: Anagram Word
     static var anagramDict: [String:String] = [:]
     
+    // Key: Hotspot name, Value: DragAndDrop object
+    static var dragAndDropDict: [String:DragAndDrop] = [:]
+    
     // Key: Hotspot name, Value: ImageURL Object
     static var urlDict: [String:ImageURL] = [:]
+    
+    // For Submissions
     static var submissions: [Media] = []
     
     // Key: Team number, Value: hotspot name
@@ -55,13 +79,6 @@ struct Hotspot: Decodable{ //create a Hotspot class use for the jsondecoder
 struct HotspotQuiz: Decodable{
     
     let hotspot: String
-    
-    struct Quiz: Decodable{
-        let quiz_question: String
-        let quiz_answer: Int
-        let quiz_options: [String]
-    }
-    
     let quiz: [Quiz]
     
 }
@@ -103,6 +120,20 @@ struct Activity: Decodable{
         self.hotspot = hotspot
         self.time = time
     }
+}
+
+struct DragAndDrop: Decodable{
+    
+    let hotspot: String
+    let drag_and_drop: [QnA]
+
+}
+
+struct QnA: Decodable{
+    
+    let drag_and_drop_question: String
+    let drag_and_drop_answer: String
+    
 }
 
 struct Anagram: Decodable{

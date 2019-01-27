@@ -22,7 +22,6 @@ class MapController: UIViewController, GMSMapViewDelegate {
     
     override func viewDidLoad() {
         
-        locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.distanceFilter = 50
@@ -57,6 +56,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         print("View Did Appear Map Controller")
+        
         initiateHotspots()
     }
     

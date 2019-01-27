@@ -37,9 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let username = def.string(forKey: "username")
         
         //Retrieve all usernames from DB to check if user has entered before
-        let jsonUrlString = "http://54.255.245.23:3000/user/retrieveAllUsers"
+        let retrieveUsernamesURL = "http://54.255.245.23:3000/user/retrieveAllUsers"
         
-        let usernameDict = RestAPIManager.syncHttpGet(URLStr: jsonUrlString)
+        let usernameDict = RestAPIManager.syncHttpGet(URLStr: retrieveUsernamesURL)
         
         //Process Response
         if let usernameArr = usernameDict["username"] as? [String]{
@@ -62,18 +62,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = initialViewController
             window?.makeKeyAndVisible()
         }else{
-            // Get trail instance id from DB and store in DAO
-            let jsonUrlString = "http://54.255.245.23:3000/getInstance"
-            
-            let responseDict = RestAPIManager.syncHttpGet(URLStr: jsonUrlString)
-            
-            //Process response
-            let trail_instance_id = responseDict["trail_instance_id"] as? String
-            if let id = trail_instance_id {
-                print(id)
-                InstanceDAO.trail_instance_id = id
-            }
-            
             let initialViewController = storyboard.instantiateViewController(withIdentifier: "LoginTrailController")
             window?.rootViewController = initialViewController
             window?.makeKeyAndVisible()

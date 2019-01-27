@@ -36,13 +36,16 @@ class SubmissionViewController: UIViewController {
     func loadImages(){
         
         // get image urls
-        let urlForImages = "http://54.255.245.23:3000/upload/getAllSubmissionURL?team=" + InstanceDAO.team_id + "&trail_instance_id=" + InstanceDAO.trail_instance_id
+        guard let getImagePathsURL = InstanceDAO.serverEndpoints["getAllSubmissionsURL"] else {
+            print("Unable to get server endpoint for getImagePathsURL")
+            return
+        }
         
         let group = DispatchGroup()
         group.enter()
         
         DispatchQueue.main.async {
-            RestAPIManager.httpGetImageURLs(URLStr: urlForImages)
+            RestAPIManager.httpGetImageURLs(URLStr: getImagePathsURL + InstanceDAO.team_id + "&trail_instance_id=" + InstanceDAO.trail_instance_id)
             
             print("FINISHED RETRIEVING URLS")
             let urlDict = InstanceDAO.urlDict
@@ -57,10 +60,13 @@ class SubmissionViewController: UIViewController {
                     let hotspot = value.hotspot
                     let question = value.question
                     
-                    let url = "http://54.255.245.23:3000/upload/getSubmission?url=" + value.submissionURL
-                    print(url)
+                    guard let getImageURL = InstanceDAO.serverEndpoints["getSubmission"] else {
+                        print("Unable to get server endpoint for getImageURL")
+                        return
+                    }
+
                     // Get image
-                    RestAPIManager.httpGetImage(URLStr: url, hotspot: hotspot, question: question)
+                    RestAPIManager.httpGetImage(URLStr: getImageURL + value.submissionURL, hotspot: hotspot, question: question)
                     
                 }
                 

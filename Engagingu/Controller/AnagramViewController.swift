@@ -63,8 +63,11 @@ class AnagramViewController: UIViewController, UITextFieldDelegate {
                     print("Error: cannot create jsonData")
                 }
                 
-                let urlStr = "http://54.255.245.23:3000/team/updateScore"
-                RestAPIManager.asyncHttpPost(jsonData: jsonData, URLStr: urlStr)
+                guard let updateScoreURL = InstanceDAO.serverEndpoints["updateScore"]else {
+                    print("Unable to get server endpoint for updateScoreURL")
+                    return
+                }
+                RestAPIManager.asyncHttpPost(jsonData: jsonData, URLStr: updateScoreURL)
                 
                 // Update CompletedList & isFirstTime check
                 InstanceDAO.completedList.append(self.hotspot)

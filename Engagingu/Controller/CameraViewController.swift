@@ -18,15 +18,14 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     var imagePickerController: UIImagePickerController?
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+         // Do any additional setup after loading the view.
+       
         question = InstanceDAO.selfieDict[hotspot] ?? ""
         selfieQuestion.text = question
         
         imagePickerController = UIImagePickerController()
         imagePickerController!.delegate = self
-        
-        super.viewDidLoad()
-         // Do any additional setup after loading the view.
-       
     }
     
     @IBAction func chooseImage(_ sender: Any) {
@@ -62,9 +61,12 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         if image != nil{
             
-            let urlString = "http://54.255.245.23:3000/upload/uploadSubmission"
+            guard let uploadSubmissionURL = InstanceDAO.serverEndpoints["uploadSubmission"] else {
+                print("Unable to get server endpoint for uploadSubmission")
+                return
+            }
             
-            guard let url = URL(string: urlString) else {
+            guard let url = URL(string: uploadSubmissionURL) else {
                 print("URL cannot be generated from URLStr")
                 return
             }

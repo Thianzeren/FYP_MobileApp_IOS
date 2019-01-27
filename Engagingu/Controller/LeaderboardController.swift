@@ -22,13 +22,16 @@ class LeaderboardController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let urlGetLeaderboard = "http://54.255.245.23:3000/team/hotspotStatus?trail_instance_id=175239"
+        guard let getLeaderboardURL = InstanceDAO.serverEndpoints["getLeaderboard"] else {
+            print("Unable to get server endpoint for getLeaderboard")
+            return
+        }
         
         let group = DispatchGroup()
         group.enter()
         
         DispatchQueue.main.async {
-            RestAPIManager.httpGetLeaderboard(URLStr: urlGetLeaderboard)
+            RestAPIManager.httpGetLeaderboard(URLStr: getLeaderboardURL + InstanceDAO.trail_instance_id)
             
             let leaderboardDict = InstanceDAO.leaderboardDict
             

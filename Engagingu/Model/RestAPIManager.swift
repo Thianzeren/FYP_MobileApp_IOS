@@ -208,7 +208,7 @@ class RestAPIManager {
     
     static func httpGetHotspots(URLStr: String){
         
-        let semaphore = DispatchSemaphore(value: 0)
+//        let semaphore = DispatchSemaphore(value: 0)
         
         guard let url = URL(string: URLStr) else { return }
         
@@ -217,7 +217,7 @@ class RestAPIManager {
             //check response status ok
             
             guard let data = data else {
-                semaphore.signal()
+//                semaphore.signal()
                 return
             }
             
@@ -232,16 +232,16 @@ class RestAPIManager {
 //                print("HOTSPOT")
 //                print(InstanceDAO.hotspotDict)
                 
-                semaphore.signal()
+//                semaphore.signal()
             } catch let jsonErr{
                 print("Error serializing json:", jsonErr)
-                semaphore.signal()
+//                semaphore.signal()
             }
             
             
         }.resume()
         
-        semaphore.wait()
+//        semaphore.wait()
         
     }
     
@@ -337,7 +337,7 @@ class RestAPIManager {
     
     static func httpGetImageURLs(URLStr: String){
         
-        let semaphore = DispatchSemaphore(value: 0)
+//        let semaphore = DispatchSemaphore(value: 0)
         
         guard let url = URL(string: URLStr) else { return }
         
@@ -346,7 +346,7 @@ class RestAPIManager {
             //check response status ok
             
             guard let data = data else {
-                semaphore.signal
+//                semaphore.signal
                 return
             }
             
@@ -360,23 +360,23 @@ class RestAPIManager {
                 
                 print("IMAGEURLS")
                 print(InstanceDAO.urlDict)
-                semaphore.signal()
+//                semaphore.signal()
                 
             } catch let jsonErr{
                 print("Error serializing json:", jsonErr)
-                semaphore.signal()
+//                semaphore.signal()
             }
             
             
         }.resume()
         
-        semaphore.wait()
+//        semaphore.wait()
         
     }
     
     static func httpGetImage(URLStr: String, hotspot: String, question: String){
         
-        let semaphore = DispatchSemaphore(value: 0)
+//        let semaphore = DispatchSemaphore(value: 0)
         
         guard let url = URL(string: URLStr) else {
             print("URL CANNOT BE CREATED")
@@ -390,27 +390,27 @@ class RestAPIManager {
             
             guard let data = data else {
                 print("NO DATA RETRIEVED")
-                semaphore.signal()
+//                semaphore.signal()
                 return
             }
 
             InstanceDAO.submissions.append(Media(withImage: UIImage(data: data)!, forKey: "image", hotspot: hotspot, question: question)!)
             
-            semaphore.signal()
+//            semaphore.signal()
             
             
         }.resume()
         
-        semaphore.wait()
+//        semaphore.wait()
         
     }
 
     static func httpGetLeaderboard(URLStr: String){
         
-        let semaphore = DispatchSemaphore(value: 0)
+//        let semaphore = DispatchSemaphore(value: 0)
         
         guard let url = URL(string: URLStr) else {
-            semaphore.signal()
+//            semaphore.signal()
             return
         }
 
@@ -419,7 +419,7 @@ class RestAPIManager {
             //check response status ok
 
             guard let data = data else {
-                semaphore.signal()
+//                semaphore.signal()
                 return
             }
 
@@ -434,7 +434,7 @@ class RestAPIManager {
                 print("LEADERBOARD")
                 print(InstanceDAO.leaderboardDict)
                 
-                semaphore.signal()
+//                semaphore.signal()
 
             } catch let jsonErr{
                 print("Error serializing json:", jsonErr)
@@ -443,19 +443,16 @@ class RestAPIManager {
 
         }.resume()
         
-        semaphore.wait()
+//        semaphore.wait()
 
     }
     
     static func httpGetAnagram(URLStr: String){
         
-        print("ANAGRAMURL")
-        print(URLStr)
-        
-        let semaphore = DispatchSemaphore(value: 0)
+//        let semaphore = DispatchSemaphore(value: 0)
         
         guard let url = URL(string: URLStr) else {
-            semaphore.signal()
+//            semaphore.signal()
             print("URL cannot be created")
             return
         }
@@ -465,7 +462,7 @@ class RestAPIManager {
             //check response status ok
             
             guard let data = data else {
-                semaphore.signal()
+//                semaphore.signal()
                 print("No data available")
                 return
             }
@@ -481,7 +478,7 @@ class RestAPIManager {
                 print("ANAGRAM")
                 print(InstanceDAO.anagramDict)
                 
-                semaphore.signal()
+//                semaphore.signal()
                 
             } catch let jsonErr{
                 print("Error serializing json:", jsonErr)
@@ -490,7 +487,51 @@ class RestAPIManager {
             
         }.resume()
         
-        semaphore.wait()
+//        semaphore.wait()
+        
+    }
+    
+    static func httpGetDragAndDrop(URLStr: String){
+        
+//        let semaphore = DispatchSemaphore(value: 0)
+        
+        guard let url = URL(string: URLStr) else {
+//            semaphore.signal()
+            print("URL cannot be created")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url){(data, response, error) in
+            //check error
+            //check response status ok
+            
+            guard let data = data else {
+//                semaphore.signal()
+                print("No data available")
+                return
+            }
+            
+            do {
+                let dragAndDrops = try
+                    JSONDecoder().decode([DragAndDrop].self, from: data)
+                
+                for dragAndDrop in dragAndDrops{
+                    InstanceDAO.dragAndDropDict[dragAndDrop.hotspot] = dragAndDrop
+                }
+                
+                print("DRAG AND DROP")
+                print(InstanceDAO.dragAndDropDict)
+                
+//                semaphore.signal()
+                
+            } catch let jsonErr{
+                print("Error serializing json:", jsonErr)
+            }
+            
+            
+            }.resume()
+        
+//        semaphore.wait()
         
     }
 }

@@ -19,7 +19,6 @@ extension UITextField{
     }
 }
 
-
 class LoginTrailController: UIViewController, UITextFieldDelegate {
    
     @IBOutlet weak var trailIDPin: UITextField!
@@ -47,11 +46,28 @@ class LoginTrailController: UIViewController, UITextFieldDelegate {
         
         let trailID = trailIDPin.text!
         
+        // Get trail instance id from DB and store in DAO
+        guard let getInstanceIdURL = InstanceDAO.serverEndpoints["getInstanceId"] else{
+            print("Unable to get server endpoint for getInstanceId")
+            return
+        }
+        
+        let responseDict = RestAPIManager.syncHttpGet(URLStr: getInstanceIdURL)
+        
+        //Process response
+        let trail_instance_id = responseDict["trail_instance_id"] as? String
+        if let id = trail_instance_id {
+            print(id)
+            InstanceDAO.trail_instance_id = id
+        }
+        
         // Shortcut to camera for testing
         if(trailID == "camera"){
             performSegue(withIdentifier: "toCameraSegue", sender: nil)
         }
-        
+        if(trailID == "dragdrop"){
+            performSegue(withIdentifier: "toDragAndDropSegue", sender: nil)
+        }
         // Remember to remove "fypadmin" checl
         if(trailID == InstanceDAO.trail_instance_id || trailID == "fypadmin"){
             performSegue(withIdentifier: "toNameSegue", sender: nil)

@@ -29,21 +29,26 @@ class NarrativeViewController: UIViewController {
         //topNavBar.title = "EngagingU"
         // Do any additional setup after loading the view.
         
-        
-        
     }
     
     @IBAction func startMission(_ sender: Any) {
+        
         print("HEADER TEXT")
         print(headerText)
         
         if(InstanceDAO.quizDict[headerText] != nil){
             performSegue(withIdentifier: "toQuizSegue", sender: nil)
-        }else if(InstanceDAO.selfieDict[headerText] != nil){
-            performSegue(withIdentifier: "toCameraSegue", sender: nil)
-        }else if(InstanceDAO.anagramDict[headerText] != nil){
-            performSegue(withIdentifier: "toAnagramSegue", sender: nil)
         }
+//        else if(InstanceDAO.selfieDict[headerText] != nil){
+//            performSegue(withIdentifier: "toCameraSegue", sender: nil)
+//        }
+        else if(InstanceDAO.anagramDict[headerText] != nil){
+            performSegue(withIdentifier: "toAnagramSegue", sender: nil)
+        }else if(InstanceDAO.dragAndDropDict[headerText] != nil){
+            print("To Drag and drop")
+            performSegue(withIdentifier: "toDragAndDropSegue", sender: nil)
+        }
+        
     }
     //Allow scrolliing after first line shown
     override func viewDidAppear(_ animated: Bool) {
@@ -76,6 +81,10 @@ class NarrativeViewController: UIViewController {
             destVC.hiddenWord = InstanceDAO.anagramDict[headerText] ?? ""
             destVC.clue = ""
             
+        }else if(segue.identifier == "toDragAndDropSegue"){
+            
+            print("DRAG AND DROP")
+            print(InstanceDAO.dragAndDropDict)
             
         }
         
