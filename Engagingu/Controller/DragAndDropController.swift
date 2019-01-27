@@ -50,17 +50,17 @@ class DragAndDropController: UIViewController {
         dragTextView3.isUserInteractionEnabled = true
         dragTextView4.isUserInteractionEnabled = true
         
-        // Add Drag Interaction
-        dragTextView1.addInteraction(UIDragInteraction(delegate: self))
-        dragTextView2.addInteraction(UIDragInteraction(delegate: self))
-        dragTextView3.addInteraction(UIDragInteraction(delegate: self))
-        dragTextView4.addInteraction(UIDragInteraction(delegate: self))
-        
-        // Add Drop Interaction
-        dropTextView1.addInteraction(UIDropInteraction(delegate: self))
-        dropTextView2.addInteraction(UIDropInteraction(delegate: self))
-        dropTextView3.addInteraction(UIDropInteraction(delegate: self))
-        dropTextView4.addInteraction(UIDropInteraction(delegate: self))
+//        // Add Drag Interaction
+//        dragTextView1.addInteraction(UIDragInteraction(delegate: self))
+//        dragTextView2.addInteraction(UIDragInteraction(delegate: self))
+//        dragTextView3.addInteraction(UIDragInteraction(delegate: self))
+//        dragTextView4.addInteraction(UIDragInteraction(delegate: self))
+//
+//        // Add Drop Interaction
+//        dropTextView1.addInteraction(UIDropInteraction(delegate: self))
+//        dropTextView2.addInteraction(UIDropInteraction(delegate: self))
+//        dropTextView3.addInteraction(UIDropInteraction(delegate: self))
+//        dropTextView4.addInteraction(UIDropInteraction(delegate: self))
         
         
     }
@@ -100,4 +100,4 @@ class DragAndDropController: UIViewController {
 //        
 //    }
     
-}
+//}
