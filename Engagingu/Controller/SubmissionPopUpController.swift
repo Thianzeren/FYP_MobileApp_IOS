@@ -18,6 +18,7 @@ class SubmissionPopUpController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hidePopUp()
         
     }
     
@@ -42,6 +43,13 @@ class SubmissionPopUpController: UIViewController {
                 }
         })
         
+    }
+    func hidePopUp(){
+        let Tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissPopUp))
+        view.addGestureRecognizer(Tap)
+    }
+    @objc func dismissPopUp(){
+        dismiss(animated: false, completion: nil)
     }
     
 }

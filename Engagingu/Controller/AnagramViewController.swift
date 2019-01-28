@@ -42,7 +42,7 @@ class AnagramViewController: UIViewController, UITextFieldDelegate {
     @IBAction func submitAnswer(_ sender: Any) {
         
         // Check if input is same as hidden word
-        if(wordInput.text == hiddenWord){
+        if(wordInput.text?.lowercased() == hiddenWord){
             //Send score to database
             
             //display alert for correct word & perform segue back to tab bar

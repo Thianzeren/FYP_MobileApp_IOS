@@ -26,6 +26,8 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         imagePickerController = UIImagePickerController()
         imagePickerController!.delegate = self
+        //centralised the questions 
+        selfieQuestion.textContainerInset = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
     }
     
     @IBAction func chooseImage(_ sender: Any) {

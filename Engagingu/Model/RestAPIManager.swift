@@ -337,7 +337,7 @@ class RestAPIManager {
     
     static func httpGetImageURLs(URLStr: String){
         
-//        let semaphore = DispatchSemaphore(value: 0)
+        let semaphore = DispatchSemaphore(value: 0)
         
         guard let url = URL(string: URLStr) else { return }
         
@@ -346,7 +346,7 @@ class RestAPIManager {
             //check response status ok
             
             guard let data = data else {
-//                semaphore.signal
+                semaphore.signal
                 return
             }
             
@@ -360,23 +360,23 @@ class RestAPIManager {
                 
                 print("IMAGEURLS")
                 print(InstanceDAO.urlDict)
-//                semaphore.signal()
+                semaphore.signal()
                 
             } catch let jsonErr{
                 print("Error serializing json:", jsonErr)
-//                semaphore.signal()
+                semaphore.signal()
             }
             
             
         }.resume()
         
-//        semaphore.wait()
+        semaphore.wait()
         
     }
     
     static func httpGetImage(URLStr: String, hotspot: String, question: String){
         
-//        let semaphore = DispatchSemaphore(value: 0)
+        let semaphore = DispatchSemaphore(value: 0)
         
         guard let url = URL(string: URLStr) else {
             print("URL CANNOT BE CREATED")
@@ -390,27 +390,27 @@ class RestAPIManager {
             
             guard let data = data else {
                 print("NO DATA RETRIEVED")
-//                semaphore.signal()
+                semaphore.signal()
                 return
             }
 
             InstanceDAO.submissions.append(Media(withImage: UIImage(data: data)!, forKey: "image", hotspot: hotspot, question: question)!)
             
-//            semaphore.signal()
+            semaphore.signal()
             
             
         }.resume()
         
-//        semaphore.wait()
+        semaphore.wait()
         
     }
 
     static func httpGetLeaderboard(URLStr: String){
         
-//        let semaphore = DispatchSemaphore(value: 0)
+        let semaphore = DispatchSemaphore(value: 0)
         
         guard let url = URL(string: URLStr) else {
-//            semaphore.signal()
+           semaphore.signal()
             return
         }
 
@@ -419,7 +419,7 @@ class RestAPIManager {
             //check response status ok
 
             guard let data = data else {
-//                semaphore.signal()
+               semaphore.signal()
                 return
             }
 
@@ -434,7 +434,7 @@ class RestAPIManager {
                 print("LEADERBOARD")
                 print(InstanceDAO.leaderboardDict)
                 
-//                semaphore.signal()
+                semaphore.signal()
 
             } catch let jsonErr{
                 print("Error serializing json:", jsonErr)
@@ -443,7 +443,7 @@ class RestAPIManager {
 
         }.resume()
         
-//        semaphore.wait()
+        semaphore.wait()
 
     }
     

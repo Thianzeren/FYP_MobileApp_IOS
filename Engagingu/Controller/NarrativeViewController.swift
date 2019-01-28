@@ -39,9 +39,9 @@ class NarrativeViewController: UIViewController {
         if(InstanceDAO.quizDict[headerText] != nil){
             performSegue(withIdentifier: "toQuizSegue", sender: nil)
         }
-//        else if(InstanceDAO.selfieDict[headerText] != nil){
-//            performSegue(withIdentifier: "toCameraSegue", sender: nil)
-//        }
+        else if(InstanceDAO.selfieDict[headerText] != nil){
+            performSegue(withIdentifier: "toCameraSegue", sender: nil)
+        }
         else if(InstanceDAO.anagramDict[headerText] != nil){
             performSegue(withIdentifier: "toAnagramSegue", sender: nil)
         }else if(InstanceDAO.dragAndDropDict[headerText] != nil){
