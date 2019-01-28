@@ -12,7 +12,7 @@ class QuizViewController: UIViewController {
 
     //@IBOutlet weak var topNavBar: UINavigationBar!
     @IBOutlet weak var question: UITextView!
-    
+    @IBOutlet weak var questionViewHC : NSLayoutConstraint!
     // Outlet for buttons
     /*
     @IBOutlet weak var firstAnswer: UIButton!
@@ -69,6 +69,9 @@ class QuizViewController: UIViewController {
         updateQuiz()
         
         super.viewDidLoad()
+        
+        //Self adjust the height of the question
+        questionViewHC.constant = self.question.contentSize.height
         
        
     }

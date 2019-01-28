@@ -12,6 +12,7 @@
 		5D31BF4900488589D5682B03 /* Pods_EngaginguUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F218129057F039B1BDFE358B /* Pods_EngaginguUITests.framework */; };
 		AF2AF80421FE909200B75A50 /* Pencil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2AF80321FE909100B75A50 /* Pencil.swift */; };
 		AF2AF80621FE90AA00B75A50 /* DrawingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2AF80521FE90AA00B75A50 /* DrawingController.swift */; };
+		AF2AF80821FED09000B75A50 /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF2AF80721FED08F00B75A50 /* RobotoCondensed-Bold.ttf */; };
 		AF3DBCEF21F7077E005FBE40 /* TutorialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3DBCEE21F7077E005FBE40 /* TutorialController.swift */; };
 		AF6C8B42218D4CDF006AC6C0 /* LoginTrailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C8B3F218D4CDF006AC6C0 /* LoginTrailController.swift */; };
 		AF6C8B43218D4CDF006AC6C0 /* LoginNameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C8B40218D4CDF006AC6C0 /* LoginNameController.swift */; };
@@ -82,6 +83,7 @@
 		9E4318A0C78FB865C1DE9961 /* Pods-Engagingu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Engagingu.release.xcconfig"; path = "Pods/Target Support Files/Pods-Engagingu/Pods-Engagingu.release.xcconfig"; sourceTree = "<group>"; };
 		AF2AF80321FE909100B75A50 /* Pencil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pencil.swift; sourceTree = "<group>"; };
 		AF2AF80521FE90AA00B75A50 /* DrawingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingController.swift; sourceTree = "<group>"; };
+		AF2AF80721FED08F00B75A50 /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
 		AF3DBCEE21F7077E005FBE40 /* TutorialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialController.swift; sourceTree = "<group>"; };
 		AF6C8B3F218D4CDF006AC6C0 /* LoginTrailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTrailController.swift; sourceTree = "<group>"; };
 		AF6C8B40218D4CDF006AC6C0 /* LoginNameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNameController.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				AFAF5FAF21EF8DE800E29FD1 /* roboto-condensed.light.ttf */,
+				AF2AF80721FED08F00B75A50 /* RobotoCondensed-Bold.ttf */,
 				AFAF5FAE21EF8DC300E29FD1 /* roboto-condensed.regular.ttf */,
 			);
 			path = Fonts;
@@ -450,6 +453,7 @@
 				AF78DD162189879600B0CF10 /* LaunchScreen.storyboard in Resources */,
 				E106B49A21C3BE35001DEB88 /* Podfile in Resources */,
 				E1F5132721BFA05700964726 /* Assets.xcassets in Resources */,
+				AF2AF80821FED09000B75A50 /* RobotoCondensed-Bold.ttf in Resources */,
 				AFAF5FB021EF8DE800E29FD1 /* roboto-condensed.light.ttf in Resources */,
 				AFAF5FB121EF8E0300E29FD1 /* roboto-condensed.regular.ttf in Resources */,
 			);
