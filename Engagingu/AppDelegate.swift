@@ -43,10 +43,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Process Response
         if let usernameArr = usernameDict["username"] as? [String]{
-            print(team_id)
-            print(trail_instance_id)
-            print(username)
-            print(usernameArr.contains(username ?? ""))
+//            print(team_id)
+//            print(trail_instance_id)
+//            print(username)
+//            print(usernameArr.contains(username ?? ""))
             
             if !(team_id ?? "").isEmpty && !(trail_instance_id ?? "").isEmpty && (usernameArr.contains(username ?? "")){
                 wasLoggedIn = true

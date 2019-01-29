@@ -55,7 +55,7 @@ class SubmissionViewController: UIViewController {
                 InstanceDAO.submissions.removeAll()
                 
                 // Iterate through image URLs to get images
-                for (key,value) in urlDict{
+                for (_,value) in urlDict{
                     
                     let hotspot = value.hotspot
                     let question = value.question

@@ -83,8 +83,8 @@ class NarrativeViewController: UIViewController {
             
         }else if(segue.identifier == "toDragAndDropSegue"){
             
-            print("DRAG AND DROP")
-            print(InstanceDAO.dragAndDropDict)
+            let destVC = segue.destination as! DragAndDropController
+            destVC.hotspot = headerText
             
         }
         

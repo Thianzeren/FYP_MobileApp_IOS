@@ -68,6 +68,9 @@ class LoginTrailController: UIViewController, UITextFieldDelegate {
         if(trailID == "dragdrop"){
             performSegue(withIdentifier: "toDragAndDropSegue", sender: nil)
         }
+        if(trailID == "drawing"){
+            performSegue(withIdentifier: "toDrawingSegue", sender: nil)
+        }
         // Remember to remove "fypadmin" checl
         if(trailID == InstanceDAO.trail_instance_id || trailID == "fypadmin"){
             performSegue(withIdentifier: "toNameSegue", sender: nil)

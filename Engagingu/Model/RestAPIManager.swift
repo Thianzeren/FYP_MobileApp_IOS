@@ -32,8 +32,8 @@ class RestAPIManager {
             
             //Debug Print
             let jsonStr = String(data:data, encoding: .utf8)
-            print("Json Response")
-            print(jsonStr)
+//            print("Json Response")
+//            print(jsonStr)
             
             do{
                 guard let resultDict = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:Any] else {
@@ -134,8 +134,8 @@ class RestAPIManager {
             
             //Debug Print
             let jsonStr = String(data:data, encoding: .utf8)
-            print("Json Response")
-            print(jsonStr)
+//            print("Json Response")
+//            print(jsonStr)
             
             do{
                 guard let resultDict = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:Any] else {

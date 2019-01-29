@@ -125,6 +125,7 @@ struct Activity: Decodable{
 struct DragAndDrop: Decodable{
     
     let hotspot: String
+    let question: String
     let drag_and_drop: [QnA]
 
 }
