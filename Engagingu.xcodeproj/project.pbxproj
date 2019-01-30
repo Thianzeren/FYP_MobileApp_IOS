@@ -55,6 +55,7 @@
 		E1A67DE921944C6B00581D1C /* TeamAllocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A67DE821944C6B00581D1C /* TeamAllocationController.swift */; };
 		E1B5928021E597E600643DF7 /* SubmissionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B5927F21E597E600643DF7 /* SubmissionTableViewCell.swift */; };
 		E1DE91D2219085D70035ED9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1DE91D0219085D70035ED9C /* Main.storyboard */; };
+		E1E945C622015C0B005E7E1A /* DragAndDropController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E945C522015C0B005E7E1A /* DragAndDropController.swift */; };
 		E1F5132721BFA05700964726 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1F5132621BFA05700964726 /* Assets.xcassets */; };
 		E1F5133821BFC24B00964726 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F5133721BFC24B00964726 /* MapController.swift */; };
 /* End PBXBuildFile section */
@@ -134,6 +135,7 @@
 		E1A67DE821944C6B00581D1C /* TeamAllocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamAllocationController.swift; sourceTree = "<group>"; };
 		E1B5927F21E597E600643DF7 /* SubmissionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionTableViewCell.swift; sourceTree = "<group>"; };
 		E1DE91D1219085D70035ED9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E1E945C522015C0B005E7E1A /* DragAndDropController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragAndDropController.swift; sourceTree = "<group>"; };
 		E1F5132621BFA05700964726 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1F5133721BFC24B00964726 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		E7D6C2F4782D9AAC5A1258D8 /* Pods_EngaginguTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EngaginguTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -292,12 +294,10 @@
 			children = (
 				AF6C8B3F218D4CDF006AC6C0 /* LoginTrailController.swift */,
 				AF6C8B40218D4CDF006AC6C0 /* LoginNameController.swift */,
-				AF6C8B41218D4CDF006AC6C0 /* CameraViewController.swift */,
+				AF3DBCEE21F7077E005FBE40 /* TutorialController.swift */,
 				E1A67DE821944C6B00581D1C /* TeamAllocationController.swift */,
-				E1F5133721BFC24B00964726 /* MapController.swift */,
 				E176A13D21C1487F005A5C30 /* TabBarController.swift */,
-				E176A14121C290E1005A5C30 /* QuizViewController.swift */,
-				E176A14321C2936D005A5C30 /* NarrativeViewController.swift */,
+				E1F5133721BFC24B00964726 /* MapController.swift */,
 				E10D9FB321DF042900C6D682 /* SubmissionViewController.swift */,
 				E1B5927F21E597E600643DF7 /* SubmissionTableViewCell.swift */,
 				E1500BC521EECB0F0032E8FA /* SubmissionPopUpController.swift */,
@@ -305,8 +305,11 @@
 				E12FEFA421F2F3090074F877 /* LeaderboardTableViewCell.swift */,
 				E12FEFA221F2ECFA0074F877 /* ActivityFeedController.swift */,
 				E12FEFA621F2F3210074F877 /* ActivityFeedTableViewCell.swift */,
-				AF3DBCEE21F7077E005FBE40 /* TutorialController.swift */,
+				E176A14321C2936D005A5C30 /* NarrativeViewController.swift */,
+				E176A14121C290E1005A5C30 /* QuizViewController.swift */,
+				AF6C8B41218D4CDF006AC6C0 /* CameraViewController.swift */,
 				E124529121F8B9E20036AC87 /* AnagramViewController.swift */,
+				E1E945C522015C0B005E7E1A /* DragAndDropController.swift */,
 				AF2AF80521FE90AA00B75A50 /* DrawingController.swift */,
 				AF2AF80321FE909100B75A50 /* Pencil.swift */,
 			);
@@ -613,6 +616,7 @@
 				E1F5133821BFC24B00964726 /* MapController.swift in Sources */,
 				E124529221F8B9E20036AC87 /* AnagramViewController.swift in Sources */,
 				AF2AF80621FE90AA00B75A50 /* DrawingController.swift in Sources */,
+				E1E945C622015C0B005E7E1A /* DragAndDropController.swift in Sources */,
 				AF2AF80421FE909200B75A50 /* Pencil.swift in Sources */,
 				AF6C8B44218D4CDF006AC6C0 /* CameraViewController.swift in Sources */,
 				E1B5928021E597E600643DF7 /* SubmissionTableViewCell.swift in Sources */,
