@@ -793,62 +793,96 @@
                                 <rect key="frame" x="20" y="599" width="28" height="137"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Black"/>
+                                <connections>
+                                    <action selector="pencilPressed:" destination="tfc-RG-dNG" eventType="touchUpInside" id="Q6v-YQ-Ltb"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Laj-ML-qzq">
                                 <rect key="frame" x="42" y="599" width="28" height="137"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Grey"/>
+                                <connections>
+                                    <action selector="pencilPressed:" destination="tfc-RG-dNG" eventType="touchUpInside" id="Hnk-cC-Ru1"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I3v-Qa-SX0">
                                 <rect key="frame" x="65" y="599" width="28" height="137"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Red"/>
+                                <connections>
+                                    <action selector="pencilPressed:" destination="tfc-RG-dNG" eventType="touchUpInside" id="G9d-rF-E6o"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETd-iJ-whZ">
                                 <rect key="frame" x="87" y="599" width="28" height="137"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Blue"/>
+                                <connections>
+                                    <action selector="pencilPressed:" destination="tfc-RG-dNG" eventType="touchUpInside" id="SwI-2q-Yxq"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFM-7A-9XM">
                                 <rect key="frame" x="111" y="599" width="28" height="137"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="LightBlue"/>
+                                <connections>
+                                    <action selector="pencilPressed:" destination="tfc-RG-dNG" eventType="touchUpInside" id="WBw-L5-XDs"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J6y-ap-QJM">
                                 <rect key="frame" x="135" y="599" width="28" height="137"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="DarkGreen"/>
+                                <connections>
+                                    <action selector="pencilPressed:" destination="tfc-RG-dNG" eventType="touchUpInside" id="XLD-ZZ-Mcb"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgW-es-EFs">
                                 <rect key="frame" x="158" y="599" width="28" height="137"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="LightGreen"/>
+                                <connections>
+                                    <action selector="pencilPressed:" destination="tfc-RG-dNG" eventType="touchUpInside" id="BFl-TL-VEY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Msr-V9-bmE">
                                 <rect key="frame" x="181" y="599" width="28" height="137"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Brown"/>
                                 <connections>
-                                    <action selector="pencilPressed:" destination="tfc-RG-dNG" eventType="touchUpInside" id="PLk-D2-bM0"/>
+                                    <action selector="pencilPressed:" destination="tfc-RG-dNG" eventType="touchUpInside" id="kav-W0-2vZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="9" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gb1-Lv-2Ca">
                                 <rect key="frame" x="205" y="599" width="28" height="137"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="DarkOrange"/>
+                                <connections>
+                                    <action selector="pencilPressed:" destination="tfc-RG-dNG" eventType="touchUpInside" id="VLv-Tq-wsG"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Dj-1f-cNn">
                                 <rect key="frame" x="229" y="599" width="28" height="137"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Yellow"/>
+                                <connections>
+                                    <action selector="pencilPressed:" destination="tfc-RG-dNG" eventType="touchUpInside" id="oDK-xK-hIf"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="11" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uus-64-9dr">
                                 <rect key="frame" x="257" y="599" width="28" height="137"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Eraser"/>
+                                <connections>
+                                    <action selector="pencilPressed:" destination="tfc-RG-dNG" eventType="touchUpInside" id="ezV-A3-7vV"/>
+                                </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rTN-CN-FPs">
+                                <rect key="frame" x="0.0" y="141" width="374" height="384"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1Z-b0-zrQ">
-                                <rect key="frame" x="272" y="73" width="122" height="38"/>
+                                <rect key="frame" x="252" y="73" width="122" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.08235294118" green="0.10980392160000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="17"/>
@@ -856,10 +890,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rTN-CN-FPs">
-                                <rect key="frame" x="0.0" y="141" width="374" height="384"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="AOV-ZW-zRH"/>

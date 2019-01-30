@@ -46,37 +46,57 @@ class LoginTrailController: UIViewController, UITextFieldDelegate {
         
         let trailID = trailIDPin.text!
         
-        // Get trail instance id from DB and store in DAO
-        guard let getInstanceIdURL = InstanceDAO.serverEndpoints["getInstanceId"] else{
-            print("Unable to get server endpoint for getInstanceId")
-            return
+        // Load Waiting Screen while retrieving Trail Instance ID from server
+        loadWaitScreen()
+        
+        let group = DispatchGroup()
+        group.enter()
+        
+        DispatchQueue.main.async {
+            // Get trail instance id from server and store in DAO
+            guard let getInstanceIdURL = InstanceDAO.serverEndpoints["getInstanceId"] else{
+                print("Unable to get server endpoint for getInstanceId")
+                return
+            }
+            
+            let responseDict = RestAPIManager.syncHttpGet(URLStr: getInstanceIdURL)
+            
+            //Process response
+            let trail_instance_id = responseDict["trail_instance_id"] as? String
+            if let id = trail_instance_id {
+                print(id)
+                InstanceDAO.trail_instance_id = id
+            }
+            
+            group.leave()
         }
         
-        let responseDict = RestAPIManager.syncHttpGet(URLStr: getInstanceIdURL)
-        
-        //Process response
-        let trail_instance_id = responseDict["trail_instance_id"] as? String
-        if let id = trail_instance_id {
-            print(id)
-            InstanceDAO.trail_instance_id = id
+        group.notify(queue: .main){
+            
+            self.dismiss(animated: true, completion: {
+                
+                // Shortcut to camera for testing
+                if(trailID == "camera"){
+                    self.performSegue(withIdentifier: "toCameraSegue", sender: nil)
+                }
+                if(trailID == "dragdrop"){
+                    self.performSegue(withIdentifier: "toDragAndDropSegue", sender: nil)
+                }
+                if(trailID == "drawing"){
+                    self.performSegue(withIdentifier: "toDrawingSegue", sender: nil)
+                }
+                
+                // Remember to remove "fypadmin" check
+                if(trailID == InstanceDAO.trail_instance_id || trailID == "fypadmin"){
+                    self.performSegue(withIdentifier: "toNameSegue", sender: nil)
+                }else{
+                    self.createAlert(title: "Incorrect or Missing Pin Please Try Again", message: "")
+                }
+                
+            })
+            
         }
         
-        // Shortcut to camera for testing
-        if(trailID == "camera"){
-            performSegue(withIdentifier: "toCameraSegue", sender: nil)
-        }
-        if(trailID == "dragdrop"){
-            performSegue(withIdentifier: "toDragAndDropSegue", sender: nil)
-        }
-        if(trailID == "drawing"){
-            performSegue(withIdentifier: "toDrawingSegue", sender: nil)
-        }
-        // Remember to remove "fypadmin" checl
-        if(trailID == InstanceDAO.trail_instance_id || trailID == "fypadmin"){
-            performSegue(withIdentifier: "toNameSegue", sender: nil)
-        }else{
-            createAlert(title: "Incorrect or Missing Pin Please Try Again", message: "")
-        }
         
     }
 
@@ -87,6 +107,19 @@ class LoginTrailController: UIViewController, UITextFieldDelegate {
             alert.dismiss(animated: true, completion: nil)
         }))
         self.present(alert, animated: true, completion:nil)
+    }
+    
+    func loadWaitScreen() {
+        let alert = UIAlertController(title: nil, message: "Loading...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+        
     }
     
     @objc func keyboardWillChange(notification: Notification){

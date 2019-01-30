@@ -306,10 +306,24 @@ class QuizViewController: UIViewController {
             updateQuiz()
             
             hasSeenCorrectAnswer = false
+            selectedAnswer = 0
             
             confirmText.text = nil
             confirmButton.setTitle("Confirm Answer", for: .normal)
 
+        }else if (selectedAnswer == 0){
+        
+            // create the alert
+            let alert = UIAlertController(title: "Please Select an option", message: "No options were selected", preferredStyle: UIAlertController.Style.alert)
+            
+            // add an action (button)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
+                alert.dismiss(animated: true, completion: nil)
+            }))
+            
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
+            
         }else{
             
             if(selectedAnswer == questionAnswer){
@@ -318,6 +332,7 @@ class QuizViewController: UIViewController {
                 
                 confirmText.text = "Correct"
                 confirmText.textColor = UIColor.green
+                
             }else{
                 
                 if(selectedAnswer == 1){

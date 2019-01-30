@@ -161,7 +161,7 @@ struct Media{
         let date = Date()
         let dateString = dateFormatter.string(from: date)
         
-        self.filename = "selfieTeam\(InstanceDAO.team_id + dateString).jpeg"
+        self.filename = "wefieTeam\(InstanceDAO.team_id + dateString).jpeg"
         
         print(filename)
         

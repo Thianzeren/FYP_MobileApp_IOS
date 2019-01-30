@@ -35,6 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let team_id = def.string(forKey: "team_id")
         let trail_instance_id = def.string(forKey: "trail_instance_id")
         let username = def.string(forKey: "username")
+        let completedList = def.array(forKey: "completedList")
+        let startHotspots = def.dictionary(forKey: "startHotspots")
         
         //Retrieve all usernames from DB to check if user has entered before
         let retrieveUsernamesURL = "http://54.255.245.23:3000/user/retrieveAllUsers"
@@ -59,6 +61,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let initialViewController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
             InstanceDAO.team_id = team_id!
             InstanceDAO.trail_instance_id = trail_instance_id!
+            InstanceDAO.completedList = completedList as? Array<String> ?? []
+            InstanceDAO.startHotspots = startHotspots as? [String:String] ?? [:]
+            
+            // Get hotspot location
+            guard let allHotspotURL = InstanceDAO.serverEndpoints["getAllHotspots"] else {
+                print("Unable to get server endpoint for getAllHotspots")
+                return false
+            }
+            RestAPIManager.httpGetHotspots(URLStr: allHotspotURL + InstanceDAO.trail_instance_id)
+            
+            if let completedList = completedList {
+                
+                if(completedList.count > 0){
+                    InstanceDAO.isFirstTime = false
+                }
+            }
+            
             window?.rootViewController = initialViewController
             window?.makeKeyAndVisible()
         }else{
@@ -79,6 +98,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+        let def = UserDefaults.standard
+        def.set(InstanceDAO.completedList, forKey: "completedList")
+        def.set(InstanceDAO.startHotspots, forKey: "startHotspots")
+        def.synchronize()
+        
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -91,6 +116,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        
+        let def = UserDefaults.standard
+        def.set(InstanceDAO.completedList, forKey: "completedList")
+        def.set(InstanceDAO.startHotspots, forKey: "startHotspots")
+        def.synchronize()
+        
     }
 
 

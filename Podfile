@@ -8,6 +8,7 @@ target 'Engagingu' do
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'Socket.IO-Client-Swift'
+  pod 'SwiftLint'
 
   # Pods for Engagingu
 

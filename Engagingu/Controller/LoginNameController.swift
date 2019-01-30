@@ -100,7 +100,7 @@ class LoginNameController: UIViewController, UITextFieldDelegate {
         RestAPIManager.httpGetDragAndDrop(URLStr: dragAndDropURL + InstanceDAO.trail_instance_id)
         
         // Save to UserDefaults for session
-        // saveCredentialsToSession()
+        saveCredentialsToSession()
         
         // Connect Socket to Server
         SocketHandler.addHandlers()
