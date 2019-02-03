@@ -1131,13 +1131,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team #" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJn-yG-HSQ">
-                                                    <rect key="frame" x="0.0" y="10" width="207" height="20"/>
+                                                    <rect key="frame" x="0.0" y="10" width="187.5" height="20"/>
                                                     <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/9 Completed" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PcP-SV-brH">
-                                                    <rect key="frame" x="207" y="10" width="207" height="20"/>
+                                                    <rect key="frame" x="187.5" y="10" width="187.5" height="20"/>
                                                     <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1216,7 +1216,27 @@
                     <view key="view" contentMode="scaleToFill" id="qBO-hS-YME" customClass="GMSMapView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Ipg-lH-pvH">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="ENGAGING U" largeTitleDisplayMode="never" id="3On-Cg-HnX">
+                                        <barButtonItem key="rightBarButtonItem" title="HELP" image="help_icon" id="srg-aY-jdf">
+                                            <inset key="largeContentSizeImageInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Ipg-lH-pvH" secondAttribute="trailing" id="8Wl-4I-VPY"/>
+                            <constraint firstItem="Ipg-lH-pvH" firstAttribute="top" secondItem="l0Z-mj-pbh" secondAttribute="top" id="aeR-pB-tfp"/>
+                            <constraint firstItem="Ipg-lH-pvH" firstAttribute="leading" secondItem="qBO-hS-YME" secondAttribute="leading" id="rRa-oE-zET"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="l0Z-mj-pbh"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Hotspot" image="Hotspot TabBar" id="AE0-Nb-FYD"/>
@@ -1349,12 +1369,11 @@
             <objects>
                 <viewController id="osV-WK-YJK" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u4U-sf-eid">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u6n-AU-0xM">
+                            <navigationBar contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="u6n-AU-0xM">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <textAttributes key="titleTextAttributes">
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 </textAttributes>
@@ -1366,15 +1385,197 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FAQ" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6L-pQ-t98">
+                                <rect key="frame" x="0.0" y="64" width="375" height="80"/>
+                                <color key="backgroundColor" red="0.08235294118" green="0.10980392160000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="beA-gC-HAV">
+                                <rect key="frame" x="0.0" y="144" width="375" height="807"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YN7-My-wgZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="807"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Which hotspot should I go?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fR-3O-sOi">
+                                                <rect key="frame" x="19" y="10" width="337.5" height="40.5"/>
+                                                <fontDescription key="fontDescription" name="RobotoCondensed-Bold" family="Roboto Condensed" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. I have completed all hotspots. What’s next? " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ho5-K6-JRV">
+                                                <rect key="frame" x="19" y="126" width="337.5" height="40"/>
+                                                <fontDescription key="fontDescription" name="RobotoCondensed-Bold" family="Roboto Condensed" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3. The Mission questions are not found in the narrative. How?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MyS-jN-Wj9">
+                                                <rect key="frame" x="19" y="211.5" width="337.5" height="40.5"/>
+                                                <fontDescription key="fontDescription" name="RobotoCondensed-Bold" family="Roboto Condensed" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4. How do I know if my team is leading?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RPP-3Y-2uh">
+                                                <rect key="frame" x="19" y="327.5" width="337.5" height="40.5"/>
+                                                <fontDescription key="fontDescription" name="RobotoCondensed-Bold" family="Roboto Condensed" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5. What is activity feed for?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKy-f1-qd4">
+                                                <rect key="frame" x="19" y="408.5" width="337.5" height="40"/>
+                                                <fontDescription key="fontDescription" name="RobotoCondensed-Bold" family="Roboto Condensed" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6. I am a member, I want to download the wefie taken by my leader." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h80-Fs-bS4">
+                                                <rect key="frame" x="19" y="489" width="337.5" height="40.5"/>
+                                                <fontDescription key="fontDescription" name="RobotoCondensed-Bold" family="Roboto Condensed" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7. Why am I unable to submit?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O20-Ki-4Oc">
+                                                <rect key="frame" x="19" y="570" width="337.5" height="40.5"/>
+                                                <fontDescription key="fontDescription" name="RobotoCondensed-Bold" family="Roboto Condensed" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KW8-cM-YqN">
+                                                <rect key="frame" x="19" y="50.5" width="337.5" height="70.5"/>
+                                                <string key="text">After you have completed the first hotspot, all the hotspots will be shown. It is up to your group to plan the most efficient way of visiting all the hotspot in the given time. </string>
+                                                <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Head back to the Admin building. The team who have the shortest timing may have an advantage" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4LW-CC-Dhu">
+                                                <rect key="frame" x="19" y="166" width="337.5" height="40.5"/>
+                                                <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check the leaderboard for number of completed hotspots by each team" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ny3-Wy-fJX">
+                                                <rect key="frame" x="19" y="368" width="337.5" height="35.5"/>
+                                                <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It is to give you real time updates each time a team has completed a hotspot" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1F-E4-Hqi">
+                                                <rect key="frame" x="19" y="448.5" width="337.5" height="35.5"/>
+                                                <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yes, you can do so by clicking on submissions. Choose which picture you would like to download. " lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAj-cy-OXi">
+                                                <rect key="frame" x="19" y="529.5" width="337.5" height="35.5"/>
+                                                <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p19-s8-HcU">
+                                                <rect key="frame" x="19" y="252" width="337.5" height="70.5"/>
+                                                <string key="text">Narrative are meant to provide background information regarding the school. Mission questions are meant for you to explore the faculty to search for the answers within the hotspot.</string>
+                                                <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGP-7F-Go0">
+                                                <rect key="frame" x="19" y="610.5" width="337.5" height="53"/>
+                                                <string key="text">Each group will have a randomised appointed leader. Only the leader from each team are allowed to submit all responses. This is to prevent double counting of points.</string>
+                                                <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="3fR-3O-sOi" firstAttribute="top" secondItem="YN7-My-wgZ" secondAttribute="top" constant="10" id="1hU-VQ-z3A"/>
+                                            <constraint firstItem="h80-Fs-bS4" firstAttribute="height" secondItem="MyS-jN-Wj9" secondAttribute="height" id="2Tr-M2-tib"/>
+                                            <constraint firstItem="4LW-CC-Dhu" firstAttribute="centerX" secondItem="YN7-My-wgZ" secondAttribute="centerX" id="3Be-d9-lJL"/>
+                                            <constraint firstItem="Ny3-Wy-fJX" firstAttribute="width" secondItem="4LW-CC-Dhu" secondAttribute="width" id="3Ow-ni-ZeM"/>
+                                            <constraint firstItem="E1F-E4-Hqi" firstAttribute="centerX" secondItem="YN7-My-wgZ" secondAttribute="centerX" id="4wG-Uq-zLf"/>
+                                            <constraint firstItem="KW8-cM-YqN" firstAttribute="top" secondItem="3fR-3O-sOi" secondAttribute="bottom" id="4zP-pI-JFj"/>
+                                            <constraint firstItem="ho5-K6-JRV" firstAttribute="width" secondItem="3fR-3O-sOi" secondAttribute="width" id="5JN-av-dKi"/>
+                                            <constraint firstItem="O20-Ki-4Oc" firstAttribute="centerX" secondItem="YN7-My-wgZ" secondAttribute="centerX" id="8TL-dB-ptt"/>
+                                            <constraint firstItem="KW8-cM-YqN" firstAttribute="centerX" secondItem="ho5-K6-JRV" secondAttribute="centerX" id="8u7-UA-Zes"/>
+                                            <constraint firstItem="SKy-f1-qd4" firstAttribute="width" secondItem="RPP-3Y-2uh" secondAttribute="width" id="AAi-ci-mTR"/>
+                                            <constraint firstItem="ho5-K6-JRV" firstAttribute="centerX" secondItem="YN7-My-wgZ" secondAttribute="centerX" id="Amg-aD-e4P"/>
+                                            <constraint firstItem="MGP-7F-Go0" firstAttribute="top" secondItem="O20-Ki-4Oc" secondAttribute="bottom" id="BdL-MS-Rhc"/>
+                                            <constraint firstItem="p19-s8-HcU" firstAttribute="centerX" secondItem="YN7-My-wgZ" secondAttribute="centerX" id="CNG-0n-Lv0"/>
+                                            <constraint firstItem="O20-Ki-4Oc" firstAttribute="height" secondItem="YN7-My-wgZ" secondAttribute="height" multiplier="0.05" id="Cqx-fI-dp4"/>
+                                            <constraint firstItem="3fR-3O-sOi" firstAttribute="width" secondItem="YN7-My-wgZ" secondAttribute="width" multiplier="0.9" id="Eja-61-tzJ"/>
+                                            <constraint firstItem="KW8-cM-YqN" firstAttribute="width" secondItem="YN7-My-wgZ" secondAttribute="width" multiplier="0.9" id="H2l-Uy-qh5"/>
+                                            <constraint firstItem="Ny3-Wy-fJX" firstAttribute="centerX" secondItem="YN7-My-wgZ" secondAttribute="centerX" id="H3r-Oo-L4D"/>
+                                            <constraint firstItem="RPP-3Y-2uh" firstAttribute="centerX" secondItem="YN7-My-wgZ" secondAttribute="centerX" id="HOb-LM-pHo"/>
+                                            <constraint firstItem="h80-Fs-bS4" firstAttribute="centerX" secondItem="YN7-My-wgZ" secondAttribute="centerX" id="Ihs-De-n34"/>
+                                            <constraint firstAttribute="height" constant="807" id="J5K-k7-E8v"/>
+                                            <constraint firstItem="SKy-f1-qd4" firstAttribute="top" secondItem="Ny3-Wy-fJX" secondAttribute="bottom" constant="5" id="Kj4-fZ-MZ1"/>
+                                            <constraint firstItem="MyS-jN-Wj9" firstAttribute="height" secondItem="ho5-K6-JRV" secondAttribute="height" id="M5S-DR-jOK"/>
+                                            <constraint firstItem="HAj-cy-OXi" firstAttribute="width" secondItem="E1F-E4-Hqi" secondAttribute="width" id="P7a-dP-uzu"/>
+                                            <constraint firstItem="E1F-E4-Hqi" firstAttribute="top" secondItem="SKy-f1-qd4" secondAttribute="bottom" id="PF5-jj-gjU"/>
+                                            <constraint firstItem="RPP-3Y-2uh" firstAttribute="width" secondItem="MyS-jN-Wj9" secondAttribute="width" id="PkM-I1-dhh"/>
+                                            <constraint firstItem="4LW-CC-Dhu" firstAttribute="top" secondItem="ho5-K6-JRV" secondAttribute="bottom" id="Qm5-N9-b67"/>
+                                            <constraint firstItem="O20-Ki-4Oc" firstAttribute="top" secondItem="HAj-cy-OXi" secondAttribute="bottom" constant="5" id="SGN-g3-jR5"/>
+                                            <constraint firstItem="E1F-E4-Hqi" firstAttribute="width" secondItem="Ny3-Wy-fJX" secondAttribute="width" id="TTC-Lf-BE1"/>
+                                            <constraint firstItem="3fR-3O-sOi" firstAttribute="height" secondItem="YN7-My-wgZ" secondAttribute="height" multiplier="0.05" id="Vtu-G5-TDk"/>
+                                            <constraint firstItem="HAj-cy-OXi" firstAttribute="centerX" secondItem="YN7-My-wgZ" secondAttribute="centerX" id="VwT-Sh-VKj"/>
+                                            <constraint firstItem="SKy-f1-qd4" firstAttribute="height" secondItem="RPP-3Y-2uh" secondAttribute="height" id="W5q-e8-T5a"/>
+                                            <constraint firstItem="3fR-3O-sOi" firstAttribute="centerX" secondItem="YN7-My-wgZ" secondAttribute="centerX" id="bqW-5l-6IG"/>
+                                            <constraint firstItem="MGP-7F-Go0" firstAttribute="width" secondItem="p19-s8-HcU" secondAttribute="width" id="eYr-XL-0St"/>
+                                            <constraint firstItem="HAj-cy-OXi" firstAttribute="top" secondItem="h80-Fs-bS4" secondAttribute="bottom" id="f56-rG-IuD"/>
+                                            <constraint firstItem="MGP-7F-Go0" firstAttribute="centerX" secondItem="YN7-My-wgZ" secondAttribute="centerX" id="f8r-FF-Yw5"/>
+                                            <constraint firstItem="MyS-jN-Wj9" firstAttribute="centerX" secondItem="YN7-My-wgZ" secondAttribute="centerX" id="g1Q-6A-ki6"/>
+                                            <constraint firstItem="RPP-3Y-2uh" firstAttribute="height" secondItem="MyS-jN-Wj9" secondAttribute="height" id="gbC-Fa-SQl"/>
+                                            <constraint firstItem="RPP-3Y-2uh" firstAttribute="top" secondItem="p19-s8-HcU" secondAttribute="bottom" constant="5" id="hYk-Y9-GyO"/>
+                                            <constraint firstItem="p19-s8-HcU" firstAttribute="top" secondItem="MyS-jN-Wj9" secondAttribute="bottom" id="jlU-0g-xAH"/>
+                                            <constraint firstItem="KW8-cM-YqN" firstAttribute="centerX" secondItem="YN7-My-wgZ" secondAttribute="centerX" id="ok6-Nj-ZQl"/>
+                                            <constraint firstItem="Ny3-Wy-fJX" firstAttribute="top" secondItem="RPP-3Y-2uh" secondAttribute="bottom" id="qDY-Tz-JFk"/>
+                                            <constraint firstItem="O20-Ki-4Oc" firstAttribute="width" secondItem="YN7-My-wgZ" secondAttribute="width" multiplier="0.9" id="qG0-TN-njv"/>
+                                            <constraint firstItem="p19-s8-HcU" firstAttribute="width" secondItem="4LW-CC-Dhu" secondAttribute="width" id="spc-ix-AtW"/>
+                                            <constraint firstItem="ho5-K6-JRV" firstAttribute="top" secondItem="KW8-cM-YqN" secondAttribute="bottom" constant="5" id="tMI-zm-B3x"/>
+                                            <constraint firstItem="h80-Fs-bS4" firstAttribute="top" secondItem="E1F-E4-Hqi" secondAttribute="bottom" constant="5" id="u8R-r5-c4J"/>
+                                            <constraint firstItem="MyS-jN-Wj9" firstAttribute="width" secondItem="ho5-K6-JRV" secondAttribute="width" id="w7D-d6-C8r"/>
+                                            <constraint firstItem="SKy-f1-qd4" firstAttribute="centerX" secondItem="YN7-My-wgZ" secondAttribute="centerX" id="woI-a1-OZk"/>
+                                            <constraint firstItem="4LW-CC-Dhu" firstAttribute="height" secondItem="YN7-My-wgZ" secondAttribute="height" multiplier="0.05" id="xI9-1w-gsL"/>
+                                            <constraint firstItem="h80-Fs-bS4" firstAttribute="width" secondItem="MyS-jN-Wj9" secondAttribute="width" id="yXO-a8-BNy"/>
+                                            <constraint firstItem="4LW-CC-Dhu" firstAttribute="width" secondItem="KW8-cM-YqN" secondAttribute="width" id="z8e-le-kMc"/>
+                                            <constraint firstItem="MyS-jN-Wj9" firstAttribute="top" secondItem="4LW-CC-Dhu" secondAttribute="bottom" constant="5" id="zfu-jF-MRJ"/>
+                                            <constraint firstItem="ho5-K6-JRV" firstAttribute="height" secondItem="3fR-3O-sOi" secondAttribute="height" id="zjA-Ke-wyv"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="YN7-My-wgZ" firstAttribute="top" secondItem="beA-gC-HAV" secondAttribute="top" id="FrL-Ji-OgU"/>
+                                    <constraint firstAttribute="trailing" secondItem="YN7-My-wgZ" secondAttribute="trailing" id="PKP-AA-czV"/>
+                                    <constraint firstAttribute="bottom" secondItem="YN7-My-wgZ" secondAttribute="bottom" constant="-0.5" id="VJj-A2-7O2"/>
+                                    <constraint firstItem="YN7-My-wgZ" firstAttribute="leading" secondItem="beA-gC-HAV" secondAttribute="leading" id="b34-HU-mZl"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YN7-My-wgZ" firstAttribute="width" secondItem="u4U-sf-eid" secondAttribute="width" id="8oy-4O-vSO"/>
+                            <constraint firstItem="u6n-AU-0xM" firstAttribute="top" secondItem="mkE-nu-dfE" secondAttribute="top" id="9W3-f6-Vha"/>
+                            <constraint firstItem="L6L-pQ-t98" firstAttribute="top" secondItem="u6n-AU-0xM" secondAttribute="bottom" id="Ewf-hy-WJI"/>
+                            <constraint firstItem="beA-gC-HAV" firstAttribute="leading" secondItem="mkE-nu-dfE" secondAttribute="leading" id="GCo-9N-Byz"/>
+                            <constraint firstItem="beA-gC-HAV" firstAttribute="trailing" secondItem="mkE-nu-dfE" secondAttribute="trailing" id="HwR-53-2Qb"/>
+                            <constraint firstItem="beA-gC-HAV" firstAttribute="bottom" secondItem="mkE-nu-dfE" secondAttribute="bottom" id="JyD-ls-W02"/>
+                            <constraint firstItem="L6L-pQ-t98" firstAttribute="leading" secondItem="mkE-nu-dfE" secondAttribute="leading" id="Nrm-Kf-bsT"/>
+                            <constraint firstItem="L6L-pQ-t98" firstAttribute="height" secondItem="u4U-sf-eid" secondAttribute="height" multiplier="0.08" id="Paf-jl-fXN"/>
+                            <constraint firstItem="L6L-pQ-t98" firstAttribute="width" secondItem="u4U-sf-eid" secondAttribute="width" id="Re7-SJ-UtL"/>
+                            <constraint firstItem="beA-gC-HAV" firstAttribute="top" secondItem="L6L-pQ-t98" secondAttribute="bottom" id="Z3g-mV-dLd"/>
+                            <constraint firstItem="mkE-nu-dfE" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="L6L-pQ-t98" secondAttribute="trailing" symbolic="YES" id="j9K-St-fhi"/>
+                            <constraint firstItem="u6n-AU-0xM" firstAttribute="width" secondItem="u4U-sf-eid" secondAttribute="width" id="pLz-9g-DNK"/>
+                            <constraint firstItem="3fR-3O-sOi" firstAttribute="top" secondItem="L6L-pQ-t98" secondAttribute="bottom" constant="19" id="udy-cd-gLT"/>
+                            <constraint firstItem="u6n-AU-0xM" firstAttribute="leading" secondItem="L6L-pQ-t98" secondAttribute="leading" id="vGL-c4-qOv"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="mkE-nu-dfE"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="FAQ" image="help_icon" id="1PO-Dj-zNn"/>
+                    <size key="freeformSize" width="375" height="1000"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Kg-pd-dVA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1342" y="851"/>
+            <point key="canvasLocation" x="-2263.1999999999998" y="245.57721139430288"/>
         </scene>
         <!--Submissions-->
         <scene sceneID="CwK-QI-MDk">
@@ -1396,13 +1597,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="BcX-fA-Lp8">
-                                                    <rect key="frame" x="12" y="10" width="207" height="18"/>
+                                                    <rect key="frame" x="12" y="10" width="187.5" height="18"/>
                                                     <fontDescription key="fontDescription" name="RobotoCondensed-Bold" family="Roboto Condensed" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdn-Bk-EA4">
-                                                    <rect key="frame" x="310" y="10" width="89" height="100"/>
+                                                    <rect key="frame" x="271" y="10" width="89" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="89" id="Tox-oF-Wls"/>
                                                         <constraint firstAttribute="height" constant="100" id="z5M-BF-Pbq"/>
@@ -1412,7 +1613,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Xtr-in-krR">
-                                                    <rect key="frame" x="12" y="21" width="207" height="35"/>
+                                                    <rect key="frame" x="12" y="21" width="187.5" height="35"/>
                                                     <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1533,19 +1734,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team # has completed hotspot:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y55-L6-2Ac">
-                                                    <rect key="frame" x="0.0" y="4.5" width="414" height="29.5"/>
+                                                    <rect key="frame" x="0.0" y="4.5" width="375" height="29.5"/>
                                                     <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HqH-Wb-6Mg">
-                                                    <rect key="frame" x="0.0" y="76" width="414" height="24"/>
+                                                    <rect key="frame" x="0.0" y="76" width="375" height="24"/>
                                                     <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hotspot name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCz-fX-MDb">
-                                                    <rect key="frame" x="0.0" y="44.5" width="414" height="23.5"/>
+                                                    <rect key="frame" x="0.0" y="44.5" width="375" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2004,8 +2205,8 @@
         <image name="story_HowToPlay" width="156" height="156"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Bnj-X1-gi2"/>
-        <segue reference="QYZ-9e-9zh"/>
-        <segue reference="Ca7-9E-Onb"/>
+        <segue reference="6kr-1K-vio"/>
+        <segue reference="md7-BD-tEW"/>
+        <segue reference="eg4-Sn-hN4"/>
     </inferredMetricsTieBreakers>
 </document>
