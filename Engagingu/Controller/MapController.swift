@@ -19,12 +19,14 @@ class MapController: UIViewController, GMSMapViewDelegate {
     var placesClient: GMSPlacesClient!
     var zoomLevel: Float = 15.0
     var selectedMarker: GMSMarker!
+    var distanceToTriggier = 5 // In Meteres
     
     override func viewDidLoad() {
         
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.distanceFilter = 50
+        locationManager.allowsBackgroundLocationUpdates = true
         locationManager.startUpdatingLocation()
         locationManager.delegate = self
         
@@ -58,12 +60,57 @@ class MapController: UIViewController, GMSMapViewDelegate {
         print("View Did Appear Map Controller")
         
         initiateHotspots()
+        
+        // When all trail is finished
+        if(InstanceDAO.completedList.count == InstanceDAO.hotspotDict.count){
+            
+            let alert = UIAlertController(title: "Awesome! You have finished all the hotspots", message: "Head back to the starting location to finish the trail", preferredStyle: UIAlertController.Style.alert)
+            
+            // add an action (button)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
+                alert.dismiss(animated: true, completion: nil)
+            }))
+            
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
+            
+        }
     }
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         
         selectedMarker = marker
-        performSegue(withIdentifier: "toNarrativeSegue", sender: self)
+        
+        // to check if user is near the hotspot
+        // Get marker's location
+        let selectedMarkerLocation = CLLocation(latitude: selectedMarker.position.latitude, longitude: selectedMarker.position.longitude)
+        
+        // Get distance from current location to selected marker location
+        let distance = currentLocation?.distance(from: selectedMarkerLocation)
+        
+        if let dist = distance {
+
+            if (Double(dist) < 5){
+                
+                performSegue(withIdentifier: "toNarrativeSegue", sender: self)
+                
+            }else {
+                
+                let alert = UIAlertController(title: "You are not at this hotspot", message: "Walk nearer to the hotspot to discover it", preferredStyle: UIAlertController.Style.alert)
+                
+                // add an action (button)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
+                    alert.dismiss(animated: true, completion: nil)
+                }))
+                
+                // show the alert
+                self.present(alert, animated: true, completion: nil)
+                
+            }
+        }
+        
+        //performSegue(withIdentifier: "toNarrativeSegue", sender: self)
+        
     }
     
     func initiateHotspots() {
@@ -73,7 +120,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
         let hotspots = InstanceDAO.hotspotDict
         let startHotspots = InstanceDAO.startHotspots
         
-        if(InstanceDAO.isFirstTime){
+        if(InstanceDAO.isFirstTime){ // Only show starting hotspot
             
             let teamStartHotspot = startHotspots[InstanceDAO.team_id]
             let hotspot = hotspots[teamStartHotspot!]
@@ -86,7 +133,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
             marker.snippet = "Click me to start mission!"
             marker.map = mapView
 
-        }else {
+        }else { // Show all hotspots
             
             for (name, hotspot) in hotspots{
                 print("name: \(name)")
@@ -128,7 +175,11 @@ extension MapController: CLLocationManagerDelegate{
     // Handle incoming location events.
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location: CLLocation = locations.last!
-        print("Location: \(location)")
+        
+        // update current location variable whenever location changes
+        currentLocation = location
+        //print("Location: \(location)")
+        print(location.coordinate)
         
         let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
                                               longitude: location.coordinate.longitude,
