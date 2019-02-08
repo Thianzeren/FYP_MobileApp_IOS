@@ -116,6 +116,8 @@ class LoginNameController: UIViewController, UITextFieldDelegate {
         def.set(InstanceDAO.team_id, forKey: "team_id")
         def.set(InstanceDAO.trail_instance_id, forKey: "trail_instance_id")
         def.set(InstanceDAO.username, forKey: "username")
+        def.set(InstanceDAO.completedList, forKey: "completedList")
+        def.set(InstanceDAO.startHotspots, forKey: "startHotspots")
         def.synchronize()
     
     }

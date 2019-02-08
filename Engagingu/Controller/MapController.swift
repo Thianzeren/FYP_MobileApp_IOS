@@ -26,7 +26,6 @@ class MapController: UIViewController, GMSMapViewDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.distanceFilter = 50
-        locationManager.allowsBackgroundLocationUpdates = true
         locationManager.startUpdatingLocation()
         locationManager.delegate = self
         
@@ -89,7 +88,11 @@ class MapController: UIViewController, GMSMapViewDelegate {
         let distance = currentLocation?.distance(from: selectedMarkerLocation)
         
         if let dist = distance {
-
+            
+            print("SelectedMarkerLocation: \(selectedMarkerLocation)")
+            print("CurrentLocation: \(currentLocation)")
+            print("Distance: \(dist)")
+            
             if (Double(dist) < 5){
                 
                 performSegue(withIdentifier: "toNarrativeSegue", sender: self)
