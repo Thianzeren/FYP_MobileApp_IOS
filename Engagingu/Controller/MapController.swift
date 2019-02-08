@@ -82,7 +82,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
         
         // to check if user is near the hotspot
         // Get marker's location
-        let selectedMarkerLocation = CLLocation(latitude: selectedMarker.position.latitude, longitude: selectedMarker.position.longitude)
+        /*let selectedMarkerLocation = CLLocation(latitude: selectedMarker.position.latitude, longitude: selectedMarker.position.longitude)
         
         // Get distance from current location to selected marker location
         let distance = currentLocation?.distance(from: selectedMarkerLocation)
@@ -110,9 +110,9 @@ class MapController: UIViewController, GMSMapViewDelegate {
                 self.present(alert, animated: true, completion: nil)
                 
             }
-        }
+        }*/
         
-        //performSegue(withIdentifier: "toNarrativeSegue", sender: self)
+        performSegue(withIdentifier: "toNarrativeSegue", sender: self)
         
     }
     
