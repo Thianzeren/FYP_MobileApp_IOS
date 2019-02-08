@@ -1054,9 +1054,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Sok-zC-0is">
-                                <rect key="frame" x="177.5" y="517.5" width="20" height="82.5"/>
-                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CS1-8j-DOE">
                                 <rect key="frame" x="94" y="460" width="187.5" height="33.5"/>
                                 <color key="backgroundColor" red="0.08235294118" green="0.10980392160000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1075,11 +1072,8 @@
                             <constraint firstItem="CS1-8j-DOE" firstAttribute="width" secondItem="tM9-R2-VVQ" secondAttribute="width" id="0HB-ig-4M6"/>
                             <constraint firstItem="NUh-NY-nHW" firstAttribute="height" secondItem="qyk-pd-UY6" secondAttribute="height" multiplier="0.05" id="2Jr-98-OIG"/>
                             <constraint firstItem="9A4-MK-Dwi" firstAttribute="width" secondItem="qyk-pd-UY6" secondAttribute="width" multiplier="0.9" constant="-22" id="2ZZ-go-0KN"/>
-                            <constraint firstItem="Sok-zC-0is" firstAttribute="centerX" secondItem="3j5-kB-4wl" secondAttribute="centerX" id="6ho-HR-FR0"/>
                             <constraint firstItem="tM9-R2-VVQ" firstAttribute="width" secondItem="NUh-NY-nHW" secondAttribute="width" id="Bfu-F2-WbG"/>
                             <constraint firstItem="tM9-R2-VVQ" firstAttribute="centerX" secondItem="3j5-kB-4wl" secondAttribute="centerX" id="Fz5-Fd-7es"/>
-                            <constraint firstItem="Sok-zC-0is" firstAttribute="top" secondItem="CS1-8j-DOE" secondAttribute="bottom" constant="24" id="GLO-Bq-PXA"/>
-                            <constraint firstItem="3j5-kB-4wl" firstAttribute="bottom" secondItem="Sok-zC-0is" secondAttribute="bottom" constant="67" id="Htc-yn-Fyh"/>
                             <constraint firstItem="tM9-R2-VVQ" firstAttribute="top" secondItem="NUh-NY-nHW" secondAttribute="bottom" constant="8" id="Lqp-68-x3O"/>
                             <constraint firstItem="9A4-MK-Dwi" firstAttribute="top" secondItem="URx-XQ-Q4Q" secondAttribute="bottom" constant="26" id="NnX-oS-xKh"/>
                             <constraint firstItem="CS1-8j-DOE" firstAttribute="centerX" secondItem="3j5-kB-4wl" secondAttribute="centerX" id="OuT-jm-yTs"/>
@@ -2225,7 +2219,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Bnj-X1-gi2"/>
-        <segue reference="Zbx-TQ-bIF"/>
+        <segue reference="md7-BD-tEW"/>
         <segue reference="Ca7-9E-Onb"/>
     </inferredMetricsTieBreakers>
 </document>
