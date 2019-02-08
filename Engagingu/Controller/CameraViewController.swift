@@ -10,6 +10,8 @@ import UIKit
 
 class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var takePicBtn: UIButton!
+    @IBOutlet weak var uploadImgBtn: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var selfieQuestion: UITextView!
     var question: String = ""
@@ -22,7 +24,17 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
          // Do any additional setup after loading the view.
        
         question = InstanceDAO.selfieDict[hotspot] ?? ""
-        selfieQuestion.text = question
+        
+        if(InstanceDAO.isLeader){
+            selfieQuestion.text = question
+        }else{
+            selfieQuestion.text = question + "[Submit your wefie via your leader's device]"
+            
+            takePicBtn.setTitle("Home", for: .normal)
+            uploadImgBtn.isHidden = true
+            
+        }
+
         
         imagePickerController = UIImagePickerController()
         imagePickerController!.delegate = self
@@ -32,29 +44,35 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     @IBAction func chooseImage(_ sender: Any) {
         
-        let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a Source", preferredStyle: .actionSheet)
-        
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: {(action:UIAlertAction) in
+        if(InstanceDAO.isLeader){
+            let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a Source", preferredStyle: .actionSheet)
             
-            if(UIImagePickerController.isSourceTypeAvailable(.camera)){
-                self.imagePickerController!.sourceType = .camera
+            actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: {(action:UIAlertAction) in
+                
+                if(UIImagePickerController.isSourceTypeAvailable(.camera)){
+                    self.imagePickerController!.sourceType = .camera
+                    self.present(self.imagePickerController!, animated: true, completion: nil)
+                }else{
+                    print("Camera not available")
+                }
+                
+            }))
+            
+            actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: {(action:UIAlertAction) in
+                
+                self.imagePickerController!.sourceType = .photoLibrary
                 self.present(self.imagePickerController!, animated: true, completion: nil)
-            }else{
-                print("Camera not available")
-            }
+                
+            }))
             
-        }))
-        
-        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: {(action:UIAlertAction) in
+            actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             
-            self.imagePickerController!.sourceType = .photoLibrary
-            self.present(self.imagePickerController!, animated: true, completion: nil)
+            self.present(actionSheet, animated: true, completion: nil)
+        
+        }else {
             
-        }))
-        
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        self.present(actionSheet, animated: true, completion: nil)
+            performSegue(withIdentifier: "toTabBarSegue", sender: nil)
+        }
     }
     
     @IBAction func uploadImage(_ sender: Any) {
@@ -145,7 +163,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
             
             // add an action (button)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
-                self.performSegue(withIdentifier: "toMapSegue", sender: nil)
+                self.performSegue(withIdentifier: "toTabBarSegue", sender: nil)
             }))
             
             // show the alert

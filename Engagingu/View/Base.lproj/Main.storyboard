@@ -78,45 +78,6 @@
             </objects>
             <point key="canvasLocation" x="-5767.1999999999998" y="730.88455772113946"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="1ey-IG-2lm">
-            <objects>
-                <viewController id="1GA-ff-f1z" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="mnT-io-3J5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="skY-oX-05b">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="ENGAGING U" largeTitleDisplayMode="never" id="AYL-Ad-b33"/>
-                                </items>
-                            </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Find the word related to this hotspot" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJL-hF-GAP">
-                                <rect key="frame" x="0.0" y="64" width="375" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.08235294118" green="0.10980392160000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UnO-e7-GPF">
-                                <rect key="frame" x="0.0" y="143" width="375" height="524"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="nsJ-62-2My"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nv1-9P-62Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-4911.1999999999998" y="-73.313343328335833"/>
-        </scene>
         <!--Login Name Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -491,7 +452,13 @@
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="ENGAGING U" largeTitleDisplayMode="never" id="oMn-aO-Nef"/>
+                                    <navigationItem title="ENGAGING U" largeTitleDisplayMode="never" id="oMn-aO-Nef">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="dM9-Ti-v6A">
+                                            <connections>
+                                                <action selector="backToPreviousView:" destination="r6W-4B-Nay" id="cvr-qX-SP3"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jO9-Ft-yai">
@@ -1095,6 +1062,8 @@
                     <connections>
                         <outlet property="groupInstructions" destination="9A4-MK-Dwi" id="0i2-gl-qbf"/>
                         <outlet property="groupNumber" destination="tM9-R2-VVQ" id="0C4-Wb-OzV"/>
+                        <outlet property="startBtn" destination="CS1-8j-DOE" id="pHl-6T-wXY"/>
+                        <outlet property="userStatus" destination="URx-XQ-Q4Q" id="U5R-mA-HNv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X6b-69-t07" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1354,7 +1323,9 @@
                     <connections>
                         <outlet property="imageView" destination="ZjG-jC-902" id="Guk-cm-v5J"/>
                         <outlet property="selfieQuestion" destination="2g2-2B-JdI" id="fiI-83-0qz"/>
-                        <segue destination="I3j-hO-u2H" kind="show" identifier="toMapSegue" id="QYZ-9e-9zh"/>
+                        <outlet property="takePicBtn" destination="Omp-fd-xwx" id="jG4-rw-Hqo"/>
+                        <outlet property="uploadImgBtn" destination="iVE-VG-MiW" id="pFD-Lt-cmA"/>
+                        <segue destination="I3j-hO-u2H" kind="show" identifier="toTabBarSegue" id="QYZ-9e-9zh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XMm-pA-chP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1965,6 +1936,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="clueLabel" destination="flE-Du-Veh" id="ABy-aL-BJr"/>
+                        <outlet property="submitBtn" destination="xqu-ix-g3G" id="FlT-WS-zRQ"/>
                         <outlet property="wordInput" destination="ZED-43-SAX" id="Yv8-tP-cv1"/>
                         <outlet property="wordLabel" destination="mEp-VT-rpi" id="cGe-wH-ezR"/>
                         <segue destination="I3j-hO-u2H" kind="show" identifier="toTabBarSegue" id="VmJ-25-u0P"/>
@@ -2180,6 +2152,7 @@
                         <outlet property="optionLabel3" destination="Qb8-02-TZf" id="cCs-5n-Mkm"/>
                         <outlet property="optionLabel4" destination="oeO-YS-bdx" id="Wvy-N8-bqr"/>
                         <outlet property="questionLabel" destination="Ke5-ig-TKL" id="yoK-NJ-uem"/>
+                        <outlet property="submitBtn" destination="hcK-Lb-3bR" id="eKu-5v-ouc"/>
                         <segue destination="I3j-hO-u2H" kind="show" identifier="toTabBarSegue" id="Mbp-7A-83p"/>
                         <segue destination="I3j-hO-u2H" kind="show" identifier="toTabBarSegue" id="ztq-CQ-ytH"/>
                     </connections>
@@ -2218,7 +2191,7 @@
         <image name="story_HowToPlay" width="156" height="156"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Bnj-X1-gi2"/>
+        <segue reference="6kr-1K-vio"/>
         <segue reference="md7-BD-tEW"/>
         <segue reference="Ca7-9E-Onb"/>
     </inferredMetricsTieBreakers>

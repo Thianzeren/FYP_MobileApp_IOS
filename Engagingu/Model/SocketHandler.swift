@@ -38,18 +38,20 @@ class SocketHandler {
             print("SOCKET BODY FROM activityFeed")
             print(data)
             
-            do{
-                let jsonData = data as? [[String:String]]
-                let msg = jsonData![0]
-                let activity = Activity(team: msg["team"] ?? "team", hotspot: msg["hotspot"] ?? "hotspot", time: msg["time"] ?? "time")
+            let jsonData = data as? [[String:String]]
+            let msg = jsonData![0]
+            let activity = Activity(team: msg["team"] ?? "team", hotspot: msg["hotspot"] ?? "hotspot", time: msg["time"] ?? "time")
+            
+            InstanceDAO.activityArr.append(activity)
                 
-                InstanceDAO.activityArr.append(activity)
-                
-            }catch let jsonErr{
-                
-                print("Error serializing json:", jsonErr)
-            }
+            
         }
+        
+//        socket.on("startTrail"){ data, ack in
+//            
+//            InstanceDAO.hasStartedTrail = true
+//            
+//        }
         
         socket.onAny {print("Got event: \($0.event), with items: \($0.items!)")}
         

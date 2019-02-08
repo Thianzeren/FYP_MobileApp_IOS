@@ -99,8 +99,15 @@ class LoginNameController: UIViewController, UITextFieldDelegate {
         }
         RestAPIManager.httpGetDragAndDrop(URLStr: dragAndDropURL + InstanceDAO.trail_instance_id)
         
+        // Get LeaderMember status
+        guard let getLeaderMemberURL = InstanceDAO.serverEndpoints["getAllLeaderMember"] else {
+            print("Unable to get server endpoint for getAllLeaderMember")
+            return
+        }
+        RestAPIManager.httpGetLeaderMemberStatus(URLStr: getLeaderMemberURL)
+        
         // Save to UserDefaults for session
-        saveCredentialsToSession()
+        // saveCredentialsToSession()
         
         // Connect Socket to Server
         SocketHandler.addHandlers()

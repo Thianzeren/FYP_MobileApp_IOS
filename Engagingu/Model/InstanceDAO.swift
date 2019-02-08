@@ -31,7 +31,9 @@ struct InstanceDAO {
         "updateScore" : "http://54.255.245.23:3000/team/updateScore",
         "getAllSubmissionsURL" : "http://54.255.245.23:3000/upload/getAllSubmissionURL?team=",
         "getSubmission" : "http://54.255.245.23:3000/upload/getSubmission?url=",
-        "getLeaderboard" : "http://54.255.245.23:3000/team/hotspotStatus?trail_instance_id="
+        "getLeaderboard" : "http://54.255.245.23:3000/team/hotspotStatus?trail_instance_id=",
+        "getAllUsers" : "http://54.255.245.23:3000/user/retrieveAllUsers",
+        "getAllLeaderMember" : "http://54.255.245.23:3000/user/retrieveAllUser"
     ]
     
     
@@ -62,11 +64,21 @@ struct InstanceDAO {
     // Key: Team number, Value: no. of hotspots completed
     static var leaderboardDict: [String:Int] = [:]
     
+    // Key: Username, Value: user object
+    static var userDict: [String:User] = [:]
+    
     // Array of activity objects
     static var activityArr: [Activity] = []
     
     // Check if is first time entering
     static var isFirstTime: Bool = true
+    
+    // Check if is leader
+    static var isLeader: Bool = false
+    
+    // Check if can start trail
+    static var hasStartedTrail: Bool = false
+    
 }
 
 struct Hotspot: Decodable{ //create a Hotspot class use for the jsondecoder
@@ -74,8 +86,20 @@ struct Hotspot: Decodable{ //create a Hotspot class use for the jsondecoder
     let coordinates: [String]
     let name: String
     let narrative: String
+    
+    init(coordinates: [String], name: String, narrative: String) {
+        self.coordinates = coordinates
+        self.name = name
+        self.narrative = narrative
+    }
 }
 
+struct User: Decodable{
+    
+    let username: String
+    let team: Int
+    let isLeader: Int
+}
 struct HotspotQuiz: Decodable{
     
     let hotspot: String

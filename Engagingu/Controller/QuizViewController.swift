@@ -61,7 +61,18 @@ class QuizViewController: UIViewController {
         secondAnswer.setTitle(nil, for: .normal)
         thirdAnswer.setTitle(nil, for: .normal)
         fourthAnswer.setTitle(nil, for: .normal)
+        firstAnswer.backgroundColor = UIColor.lightGray
+        secondAnswer.backgroundColor = UIColor.lightGray
+        thirdAnswer.backgroundColor = UIColor.lightGray
+        fourthAnswer.backgroundColor = UIColor.lightGray
         
+        if (!InstanceDAO.isLeader){
+            firstAnswer.isUserInteractionEnabled = false
+            secondAnswer.isUserInteractionEnabled = false
+            thirdAnswer.isUserInteractionEnabled = false
+            fourthAnswer.isUserInteractionEnabled = false
+            confirmButton.setTitle("Next Question", for: .normal)
+        }
         // Initialise question bank
         questionBank = InstanceDAO.quizDict[hotspot]!.quiz
         
@@ -229,161 +240,198 @@ class QuizViewController: UIViewController {
         // 2) if it is the last question, and correct answer already shown, show final result page
         // 3) if he/she has seen the correct answer, reset colors and update score, question and options
         // 4) if he/she hasn't submitted answer, show correct answer
-        
-        if (confirmButton.title(for: .normal) == "Complete Quiz"){
-            //Post results to server
+        if (InstanceDAO.isLeader){
             
-            var resultDict: [String: String] = ["team_id": InstanceDAO.team_id]
-            resultDict["trail_instance_id"] = InstanceDAO.trail_instance_id
-            resultDict["score"] = String(score)
-            resultDict["hotspot"] = hotspot
-            
-            guard let jsonData = try? JSONSerialization.data(withJSONObject: resultDict) else { return
-                print("Error: cannot create jsonData")
-            }
-            
-            guard let updateScoreURL = InstanceDAO.serverEndpoints["updateScore"] else {
-                print("Unable to get server endpoint for updateScoreURL")
-                return
-            }
-            RestAPIManager.asyncHttpPost(jsonData: jsonData, URLStr: updateScoreURL)
-            
-            // Update CompletedList & isFirstTime check
-            InstanceDAO.completedList.append(hotspot)
-            InstanceDAO.isFirstTime = false
-            
-            //Perform segue
-            performSegue(withIdentifier: "toTabBarSegue", sender: nil)
-            
-        }else if(questionNumber == questionBank.count - 1 && hasSeenCorrectAnswer){ //If answered last question
-            // Hide answer buttons and squares
-            firstAnswer.isHidden = true
-            secondAnswer.isHidden = true
-            thirdAnswer.isHidden = true
-            fourthAnswer.isHidden = true
-            /*
-            firstAnswerSquare.isHidden = true
-            secondAnswerSquare.isHidden = true
-            thirdAnswerSquare.isHidden = true
-            fourthAnswerSquare.isHidden = true
-            */
-            // Change button text to "Complete Quiz"
-            confirmButton.setTitle("Complete Quiz", for: .normal)
-            confirmText.text = nil
-            
-            // Display final score
-            let numOfQuestions = questionBank.count
-            let congratsText = "Congratulations, you got " + String(score) + "/" + String(numOfQuestions) + " Correct!"
-            question.text = congratsText
-            
-            //hide Q&A label
-            questionLabel.isHidden = true
-            
-            // Add hotspot to completed list
-            InstanceDAO.completedList.append(hotspot)
-            
-        }else if(hasSeenCorrectAnswer){
-            
-            questionNumber += 1
-
-            //Reset choice colors
-            /*
-            firstAnswer.setTitleColor(nil, for: .normal)
-            secondAnswer.setTitleColor(nil, for: .normal)
-            thirdAnswer.setTitleColor(nil, for: .normal)
-            fourthAnswer.setTitleColor(nil, for: .normal)
-             */
-            firstAnswer.backgroundColor = UIColor.lightGray
-            secondAnswer.backgroundColor = UIColor.lightGray
-            thirdAnswer.backgroundColor = UIColor.lightGray
-            fourthAnswer.backgroundColor = UIColor.lightGray
-            /*
-            firstAnswerSquare.backgroundColor = UIColor.black
-            secondAnswerSquare.backgroundColor = UIColor.black
-            thirdAnswerSquare.backgroundColor = UIColor.black
-            fourthAnswerSquare.backgroundColor = UIColor.black
-            */
-            updateQuiz()
-            
-            hasSeenCorrectAnswer = false
-            selectedAnswer = 0
-            
-            confirmText.text = nil
-            confirmButton.setTitle("Confirm Answer", for: .normal)
-
-        }else if (selectedAnswer == 0){
-        
-            // create the alert
-            let alert = UIAlertController(title: "Please Select an option", message: "No options were selected", preferredStyle: UIAlertController.Style.alert)
-            
-            // add an action (button)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
-                alert.dismiss(animated: true, completion: nil)
-            }))
-            
-            // show the alert
-            self.present(alert, animated: true, completion: nil)
-            
-        }else{
-            
-            if(selectedAnswer == questionAnswer){
+            if (confirmButton.title(for: .normal) == "Complete Quiz"){
+                //Post results to server
                 
-                score += 1
+                var resultDict: [String: String] = ["team_id": InstanceDAO.team_id]
+                resultDict["trail_instance_id"] = InstanceDAO.trail_instance_id
+                resultDict["score"] = String(score)
+                resultDict["hotspot"] = hotspot
                 
-                confirmText.text = "Correct"
-                confirmText.textColor = UIColor.green
+                guard let jsonData = try? JSONSerialization.data(withJSONObject: resultDict) else { return
+                    print("Error: cannot create jsonData")
+                }
+                
+                guard let updateScoreURL = InstanceDAO.serverEndpoints["updateScore"] else {
+                    print("Unable to get server endpoint for updateScoreURL")
+                    return
+                }
+                RestAPIManager.asyncHttpPost(jsonData: jsonData, URLStr: updateScoreURL)
+                
+                // Update CompletedList & isFirstTime check
+                InstanceDAO.completedList.append(hotspot)
+                InstanceDAO.isFirstTime = false
+                
+                //Perform segue
+                performSegue(withIdentifier: "toTabBarSegue", sender: nil)
+                
+            }else if(questionNumber == questionBank.count - 1 && hasSeenCorrectAnswer){ //If answered last question
+                // Hide answer buttons and squares
+                firstAnswer.isHidden = true
+                secondAnswer.isHidden = true
+                thirdAnswer.isHidden = true
+                fourthAnswer.isHidden = true
+                /*
+                 firstAnswerSquare.isHidden = true
+                 secondAnswerSquare.isHidden = true
+                 thirdAnswerSquare.isHidden = true
+                 fourthAnswerSquare.isHidden = true
+                 */
+                // Change button text to "Complete Quiz"
+                confirmButton.setTitle("Complete Quiz", for: .normal)
+                confirmText.text = nil
+                
+                // Display final score
+                let numOfQuestions = questionBank.count
+                let congratsText = "Congratulations, you got " + String(score) + "/" + String(numOfQuestions) + " Correct!"
+                question.text = congratsText
+                
+                //hide Q&A label
+                questionLabel.isHidden = true
+                
+                // Add hotspot to completed list
+                InstanceDAO.completedList.append(hotspot)
+                
+            }else if(hasSeenCorrectAnswer){
+                
+                questionNumber += 1
+                
+                //Reset choice colors
+                /*
+                 firstAnswer.setTitleColor(nil, for: .normal)
+                 secondAnswer.setTitleColor(nil, for: .normal)
+                 thirdAnswer.setTitleColor(nil, for: .normal)
+                 fourthAnswer.setTitleColor(nil, for: .normal)
+                 */
+                firstAnswer.backgroundColor = UIColor.lightGray
+                secondAnswer.backgroundColor = UIColor.lightGray
+                thirdAnswer.backgroundColor = UIColor.lightGray
+                fourthAnswer.backgroundColor = UIColor.lightGray
+                /*
+                 firstAnswerSquare.backgroundColor = UIColor.black
+                 secondAnswerSquare.backgroundColor = UIColor.black
+                 thirdAnswerSquare.backgroundColor = UIColor.black
+                 fourthAnswerSquare.backgroundColor = UIColor.black
+                 */
+                updateQuiz()
+                
+                hasSeenCorrectAnswer = false
+                selectedAnswer = 0
+                
+                confirmText.text = nil
+                confirmButton.setTitle("Confirm Answer", for: .normal)
+                
+            }else if (selectedAnswer == 0){
+                
+                // create the alert
+                let alert = UIAlertController(title: "Please Select an option", message: "No options were selected", preferredStyle: UIAlertController.Style.alert)
+                
+                // add an action (button)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
+                    alert.dismiss(animated: true, completion: nil)
+                }))
+                
+                // show the alert
+                self.present(alert, animated: true, completion: nil)
                 
             }else{
                 
-                if(selectedAnswer == 1){
-                    //firstAnswer.setTitleColor(UIColor.red, for: .normal)
-                    firstAnswer.backgroundColor = UIColor.red
-                    //firstAnswerSquare.backgroundColor = UIColor.red
+                if(selectedAnswer == questionAnswer){
                     
-                }else if(selectedAnswer == 2){
-                    //secondAnswer.setTitleColor(UIColor.red, for: .normal)
-                    secondAnswer.backgroundColor = UIColor.red
-                    //secondAnswerSquare.backgroundColor = UIColor.red
+                    score += 1
                     
-                }else if(selectedAnswer == 3){
-                    //thirdAnswer.setTitleColor(UIColor.red, for: .normal)
-                    thirdAnswer.backgroundColor = UIColor.red
-                    //thirdAnswerSquare.backgroundColor = UIColor.red
+                    confirmText.text = "Correct"
+                    confirmText.textColor = UIColor.green
                     
                 }else{
-                    //fourthAnswer.setTitleColor(UIColor.red, for: .normal)
-                    fourthAnswer.backgroundColor = UIColor.red
-                    //fourthAnswerSquare.backgroundColor = UIColor.red
+                    
+                    if(selectedAnswer == 1){
+                        //firstAnswer.setTitleColor(UIColor.red, for: .normal)
+                        firstAnswer.backgroundColor = UIColor.red
+                        //firstAnswerSquare.backgroundColor = UIColor.red
+                        
+                    }else if(selectedAnswer == 2){
+                        //secondAnswer.setTitleColor(UIColor.red, for: .normal)
+                        secondAnswer.backgroundColor = UIColor.red
+                        //secondAnswerSquare.backgroundColor = UIColor.red
+                        
+                    }else if(selectedAnswer == 3){
+                        //thirdAnswer.setTitleColor(UIColor.red, for: .normal)
+                        thirdAnswer.backgroundColor = UIColor.red
+                        //thirdAnswerSquare.backgroundColor = UIColor.red
+                        
+                    }else{
+                        //fourthAnswer.setTitleColor(UIColor.red, for: .normal)
+                        fourthAnswer.backgroundColor = UIColor.red
+                        //fourthAnswerSquare.backgroundColor = UIColor.red
+                    }
+                    
+                    //show the correct ans in green
+                    if(questionAnswer == 1){
+                        //firstAnswer.setTitleColor(UIColor.green, for: .normal)
+                        firstAnswer.backgroundColor = UIColor.green
+                        //firstAnswerSquare.backgroundColor = UIColor.green
+                    }else if(questionAnswer == 2){
+                        //secondAnswer.setTitleColor(UIColor.green, for: .normal)
+                        secondAnswer.backgroundColor = UIColor.green
+                        //secondAnswerSquare.backgroundColor = UIColor.green
+                    }else if(questionAnswer == 3){
+                        //thirdAnswer.setTitleColor(UIColor.green, for: .normal)
+                        thirdAnswer.backgroundColor = UIColor.green
+                        //thirdAnswerSquare.backgroundColor = UIColor.green
+                    }else{
+                        //fourthAnswer.setTitleColor(UIColor.green, for: .normal)
+                        fourthAnswer.backgroundColor = UIColor.green
+                        // fourthAnswerSquare.backgroundColor = UIColor.green
+                    }
+                    
+                    confirmText.text = "Incorrect"
+                    confirmText.textColor = UIColor.red
+                    
                 }
                 
-                //show the correct ans in green
-                if(questionAnswer == 1){
-                    //firstAnswer.setTitleColor(UIColor.green, for: .normal)
-                    firstAnswer.backgroundColor = UIColor.green
-                    //firstAnswerSquare.backgroundColor = UIColor.green
-                }else if(questionAnswer == 2){
-                    //secondAnswer.setTitleColor(UIColor.green, for: .normal)
-                    secondAnswer.backgroundColor = UIColor.green
-                    //secondAnswerSquare.backgroundColor = UIColor.green
-                }else if(questionAnswer == 3){
-                    //thirdAnswer.setTitleColor(UIColor.green, for: .normal)
-                    thirdAnswer.backgroundColor = UIColor.green
-                    //thirdAnswerSquare.backgroundColor = UIColor.green
-                }else{
-                    //fourthAnswer.setTitleColor(UIColor.green, for: .normal)
-                    fourthAnswer.backgroundColor = UIColor.green
-                   // fourthAnswerSquare.backgroundColor = UIColor.green
-                }
-                
-                confirmText.text = "Incorrect"
-                confirmText.textColor = UIColor.red
+                confirmButton.setTitle("Next Question", for: .normal)
+                hasSeenCorrectAnswer = true
                 
             }
             
-            confirmButton.setTitle("Next Question", for: .normal)
-            hasSeenCorrectAnswer = true
-
+        }else {
+            
+            if(confirmButton.title(for: .normal) == "Home"){
+                performSegue(withIdentifier: "toTabBarSegue", sender: nil)
+            }else {
+            
+                questionNumber += 1
+                print(questionNumber)
+                
+                //Reset choice colors
+                firstAnswer.backgroundColor = UIColor.lightGray
+                secondAnswer.backgroundColor = UIColor.lightGray
+                thirdAnswer.backgroundColor = UIColor.lightGray
+                fourthAnswer.backgroundColor = UIColor.lightGray
+                firstAnswer.isUserInteractionEnabled = false
+                secondAnswer.isUserInteractionEnabled = false
+                thirdAnswer.isUserInteractionEnabled = false
+                fourthAnswer.isUserInteractionEnabled = false
+                
+                updateQuiz()
+                
+                hasSeenCorrectAnswer = false
+                selectedAnswer = 0
+                
+                confirmText.text = nil
+                
+                if(questionNumber == questionBank.count - 1){
+                    confirmButton.setTitle("Home", for: .normal)
+                }else {
+                    confirmButton.setTitle("Next Question", for: .normal)
+                }
+            }
+            
         }
+        
         
     }
     

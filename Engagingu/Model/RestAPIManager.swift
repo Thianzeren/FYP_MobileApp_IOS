@@ -31,7 +31,7 @@ class RestAPIManager {
             }
             
             //Debug Print
-            let jsonStr = String(data:data, encoding: .utf8)
+//            let jsonStr = String(data:data, encoding: .utf8)
 //            print("Json Response")
 //            print(jsonStr)
             
@@ -133,7 +133,7 @@ class RestAPIManager {
             }
             
             //Debug Print
-            let jsonStr = String(data:data, encoding: .utf8)
+//            let jsonStr = String(data:data, encoding: .utf8)
 //            print("Json Response")
 //            print(jsonStr)
             
@@ -533,5 +533,43 @@ class RestAPIManager {
         
 //        semaphore.wait()
         
+    }
+    
+    static func httpGetLeaderMemberStatus(URLStr: String){
+        
+        //let semaphore = DispatchSemaphore(value: 0)
+        
+        guard let url = URL(string: URLStr) else {
+            //semaphore.signal()
+            return }
+        
+        URLSession.shared.dataTask(with: url){(data, response, error) in
+            //check error
+            //check response status ok
+            
+            guard let data = data else {
+                //semaphore.signal()
+                return }
+            
+            do {
+                let users = try
+                    JSONDecoder().decode([User].self, from: data)
+                
+                for user in users{
+                    InstanceDAO.userDict[user.username] = user
+                }
+                
+                print("USERS")
+                print(InstanceDAO.userDict)
+                
+                //semaphore.signal()
+            } catch let jsonErr{
+                print("Error serializing json:", jsonErr)
+            }
+            
+            
+            }.resume()
+        
+        //semaphore.wait()
     }
 }

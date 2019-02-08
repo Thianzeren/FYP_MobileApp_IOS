@@ -39,7 +39,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let startHotspots = def.dictionary(forKey: "startHotspots")
         
         //Retrieve all usernames from DB to check if user has entered before
-        let retrieveUsernamesURL = "http://54.255.245.23:3000/user/retrieveAllUsers"
+        guard let retrieveUsernamesURL = InstanceDAO.serverEndpoints["getAllUsers"] else {
+            print("Unable to get server endpoint for retrieveUsernamesURL")
+            return false
+        }
         
         let usernameDict = RestAPIManager.syncHttpGet(URLStr: retrieveUsernamesURL)
         

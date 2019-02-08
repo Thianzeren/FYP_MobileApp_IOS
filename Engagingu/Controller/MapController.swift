@@ -81,19 +81,23 @@ class MapController: UIViewController, GMSMapViewDelegate {
         selectedMarker = marker
         
         // to check if user is near the hotspot
+        
         // Get marker's location
-        /*let selectedMarkerLocation = CLLocation(latitude: selectedMarker.position.latitude, longitude: selectedMarker.position.longitude)
+        let selectedMarkerLocation = CLLocation(latitude: selectedMarker.position.latitude, longitude: selectedMarker.position.longitude)
         
         // Get distance from current location to selected marker location
         let distance = currentLocation?.distance(from: selectedMarkerLocation)
         
         if let dist = distance {
             
+            // Distance where user is allowed to click on hotspot in metres
+            let distanceThreshold: Double = 30
+            
             print("SelectedMarkerLocation: \(selectedMarkerLocation)")
             print("CurrentLocation: \(currentLocation)")
             print("Distance: \(dist)")
             
-            if (Double(dist) < 5){
+            if (Double(dist) <= distanceThreshold){
                 
                 performSegue(withIdentifier: "toNarrativeSegue", sender: self)
                 
@@ -110,9 +114,9 @@ class MapController: UIViewController, GMSMapViewDelegate {
                 self.present(alert, animated: true, completion: nil)
                 
             }
-        }*/
+        }
         
-        performSegue(withIdentifier: "toNarrativeSegue", sender: self)
+        //performSegue(withIdentifier: "toNarrativeSegue", sender: self)
         
     }
     
@@ -120,14 +124,18 @@ class MapController: UIViewController, GMSMapViewDelegate {
         
         mapView.clear()
         
+//        // Add labs hotspot for testing
+//        InstanceDAO.hotspotDict["LABS"] = Hotspot(coordinates: ["1.2948","103.8499"], name: "SMU Labs", narrative: "SMU Labs Narrative Test")
+        
         let hotspots = InstanceDAO.hotspotDict
         let startHotspots = InstanceDAO.startHotspots
         
+        
         if(InstanceDAO.isFirstTime){ // Only show starting hotspot
-            
+
             let teamStartHotspot = startHotspots[InstanceDAO.team_id]
             let hotspot = hotspots[teamStartHotspot!]
-            
+
             let coordinates = hotspot!.coordinates
             let marker = GMSMarker()
             marker.position = CLLocationCoordinate2D(latitude: Double(coordinates[0]) ?? defaultCoordinates[0] , longitude: Double(coordinates[1]) ?? defaultCoordinates[1])
@@ -137,7 +145,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
             marker.map = mapView
 
         }else { // Show all hotspots
-            
+        
             for (name, hotspot) in hotspots{
                 print("name: \(name)")
                 

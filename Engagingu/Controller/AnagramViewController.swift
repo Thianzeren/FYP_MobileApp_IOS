@@ -13,6 +13,7 @@ class AnagramViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var wordInput: UITextField!
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var clueLabel: UITextView!
+    @IBOutlet weak var submitBtn: UIButton!
     
     var score: Int = 1
     var clue: String = ""
@@ -32,6 +33,11 @@ class AnagramViewController: UIViewController, UITextFieldDelegate {
         
         self.wordInput.delegate = self
         
+        if(!InstanceDAO.isLeader){
+            wordInput.isHidden = true
+            submitBtn.setTitle("Home", for: .normal)
+        }
+        
         //Listen for keyboard events, addObserers. Obbservers are removed when > IOS 9
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -41,61 +47,67 @@ class AnagramViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func submitAnswer(_ sender: Any) {
         
-        // Check if input is same as hidden word
-        if(wordInput.text?.lowercased() == hiddenWord){
-            //Send score to database
-            
-            //display alert for correct word & perform segue back to tab bar
-            
-            // create the alert
-            let alert = UIAlertController(title: "You Got It!", message: "Click OK to continue", preferredStyle: UIAlertController.Style.alert)
-            
-            // add an action (button)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
+        if(InstanceDAO.isLeader){
+            // Check if input is same as hidden word
+            if(wordInput.text?.lowercased() == hiddenWord){
+                //Send score to database
                 
-                // Send score to database
-                var resultDict: [String: String] = ["team_id": InstanceDAO.team_id]
-                resultDict["trail_instance_id"] = InstanceDAO.trail_instance_id
-                resultDict["score"] = String(self.score)
-                resultDict["hotspot"] = self.hotspot
+                //display alert for correct word & perform segue back to tab bar
                 
-                guard let jsonData = try? JSONSerialization.data(withJSONObject: resultDict) else { return
-                    print("Error: cannot create jsonData")
-                }
+                // create the alert
+                let alert = UIAlertController(title: "You Got It!", message: "Click OK to continue", preferredStyle: UIAlertController.Style.alert)
                 
-                guard let updateScoreURL = InstanceDAO.serverEndpoints["updateScore"]else {
-                    print("Unable to get server endpoint for updateScoreURL")
-                    return
-                }
-                RestAPIManager.asyncHttpPost(jsonData: jsonData, URLStr: updateScoreURL)
+                // add an action (button)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
+                    
+                    // Send score to database
+                    var resultDict: [String: String] = ["team_id": InstanceDAO.team_id]
+                    resultDict["trail_instance_id"] = InstanceDAO.trail_instance_id
+                    resultDict["score"] = String(self.score)
+                    resultDict["hotspot"] = self.hotspot
+                    
+                    guard let jsonData = try? JSONSerialization.data(withJSONObject: resultDict) else { return
+                        print("Error: cannot create jsonData")
+                    }
+                    
+                    guard let updateScoreURL = InstanceDAO.serverEndpoints["updateScore"]else {
+                        print("Unable to get server endpoint for updateScoreURL")
+                        return
+                    }
+                    RestAPIManager.asyncHttpPost(jsonData: jsonData, URLStr: updateScoreURL)
+                    
+                    // Update CompletedList & isFirstTime check
+                    InstanceDAO.completedList.append(self.hotspot)
+                    InstanceDAO.isFirstTime = false
+                    
+                    alert.dismiss(animated: true, completion: nil)
+                    
+                    self.performSegue(withIdentifier: "toTabBarSegue", sender: nil)
+                    
+                }))
                 
-                // Update CompletedList & isFirstTime check
-                InstanceDAO.completedList.append(self.hotspot)
-                InstanceDAO.isFirstTime = false
+                // show the alert
+                self.present(alert, animated: true, completion: nil)
                 
-                alert.dismiss(animated: true, completion: nil)
+            }else{
                 
-                self.performSegue(withIdentifier: "toTabBarSegue", sender: nil)
+                // Alert to ask to try again
+                // create the alert
+                let alert = UIAlertController(title: "Incorrect Word", message: "Please Try Again", preferredStyle: UIAlertController.Style.alert)
                 
-            }))
-            
-            // show the alert
-            self.present(alert, animated: true, completion: nil)
-            
-        }else{
-            
-            // Alert to ask to try again
-            // create the alert
-            let alert = UIAlertController(title: "Incorrect Word", message: "Please Try Again", preferredStyle: UIAlertController.Style.alert)
-            
-            // add an action (button)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
+                // add an action (button)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
+                    
+                }))
                 
-            }))
-            
-            // show the alert
-            self.present(alert, animated: true, completion: nil)
+                // show the alert
+                self.present(alert, animated: true, completion: nil)
+            }
+        }else {
+            performSegue(withIdentifier: "toTabBarSegue", sender: nil)
         }
+        
+        
         
     }
     

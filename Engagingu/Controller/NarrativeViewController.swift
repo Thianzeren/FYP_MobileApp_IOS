@@ -90,5 +90,10 @@ class NarrativeViewController: UIViewController {
         
     }
     
+    @IBAction func backToPreviousView(_ sender: Any) {
+        print("Back button tapped")
+        dismiss(animated: true, completion: nil)
+    }
+    
     
 }
