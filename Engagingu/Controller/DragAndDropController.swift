@@ -174,7 +174,11 @@ class DragAndDropController: UIViewController, UIDragInteractionDelegate, UIDrop
     //                performSegue(withIdentifier: "toTabBarSegue", sender: nil)
                 }
             }
-        }else {
+        }else { // If Member
+            // Update CompletedList & isFirstTime check
+            InstanceDAO.completedList.append(hotspot)
+            InstanceDAO.isFirstTime = false
+            
             performSegue(withIdentifier: "toTabBarSegue", sender: nil)
         }
         

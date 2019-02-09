@@ -69,7 +69,11 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
             
             self.present(actionSheet, animated: true, completion: nil)
         
-        }else {
+        }else { // If Member
+            
+            // Update CompletedList & isFirstTime check
+            InstanceDAO.completedList.append(hotspot)
+            InstanceDAO.isFirstTime = false
             
             performSegue(withIdentifier: "toTabBarSegue", sender: nil)
         }

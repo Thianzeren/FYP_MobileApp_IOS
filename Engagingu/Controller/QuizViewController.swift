@@ -291,9 +291,6 @@ class QuizViewController: UIViewController {
                 //hide Q&A label
                 questionLabel.isHidden = true
                 
-                // Add hotspot to completed list
-                InstanceDAO.completedList.append(hotspot)
-                
             }else if(hasSeenCorrectAnswer){
                 
                 questionNumber += 1
@@ -397,9 +394,14 @@ class QuizViewController: UIViewController {
                 
             }
             
-        }else {
+        }else { // For Member
             
             if(confirmButton.title(for: .normal) == "Home"){
+                
+                // Update CompletedList & isFirstTime check
+                InstanceDAO.completedList.append(hotspot)
+                InstanceDAO.isFirstTime = false
+                
                 performSegue(withIdentifier: "toTabBarSegue", sender: nil)
             }else {
             
