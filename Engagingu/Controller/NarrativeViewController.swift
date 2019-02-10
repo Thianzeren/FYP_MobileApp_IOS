@@ -47,8 +47,9 @@ class NarrativeViewController: UIViewController {
         }else if(InstanceDAO.dragAndDropDict[headerText] != nil){
             print("To Drag and drop")
             performSegue(withIdentifier: "toDragAndDropSegue", sender: nil)
+        }else if(InstanceDAO.drawingDict[headerText] != nil){
+            performSegue(withIdentifier: "toDrawingSegue", sender: nil)
         }
-        
     }
     //Allow scrolliing after first line shown
     override func viewDidAppear(_ animated: Bool) {
@@ -85,6 +86,12 @@ class NarrativeViewController: UIViewController {
             
             let destVC = segue.destination as! DragAndDropController
             destVC.hotspot = headerText
+            
+        }else if(segue.identifier == "toDrawingSegue"){
+            
+            let destVC = segue.destination as! DrawingController
+            destVC.hotspot = headerText
+            destVC.question = InstanceDAO.drawingDict[headerText] ?? ""
             
         }
         

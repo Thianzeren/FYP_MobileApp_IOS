@@ -33,7 +33,8 @@ struct InstanceDAO {
         "getSubmission" : "http://54.255.245.23:3000/upload/getSubmission?url=",
         "getLeaderboard" : "http://54.255.245.23:3000/team/hotspotStatus?trail_instance_id=",
         "getAllUsers" : "http://54.255.245.23:3000/user/retrieveAllUsers",
-        "getAllLeaderMember" : "http://54.255.245.23:3000/user/retrieveAllUser"
+        "getAllLeaderMember" : "http://54.255.245.23:3000/user/retrieveAllUser",
+        "getAllDrawings" : "http://54.255.245.23:3000/upload/getDrawingQuestion?trail_instance_id="
     ]
     
     
@@ -51,6 +52,9 @@ struct InstanceDAO {
     
     // Key: Hotspot name, Value: DragAndDrop object
     static var dragAndDropDict: [String:DragAndDrop] = [:]
+    
+    // Key: hotspot name, Value: Drawing object
+    static var drawingDict: [String:String] = [:]
     
     // Key: Hotspot name, Value: ImageURL Object
     static var urlDict: [String:ImageURL] = [:]
@@ -165,6 +169,12 @@ struct Anagram: Decodable{
     
     let hotspot: String
     let anagram: String
+}
+
+struct DrawingQns: Decodable {
+    
+    let hotspot: String
+    let question: String
 }
 
 struct Media{

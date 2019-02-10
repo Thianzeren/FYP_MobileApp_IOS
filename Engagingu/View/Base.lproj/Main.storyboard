@@ -535,6 +535,7 @@
                         <segue destination="gJq-er-Rn7" kind="show" identifier="toQuizSegue" id="57u-1m-vdm"/>
                         <segue destination="AWd-Wh-oYJ" kind="show" identifier="toAnagramSegue" id="j9B-8V-4r7"/>
                         <segue destination="nVK-9m-hen" kind="show" identifier="toDragAndDropSegue" id="6kr-1K-vio"/>
+                        <segue destination="tfc-RG-dNG" kind="show" identifier="toDrawingSegue" id="LpZ-vU-phD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aCY-6T-GJG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -899,12 +900,15 @@
                                 <rect key="frame" x="0.0" y="212" width="375" height="387"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1Z-b0-zrQ">
-                                <rect key="frame" x="94" y="613.5" width="187.5" height="33.5"/>
+                                <rect key="frame" x="94" y="569.5" width="187.5" height="33.5"/>
                                 <color key="backgroundColor" red="0.08235294118" green="0.10980392160000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="17"/>
                                 <state key="normal" title="SUBMIT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="submitDrawing:" destination="tfc-RG-dNG" eventType="touchUpInside" id="wz4-xG-sqd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -980,6 +984,8 @@
                     </view>
                     <connections>
                         <outlet property="drawing" destination="rTN-CN-FPs" id="mya-iT-fha"/>
+                        <outlet property="questionTextView" destination="M56-pf-BXc" id="tCl-P9-7Dp"/>
+                        <segue destination="I3j-hO-u2H" kind="show" identifier="toTabBarSegue" id="eTC-gg-Fhf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ANh-WV-pX1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2190,7 +2196,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6kr-1K-vio"/>
-        <segue reference="md7-BD-tEW"/>
+        <segue reference="eTC-gg-Fhf"/>
         <segue reference="Ca7-9E-Onb"/>
+        <segue reference="LpZ-vU-phD"/>
     </inferredMetricsTieBreakers>
 </document>

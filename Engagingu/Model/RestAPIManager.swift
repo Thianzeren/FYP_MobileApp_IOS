@@ -535,6 +535,50 @@ class RestAPIManager {
         
     }
     
+    static func httpGetDrawing(URLStr: String){
+        
+        //        let semaphore = DispatchSemaphore(value: 0)
+        
+        guard let url = URL(string: URLStr) else {
+            //            semaphore.signal()
+            print("URL cannot be created")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url){(data, response, error) in
+            //check error
+            //check response status ok
+            
+            guard let data = data else {
+                //                semaphore.signal()
+                print("No data available")
+                return
+            }
+            
+            do {
+                let drawings = try
+                    JSONDecoder().decode([DrawingQns].self, from: data)
+                
+                for drawing in drawings{
+                    InstanceDAO.drawingDict[drawing.hotspot] = drawing.question
+                }
+                
+                print("DRAWING")
+                print(InstanceDAO.drawingDict)
+                
+                //                semaphore.signal()
+                
+            } catch let jsonErr{
+                print("Error serializing json:", jsonErr)
+            }
+            
+            
+            }.resume()
+        
+        //        semaphore.wait()
+        
+    }
+    
     static func httpGetLeaderMemberStatus(URLStr: String){
         
         //let semaphore = DispatchSemaphore(value: 0)
