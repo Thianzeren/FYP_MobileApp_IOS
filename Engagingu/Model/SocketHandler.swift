@@ -11,7 +11,7 @@ import SocketIO
 
 class SocketHandler {
     
-    static let manager: SocketManager = SocketManager(socketURL: URL(string: "http://54.255.245.23:3000")!, config: [.log(true), .compress])
+    static let manager: SocketManager = SocketManager(socketURL: URL(string: InstanceDAO.serverIP)!, config: [.log(true), .compress])
     static var socket: SocketIOClient =  manager.defaultSocket
 
     

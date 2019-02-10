@@ -18,23 +18,24 @@ struct InstanceDAO {
     static var username: String = "defaultName"
     static var completedList: Array<String> = Array()
     
+    static var serverIP: String = "http://54.255.245.23:3000"
     static var serverEndpoints: [String:String] = [
-        "getInstanceId" : "http://54.255.245.23:3000/getInstance",
-        "registerUser" : "http://54.255.245.23:3000/user/register",
-        "getStartingHotspots" : "http://54.255.245.23:3000/team/startingHotspot?trail_instance_id=",
-        "getAllHotspots" : "http://54.255.245.23:3000/hotspot/getAllHotspots?trail_instance_id=",
-        "getAllQuizzes" : "http://54.255.245.23:3000/quiz/getQuizzes?trail_instance_id=",
-        "getAllSelfies" : "http://54.255.245.23:3000/upload/getSubmissionQuestion?trail_instance_id=",
-        "getAllAnagrams" : "http://54.255.245.23:3000/anagram/getAnagrams?trail_instance_id=",
-        "getAllDragAndDrops" : "http://54.255.245.23:3000/draganddrop/getDragAndDrop?trail_instance_id=",
-        "uploadSubmission" : "http://54.255.245.23:3000/upload/uploadSubmission",
-        "updateScore" : "http://54.255.245.23:3000/team/updateScore",
-        "getAllSubmissionsURL" : "http://54.255.245.23:3000/upload/getAllSubmissionURL?team=",
-        "getSubmission" : "http://54.255.245.23:3000/upload/getSubmission?url=",
-        "getLeaderboard" : "http://54.255.245.23:3000/team/hotspotStatus?trail_instance_id=",
-        "getAllUsers" : "http://54.255.245.23:3000/user/retrieveAllUsers",
-        "getAllLeaderMember" : "http://54.255.245.23:3000/user/retrieveAllUser",
-        "getAllDrawings" : "http://54.255.245.23:3000/upload/getDrawingQuestion?trail_instance_id="
+        "getInstanceId" : serverIP + "/getInstance",
+        "registerUser" : serverIP + "/user/register",
+        "getStartingHotspots" : serverIP + "/team/startingHotspot?trail_instance_id=",
+        "getAllHotspots" : serverIP + "/hotspot/getAllHotspots?trail_instance_id=",
+        "getAllQuizzes" : serverIP + "/quiz/getQuizzes?trail_instance_id=",
+        "getAllSelfies" : serverIP + "/upload/getSubmissionQuestion?trail_instance_id=",
+        "getAllAnagrams" : serverIP + "/anagram/getAnagrams?trail_instance_id=",
+        "getAllDragAndDrops" : serverIP + "/draganddrop/getDragAndDrop?trail_instance_id=",
+        "uploadSubmission" : serverIP + "/upload/uploadSubmission",
+        "updateScore" : serverIP + "/team/updateScore",
+        "getAllSubmissionsURL" : serverIP + "/upload/getAllSubmissionURL?team=",
+        "getSubmission" : serverIP + "/upload/getSubmission?url=",
+        "getLeaderboard" : serverIP + "/team/hotspotStatus?trail_instance_id=",
+        "getAllUsers" : serverIP + "/user/retrieveAllUsers",
+        "getAllLeaderMember" : serverIP + "/user/retrieveAllUser",
+        "getAllDrawings" : serverIP + "/upload/getDrawingQuestion?trail_instance_id="
     ]
     
     
