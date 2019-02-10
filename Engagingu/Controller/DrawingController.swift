@@ -13,7 +13,7 @@ class DrawingController: UIViewController {
     @IBOutlet weak var drawing: UIImageView!
     var lastPoint = CGPoint.zero
     //set to white to initialise color + prevent drawing if the pencil option is not pressed
-    var color = UIColor.white
+    var color = UIColor.black
     var brushWidth: CGFloat = 10.0
     var opacity: CGFloat = 1.0
     var swiped = false
@@ -23,7 +23,10 @@ class DrawingController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //hide the image so that drawing is disabled until pencil is pressed
-        drawing.isHidden = true
+        //drawing.isHidden = true
+        drawing.backgroundColor = UIColor.white
+        drawing.layer.borderColor = UIColor.black.cgColor
+        drawing.layer.borderWidth = 2
     }
     //track the first point of drawing
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -31,15 +34,16 @@ class DrawingController: UIViewController {
             return
         }
         swiped = false
-        lastPoint = touch.location(in: view)
+        lastPoint = touch.location(in: drawing)
     }
     func drawLine(from fromPoint: CGPoint, to toPoint: CGPoint) {
         
-        UIGraphicsBeginImageContext(view.frame.size)
+       // UIGraphicsBeginImageContext(drawing.frame.size)
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: drawing.frame.width, height: drawing.frame.height),  false, 0)
         guard let context = UIGraphicsGetCurrentContext() else {
             return
         }
-        drawing.image?.draw(in: view.bounds)
+        drawing.image?.draw(in: drawing.bounds)
         
         //Draw from lastPoint to currentPoint
         context.move(to: fromPoint)
@@ -64,7 +68,7 @@ class DrawingController: UIViewController {
             return
         }
         swiped = true
-        let currentPoint = touch.location(in: view)
+        let currentPoint = touch.location(in: drawing)
         drawLine(from: lastPoint, to: currentPoint)
         
         // updating the lastpoint
@@ -84,7 +88,7 @@ class DrawingController: UIViewController {
     }
     
     @IBAction func pencilPressed(_ sender: UIButton) {
-        drawing.isHidden = false
+       // drawing.isHidden = false
         guard let pencil = Pencil(tag: sender.tag) else {
             return
         }
