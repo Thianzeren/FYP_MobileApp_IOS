@@ -45,19 +45,21 @@ class TeamAllocationController: UIViewController {
         }else {
             InstanceDAO.isLeader = false
         }
-        
+
         if InstanceDAO.isLeader {
-            
+
             userStatus.text = "LEADER"
             groupInstructions.text = "Look for your team members while waiting for the trail to start"
-            
+
         }else {
-            
+
             userStatus.text = "MEMBER"
             groupInstructions.text = "Look for your team leader and get to know your teammates while waiting for the trail to start"
         }
+//
+//        loadWaitScreen()
         
-        loadWaitScreen()
+        self.startBtn.isHidden = false
     }
     
     override func didReceiveMemoryWarning() {
