@@ -25,7 +25,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
         
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
-        locationManager.distanceFilter = 50
+        locationManager.distanceFilter = 5
         locationManager.startUpdatingLocation()
         locationManager.delegate = self
         
@@ -59,6 +59,10 @@ class MapController: UIViewController, GMSMapViewDelegate {
         print("View Did Appear Map Controller")
         
         initiateHotspots()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 5
+        locationManager.startUpdatingLocation()
+        locationManager.delegate = self
         
         // When all trail is finished
         if(InstanceDAO.completedList.count == InstanceDAO.hotspotDict.count){
@@ -91,7 +95,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
         if let dist = distance {
             
             // Distance where user is allowed to click on hotspot in metres
-            let distanceThreshold: Double = 30
+            let distanceThreshold: Double = 50
             
             print("SelectedMarkerLocation: \(selectedMarkerLocation)")
             print("CurrentLocation: \(currentLocation)")

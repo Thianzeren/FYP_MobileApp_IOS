@@ -19,6 +19,7 @@ class TeamAllocationController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Make button disappear first
         startBtn.isHidden = true
         
         groupNumber.text = "TEAM " + InstanceDAO.team_id
@@ -56,10 +57,11 @@ class TeamAllocationController: UIViewController {
             userStatus.text = "MEMBER"
             groupInstructions.text = "Look for your team leader and get to know your teammates while waiting for the trail to start"
         }
-//
-//        loadWaitScreen()
         
-        self.startBtn.isHidden = false
+        // Loading screen
+        loadWaitScreen()
+        
+//        self.startBtn.isHidden = false
     }
     
     override func didReceiveMemoryWarning() {

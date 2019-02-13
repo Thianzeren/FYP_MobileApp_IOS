@@ -68,12 +68,66 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             InstanceDAO.completedList = completedList as? Array<String> ?? []
             InstanceDAO.startHotspots = startHotspots as? [String:String] ?? [:]
             
+            
+            // Get starting hotspots
+            guard let startHotspotURL = InstanceDAO.serverEndpoints["getStartingHotspots"] else {
+                print("Unable to get server endpoint for getStartingHotspots")
+                return false
+            }
+            RestAPIManager.httpGetStartingHotspots(URLStr: startHotspotURL  + InstanceDAO.trail_instance_id)
+            
             // Get hotspot location
             guard let allHotspotURL = InstanceDAO.serverEndpoints["getAllHotspots"] else {
                 print("Unable to get server endpoint for getAllHotspots")
                 return false
             }
             RestAPIManager.httpGetHotspots(URLStr: allHotspotURL + InstanceDAO.trail_instance_id)
+            
+            // Get quiz questions
+            guard let quizQuestionsURL = InstanceDAO.serverEndpoints["getAllQuizzes"] else {
+                print("Unable to get server endpoint for quizQuestionsURL")
+                return false
+            }
+            RestAPIManager.httpGetQuizzes(URLStr: quizQuestionsURL + InstanceDAO.trail_instance_id)
+            
+            // Get selfie question
+            guard let selfieQuestionsURL = InstanceDAO.serverEndpoints["getAllSelfies"] else {
+                print("Unable to get server endpoint for selfieQuestionsURL")
+                return false
+            }
+            RestAPIManager.httpGetSelfies(URLStr: selfieQuestionsURL  + InstanceDAO.trail_instance_id)
+            
+            // Get Anagram Questions
+            guard let anagramURL = InstanceDAO.serverEndpoints["getAllAnagrams"] else {
+                print("Unable to get server endpoint for anagramURL")
+                return false
+            }
+            RestAPIManager.httpGetAnagram(URLStr: anagramURL + InstanceDAO.trail_instance_id)
+            
+            // Get Drag And Drop Questions
+            guard let dragAndDropURL = InstanceDAO.serverEndpoints["getAllDragAndDrops"] else {
+                print("Unable to get server endpoint for dragAndDropURL")
+                return false
+            }
+            RestAPIManager.httpGetDragAndDrop(URLStr: dragAndDropURL + InstanceDAO.trail_instance_id)
+            
+            // Get Drawing Questions
+            guard let drawingURL = InstanceDAO.serverEndpoints["getAllDrawings"] else {
+                print("Unable to get server endpoint for drawingURL")
+                return false
+            }
+            RestAPIManager.httpGetDrawing(URLStr: drawingURL + InstanceDAO.trail_instance_id)
+            
+            // Get LeaderMember status
+            guard let getLeaderMemberURL = InstanceDAO.serverEndpoints["getAllLeaderMember"] else {
+                print("Unable to get server endpoint for getAllLeaderMember")
+                return false
+            }
+            RestAPIManager.httpGetLeaderMemberStatus(URLStr: getLeaderMemberURL)
+            
+            // Connect Socket to Server
+            SocketHandler.addHandlers()
+            SocketHandler.connectSocket()
             
             if let completedList = completedList {
                 
