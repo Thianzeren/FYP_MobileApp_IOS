@@ -38,9 +38,34 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
     var new_position_x: Int = 0  //success position stored
     var new_position_y: Int = 0
     
+    
+    @IBOutlet weak var x: UICollectionView!
+    
     //tracking number of rows in UI Collection View
     var counter: Int = 0
     
+    //to store the values
+    var emptyDict: [String: Array<Int>] = [:]
+    
+    //textfield
+    @IBOutlet weak var firstWord: UITextField!
+    @IBOutlet weak var secondWord: UITextField!
+    @IBOutlet weak var thirdWord: UITextField!
+    @IBOutlet weak var fourthWord: UITextField!
+    @IBOutlet weak var fifthWord: UITextField!
+    
+    
+     //user types in correct word
+    var correctList : Array<String> = []
+    
+    //user types in wrong word
+    var wrongList: Array<String> = []
+    
+    //list from DB
+    let list = ["gold", "maroon", "blue", "green", "brown"]
+    
+    //captalised list from DB --> empty array only in the main method then uppercased
+    var capitalised_list = [String]()
     //function to print the grid
     func print_grid(){
         for x in 0 ..< (grid_size){
@@ -62,11 +87,11 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
         super.viewDidLoad()
         print_grid()
         
-        let list = ["gold", "maroon", "blue", "green", "brown"]
+        //let list = ["gold", "maroon", "blue", "green", "brown"]
         
-        var capitalised_list = [String]()
+       // var capitalised_list = [String]()
         
-        for i in list {
+         for i in list {
             let capital_word: String = i.uppercased()
             capitalised_list.append(capital_word)
         }
@@ -79,6 +104,10 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
         
         for word in capitalised_list {
             let word_length: Int = word.count
+            
+            //Create new Key-value pair
+             emptyDict.updateValue([], forKey: word)
+            
             //In case out of room when trying to place a word
             var placed = false
             while !placed {
@@ -150,6 +179,13 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
                         new_position_y = y_position + i*step_y
                         grid[new_position_x][new_position_y] = character
                         placed = true
+                        
+                        //store every placing of each character of the word
+                        emptyDict[word]?.append(new_position_x)
+                        emptyDict[word]?.append(new_position_y)
+                       
+                        print(emptyDict)
+                        
                     }
                 }
              
@@ -181,6 +217,7 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? WordSearchTableViewCell, let columns = grid.first?.count{
          
             let item = indexPath.item
+            
             let row : Int = counter
             let column : Int = Int(CGFloat(item).truncatingRemainder(dividingBy: CGFloat(columns)))
             
@@ -197,4 +234,34 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
         print("error")
         return UICollectionViewCell()
     }
+    
+    
+    @IBAction func checkWordsSubmitted(_ sender: Any) {
+        //store all textfield in array
+        let enteredWords: Array<String> = [firstWord.text!.uppercased(), secondWord.text!.uppercased(), thirdWord.text!.uppercased(), fourthWord.text!.uppercased(), fifthWord.text!.uppercased()]
+        //check if word in list is in the word user entered
+        for word in enteredWords {
+            if capitalised_list.contains(word) {
+                correctList.append(word)
+            }
+        }
+        //check the words that are missing by comparing correct list to the orginal list
+        for word in capitalised_list {
+            if !correctList.contains(word) {
+                wrongList.append(word)
+            }
+        }
+        print(wrongList)
+        print(correctList)
+        
+        var cell = x.dequeueReusableCell(withReuseIdentifier: "Cell", for: IndexPath.init(item: 3, section: 3))
+        
+        cell.backgroundColor = UIColor.orange
+    }
+    
+    /*func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? WordSearchTableViewCell
+        
+    }*/
+    
 }
