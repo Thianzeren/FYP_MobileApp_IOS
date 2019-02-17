@@ -23,7 +23,9 @@ extension String {
     }
 }
 
-class WordSearchViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+
+
+class WordSearchViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITextFieldDelegate {
     
     let grid_size: Int = 10
     
@@ -39,7 +41,7 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
     var new_position_y: Int = 0
     
     
-    @IBOutlet weak var x: UICollectionView!
+    @IBOutlet weak var collectionGrid: UICollectionView!
     
     //tracking number of rows in UI Collection View
     var counter: Int = 0
@@ -65,7 +67,8 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
     let list = ["gold", "maroon", "blue", "green", "brown"]
     
     //captalised list from DB --> empty array only in the main method then uppercased
-    var capitalised_list = [String]()
+    var capitalised_list: Array<String> = []
+    
     //function to print the grid
     func print_grid(){
         for x in 0 ..< (grid_size){
@@ -86,6 +89,11 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         print_grid()
+        self.firstWord.delegate = self
+        self.secondWord.delegate = self
+        self.thirdWord.delegate = self
+        self.fourthWord.delegate = self
+        self.fifthWord.delegate = self
         
         //let list = ["gold", "maroon", "blue", "green", "brown"]
         
@@ -202,6 +210,12 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
          print_grid()
     }
    
+    //dismiss keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         //return columns
         return grid.count
@@ -236,7 +250,7 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     
-    @IBAction func checkWordsSubmitted(_ sender: Any) {
+   @IBAction func checkWordsSubmitted(_ sender: Any) {
         //store all textfield in array
         let enteredWords: Array<String> = [firstWord.text!.uppercased(), secondWord.text!.uppercased(), thirdWord.text!.uppercased(), fourthWord.text!.uppercased(), fifthWord.text!.uppercased()]
         //check if word in list is in the word user entered
@@ -253,15 +267,16 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
         }
         print(wrongList)
         print(correctList)
+    
+    
+    
+    
+    
         
-        var cell = x.dequeueReusableCell(withReuseIdentifier: "Cell", for: IndexPath.init(item: 3, section: 3))
-        
-        cell.backgroundColor = UIColor.orange
+        let cell = collectionGrid.cellForItem(at: IndexPath.init(item: 4, section: 4))
+        cell?.backgroundColor = UIColor.orange
     }
     
-    /*func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? WordSearchTableViewCell
-        
-    }*/
+
     
 }
