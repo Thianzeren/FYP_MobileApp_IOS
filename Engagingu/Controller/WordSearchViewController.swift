@@ -25,7 +25,7 @@ extension String {
 
 
 
-class WordSearchViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITextFieldDelegate {
+class WordSearchViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITextFieldDelegate, UICollectionViewDelegateFlowLayout{
     
     let grid_size: Int = 10
     
@@ -89,6 +89,7 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         print_grid()
+        //to dismiss keyboard when press return
         self.firstWord.delegate = self
         self.secondWord.delegate = self
         self.thirdWord.delegate = self
@@ -217,14 +218,24 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        //return columns
+        //return rows
         return grid.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //return rows
+        //return columns
         return grid[section].count
         
+    }
+    
+    //to set the width and height of every individual cell to confine to the width and height of the collectionView
+    //so that it will appear to be centralised
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        print("w", (collectionView.frame.width)/CGFloat(grid_size))
+        print("h", (collectionView.frame.height)/CGFloat(grid_size))
+        
+        return CGSize(width: (collectionView.frame.width)/CGFloat(grid_size), height: collectionView.frame.height/CGFloat(grid_size))
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
@@ -267,14 +278,27 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
         }
         print(wrongList)
         print(correctList)
-    
-    
-    
-    
-    
-        
-        let cell = collectionGrid.cellForItem(at: IndexPath.init(item: 4, section: 4))
-        cell?.backgroundColor = UIColor.orange
+        //highlight cell green
+        if correctList.count > 0 {
+            for word in correctList {
+                let storageOfWordsPosition: Array<Int> = emptyDict[word]!
+                for num in stride (from:0, to:storageOfWordsPosition.count, by:2){
+                    //item is column, section is row
+                    let cell = collectionGrid.cellForItem(at: IndexPath.init(item: storageOfWordsPosition[num+1], section: storageOfWordsPosition[num]))
+                    cell?.backgroundColor = UIColor.green
+                }
+            }
+        }
+    //highlight cell red
+        if wrongList.count > 0 {
+            for word in wrongList {
+                let storageOfWordsPosition: Array<Int> = emptyDict[word]!
+                for num in stride (from:0, to:storageOfWordsPosition.count, by:2){
+                    let cell = collectionGrid.cellForItem(at: IndexPath.init(item: storageOfWordsPosition[num+1], section: storageOfWordsPosition[num]))
+                    cell?.backgroundColor = UIColor.red
+                }
+            }
+        }
     }
     
 

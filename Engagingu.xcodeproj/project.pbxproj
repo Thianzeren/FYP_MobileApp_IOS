@@ -14,6 +14,8 @@
 		AF2AF80621FE90AA00B75A50 /* DrawingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2AF80521FE90AA00B75A50 /* DrawingController.swift */; };
 		AF2AF80821FED09000B75A50 /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF2AF80721FED08F00B75A50 /* RobotoCondensed-Bold.ttf */; };
 		AF3DBCEF21F7077E005FBE40 /* TutorialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3DBCEE21F7077E005FBE40 /* TutorialController.swift */; };
+		AF51084822192ABD00EAB0FD /* WordSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51084622192ABC00EAB0FD /* WordSearchViewController.swift */; };
+		AF51084922192ABD00EAB0FD /* WordSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51084722192ABD00EAB0FD /* WordSearchTableViewCell.swift */; };
 		AF6C8B42218D4CDF006AC6C0 /* LoginTrailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C8B3F218D4CDF006AC6C0 /* LoginTrailController.swift */; };
 		AF6C8B43218D4CDF006AC6C0 /* LoginNameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C8B40218D4CDF006AC6C0 /* LoginNameController.swift */; };
 		AF6C8B44218D4CDF006AC6C0 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C8B41218D4CDF006AC6C0 /* CameraViewController.swift */; };
@@ -86,6 +88,8 @@
 		AF2AF80521FE90AA00B75A50 /* DrawingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingController.swift; sourceTree = "<group>"; };
 		AF2AF80721FED08F00B75A50 /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
 		AF3DBCEE21F7077E005FBE40 /* TutorialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialController.swift; sourceTree = "<group>"; };
+		AF51084622192ABC00EAB0FD /* WordSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSearchViewController.swift; sourceTree = "<group>"; };
+		AF51084722192ABD00EAB0FD /* WordSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSearchTableViewCell.swift; sourceTree = "<group>"; };
 		AF6C8B3F218D4CDF006AC6C0 /* LoginTrailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTrailController.swift; sourceTree = "<group>"; };
 		AF6C8B40218D4CDF006AC6C0 /* LoginNameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNameController.swift; sourceTree = "<group>"; };
 		AF6C8B41218D4CDF006AC6C0 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -292,6 +296,8 @@
 		E1A67DDF21913C0500581D1C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				AF51084722192ABD00EAB0FD /* WordSearchTableViewCell.swift */,
+				AF51084622192ABC00EAB0FD /* WordSearchViewController.swift */,
 				AF6C8B3F218D4CDF006AC6C0 /* LoginTrailController.swift */,
 				AF6C8B40218D4CDF006AC6C0 /* LoginNameController.swift */,
 				AF3DBCEE21F7077E005FBE40 /* TutorialController.swift */,
@@ -622,6 +628,7 @@
 				AF6C8B42218D4CDF006AC6C0 /* LoginTrailController.swift in Sources */,
 				E1500BC621EECB0F0032E8FA /* SubmissionPopUpController.swift in Sources */,
 				AF78DD0C2189878A00B0CF10 /* AppDelegate.swift in Sources */,
+				AF51084822192ABD00EAB0FD /* WordSearchViewController.swift in Sources */,
 				E176A14221C290E1005A5C30 /* QuizViewController.swift in Sources */,
 				E176A13E21C1487F005A5C30 /* TabBarController.swift in Sources */,
 				AF78DD92218B759500B0CF10 /* RestAPIManager.swift in Sources */,
@@ -642,6 +649,7 @@
 				E176A14421C2936D005A5C30 /* NarrativeViewController.swift in Sources */,
 				E12FEFA121F1D9B10074F877 /* LeaderboardController.swift in Sources */,
 				E12FEFA921F2FDD50074F877 /* SocketHandler.swift in Sources */,
+				AF51084922192ABD00EAB0FD /* WordSearchTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
