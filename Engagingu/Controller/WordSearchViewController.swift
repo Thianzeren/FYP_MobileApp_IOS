@@ -66,6 +66,7 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
     //list from DB
     let list = ["gold", "maroon", "blue", "green", "brown"]
     
+    
     //captalised list from DB --> empty array only in the main method then uppercased
     var capitalised_list: Array<String> = []
     

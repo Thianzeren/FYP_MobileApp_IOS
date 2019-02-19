@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let usernameDict = RestAPIManager.syncHttpGet(URLStr: retrieveUsernamesURL)
         
-        //Process Response
+        //Check for session
         if let usernameArr = usernameDict["username"] as? [String]{
 //            print(team_id)
 //            print(trail_instance_id)
@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 wasLoggedIn = true
             }
         }else{
-            print("Username Array was not retrieve from database")
+            print("Username Array was not retrieved from database")
         }
         
         if (wasLoggedIn) {
@@ -139,7 +139,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let initialViewController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
             window?.rootViewController = initialViewController
             window?.makeKeyAndVisible()
+            
         }else{
+            
+            resetDefaults()
+            
             let initialViewController = storyboard.instantiateViewController(withIdentifier: "LoginTrailController")
             window?.rootViewController = initialViewController
             window?.makeKeyAndVisible()
@@ -147,6 +151,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
 
+    }
+    
+    func resetDefaults() {
+        let defaults = UserDefaults.standard
+        let dictionary = defaults.dictionaryRepresentation()
+        dictionary.keys.forEach { key in
+            defaults.removeObject(forKey: key)
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
