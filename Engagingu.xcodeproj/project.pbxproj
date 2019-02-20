@@ -42,7 +42,6 @@
 		AFAF5FB021EF8DE800E29FD1 /* roboto-condensed.light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFAF5FAF21EF8DE800E29FD1 /* roboto-condensed.light.ttf */; };
 		AFAF5FB121EF8E0300E29FD1 /* roboto-condensed.regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFAF5FAE21EF8DC300E29FD1 /* roboto-condensed.regular.ttf */; };
 		E106B49A21C3BE35001DEB88 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = E106B49921C3BE35001DEB88 /* Podfile */; };
-		E10BBBF8221C0A9E005C8191 /* FAQController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10BBBF7221C0A9E005C8191 /* FAQController.swift */; };
 		E10D9FB421DF042900C6D682 /* SubmissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10D9FB321DF042900C6D682 /* SubmissionViewController.swift */; };
 		E124529221F8B9E20036AC87 /* AnagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E124529121F8B9E20036AC87 /* AnagramViewController.swift */; };
 		E12FEFA121F1D9B10074F877 /* LeaderboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12FEFA021F1D9B10074F877 /* LeaderboardController.swift */; };
@@ -124,7 +123,6 @@
 		C72385D4ED204E3E11D145AB /* Pods-Engagingu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Engagingu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Engagingu/Pods-Engagingu.debug.xcconfig"; sourceTree = "<group>"; };
 		DF573A3D860BDBBA777F2706 /* Pods-EngaginguUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EngaginguUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EngaginguUITests/Pods-EngaginguUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E106B49921C3BE35001DEB88 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
-		E10BBBF7221C0A9E005C8191 /* FAQController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FAQController.swift; path = /Users/nicholas/Documents/FYP/FYP_MobileApp_IOSV2/Engagingu/Controller/FAQController.swift; sourceTree = "<absolute>"; };
 		E10D9FB321DF042900C6D682 /* SubmissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionViewController.swift; sourceTree = "<group>"; };
 		E124529121F8B9E20036AC87 /* AnagramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnagramViewController.swift; sourceTree = "<group>"; };
 		E12FEF9E21F094440074F877 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -311,7 +309,6 @@
 				E10D9FB321DF042900C6D682 /* SubmissionViewController.swift */,
 				E1B5927F21E597E600643DF7 /* SubmissionTableViewCell.swift */,
 				E1500BC521EECB0F0032E8FA /* SubmissionPopUpController.swift */,
-				E10BBBF7221C0A9E005C8191 /* FAQController.swift */,
 				E176A14321C2936D005A5C30 /* NarrativeViewController.swift */,
 				E176A14121C290E1005A5C30 /* QuizViewController.swift */,
 				AF6C8B41218D4CDF006AC6C0 /* CameraViewController.swift */,
@@ -644,7 +641,6 @@
 				E1F5133821BFC24B00964726 /* MapController.swift in Sources */,
 				E124529221F8B9E20036AC87 /* AnagramViewController.swift in Sources */,
 				AF2AF80621FE90AA00B75A50 /* DrawingController.swift in Sources */,
-				E10BBBF8221C0A9E005C8191 /* FAQController.swift in Sources */,
 				E1E945C622015C0B005E7E1A /* DragAndDropController.swift in Sources */,
 				AF2AF80421FE909200B75A50 /* Pencil.swift in Sources */,
 				AF6C8B44218D4CDF006AC6C0 /* CameraViewController.swift in Sources */,

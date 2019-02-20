@@ -1415,6 +1415,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Ipg-lH-pvH" secondAttribute="trailing" id="8Wl-4I-VPY"/>
                             <constraint firstItem="Ipg-lH-pvH" firstAttribute="top" secondItem="l0Z-mj-pbh" secondAttribute="top" id="aeR-pB-tfp"/>
+                            <constraint firstItem="Ipg-lH-pvH" firstAttribute="width" secondItem="qBO-hS-YME" secondAttribute="width" id="fvW-Fp-BDs"/>
                             <constraint firstItem="Ipg-lH-pvH" firstAttribute="leading" secondItem="qBO-hS-YME" secondAttribute="leading" id="rRa-oE-zET"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="l0Z-mj-pbh"/>
@@ -2404,7 +2405,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Bnj-X1-gi2"/>
-        <segue reference="Zbx-TQ-bIF"/>
+        <segue reference="md7-BD-tEW"/>
         <segue reference="Ca7-9E-Onb"/>
         <segue reference="G8Z-Cx-u60"/>
     </inferredMetricsTieBreakers>

@@ -15,7 +15,7 @@ class LeaderboardController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+
     }
     override func viewWillAppear(_ animated: Bool) {
         loadWaitScreen()
@@ -35,6 +35,7 @@ class LeaderboardController: UIViewController {
             
             let leaderboardDict = InstanceDAO.leaderboardDict
             
+            self.sortedTeamArr.removeAll()
             for(key, value) in leaderboardDict{
                 self.sortedTeamArr.append((key, value))
             }
@@ -81,12 +82,14 @@ extension LeaderboardController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let teamID = sortedTeamArr[indexPath.row].0
+        
         let teamCompletedHotspots = sortedTeamArr[indexPath.row].1
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "LeaderboardTableViewCell") as! LeaderboardTableViewCell
         
         cell.setLabels(teamLabel: teamID, hotspotLabel: String(teamCompletedHotspots))
-        
+        //prevent from becoming grey
+        cell.selectionStyle = .none
         //colour for top 3 teams
         if (indexPath.row == 0) {
             cell.backgroundColor = UIColor(red: 255/255.0, green: 215/255.0, blue:0, alpha: 1.0)
@@ -99,5 +102,5 @@ extension LeaderboardController: UITableViewDataSource, UITableViewDelegate {
         }
         return cell
     }
-    
+
 }
