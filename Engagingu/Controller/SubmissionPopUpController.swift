@@ -12,7 +12,7 @@ import Photos
 class SubmissionPopUpController: UIViewController {
 
     @IBOutlet weak var hotspotLabel: UILabel!
-    @IBOutlet weak var questionLabel: UILabel!
+    //@IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var downloadBtnLabel: UIButton!
     
@@ -44,10 +44,12 @@ class SubmissionPopUpController: UIViewController {
         })
         
     }
+    
     func hidePopUp(){
         let Tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissPopUp))
         view.addGestureRecognizer(Tap)
     }
+    
     @objc func dismissPopUp(){
         dismiss(animated: false, completion: nil)
     }

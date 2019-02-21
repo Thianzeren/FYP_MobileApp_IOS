@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let username = def.string(forKey: "username")
         let completedList = def.array(forKey: "completedList")
         let startHotspots = def.dictionary(forKey: "startHotspots")
+        //let activityArr = def.array(forKey: "activityArr")
         
         //Retrieve all usernames from DB to check if user has entered before
         guard let retrieveUsernamesURL = InstanceDAO.serverEndpoints["getAllUsers"] else {
@@ -66,6 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             InstanceDAO.team_id = team_id!
             InstanceDAO.trail_instance_id = trail_instance_id!
             InstanceDAO.completedList = completedList as? Array<String> ?? []
+            //InstanceDAO.activityArr = activityArr as? Array<Activity> ?? []
             InstanceDAO.startHotspots = startHotspots as? [String:String] ?? [:]
             
             
@@ -172,6 +174,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let def = UserDefaults.standard
         def.set(InstanceDAO.completedList, forKey: "completedList")
+        //def.set(InstanceDAO.activityArr, forKey: "activityArr")
         def.set(InstanceDAO.startHotspots, forKey: "startHotspots")
         def.synchronize()
         
@@ -191,6 +194,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let def = UserDefaults.standard
         def.set(InstanceDAO.completedList, forKey: "completedList")
+        //def.set(InstanceDAO.activityArr, forKey: "activityArr")
         def.set(InstanceDAO.startHotspots, forKey: "startHotspots")
         def.synchronize()
         

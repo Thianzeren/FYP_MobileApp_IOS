@@ -25,7 +25,9 @@ class SubmissionTableViewCell: UITableViewCell {
 
     @IBAction func showPopUp(_ sender: Any) {
         
+        print("Image Button is clicked")
         self.delegate?.tableViewCell(self, buttonTapped: photoImage)
+        
     }
     
     

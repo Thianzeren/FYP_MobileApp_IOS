@@ -110,6 +110,10 @@ extension SubmissionViewController: UITableViewDataSource, UITableViewDelegate, 
     func tableViewCell(_ cell: SubmissionTableViewCell, buttonTapped: UIButton) {
         // You have the cell where the touch event happend, you can get the indexPath like the below
         let indexPath = self.tableView.indexPath(for: cell)
+        
+        // Debug Prints
+        print("In delegate method to performSegue")
+        
         // Call `performSegue`
         self.performSegue(withIdentifier: "toPopUpSegue", sender: indexPath)
     }
@@ -126,7 +130,7 @@ extension SubmissionViewController: UITableViewDataSource, UITableViewDelegate, 
             _ = destinationVC.view
             
             destinationVC.hotspotLabel.text = media.hotspot
-            destinationVC.questionLabel.text = media.question
+            //destinationVC.questionLabel.text = media.question
             destinationVC.imageView.image = UIImage(data: media.data)
             
         }
