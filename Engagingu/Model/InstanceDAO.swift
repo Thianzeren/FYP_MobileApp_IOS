@@ -18,8 +18,8 @@ struct InstanceDAO {
     static var username: String = "defaultName"
     static var completedList: Array<String> = Array()
     
-    static var serverIP: String = "http://13.229.115.32:3000"
-    //static var serverIP: String = "http://54.255.245.23:3000"
+    //static var serverIP: String = "http://13.229.115.32:3000"
+    static var serverIP: String = "http://54.255.245.23:3000"
     
     static var serverEndpoints: [String:String] = [
         "getInstanceId" : serverIP + "/getInstance",
@@ -37,7 +37,9 @@ struct InstanceDAO {
         "getLeaderboard" : serverIP + "/team/hotspotStatus?trail_instance_id=",
         "getAllUsers" : serverIP + "/user/retrieveAllUsers",
         "getAllLeaderMember" : serverIP + "/user/retrieveAllUser",
-        "getAllDrawings" : serverIP + "/upload/getDrawingQuestion?trail_instance_id="
+        "getAllDrawings" : serverIP + "/upload/getDrawingQuestion?trail_instance_id=",
+        "getAllWordSearch" : serverIP + "/wordsearch/getWordSearchWords?trail_instance_id=",
+        "updateLocation" : serverIP + "/team/teamLocation"
     ]
     
     
@@ -61,6 +63,9 @@ struct InstanceDAO {
     
     // Key: Hotspot name, Value: ImageURL Object
     static var urlDict: [String:ImageURL] = [:]
+    
+    // Key: Hotspot name, Value: Array of String (Words)
+    static var wordSearchDict: [String:[String]] = [:]
     
     // For Submissions
     static var submissions: [Media] = []

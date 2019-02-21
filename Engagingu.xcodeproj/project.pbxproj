@@ -53,6 +53,7 @@
 		E176A13E21C1487F005A5C30 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176A13D21C1487F005A5C30 /* TabBarController.swift */; };
 		E176A14221C290E1005A5C30 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176A14121C290E1005A5C30 /* QuizViewController.swift */; };
 		E176A14421C2936D005A5C30 /* NarrativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176A14321C2936D005A5C30 /* NarrativeViewController.swift */; };
+		E1843794221ECB8A008A1EA9 /* FAQController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1843793221ECB8A008A1EA9 /* FAQController.swift */; };
 		E1A67DE321913DC300581D1C /* InstanceDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A67DE221913DC300581D1C /* InstanceDAO.swift */; };
 		E1A67DE921944C6B00581D1C /* TeamAllocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A67DE821944C6B00581D1C /* TeamAllocationController.swift */; };
 		E1B5928021E597E600643DF7 /* SubmissionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B5927F21E597E600643DF7 /* SubmissionTableViewCell.swift */; };
@@ -135,6 +136,7 @@
 		E176A13D21C1487F005A5C30 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E176A14121C290E1005A5C30 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		E176A14321C2936D005A5C30 /* NarrativeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NarrativeViewController.swift; sourceTree = "<group>"; };
+		E1843793221ECB8A008A1EA9 /* FAQController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQController.swift; sourceTree = "<group>"; };
 		E1A67DE221913DC300581D1C /* InstanceDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceDAO.swift; sourceTree = "<group>"; };
 		E1A67DE821944C6B00581D1C /* TeamAllocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamAllocationController.swift; sourceTree = "<group>"; };
 		E1B5927F21E597E600643DF7 /* SubmissionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionTableViewCell.swift; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 		E1A67DDF21913C0500581D1C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E1843793221ECB8A008A1EA9 /* FAQController.swift */,
 				AF6C8B3F218D4CDF006AC6C0 /* LoginTrailController.swift */,
 				AF6C8B40218D4CDF006AC6C0 /* LoginNameController.swift */,
 				AF3DBCEE21F7077E005FBE40 /* TutorialController.swift */,
@@ -641,6 +644,7 @@
 				E1F5133821BFC24B00964726 /* MapController.swift in Sources */,
 				E124529221F8B9E20036AC87 /* AnagramViewController.swift in Sources */,
 				AF2AF80621FE90AA00B75A50 /* DrawingController.swift in Sources */,
+				E1843794221ECB8A008A1EA9 /* FAQController.swift in Sources */,
 				E1E945C622015C0B005E7E1A /* DragAndDropController.swift in Sources */,
 				AF2AF80421FE909200B75A50 /* Pencil.swift in Sources */,
 				AF6C8B44218D4CDF006AC6C0 /* CameraViewController.swift in Sources */,

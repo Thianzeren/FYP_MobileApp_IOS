@@ -95,7 +95,10 @@ class MapController: UIViewController, GMSMapViewDelegate {
         if let dist = distance {
             
             // Distance where user is allowed to click on hotspot in metres
-            let distanceThreshold: Double = 50
+            //let distanceThreshold: Double = 50
+            
+            // Distance for debugging (to remove geofence)
+            let distanceThreshold: Double = 1000
             
             print("SelectedMarkerLocation: \(selectedMarkerLocation)")
             print("CurrentLocation: \(currentLocation)")
@@ -195,6 +198,25 @@ extension MapController: CLLocationManagerDelegate{
         currentLocation = location
         //print("Location: \(location)")
         print(location.coordinate)
+        
+        if(InstanceDAO.isLeader){
+            // send location to server
+            var jsonDict: [String: String] = ["teamID": InstanceDAO.team_id]
+            jsonDict["long"] = String(location.coordinate.longitude)
+            jsonDict["lat"] = String(location.coordinate.latitude)
+            
+            guard let jsonData = try? JSONSerialization.data(withJSONObject: jsonDict) else { return
+                print("Error: cannot create jsonData")
+            }
+            
+            guard let updateLocationURL = InstanceDAO.serverEndpoints["updateLocation"] else {
+                print("Unable to get server endpoint for updateScoreURL")
+                return
+            }
+            RestAPIManager.asyncHttpPost(jsonData: jsonData, URLStr: updateLocationURL)
+            
+            print("Sent Location to Backend")
+        }
         
         let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
                                               longitude: location.coordinate.longitude,
