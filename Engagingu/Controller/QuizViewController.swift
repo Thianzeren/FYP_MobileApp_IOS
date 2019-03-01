@@ -27,6 +27,9 @@ class QuizViewController: UIViewController {
     // Outlet for Q&A
     @IBOutlet weak var questionLabel: UITextView!
     
+    //back button for member
+    @IBOutlet weak var backButton: UIBarButtonItem!
+    
     // UIColor
     var greenColor: UIColor = UIColor(red: 146/255, green: 208/255, blue: 80/255, alpha: 0.5)
     var redColor: UIColor = UIColor(red: 232/255, green: 88/255, blue: 88/255, alpha: 0.5)
