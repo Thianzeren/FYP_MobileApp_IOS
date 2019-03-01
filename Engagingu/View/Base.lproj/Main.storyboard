@@ -393,7 +393,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finish all hotspots and head back to Admin Building quickly" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4g-OB-NUd">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finish all hotspots and head back to the starting venue quickly" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4g-OB-NUd">
                                                 <rect key="frame" x="122.5" y="743" width="196.5" height="98"/>
                                                 <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="20"/>
                                                 <nil key="textColor"/>
@@ -1450,7 +1450,10 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZjG-jC-902">
-                                <rect key="frame" x="37.5" y="228.5" width="300" height="267"/>
+                                <rect key="frame" x="87.5" y="220.5" width="200" height="267"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ZjG-jC-902" secondAttribute="height" multiplier="3:4" id="Re0-Rh-xz8"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="iVE-VG-MiW">
                                 <rect key="frame" x="94" y="558.5" width="187.5" height="33.5"/>
@@ -1477,11 +1480,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ZjG-jC-902" firstAttribute="top" secondItem="2g2-2B-JdI" secondAttribute="bottom" constant="48" id="0YD-wv-8Fy"/>
+                            <constraint firstItem="ZjG-jC-902" firstAttribute="top" secondItem="2g2-2B-JdI" secondAttribute="bottom" constant="40" id="0YD-wv-8Fy"/>
                             <constraint firstItem="pjU-3d-Lfn" firstAttribute="centerX" secondItem="ZjG-jC-902" secondAttribute="centerX" id="4kc-J4-1Rl"/>
                             <constraint firstItem="iUd-qZ-RoO" firstAttribute="width" secondItem="IjX-ut-x9l" secondAttribute="width" id="57K-Rb-RkK"/>
                             <constraint firstItem="2g2-2B-JdI" firstAttribute="leading" secondItem="iUd-qZ-RoO" secondAttribute="leading" id="5D9-ps-sNL"/>
-                            <constraint firstItem="ZjG-jC-902" firstAttribute="width" secondItem="IjX-ut-x9l" secondAttribute="width" multiplier="0.8" id="5Eh-c7-k8c"/>
                             <constraint firstItem="skH-I3-8I6" firstAttribute="bottom" secondItem="iVE-VG-MiW" secondAttribute="bottom" constant="31" id="5mR-8b-eJP"/>
                             <constraint firstItem="ZjG-jC-902" firstAttribute="height" secondItem="IjX-ut-x9l" secondAttribute="height" multiplier="0.4" id="6Ab-uj-ckY"/>
                             <constraint firstItem="iUd-qZ-RoO" firstAttribute="height" secondItem="IjX-ut-x9l" secondAttribute="height" multiplier="0.2" id="7lo-KJ-F9Z"/>
@@ -2396,8 +2398,8 @@
         <image name="story_HowToPlay" width="156" height="156"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6kr-1K-vio"/>
-        <segue reference="Zbx-TQ-bIF"/>
+        <segue reference="Bnj-X1-gi2"/>
+        <segue reference="QYZ-9e-9zh"/>
         <segue reference="Ca7-9E-Onb"/>
         <segue reference="LpZ-vU-phD"/>
         <segue reference="Iu3-UZ-eLw"/>
