@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import UserNotifications
 
 let googleAPIKey = "AIzaSyAPRQUVZcHXpQ98PvtDDphorQ5kX5ziKTY"
 
@@ -35,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let team_id = def.string(forKey: "team_id")
         let trail_instance_id = def.string(forKey: "trail_instance_id")
         let username = def.string(forKey: "username")
+        let isLeader = def.bool(forKey: "isLeader")
         let completedList = def.array(forKey: "completedList")
         let startHotspots = def.dictionary(forKey: "startHotspots")
         //let activityArr = def.array(forKey: "activityArr")
@@ -56,6 +58,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             if !(team_id ?? "").isEmpty && !(trail_instance_id ?? "").isEmpty && (usernameArr.contains(username ?? "")){
                 wasLoggedIn = true
+            }else {
+                print("was not logged in")
             }
         }else{
             print("Username Array was not retrieved from database")
@@ -66,10 +70,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("In wasLoggedIn")
             InstanceDAO.team_id = team_id!
             InstanceDAO.trail_instance_id = trail_instance_id!
+            InstanceDAO.isLeader = isLeader
             InstanceDAO.completedList = completedList as? Array<String> ?? []
             //InstanceDAO.activityArr = activityArr as? Array<Activity> ?? []
             InstanceDAO.startHotspots = startHotspots as? [String:String] ?? [:]
-            
             
             // Get starting hotspots
             guard let startHotspotURL = InstanceDAO.serverEndpoints["getStartingHotspots"] else {
@@ -120,6 +124,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             RestAPIManager.httpGetDrawing(URLStr: drawingURL + InstanceDAO.trail_instance_id)
             
+            // Get Word Search words
+//            guard let wordSearchURL = InstanceDAO.serverEndpoints["getAllWordSearch"] else {
+//                print("Unable to get server endpoint for wordSearchURL")
+//                return
+//            }
+//            RestAPIManager.httpGetWordSearch(URLStr: wordSearchURL + InstanceDAO.trail_instance_id)
+            
             // Get LeaderMember status
             guard let getLeaderMemberURL = InstanceDAO.serverEndpoints["getAllLeaderMember"] else {
                 print("Unable to get server endpoint for getAllLeaderMember")
@@ -151,6 +162,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.makeKeyAndVisible()
         }
         
+        registerForPushNotifications()
+        
         return true
 
     }
@@ -162,6 +175,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             defaults.removeObject(forKey: key)
         }
     }
+    
+    func registerForPushNotifications() {
+        UNUserNotificationCenter.current() // 1
+            .requestAuthorization(options: [.alert, .sound, .badge]) {
+                [weak self] granted, error in
+                
+                print("Permission granted: \(granted)")
+                guard granted else { return }
+                self?.getNotificationSettings()
+        }
+    }
+    
+    func getNotificationSettings() {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            print("Notification settings: \(settings)")
+            guard settings.authorizationStatus == .authorized else { return }
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
+    }
+    
+    func application(
+        _ application: UIApplication,
+        didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
+        ) {
+        let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+        let token = tokenParts.joined()
+        print("Device Token: \(token)")
+    }
+    
+    func application(
+        _ application: UIApplication,
+        didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register: \(error)")
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -172,11 +221,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         
-        let def = UserDefaults.standard
-        def.set(InstanceDAO.completedList, forKey: "completedList")
-        //def.set(InstanceDAO.activityArr, forKey: "activityArr")
-        def.set(InstanceDAO.startHotspots, forKey: "startHotspots")
-        def.synchronize()
+        saveCredentialsToSession()
         
     }
 
@@ -192,9 +237,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         
+        saveCredentialsToSession()
+        
+    }
+    
+    func saveCredentialsToSession(){
+        
         let def = UserDefaults.standard
+        def.set(InstanceDAO.team_id, forKey: "team_id")
+        def.set(InstanceDAO.trail_instance_id, forKey: "trail_instance_id")
+        def.set(InstanceDAO.username, forKey: "username")
+        def.set(InstanceDAO.isLeader, forKey: "isLeader")
         def.set(InstanceDAO.completedList, forKey: "completedList")
-        //def.set(InstanceDAO.activityArr, forKey: "activityArr")
         def.set(InstanceDAO.startHotspots, forKey: "startHotspots")
         def.synchronize()
         

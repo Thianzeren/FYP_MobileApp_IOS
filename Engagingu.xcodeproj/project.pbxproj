@@ -132,6 +132,7 @@
 		E12FEFA421F2F3090074F877 /* LeaderboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewCell.swift; sourceTree = "<group>"; };
 		E12FEFA621F2F3210074F877 /* ActivityFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFeedTableViewCell.swift; sourceTree = "<group>"; };
 		E12FEFA821F2FDD50074F877 /* SocketHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketHandler.swift; sourceTree = "<group>"; };
+		E1461DCB22269D5900928BBE /* Engagingu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Engagingu.entitlements; sourceTree = "<group>"; };
 		E1500BC521EECB0F0032E8FA /* SubmissionPopUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionPopUpController.swift; sourceTree = "<group>"; };
 		E176A13D21C1487F005A5C30 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E176A14121C290E1005A5C30 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
@@ -232,6 +233,7 @@
 		AF78DD0A2189878A00B0CF10 /* Engagingu */ = {
 			isa = PBXGroup;
 			children = (
+				E1461DCB22269D5900928BBE /* Engagingu.entitlements */,
 				E12FEF9E21F094440074F877 /* Info.plist */,
 				E106B49921C3BE35001DEB88 /* Podfile */,
 				E1A67DE121913C9200581D1C /* Model */,
@@ -426,6 +428,11 @@
 				TargetAttributes = {
 					AF78DD072189878A00B0CF10 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					AF78DD1B2189879600B0CF10 = {
 						CreatedOnToolsVersion = 10.0;
@@ -829,6 +836,7 @@
 			baseConfigurationReference = C72385D4ED204E3E11D145AB /* Pods-Engagingu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Engagingu/Engagingu.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JHPCBWHV79;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -854,6 +862,7 @@
 			baseConfigurationReference = 9E4318A0C78FB865C1DE9961 /* Pods-Engagingu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Engagingu/Engagingu.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JHPCBWHV79;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";

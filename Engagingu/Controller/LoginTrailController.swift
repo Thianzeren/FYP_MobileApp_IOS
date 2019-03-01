@@ -86,7 +86,7 @@ class LoginTrailController: UIViewController, UITextFieldDelegate {
                     self.performSegue(withIdentifier: "toDrawingSegue", sender: nil)
                 }
                 if(trailID == "word"){
-                    self.performSegue(withIdentifier: "toWordSearch", sender: nil)
+                    self.performSegue(withIdentifier: "toWordSearchSegue", sender: nil)
                 }
                 // Remember to remove "fypadmin" check
                 if(trailID == InstanceDAO.trail_instance_id || trailID == "fypadmin"){

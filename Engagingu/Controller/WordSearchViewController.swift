@@ -40,8 +40,10 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
     var new_position_x: Int = 0  //success position stored
     var new_position_y: Int = 0
     
-    
     @IBOutlet weak var collectionGrid: UICollectionView!
+    
+    //hotspot name
+    var hotspot: String = ""
     
     //tracking number of rows in UI Collection View
     var counter: Int = 0
@@ -64,8 +66,7 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
     var wrongList: Array<String> = []
     
     //list from DB
-    let list = ["gold", "maroon", "blue", "green", "brown"]
-    
+    var list = ["gold", "maroon", "blue", "green", "brown"]
     
     //captalised list from DB --> empty array only in the main method then uppercased
     var capitalised_list: Array<String> = []
@@ -89,6 +90,10 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // get list from InstanceDAO
+        list = InstanceDAO.wordSearchDict[hotspot]?.words ?? []
+        
         print_grid()
         //to dismiss keyboard when press return
         self.firstWord.delegate = self

@@ -49,6 +49,8 @@ class NarrativeViewController: UIViewController {
             performSegue(withIdentifier: "toDragAndDropSegue", sender: nil)
         }else if(InstanceDAO.drawingDict[headerText] != nil){
             performSegue(withIdentifier: "toDrawingSegue", sender: nil)
+        }else if (InstanceDAO.wordSearchDict[headerText] != nil){
+            performSegue(withIdentifier: "toWordSearchSegue", sender: nil)
         }
     }
     //Allow scrolliing after first line shown
@@ -92,6 +94,11 @@ class NarrativeViewController: UIViewController {
             let destVC = segue.destination as! DrawingController
             destVC.hotspot = headerText
             destVC.question = InstanceDAO.drawingDict[headerText] ?? ""
+            
+        }else if(segue.identifier == "toWordSearchSegue"){
+            
+            let destVC = segue.destination as! WordSearchViewController
+            destVC.hotspot = headerText
             
         }
         

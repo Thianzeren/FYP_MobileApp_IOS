@@ -106,7 +106,7 @@ class AnagramViewController: UIViewController, UITextFieldDelegate {
         }else { //If Member
             
             // Update CompletedList & isFirstTime check
-            InstanceDAO.completedList.append(hotspot)
+//            InstanceDAO.completedList.append(hotspot)
             InstanceDAO.isFirstTime = false
             
             performSegue(withIdentifier: "toTabBarSegue", sender: nil)

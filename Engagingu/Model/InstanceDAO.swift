@@ -19,7 +19,7 @@ struct InstanceDAO {
     static var completedList: Array<String> = Array()
     
     static var serverIP: String = "http://13.229.115.32:3000"
-    //static var serverIP: String = "http://54.255.245.23:3000"
+//    static var serverIP: String = "http://54.255.245.23:3000"
     
     static var serverEndpoints: [String:String] = [
         "getInstanceId" : serverIP + "/getInstance",
@@ -65,7 +65,7 @@ struct InstanceDAO {
     static var urlDict: [String:ImageURL] = [:]
     
     // Key: Hotspot name, Value: Array of String (Words)
-    static var wordSearchDict: [String:[String]] = [:]
+    static var wordSearchDict: [String:WordSearch] = [:]
     
     // For Submissions
     static var submissions: [Media] = []
@@ -177,6 +177,14 @@ struct Anagram: Decodable{
     
     let hotspot: String
     let anagram: String
+}
+
+struct WordSearch: Decodable{
+    
+    let hotspot: String
+    let words: [String]
+    let title: String
+    
 }
 
 struct DrawingQns: Decodable {

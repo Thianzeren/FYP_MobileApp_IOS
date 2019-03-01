@@ -43,9 +43,25 @@ class SocketHandler {
             let activity = Activity(team: msg["team"] ?? "team", hotspot: msg["hotspot"] ?? "hotspot", time: msg["time"] ?? "time")
             
             InstanceDAO.activityArr.append(activity)
+            
+            if(!InstanceDAO.isLeader){
+                
+                if let hotspot = msg["hotspot"]{
+                    InstanceDAO.completedList.append(hotspot)
+                }
+                
+                
+                
+            }
                 
             
         }
+        
+//        socket.on("notification") {data, ack in
+//
+//
+//
+//        }
         
 //        socket.on("startTrail"){ data, ack in
 //            
@@ -53,7 +69,7 @@ class SocketHandler {
 //            
 //        }
         
-        socket.onAny {print("Got event: \($0.event), with items: \($0.items!)")}
+//        socket.onAny {print("Got event: \($0.event), with items: \($0.items!)")}
         
     }
 

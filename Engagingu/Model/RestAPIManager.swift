@@ -376,7 +376,7 @@ class RestAPIManager {
     
     static func httpGetImage(URLStr: String, hotspot: String, question: String){
         
-        let semaphore = DispatchSemaphore(value: 0)
+        let semaphore = DispatchSemaphore(value: 1)
         
         guard let url = URL(string: URLStr) else {
             print("URL CANNOT BE CREATED")
@@ -565,6 +565,50 @@ class RestAPIManager {
                 
                 print("DRAWING")
                 print(InstanceDAO.drawingDict)
+                
+                //                semaphore.signal()
+                
+            } catch let jsonErr{
+                print("Error serializing json:", jsonErr)
+            }
+            
+            
+            }.resume()
+        
+        //        semaphore.wait()
+        
+    }
+    
+    static func httpGetWordSearch(URLStr: String){
+        
+        //        let semaphore = DispatchSemaphore(value: 0)
+        
+        guard let url = URL(string: URLStr) else {
+            //            semaphore.signal()
+            print("URL cannot be created")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url){(data, response, error) in
+            //check error
+            //check response status ok
+            
+            guard let data = data else {
+                //                semaphore.signal()
+                print("No data available")
+                return
+            }
+            
+            do {
+                let wordSearches = try
+                    JSONDecoder().decode([WordSearch].self, from: data)
+                
+                for wordSearch in wordSearches{
+                    InstanceDAO.wordSearchDict[wordSearch.hotspot] = wordSearch
+                }
+                
+                print("WORD SEARCH")
+                print(InstanceDAO.wordSearchDict)
                 
                 //                semaphore.signal()
                 

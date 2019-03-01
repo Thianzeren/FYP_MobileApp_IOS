@@ -22,8 +22,6 @@ class TeamAllocationController: UIViewController {
         // Make button disappear first
         startBtn.isHidden = true
         
-        groupNumber.text = "TEAM " + InstanceDAO.team_id
-        
         // Get socket and add handler
         let socket = SocketHandler.getSocket()
         socket.on("startTrail"){ data, ack in
@@ -39,6 +37,7 @@ class TeamAllocationController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         // Check if user is leader or member
         let user: User = InstanceDAO.userDict[InstanceDAO.username]!
         if user.isLeader == 1{
@@ -46,20 +45,25 @@ class TeamAllocationController: UIViewController {
         }else {
             InstanceDAO.isLeader = false
         }
-
+        
         if InstanceDAO.isLeader {
-
+            
+            groupNumber.text = "TEAM " + InstanceDAO.team_id
             userStatus.text = "LEADER"
             groupInstructions.text = "Look for your team members while waiting for the trail to start"
 
         }else {
-
+            
+            groupNumber.text = "TEAM " + InstanceDAO.team_id
             userStatus.text = "MEMBER"
             groupInstructions.text = "Look for your team leader and get to know your teammates while waiting for the trail to start"
         }
         
         // Loading screen
         loadWaitScreen()
+        
+        // Save to session
+        saveCredentialsToSession()
         
 //        self.startBtn.isHidden = false
     }
@@ -84,6 +88,19 @@ class TeamAllocationController: UIViewController {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         indicator.startAnimating()
+        
+    }
+    
+    func saveCredentialsToSession(){
+        
+        let def = UserDefaults.standard
+        def.set(InstanceDAO.team_id, forKey: "team_id")
+        def.set(InstanceDAO.trail_instance_id, forKey: "trail_instance_id")
+        def.set(InstanceDAO.username, forKey: "username")
+        def.set(InstanceDAO.isLeader, forKey: "isLeader")
+        def.set(InstanceDAO.completedList, forKey: "completedList")
+        def.set(InstanceDAO.startHotspots, forKey: "startHotspots")
+        def.synchronize()
         
     }
     

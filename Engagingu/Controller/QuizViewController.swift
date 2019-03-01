@@ -312,7 +312,7 @@ class QuizViewController: UIViewController {
             if(confirmButton.title(for: .normal) == "Home"){
                 
                 // Update CompletedList & isFirstTime check
-                InstanceDAO.completedList.append(hotspot)
+//                InstanceDAO.completedList.append(hotspot)
                 InstanceDAO.isFirstTime = false
                 
                 performSegue(withIdentifier: "toTabBarSegue", sender: nil)

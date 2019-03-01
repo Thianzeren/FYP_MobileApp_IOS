@@ -57,6 +57,13 @@ class LoginNameController: UIViewController, UITextFieldDelegate {
             InstanceDAO.team_id = String(id)
         }
         
+        // Get LeaderMember status
+        guard let getLeaderMemberURL = InstanceDAO.serverEndpoints["getAllLeaderMember"] else {
+            print("Unable to get server endpoint for getAllLeaderMember")
+            return
+        }
+        RestAPIManager.httpGetLeaderMemberStatus(URLStr: getLeaderMemberURL)
+        
         // Get starting hotspots
         guard let startHotspotURL = InstanceDAO.serverEndpoints["getStartingHotspots"] else {
             print("Unable to get server endpoint for getStartingHotspots")
@@ -106,12 +113,12 @@ class LoginNameController: UIViewController, UITextFieldDelegate {
         }
         RestAPIManager.httpGetDrawing(URLStr: drawingURL + InstanceDAO.trail_instance_id)
         
-        // Get LeaderMember status
-        guard let getLeaderMemberURL = InstanceDAO.serverEndpoints["getAllLeaderMember"] else {
-            print("Unable to get server endpoint for getAllLeaderMember")
+        // Get Word Search words
+        guard let wordSearchURL = InstanceDAO.serverEndpoints["getAllWordSearch"] else {
+            print("Unable to get server endpoint for wordSearchURL")
             return
         }
-        RestAPIManager.httpGetLeaderMemberStatus(URLStr: getLeaderMemberURL)
+        RestAPIManager.httpGetWordSearch(URLStr: wordSearchURL + InstanceDAO.trail_instance_id)
         
         // Save to UserDefaults for session
         saveCredentialsToSession()
@@ -130,6 +137,7 @@ class LoginNameController: UIViewController, UITextFieldDelegate {
         def.set(InstanceDAO.team_id, forKey: "team_id")
         def.set(InstanceDAO.trail_instance_id, forKey: "trail_instance_id")
         def.set(InstanceDAO.username, forKey: "username")
+        def.set(InstanceDAO.isLeader, forKey: "isLeader")
         def.set(InstanceDAO.completedList, forKey: "completedList")
         def.set(InstanceDAO.startHotspots, forKey: "startHotspots")
         def.synchronize()

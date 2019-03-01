@@ -46,6 +46,12 @@ class MapController: UIViewController, GMSMapViewDelegate {
         // Refresh hotspots
         initiateHotspots()
         
+        if mapView.isHidden {
+            mapView.isHidden = false
+            mapView.camera = camera
+        } else {
+            mapView.animate(to: camera)
+        }
 //        // For Testing
 //        let marker = GMSMarker()
 //        marker.position = CLLocationCoordinate2D(latitude: 1.2953, longitude: 103.8506)
@@ -95,10 +101,10 @@ class MapController: UIViewController, GMSMapViewDelegate {
         if let dist = distance {
             
             // Distance where user is allowed to click on hotspot in metres
-            //let distanceThreshold: Double = 50
+            let distanceThreshold: Double = 50
             
             // Distance for debugging (to remove geofence)
-            let distanceThreshold: Double = 1000
+//            let distanceThreshold: Double = 100000
             
             print("SelectedMarkerLocation: \(selectedMarkerLocation)")
             print("CurrentLocation: \(currentLocation)")
@@ -218,16 +224,16 @@ extension MapController: CLLocationManagerDelegate{
             print("Sent Location to Backend")
         }
         
-        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
-                                              longitude: location.coordinate.longitude,
-                                              zoom: zoomLevel)
+//        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
+//                                              longitude: location.coordinate.longitude,
+//                                              zoom: zoomLevel)
         
-        if mapView.isHidden {
-            mapView.isHidden = false
-            mapView.camera = camera
-        } else {
-            mapView.animate(to: camera)
-        }
+//        if mapView.isHidden {
+//            mapView.isHidden = false
+//            mapView.camera = camera
+//        } else {
+//            mapView.animate(to: camera)
+//        }
         
     }
     
