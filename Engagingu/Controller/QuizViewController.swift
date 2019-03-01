@@ -62,11 +62,16 @@ class QuizViewController: UIViewController {
         fourthAnswer.backgroundColor = UIColor.lightGray
         
         if (!InstanceDAO.isLeader){
+            //member
             firstAnswer.isUserInteractionEnabled = false
             secondAnswer.isUserInteractionEnabled = false
             thirdAnswer.isUserInteractionEnabled = false
             fourthAnswer.isUserInteractionEnabled = false
             confirmButton.setTitle("Next Question", for: .normal)
+        }else{
+            //leader cannt see back button
+            backButton.image = nil
+
         }
         // Initialise question bank
         questionBank = InstanceDAO.quizDict[hotspot]!.quiz
