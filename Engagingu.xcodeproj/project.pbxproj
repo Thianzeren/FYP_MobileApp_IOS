@@ -13,8 +13,8 @@
 		AF2AF80421FE909200B75A50 /* Pencil.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2AF80321FE909100B75A50 /* Pencil.swift */; };
 		AF2AF80821FED09000B75A50 /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF2AF80721FED08F00B75A50 /* RobotoCondensed-Bold.ttf */; };
 		AF2C6CED2229B3570072C303 /* DrawingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2C6CEC2229B3560072C303 /* DrawingController.swift */; };
+		AF2C6CEF2229BF3A0072C303 /* WordSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2C6CEE2229BF3A0072C303 /* WordSearchViewController.swift */; };
 		AF3DBCEF21F7077E005FBE40 /* TutorialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3DBCEE21F7077E005FBE40 /* TutorialController.swift */; };
-		AF51084822192ABD00EAB0FD /* WordSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51084622192ABC00EAB0FD /* WordSearchViewController.swift */; };
 		AF51084922192ABD00EAB0FD /* WordSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51084722192ABD00EAB0FD /* WordSearchTableViewCell.swift */; };
 		AF6C8B42218D4CDF006AC6C0 /* LoginTrailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C8B3F218D4CDF006AC6C0 /* LoginTrailController.swift */; };
 		AF6C8B43218D4CDF006AC6C0 /* LoginNameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C8B40218D4CDF006AC6C0 /* LoginNameController.swift */; };
@@ -88,8 +88,8 @@
 		AF2AF80321FE909100B75A50 /* Pencil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pencil.swift; sourceTree = "<group>"; };
 		AF2AF80721FED08F00B75A50 /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
 		AF2C6CEC2229B3560072C303 /* DrawingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingController.swift; sourceTree = "<group>"; };
+		AF2C6CEE2229BF3A0072C303 /* WordSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSearchViewController.swift; sourceTree = "<group>"; };
 		AF3DBCEE21F7077E005FBE40 /* TutorialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialController.swift; sourceTree = "<group>"; };
-		AF51084622192ABC00EAB0FD /* WordSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSearchViewController.swift; sourceTree = "<group>"; };
 		AF51084722192ABD00EAB0FD /* WordSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSearchTableViewCell.swift; sourceTree = "<group>"; };
 		AF6C8B3F218D4CDF006AC6C0 /* LoginTrailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTrailController.swift; sourceTree = "<group>"; };
 		AF6C8B40218D4CDF006AC6C0 /* LoginNameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNameController.swift; sourceTree = "<group>"; };
@@ -321,7 +321,7 @@
 				E1E945C522015C0B005E7E1A /* DragAndDropController.swift */,
 				AF2C6CEC2229B3560072C303 /* DrawingController.swift */,
 				AF2AF80321FE909100B75A50 /* Pencil.swift */,
-				AF51084622192ABC00EAB0FD /* WordSearchViewController.swift */,
+				AF2C6CEE2229BF3A0072C303 /* WordSearchViewController.swift */,
 				AF51084722192ABD00EAB0FD /* WordSearchTableViewCell.swift */,
 			);
 			path = Controller;
@@ -635,10 +635,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF6C8B43218D4CDF006AC6C0 /* LoginNameController.swift in Sources */,
+				AF2C6CEF2229BF3A0072C303 /* WordSearchViewController.swift in Sources */,
 				AF6C8B42218D4CDF006AC6C0 /* LoginTrailController.swift in Sources */,
 				E1500BC621EECB0F0032E8FA /* SubmissionPopUpController.swift in Sources */,
 				AF78DD0C2189878A00B0CF10 /* AppDelegate.swift in Sources */,
-				AF51084822192ABD00EAB0FD /* WordSearchViewController.swift in Sources */,
 				E176A14221C290E1005A5C30 /* QuizViewController.swift in Sources */,
 				E176A13E21C1487F005A5C30 /* TabBarController.swift in Sources */,
 				AF78DD92218B759500B0CF10 /* RestAPIManager.swift in Sources */,
