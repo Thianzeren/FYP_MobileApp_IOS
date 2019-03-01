@@ -32,7 +32,7 @@ class TeamAllocationController: UIViewController {
 
         }
 
-        groupInstructions.font = optimisedfindAdaptiveFontWithName(fontName: "Roboto Condensed", message: groupInstructions, minSize: 10, maxSize: 32)
+        groupInstructions.font = optimisedfindAdaptiveFontWithName(fontName: "Roboto Condensed", message: groupInstructions, minSize: 10, maxSize: 28)
         print("\(String(describing: groupInstructions.font))")
     }
     
