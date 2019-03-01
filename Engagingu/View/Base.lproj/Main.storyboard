@@ -292,6 +292,7 @@
                                 <state key="normal" title="SUBMIT"/>
                                 <connections>
                                     <action selector="startButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nG0-Ix-2VO"/>
+                                    <segue destination="qc6-Yk-rZl" kind="show" identifier="toTutorialSegue" id="GKc-eI-yNL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -311,7 +312,6 @@
                     </view>
                     <connections>
                         <outlet property="usernameField" destination="Ytn-ez-YlQ" id="Waa-JO-zxr"/>
-                        <segue destination="LJJ-8r-YNp" kind="show" identifier="toTutorialSegue" id="Xta-hl-pcX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -323,84 +323,84 @@
             <objects>
                 <viewController title="Storyboard Controller 2" id="qc6-Yk-rZl" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5IM-QM-Chj">
-                        <rect key="frame" x="0.0" y="0.0" width="380" height="1800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="380" height="2000"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZgF-we-Di9" userLabel="Background Label">
-                                <rect key="frame" x="0.0" y="20" width="380" height="450"/>
+                                <rect key="frame" x="0.0" y="20" width="380" height="500"/>
                                 <color key="backgroundColor" red="0.08235294118" green="0.10980392160000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SmooSmoo" translatesAutoresizingMaskIntoConstraints="NO" id="h0e-kJ-qys">
-                                <rect key="frame" x="109" y="20" width="162" height="267"/>
+                                <rect key="frame" x="109" y="20" width="162" height="297"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOW TO PLAY" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atC-L1-W3M">
-                                <rect key="frame" x="0.0" y="290" width="380" height="180"/>
+                                <rect key="frame" x="0.0" y="320" width="380" height="200"/>
                                 <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4O-Mz-ofh">
-                                <rect key="frame" x="0.0" y="470" width="380" height="1330"/>
+                                <rect key="frame" x="0.0" y="520" width="380" height="1480"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f0h-nD-bIf" userLabel="Second View">
-                                        <rect key="frame" x="0.0" y="0.0" width="380" height="1800"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="380" height="2000"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hotspot_HowToPlay" translatesAutoresizingMaskIntoConstraints="NO" id="wqP-ur-1cr">
-                                                <rect key="frame" x="8" y="8" width="98.5" height="98"/>
+                                                <rect key="frame" x="8" y="228" width="98.5" height="98"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="marker_HowToPlay" translatesAutoresizingMaskIntoConstraints="NO" id="xgb-6c-JT3">
-                                                <rect key="frame" x="8" y="155" width="98.5" height="98"/>
+                                                <rect key="frame" x="8" y="375" width="98.5" height="98"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Look for hotspots on the map and head to the hotspots" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NGf-VY-ihq">
-                                                <rect key="frame" x="123" y="8" width="197" height="98"/>
+                                                <rect key="frame" x="123" y="228" width="197" height="98"/>
                                                 <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="story_HowToPlay" translatesAutoresizingMaskIntoConstraints="NO" id="TUo-cc-i6g">
-                                                <rect key="frame" x="8" y="302" width="98.5" height="98"/>
+                                                <rect key="frame" x="8" y="522" width="98.5" height="98"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clues_HowToPlay" translatesAutoresizingMaskIntoConstraints="NO" id="NRs-by-vju">
-                                                <rect key="frame" x="8" y="449" width="98.5" height="98"/>
+                                                <rect key="frame" x="8" y="669" width="98.5" height="98"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facts_HowToPlay" translatesAutoresizingMaskIntoConstraints="NO" id="nrL-ZE-6WQ">
-                                                <rect key="frame" x="8" y="596" width="98.5" height="98"/>
+                                                <rect key="frame" x="8" y="816" width="98.5" height="98"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Building_HowToPlay" translatesAutoresizingMaskIntoConstraints="NO" id="pMR-rz-0pZ">
-                                                <rect key="frame" x="8" y="743" width="98.5" height="98"/>
+                                                <rect key="frame" x="8" y="963" width="98.5" height="98"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="help_HowToPlay" translatesAutoresizingMaskIntoConstraints="NO" id="HnU-dx-Fsi">
-                                                <rect key="frame" x="8" y="890" width="98.5" height="98"/>
+                                                <rect key="frame" x="8" y="1110" width="98.5" height="98"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When you are near the hotspot, click on the marker to learn more about it" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTq-VM-A1Y">
-                                                <rect key="frame" x="123" y="155" width="197" height="98"/>
+                                                <rect key="frame" x="123" y="375" width="197" height="98"/>
                                                 <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Look for interesting facts and clues at the hotspot" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qah-eg-9Jk">
-                                                <rect key="frame" x="123" y="449" width="197" height="98"/>
+                                                <rect key="frame" x="123" y="669" width="197" height="98"/>
                                                 <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use those facts to complete the missions" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4q2-5b-Q3N">
-                                                <rect key="frame" x="122.5" y="596" width="196.5" height="98"/>
+                                                <rect key="frame" x="122.5" y="816" width="196.5" height="98"/>
                                                 <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finish all hotspots and head back to the starting venue quickly" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4g-OB-NUd">
-                                                <rect key="frame" x="122.5" y="743" width="196.5" height="98"/>
+                                                <rect key="frame" x="122.5" y="963" width="196.5" height="98"/>
                                                 <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMS-TN-dKa">
-                                                <rect key="frame" x="122.5" y="302" width="227.5" height="98"/>
+                                                <rect key="frame" x="122.5" y="522" width="227.5" height="98"/>
                                                 <string key="text">Read special story presented
 </string>
                                                 <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="20"/>
@@ -408,13 +408,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you need help, click on the Help Icon located at the bottom right corner" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEk-hQ-xch">
-                                                <rect key="frame" x="122.5" y="890" width="196.5" height="98"/>
+                                                <rect key="frame" x="122.5" y="1110" width="196.5" height="98"/>
                                                 <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkG-nm-Phe">
-                                                <rect key="frame" x="95" y="1173" width="190" height="36"/>
+                                                <rect key="frame" x="95" y="1364" width="190" height="36"/>
                                                 <color key="backgroundColor" red="0.08235294118" green="0.10980392160000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="25"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -424,18 +424,29 @@
                                                     <segue destination="Tcw-WA-gZ7" kind="show" id="k4s-gP-BPm"/>
                                                 </connections>
                                             </button>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SmooSmoo" translatesAutoresizingMaskIntoConstraints="NO" id="Wic-X4-qa5">
+                                                <rect key="frame" x="8" y="81" width="98.5" height="98"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I'm Smoo Smoo, SMU's mascot. Today, you will be going around SMU together with me to help you understand what SMU has to offer!" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIM-Kc-3bG">
+                                                <rect key="frame" x="123" y="19" width="197" height="160"/>
+                                                <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="CEk-hQ-xch" firstAttribute="top" secondItem="Q4g-OB-NUd" secondAttribute="bottom" constant="49" id="0jL-p1-gsN"/>
+                                            <constraint firstItem="wqP-ur-1cr" firstAttribute="top" secondItem="Wic-X4-qa5" secondAttribute="bottom" constant="49" id="26A-TW-QWj"/>
                                             <constraint firstItem="fkG-nm-Phe" firstAttribute="width" secondItem="f0h-nD-bIf" secondAttribute="width" multiplier="0.5" id="2RM-ej-3ZK"/>
                                             <constraint firstItem="TUo-cc-i6g" firstAttribute="bottom" secondItem="TMS-TN-dKa" secondAttribute="bottom" id="38l-ny-77O"/>
                                             <constraint firstItem="nrL-ZE-6WQ" firstAttribute="leading" secondItem="f0h-nD-bIf" secondAttribute="leading" constant="8" id="3AD-1O-igj"/>
+                                            <constraint firstItem="BIM-Kc-3bG" firstAttribute="height" secondItem="f0h-nD-bIf" secondAttribute="height" multiplier="0.08" id="564-dl-ju4"/>
                                             <constraint firstItem="Qah-eg-9Jk" firstAttribute="height" secondItem="NGf-VY-ihq" secondAttribute="height" id="5Qd-Wm-igl"/>
                                             <constraint firstItem="NRs-by-vju" firstAttribute="height" secondItem="TUo-cc-i6g" secondAttribute="height" id="6G2-ZB-Q7t"/>
                                             <constraint firstItem="NRs-by-vju" firstAttribute="leading" secondItem="f0h-nD-bIf" secondAttribute="leading" constant="8" id="7B0-RN-AJ9"/>
                                             <constraint firstAttribute="trailing" secondItem="Qah-eg-9Jk" secondAttribute="trailing" constant="60" id="7FD-kO-1B4"/>
-                                            <constraint firstItem="fkG-nm-Phe" firstAttribute="height" secondItem="f0h-nD-bIf" secondAttribute="height" multiplier="0.02" id="7hq-AF-b4l"/>
+                                            <constraint firstItem="fkG-nm-Phe" firstAttribute="height" secondItem="f0h-nD-bIf" secondAttribute="height" multiplier="0.02" constant="-4" id="7hq-AF-b4l"/>
                                             <constraint firstItem="wqP-ur-1cr" firstAttribute="bottom" secondItem="NGf-VY-ihq" secondAttribute="bottom" id="98g-5P-Cdb"/>
                                             <constraint firstItem="pMR-rz-0pZ" firstAttribute="width" secondItem="wqP-ur-1cr" secondAttribute="width" id="9jH-oc-mhR"/>
                                             <constraint firstItem="Q4g-OB-NUd" firstAttribute="width" secondItem="NGf-VY-ihq" secondAttribute="width" id="AZY-BF-oWD"/>
@@ -443,6 +454,7 @@
                                             <constraint firstItem="CEk-hQ-xch" firstAttribute="bottom" secondItem="HnU-dx-Fsi" secondAttribute="bottom" id="Bs7-9a-wfE"/>
                                             <constraint firstItem="Q4g-OB-NUd" firstAttribute="bottom" secondItem="pMR-rz-0pZ" secondAttribute="bottom" id="Btq-y0-Bbi"/>
                                             <constraint firstItem="cTq-VM-A1Y" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xgb-6c-JT3" secondAttribute="trailing" constant="16" id="CEh-x0-tod"/>
+                                            <constraint firstItem="BIM-Kc-3bG" firstAttribute="bottom" secondItem="Wic-X4-qa5" secondAttribute="bottom" id="EX7-YE-Tmi"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CEk-hQ-xch" secondAttribute="trailing" constant="8" id="Ete-SP-XVy"/>
                                             <constraint firstItem="NRs-by-vju" firstAttribute="width" secondItem="TUo-cc-i6g" secondAttribute="width" id="FmN-qv-TdB"/>
                                             <constraint firstItem="nrL-ZE-6WQ" firstAttribute="width" secondItem="wqP-ur-1cr" secondAttribute="width" id="IZA-wy-ncp"/>
@@ -451,7 +463,9 @@
                                             <constraint firstItem="NGf-VY-ihq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wqP-ur-1cr" secondAttribute="trailing" constant="16" id="JjE-Xe-dl5"/>
                                             <constraint firstItem="4q2-5b-Q3N" firstAttribute="top" secondItem="Qah-eg-9Jk" secondAttribute="bottom" constant="49" id="MsV-oC-Sqt"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4q2-5b-Q3N" secondAttribute="trailing" constant="8" id="N6a-td-sJG"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BIM-Kc-3bG" secondAttribute="trailing" constant="20" symbolic="YES" id="NOF-rp-WI9"/>
                                             <constraint firstItem="4q2-5b-Q3N" firstAttribute="height" secondItem="NGf-VY-ihq" secondAttribute="height" id="Nde-6W-7Tj"/>
+                                            <constraint firstItem="Wic-X4-qa5" firstAttribute="height" secondItem="wqP-ur-1cr" secondAttribute="height" id="Nx6-sG-Tvz"/>
                                             <constraint firstItem="HnU-dx-Fsi" firstAttribute="width" secondItem="wqP-ur-1cr" secondAttribute="width" id="O0Z-I1-P1k"/>
                                             <constraint firstItem="pMR-rz-0pZ" firstAttribute="height" secondItem="wqP-ur-1cr" secondAttribute="height" id="O6p-rg-ncw"/>
                                             <constraint firstItem="xgb-6c-JT3" firstAttribute="width" secondItem="wqP-ur-1cr" secondAttribute="width" id="PtG-hr-FB0"/>
@@ -463,15 +477,17 @@
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Q4g-OB-NUd" secondAttribute="trailing" constant="8" id="Y16-7G-8fE"/>
                                             <constraint firstItem="TUo-cc-i6g" firstAttribute="leading" secondItem="wqP-ur-1cr" secondAttribute="leading" id="Zxl-TX-6Sx"/>
                                             <constraint firstItem="TUo-cc-i6g" firstAttribute="top" secondItem="xgb-6c-JT3" secondAttribute="bottom" constant="49" id="a6b-7a-RBz"/>
+                                            <constraint firstItem="BIM-Kc-3bG" firstAttribute="leading" secondItem="NGf-VY-ihq" secondAttribute="leading" id="aIu-YC-1dW"/>
                                             <constraint firstItem="NGf-VY-ihq" firstAttribute="trailing" secondItem="f0h-nD-bIf" secondAttribute="trailingMargin" constant="-52" id="b7l-I7-nLR"/>
                                             <constraint firstItem="xgb-6c-JT3" firstAttribute="leading" secondItem="f0h-nD-bIf" secondAttribute="leading" constant="8" id="bAW-pP-LZR"/>
+                                            <constraint firstItem="Wic-X4-qa5" firstAttribute="leading" secondItem="f0h-nD-bIf" secondAttribute="leading" constant="8" id="cgb-pA-2zr"/>
                                             <constraint firstItem="xgb-6c-JT3" firstAttribute="bottom" secondItem="cTq-VM-A1Y" secondAttribute="bottom" id="d1H-Qv-Vxa"/>
                                             <constraint firstItem="TMS-TN-dKa" firstAttribute="leading" secondItem="TUo-cc-i6g" secondAttribute="trailing" constant="16" id="dPa-r1-4Bn"/>
                                             <constraint firstItem="cTq-VM-A1Y" firstAttribute="width" secondItem="NGf-VY-ihq" secondAttribute="width" id="eoK-ZA-eoN"/>
-                                            <constraint firstAttribute="bottom" secondItem="fkG-nm-Phe" secondAttribute="bottom" constant="591" id="fec-Si-Eo6"/>
+                                            <constraint firstItem="Wic-X4-qa5" firstAttribute="width" secondItem="wqP-ur-1cr" secondAttribute="width" id="fPh-jO-TSn"/>
+                                            <constraint firstAttribute="bottom" secondItem="fkG-nm-Phe" secondAttribute="bottom" constant="600" id="fec-Si-Eo6"/>
                                             <constraint firstItem="Qah-eg-9Jk" firstAttribute="top" secondItem="TMS-TN-dKa" secondAttribute="bottom" constant="49" id="ftp-3d-cvu"/>
-                                            <constraint firstItem="wqP-ur-1cr" firstAttribute="height" secondItem="f0h-nD-bIf" secondAttribute="height" multiplier="0.08" constant="-46" id="hnf-hW-u5o"/>
-                                            <constraint firstItem="NGf-VY-ihq" firstAttribute="top" secondItem="f0h-nD-bIf" secondAttribute="top" constant="8" id="j0n-KZ-beR"/>
+                                            <constraint firstItem="wqP-ur-1cr" firstAttribute="height" secondItem="f0h-nD-bIf" secondAttribute="height" multiplier="0.08" constant="-62" id="hnf-hW-u5o"/>
                                             <constraint firstItem="NGf-VY-ihq" firstAttribute="width" secondItem="f0h-nD-bIf" secondAttribute="width" multiplier="0.6" constant="-31.199999999999989" id="j7G-gg-QGF"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TMS-TN-dKa" secondAttribute="trailing" constant="8" id="jq8-gh-gjK"/>
                                             <constraint firstItem="wqP-ur-1cr" firstAttribute="bottom" secondItem="NGf-VY-ihq" secondAttribute="bottom" id="kPH-aK-o5u"/>
@@ -492,12 +508,13 @@
                                             <constraint firstItem="wqP-ur-1cr" firstAttribute="leading" secondItem="f0h-nD-bIf" secondAttribute="leadingMargin" id="r4P-5Z-btJ"/>
                                             <constraint firstItem="nrL-ZE-6WQ" firstAttribute="bottom" secondItem="4q2-5b-Q3N" secondAttribute="bottom" id="rSl-iX-TTm"/>
                                             <constraint firstItem="nrL-ZE-6WQ" firstAttribute="top" secondItem="NRs-by-vju" secondAttribute="bottom" constant="49" id="rXZ-Pt-5ee"/>
-                                            <constraint firstAttribute="height" constant="1800" id="tFc-a8-ZyY"/>
+                                            <constraint firstAttribute="height" constant="2000" id="tFc-a8-ZyY"/>
+                                            <constraint firstItem="BIM-Kc-3bG" firstAttribute="width" secondItem="NGf-VY-ihq" secondAttribute="width" id="tqn-iQ-4Nr"/>
                                             <constraint firstItem="CEk-hQ-xch" firstAttribute="leading" secondItem="HnU-dx-Fsi" secondAttribute="trailing" constant="16" id="uUj-G2-aCa"/>
                                             <constraint firstItem="xgb-6c-JT3" firstAttribute="top" secondItem="wqP-ur-1cr" secondAttribute="bottom" constant="49" id="uVo-r0-ces"/>
                                             <constraint firstItem="TMS-TN-dKa" firstAttribute="top" secondItem="cTq-VM-A1Y" secondAttribute="bottom" constant="49" id="uiA-uZ-m8A"/>
                                             <constraint firstItem="TUo-cc-i6g" firstAttribute="width" secondItem="wqP-ur-1cr" secondAttribute="width" id="w8G-zl-eAf"/>
-                                            <constraint firstItem="wqP-ur-1cr" firstAttribute="top" secondItem="f0h-nD-bIf" secondAttribute="topMargin" id="wS9-7F-rOX"/>
+                                            <constraint firstItem="wqP-ur-1cr" firstAttribute="top" secondItem="f0h-nD-bIf" secondAttribute="topMargin" constant="220" id="wS9-7F-rOX"/>
                                             <constraint firstItem="NRs-by-vju" firstAttribute="bottom" secondItem="Qah-eg-9Jk" secondAttribute="bottom" id="xa4-L5-NiF"/>
                                             <constraint firstItem="cTq-VM-A1Y" firstAttribute="height" secondItem="NGf-VY-ihq" secondAttribute="height" id="yk1-s7-uJt"/>
                                             <constraint firstItem="Qah-eg-9Jk" firstAttribute="width" secondItem="NGf-VY-ihq" secondAttribute="width" id="yn9-Wx-sr0"/>
@@ -506,9 +523,9 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="f0h-nD-bIf" firstAttribute="top" secondItem="c4O-Mz-ofh" secondAttribute="top" id="391-8i-am5"/>
-                                    <constraint firstAttribute="bottom" secondItem="f0h-nD-bIf" secondAttribute="bottom" constant="-470" id="B6t-9p-6CY"/>
+                                    <constraint firstAttribute="bottom" secondItem="f0h-nD-bIf" secondAttribute="bottom" constant="-520" id="B6t-9p-6CY"/>
                                     <constraint firstItem="f0h-nD-bIf" firstAttribute="leading" secondItem="c4O-Mz-ofh" secondAttribute="leading" id="TOF-pq-tFO"/>
-                                    <constraint firstAttribute="trailing" secondItem="f0h-nD-bIf" secondAttribute="trailing" constant="8" id="bgA-Q9-6b9"/>
+                                    <constraint firstAttribute="trailing" secondItem="f0h-nD-bIf" secondAttribute="trailing" id="bgA-Q9-6b9"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -534,11 +551,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="keC-RH-0ag"/>
                     </view>
-                    <size key="freeformSize" width="380" height="1800"/>
+                    <size key="freeformSize" width="380" height="2000"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hnx-WB-E2C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3615" y="1522.5"/>
+            <point key="canvasLocation" x="-3616" y="1522.0389805097452"/>
         </scene>
         <!--TutorialController-->
         <scene sceneID="6br-UY-0ta">
@@ -578,7 +595,6 @@
                                 <state key="normal" title="LET'S GO !"/>
                                 <connections>
                                     <action selector="startButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yaQ-It-JaY"/>
-                                    <segue destination="qc6-Yk-rZl" kind="show" id="Y8t-LE-hhy"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="K8z-zr-c63">
@@ -627,7 +643,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kCw-cm-0Qe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4878" y="1523"/>
+            <point key="canvasLocation" x="-5130" y="1512"/>
         </scene>
         <!--Narrative View Controller-->
         <scene sceneID="ic4-JI-f5N">
