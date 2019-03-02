@@ -82,7 +82,7 @@ class QuizViewController: UIViewController {
         super.viewDidLoad()
         
         //Self adjust the height of the question
-        questionViewHC.constant = self.question.contentSize.height
+        //questionViewHC.constant = self.question.contentSize.height
         
        
     }
