@@ -810,11 +810,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Inl-v8-G8P">
-                                <rect key="frame" x="0.0" y="71" width="375" height="153"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="167"/>
                                 <color key="backgroundColor" red="0.08235294118" green="0.10980392160000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="153" id="ceS-XU-p5Y"/>
-                                </constraints>
                                 <string key="text">The University Lounge is a great place for all employees and alumni members to relax. It is location at Level ___ in the Administrative building. </string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="22"/>
@@ -889,13 +886,14 @@
                             <constraint firstItem="NnT-oY-Jon" firstAttribute="width" secondItem="Mke-Lb-A9L" secondAttribute="width" multiplier="0.85" id="Agc-OU-O7d"/>
                             <constraint firstItem="jZC-Vs-YyE" firstAttribute="top" secondItem="NnT-oY-Jon" secondAttribute="bottom" constant="8" id="BkU-QD-tMf"/>
                             <constraint firstItem="ThY-9D-Oxz" firstAttribute="height" secondItem="Mke-Lb-A9L" secondAttribute="height" multiplier="0.07" id="Boa-M2-LEd"/>
-                            <constraint firstItem="Inl-v8-G8P" firstAttribute="centerY" secondItem="CpG-RZ-AjM" secondAttribute="centerY" id="D3M-Db-pgC"/>
                             <constraint firstItem="ThY-9D-Oxz" firstAttribute="width" secondItem="Mke-Lb-A9L" secondAttribute="width" multiplier="0.5" id="DRG-Qy-1IW"/>
+                            <constraint firstItem="Inl-v8-G8P" firstAttribute="top" secondItem="CpG-RZ-AjM" secondAttribute="top" id="Esn-IU-4Bn"/>
                             <constraint firstItem="ThY-9D-Oxz" firstAttribute="top" secondItem="cPj-Pk-P4F" secondAttribute="bottom" constant="7.5" id="G9V-o6-G0b"/>
                             <constraint firstItem="CpG-RZ-AjM" firstAttribute="leading" secondItem="D5a-In-Etl" secondAttribute="leading" id="HxZ-PU-WM7"/>
                             <constraint firstItem="D5a-In-Etl" firstAttribute="centerX" secondItem="xAQ-6k-haS" secondAttribute="centerX" id="Ksj-Xq-gxQ"/>
                             <constraint firstItem="ThY-9D-Oxz" firstAttribute="centerX" secondItem="exm-XT-fUf" secondAttribute="centerX" id="KtN-iK-8d9"/>
                             <constraint firstItem="NnT-oY-Jon" firstAttribute="top" secondItem="CpG-RZ-AjM" secondAttribute="bottom" constant="15" id="L6Y-Hl-gRj"/>
+                            <constraint firstItem="Inl-v8-G8P" firstAttribute="height" secondItem="CpG-RZ-AjM" secondAttribute="height" id="L8C-gY-PmW"/>
                             <constraint firstItem="xAQ-6k-haS" firstAttribute="height" secondItem="NnT-oY-Jon" secondAttribute="height" id="MgS-Gv-Asv"/>
                             <constraint firstItem="exm-XT-fUf" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CpG-RZ-AjM" secondAttribute="trailing" symbolic="YES" id="NFr-F3-36O"/>
                             <constraint firstItem="cPj-Pk-P4F" firstAttribute="height" secondItem="Mke-Lb-A9L" secondAttribute="height" multiplier="0.04" id="NvY-JA-Ccq"/>
@@ -915,6 +913,7 @@
                             <constraint firstItem="D5a-In-Etl" firstAttribute="centerX" secondItem="DQR-Gr-lKg" secondAttribute="centerX" id="kdJ-Wh-xKI"/>
                             <constraint firstItem="D5a-In-Etl" firstAttribute="centerX" secondItem="NnT-oY-Jon" secondAttribute="centerX" id="nYi-3r-mnm"/>
                             <constraint firstItem="NnT-oY-Jon" firstAttribute="height" secondItem="Mke-Lb-A9L" secondAttribute="height" multiplier="0.1" id="ooK-pQ-Roe"/>
+                            <constraint firstItem="Inl-v8-G8P" firstAttribute="centerX" secondItem="CpG-RZ-AjM" secondAttribute="centerX" id="utS-ts-hxh"/>
                             <constraint firstItem="xAQ-6k-haS" firstAttribute="top" secondItem="jZC-Vs-YyE" secondAttribute="bottom" constant="8" id="vRE-Rf-7SK"/>
                             <constraint firstItem="D5a-In-Etl" firstAttribute="top" secondItem="exm-XT-fUf" secondAttribute="top" id="vgm-DA-xn5"/>
                             <constraint firstItem="DQR-Gr-lKg" firstAttribute="centerX" secondItem="exm-XT-fUf" secondAttribute="centerX" id="xAe-hQ-T1G"/>
@@ -930,7 +929,6 @@
                         <outlet property="fourthAnswer" destination="DQR-Gr-lKg" id="NdC-Ko-6tt"/>
                         <outlet property="question" destination="Inl-v8-G8P" id="4f2-8s-8HK"/>
                         <outlet property="questionLabel" destination="cPj-Pk-P4F" id="f11-zT-I8q"/>
-                        <outlet property="questionViewHC" destination="ceS-XU-p5Y" id="OFj-Dy-jUP"/>
                         <outlet property="secondAnswer" destination="jZC-Vs-YyE" id="ls1-ul-fjU"/>
                         <outlet property="thirdAnswer" destination="xAQ-6k-haS" id="2Tt-iT-zJL"/>
                         <segue destination="I3j-hO-u2H" kind="show" identifier="toTabBarSegue" id="Zbx-TQ-bIF"/>
