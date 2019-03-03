@@ -359,10 +359,26 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     @IBAction func backToMaps(_ sender: Any) {
-        if(!InstanceDAO.isLeader){
-            InstanceDAO.isFirstTime = false
+        if(InstanceDAO.isLeader){
+            var resultDict: [String: String] = ["team_id": InstanceDAO.team_id]
+            resultDict["trail_instance_id"] = InstanceDAO.trail_instance_id
+            resultDict["score"] = String(score)
+            resultDict["hotspot"] = hotspot
+            
+            guard let jsonData = try? JSONSerialization.data(withJSONObject: resultDict) else { return
+                print("Error: cannot create jsonData")
+            }
+            
+            guard let updateScoreURL = InstanceDAO.serverEndpoints["updateScore"] else {
+                print("Unable to get server endpoint for updateScoreURL")
+                return
+            }
+            RestAPIManager.asyncHttpPost(jsonData: jsonData, URLStr: updateScoreURL)
+            
+            InstanceDAO.completedList.append(hotspot)
         }
        
+        InstanceDAO.isFirstTime = false
         performSegue(withIdentifier: "toTabBarSegue", sender: nil)
     }
     
