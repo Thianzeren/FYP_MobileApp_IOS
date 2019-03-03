@@ -23,6 +23,20 @@ class DrawingController: UIViewController {
     
     var lastTouch = CGPoint.zero
     
+    @IBOutlet weak var black: UIButton!
+    @IBOutlet weak var grey: UIButton!
+    @IBOutlet weak var red: UIButton!
+    @IBOutlet weak var darkBlue: UIButton!
+    @IBOutlet weak var lightBlue: UIButton!
+    @IBOutlet weak var darkGreen: UIButton!
+    @IBOutlet weak var lightGreen: UIButton!
+    @IBOutlet weak var brown: UIButton!
+    @IBOutlet weak var eraser: UIButton!
+    @IBOutlet weak var orange: UIButton!
+    @IBOutlet weak var yellow: UIButton!
+    @IBOutlet weak var bin: UIButton!
+    @IBOutlet weak var homeButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //hide the image so that drawing is disabled until pencil is pressed
@@ -33,6 +47,25 @@ class DrawingController: UIViewController {
         drawing.backgroundColor = UIColor.white
         drawing.layer.borderColor = UIColor.black.cgColor
         drawing.layer.borderWidth = 2
+        
+        if(!InstanceDAO.isLeader){
+            color = UIColor.white
+            black.isHidden = true
+            grey.isHidden = true
+            red.isHidden = true
+            darkBlue.isHidden = true
+            lightBlue.isHidden = true
+            darkGreen.isHidden = true
+            lightGreen.isHidden = true
+            brown.isHidden = true
+            eraser.isHidden = true
+            orange.isHidden = true
+            yellow.isHidden = true
+            bin.isHidden = true
+            drawing.layer.borderColor = UIColor.white.cgColor
+            homeButton.setTitle("Home", for: .normal)
+            
+        }
     }
     
     //track the first point of drawing
@@ -106,117 +139,121 @@ class DrawingController: UIViewController {
     }
     
     @IBAction func submitDrawing(_ sender: Any) {
-        
-        var uploadStatus = false
-        var image = drawing.image
-        image = fixOrientation(img: image!)
-        
-        if image != nil{
+        if (InstanceDAO.isLeader) {
+            var uploadStatus = false
+            var image = drawing.image
+            image = fixOrientation(img: image!)
             
-            guard let uploadSubmissionURL = InstanceDAO.serverEndpoints["uploadSubmission"] else {
-                print("Unable to get server endpoint for uploadSubmission")
-                return
-            }
-            
-            guard let url = URL(string: uploadSubmissionURL) else {
-                print("URL cannot be generated from URLStr")
-                return
-            }
-            
-            var request = URLRequest(url: url)//Send your URL here
-            print(request)
-            
-            var jsonDict: [String: String] = ["team_id": InstanceDAO.team_id]
-            jsonDict["trail_instance_id"] = InstanceDAO.trail_instance_id
-            jsonDict["question"] = question
-            jsonDict["hotspot"] = hotspot
-            
-            let parameters = jsonDict
-            print(parameters)
-            
-            guard let photo = Media(withImage: image!, forKey: "image",hotspot: hotspot, question: question) else {
-                return
-            }
-            
-            let boundary = generateBoundary()
-            
-            guard let jsonData = try? JSONSerialization.data(withJSONObject: jsonDict) else { return
-                print("Error: cannot create jsonData")
-            }
-            
-            let dataBody = createDataBody(withParameters: parameters, media: photo, boundary: boundary, jsonData: jsonData)
-            print(dataBody)
-            
-            request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-            request.httpMethod = "POST"
-            request.httpBody = dataBody
-            
-            // Send post request
-            let semaphore = DispatchSemaphore(value: 0)
-            var result: [String:Any] = [:]
-            
-            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if image != nil{
                 
-                guard let data = data, error == nil else{
-                    print(error?.localizedDescription ?? "No data")
-                    semaphore.signal()
+                guard let uploadSubmissionURL = InstanceDAO.serverEndpoints["uploadSubmission"] else {
+                    print("Unable to get server endpoint for uploadSubmission")
                     return
                 }
                 
-                do{
-                    guard let responseDict = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:Any] else {
-                        print("Error: no json response received")
+                guard let url = URL(string: uploadSubmissionURL) else {
+                    print("URL cannot be generated from URLStr")
+                    return
+                }
+                
+                var request = URLRequest(url: url)//Send your URL here
+                print(request)
+                
+                var jsonDict: [String: String] = ["team_id": InstanceDAO.team_id]
+                jsonDict["trail_instance_id"] = InstanceDAO.trail_instance_id
+                jsonDict["question"] = question
+                jsonDict["hotspot"] = hotspot
+                
+                let parameters = jsonDict
+                print(parameters)
+                
+                guard let photo = Media(withImage: image!, forKey: "image",hotspot: hotspot, question: question) else {
+                    return
+                }
+                
+                let boundary = generateBoundary()
+                
+                guard let jsonData = try? JSONSerialization.data(withJSONObject: jsonDict) else { return
+                    print("Error: cannot create jsonData")
+                }
+                
+                let dataBody = createDataBody(withParameters: parameters, media: photo, boundary: boundary, jsonData: jsonData)
+                print(dataBody)
+                
+                request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+                request.httpMethod = "POST"
+                request.httpBody = dataBody
+                
+                // Send post request
+                let semaphore = DispatchSemaphore(value: 0)
+                var result: [String:Any] = [:]
+                
+                let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                    
+                    guard let data = data, error == nil else{
+                        print(error?.localizedDescription ?? "No data")
                         semaphore.signal()
                         return
                     }
                     
-                    print(responseDict)
-                    print(result)
-                    result = responseDict
-                    semaphore.signal()
+                    do{
+                        guard let responseDict = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:Any] else {
+                            print("Error: no json response received")
+                            semaphore.signal()
+                            return
+                        }
+                        
+                        print(responseDict)
+                        print(result)
+                        result = responseDict
+                        semaphore.signal()
+                        
+                    }catch let jsonErr{
+                        print ("Error serializing json:" + jsonErr.localizedDescription)
+                        semaphore.signal()
+                    }
                     
-                }catch let jsonErr{
-                    print ("Error serializing json:" + jsonErr.localizedDescription)
-                    semaphore.signal()
                 }
+                task.resume();
+                semaphore.wait();
                 
+                if(result["success"] as? String == "true") {
+                    uploadStatus = true
+                }
             }
-            task.resume();
-            semaphore.wait();
             
-            if(result["success"] as? String == "true") {
-                uploadStatus = true
+            if(uploadStatus){
+                // create the alert
+                let alert = UIAlertController(title: "Upload Successful", message: "Image has been uploaded successfully", preferredStyle: UIAlertController.Style.alert)
+                
+                // add an action (button)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
+                    self.performSegue(withIdentifier: "toTabBarSegue", sender: nil)
+                }))
+                
+                // show the alert
+                self.present(alert, animated: true, completion: nil)
+                
+                // Update completed list & isFirstTime
+                InstanceDAO.completedList.append(hotspot)
+                InstanceDAO.isFirstTime = false
+                
+            }else{
+                // create the alert
+                let alert = UIAlertController(title: "Upload Unsuccessful", message: "Please reupload your image", preferredStyle: UIAlertController.Style.alert)
+                
+                // add an action (button)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                
+                // show the alert
+                self.present(alert, animated: true, completion: nil)
             }
-        }
-        
-        if(uploadStatus){
-            // create the alert
-            let alert = UIAlertController(title: "Upload Successful", message: "Image has been uploaded successfully", preferredStyle: UIAlertController.Style.alert)
-            
-            // add an action (button)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
-                self.performSegue(withIdentifier: "toTabBarSegue", sender: nil)
-            }))
-            
-            // show the alert
-            self.present(alert, animated: true, completion: nil)
-            
-            // Update completed list & isFirstTime
-            InstanceDAO.completedList.append(hotspot)
-            InstanceDAO.isFirstTime = false
-            
         }else{
-            // create the alert
-            let alert = UIAlertController(title: "Upload Unsuccessful", message: "Please reupload your image", preferredStyle: UIAlertController.Style.alert)
-            
-            // add an action (button)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            
-            // show the alert
-            self.present(alert, animated: true, completion: nil)
+            //member
+            InstanceDAO.isFirstTime = false
+            performSegue(withIdentifier: "toTabBarSegue", sender: nil)
         }
-        
-    }
+    } //button method
     
     func generateBoundary() -> String {
         return "Boundary-\(NSUUID().uuidString)"
@@ -278,4 +315,3 @@ class DrawingController: UIViewController {
     }
     
 }
-

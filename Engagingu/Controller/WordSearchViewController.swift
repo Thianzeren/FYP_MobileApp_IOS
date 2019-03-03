@@ -41,7 +41,12 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
     var new_position_y: Int = 0
     
     @IBOutlet weak var collectionGrid: UICollectionView!
-    
+    //for member
+    @IBOutlet weak var home: UIButton!
+    //for leader
+    @IBOutlet weak var submit: UIButton!
+    //for leader after submitting
+    @IBOutlet weak var result: UIButton!
     //hotspot name
     var hotspot: String = ""
     
@@ -71,6 +76,12 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
     //captalised list from DB --> empty array only in the main method then uppercased
     var capitalised_list: Array<String> = []
     
+    //question from DB
+    @IBOutlet weak var question: UITextView!
+    
+    //score keeper
+    var score : Int = 0
+    
     //function to print the grid
     func print_grid(){
         for x in 0 ..< (grid_size){
@@ -93,6 +104,21 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
         
         // get list from InstanceDAO
         list = InstanceDAO.wordSearchDict[hotspot]?.words ?? []
+        //to add in below here: Get qns from DB
+        
+        //leader or Member
+        if (InstanceDAO.isLeader){
+            home.isHidden = true
+            result.isHidden = true
+        }else{
+            submit.isHidden = true
+            firstWord.isHidden = true
+            secondWord.isHidden = true
+            thirdWord.isHidden = true
+            fourthWord.isHidden = true
+            fifthWord.isHidden = true
+            result.isHidden = true
+        }
         
         print_grid()
         //to dismiss keyboard when press return
@@ -270,6 +296,14 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
    @IBAction func checkWordsSubmitted(_ sender: Any) {
         //store all textfield in array
         let enteredWords: Array<String> = [firstWord.text!.uppercased(), secondWord.text!.uppercased(), thirdWord.text!.uppercased(), fourthWord.text!.uppercased(), fifthWord.text!.uppercased()]
+    
+        //disable user from editing
+        firstWord.isUserInteractionEnabled = false
+        secondWord.isUserInteractionEnabled = false
+        thirdWord.isUserInteractionEnabled = false
+        fourthWord.isUserInteractionEnabled = false
+        fifthWord.isUserInteractionEnabled = false
+    
         //check if word in list is in the word user entered
         for word in enteredWords {
             if capitalised_list.contains(word) {
@@ -292,6 +326,7 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
                     //item is column, section is row
                     let cell = collectionGrid.cellForItem(at: IndexPath.init(item: storageOfWordsPosition[num+1], section: storageOfWordsPosition[num]))
                     cell?.backgroundColor = UIColor.green
+                    score = score + 1
                 }
             }
         }
@@ -305,8 +340,31 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
                 }
             }
         }
+        //Hide the submit button
+        submit.isHidden = true
+        result.isHidden = false
     }
     
+    @IBAction func resultPage(_ sender: Any) {
+        question.text = "Congratulations, you got " + String(score) + "/" + String(5) + " Correct!"
+        //using same code as member for home button to return to maps
+        home.isHidden = false
+        // so that the congrats page wont hv all this boxes
+        firstWord.isHidden = true
+        secondWord.isHidden = true
+        thirdWord.isHidden = true
+        fourthWord.isHidden = true
+        fifthWord.isHidden = true
 
+    }
+    
+    @IBAction func backToMaps(_ sender: Any) {
+        if(!InstanceDAO.isLeader){
+            InstanceDAO.isFirstTime = false
+        }
+       
+        performSegue(withIdentifier: "toTabBarSegue", sender: nil)
+    }
+    
     
 }
