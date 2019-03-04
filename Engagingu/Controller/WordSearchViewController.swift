@@ -102,8 +102,6 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // get list from InstanceDAO
-        list = InstanceDAO.wordSearchDict[hotspot]?.words ?? []
         //to add in below here: Get qns from DB
         
         //leader or Member
@@ -132,7 +130,124 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
         
        // var capitalised_list = [String]()
         
-         for i in list {
+//        for i in list {
+//            let capital_word: String = i.uppercased()
+//            capitalised_list.append(capital_word)
+//        }
+//
+//        print (capitalised_list)
+//
+//
+//        //horizontal and vertical only
+//        let orientations = ["rightleft", "updown"]
+//
+//        for word in capitalised_list {
+//            let word_length: Int = word.count
+//
+//            //Create new Key-value pair
+//             emptyDict.updateValue([], forKey: word)
+//
+//            //In case out of room when trying to place a word
+//            var placed = false
+//            while !placed {
+//                let orientation = orientations.randomElement()
+//                //print(orientation)
+//
+//                if orientation == "updown"{
+//                    step_x = 1
+//                    step_y = 0
+//                }
+//                if orientation == "rightleft"{
+//                    step_x = 0
+//                    step_y = 1
+//                }
+//
+//                //choosing starting point for the word, with x and y coordinates
+//                x_position = Int(arc4random_uniform(UInt32(grid_size)))
+//                y_position = Int(arc4random_uniform(UInt32(grid_size)))
+//
+//                //checking if the length of word is out of bounds
+//                ending_x = x_position + word.count*step_x
+//                ending_y = y_position + word.count*step_y
+//
+//                if (ending_x < 0 || ending_x > grid_size) {
+//                    continue                                  //choose another starting position on grid
+//                }
+//                if (ending_y < 0 || ending_y > grid_size) {
+//                    continue
+//                }
+//
+//                var failed: Bool = false
+//
+//                //two things done here
+//                //first loop checks if the word can be place determine by
+//                //1. underscores
+//                //2. same character
+//                //if fails, then break out of this loop anc continue the bigger loop
+//
+//                for i in 0 ..< word_length {
+//                    let character: String = String(word.character(at:i)!)
+//                    //i is a number
+//                    //to find the new position of every char on the grid
+//                    //whether it is occupied
+//                    new_position_x = x_position + i*step_x
+//                    new_position_y = y_position + i*step_y
+//
+//                    let character_at_new_position: String = grid[new_position_x][new_position_y]
+//                    if (character_at_new_position != "_") {
+//                        //space is occupied
+//                        //check for possibility of overlapping
+//                        if character_at_new_position == (character) {
+//                            continue
+//                        }
+//                        else {
+//                            failed = true
+//                            break
+//                        }
+//                    }
+//
+//                }
+//
+//                if failed{
+//                    continue  //choose another starting position on grid
+//                }
+//
+//                else {
+//                    //Word can be place on grid
+//                    for i in 0 ..< word_length {
+//                        let character: String = String(word.character(at:i)!)
+//                        new_position_x = x_position + i*step_x
+//                        new_position_y = y_position + i*step_y
+//                        grid[new_position_x][new_position_y] = character
+//                        placed = true
+//
+//                        //store every placing of each character of the word
+//                        emptyDict[word]?.append(new_position_x)
+//                        emptyDict[word]?.append(new_position_y)
+//
+//                        print(emptyDict)
+//
+//                    }
+//                }
+//
+//            }
+//        }
+//        for x in 0 ..< grid_size {
+//            for y in 0 ..< grid_size {
+//                if grid[x][y] == "_" {
+//                    grid[x][y] = String(randomLetter())
+//                }
+//            }
+//        }
+//        //check
+//         print_grid()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // get list from db
+        list = InstanceDAO.wordSearchDict[hotspot]?.words ?? []
+        
+        for i in list {
             let capital_word: String = i.uppercased()
             capitalised_list.append(capital_word)
         }
@@ -147,7 +262,7 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
             let word_length: Int = word.count
             
             //Create new Key-value pair
-             emptyDict.updateValue([], forKey: word)
+            emptyDict.updateValue([], forKey: word)
             
             //In case out of room when trying to place a word
             var placed = false
@@ -172,13 +287,13 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
                 ending_x = x_position + word.count*step_x
                 ending_y = y_position + word.count*step_y
                 
-                if (ending_x < 0 || ending_x >= grid_size) {
+                if (ending_x < 0 || ending_x > grid_size) {
                     continue                                  //choose another starting position on grid
                 }
-                if (ending_y < 0 || ending_y >= grid_size) {
+                if (ending_y < 0 || ending_y > grid_size) {
                     continue
-
                 }
+                
                 var failed: Bool = false
                 
                 //two things done here
@@ -207,11 +322,13 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
                             break
                         }
                     }
-                   
+                    
                 }
+                
                 if failed{
                     continue  //choose another starting position on grid
                 }
+                    
                 else {
                     //Word can be place on grid
                     for i in 0 ..< word_length {
@@ -224,12 +341,12 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
                         //store every placing of each character of the word
                         emptyDict[word]?.append(new_position_x)
                         emptyDict[word]?.append(new_position_y)
-                       
+                        
                         print(emptyDict)
                         
                     }
                 }
-             
+                
             }
         }
         for x in 0 ..< grid_size {
@@ -240,7 +357,8 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
             }
         }
         //check
-         print_grid()
+        print_grid()
+        
     }
    
     //dismiss keyboard

@@ -41,6 +41,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let startHotspots = def.dictionary(forKey: "startHotspots")
         //let activityArr = def.array(forKey: "activityArr")
         
+        print("UserDefaults team_id: \(team_id)")
+        print("UserDefaults trail_instance_id: \(trail_instance_id)")
+        print("UserDefaults username: \(username)")
+        print("UserDefaults isLeader: \(isLeader)")
+        print("UserDefaults completedList: \(completedList)")
+        print("UserDefaults startHotspots: \(startHotspots)")
+        
         //Retrieve all usernames from DB to check if user has entered before
         guard let retrieveUsernamesURL = InstanceDAO.serverEndpoints["getAllUsers"] else {
             print("Unable to get server endpoint for retrieveUsernamesURL")
@@ -125,11 +132,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             RestAPIManager.httpGetDrawing(URLStr: drawingURL + InstanceDAO.trail_instance_id)
             
             // Get Word Search words
-//            guard let wordSearchURL = InstanceDAO.serverEndpoints["getAllWordSearch"] else {
-//                print("Unable to get server endpoint for wordSearchURL")
-//                return
-//            }
-//            RestAPIManager.httpGetWordSearch(URLStr: wordSearchURL + InstanceDAO.trail_instance_id)
+            guard let wordSearchURL = InstanceDAO.serverEndpoints["getAllWordSearch"] else {
+                print("Unable to get server endpoint for wordSearchURL")
+                return false
+            }
+            RestAPIManager.httpGetWordSearch(URLStr: wordSearchURL + InstanceDAO.trail_instance_id)
             
             // Get LeaderMember status
             guard let getLeaderMemberURL = InstanceDAO.serverEndpoints["getAllLeaderMember"] else {
@@ -146,7 +153,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 if(completedList.count > 0){
                     InstanceDAO.isFirstTime = false
+                    print("AppDelegate isFirstTime: \(InstanceDAO.isFirstTime)")
                 }
+                
             }
             
             let initialViewController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
