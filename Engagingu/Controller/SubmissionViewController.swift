@@ -20,10 +20,13 @@ class SubmissionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.reloadData()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         loadWaitScreen()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

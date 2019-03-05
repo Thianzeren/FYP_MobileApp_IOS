@@ -47,10 +47,13 @@ class SocketHandler {
             if(!InstanceDAO.isLeader){
                 
                 if let hotspot = msg["hotspot"]{
-                    InstanceDAO.completedList.append(hotspot)
+                    if let team = msg["team"] {
+                        if team == InstanceDAO.team_id{
+                            InstanceDAO.isFirstTime = false
+                            InstanceDAO.completedList.append(hotspot)
+                        }
+                    }
                 }
-                
-                
                 
             }
                 

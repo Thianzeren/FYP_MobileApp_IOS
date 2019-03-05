@@ -53,15 +53,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Unable to get server endpoint for retrieveUsernamesURL")
             return false
         }
-        
         let usernameDict = RestAPIManager.syncHttpGet(URLStr: retrieveUsernamesURL)
         
         //Check for session
         if let usernameArr = usernameDict["username"] as? [String]{
-//            print(team_id)
-//            print(trail_instance_id)
-//            print(username)
-//            print(usernameArr.contains(username ?? ""))
             
             if !(team_id ?? "").isEmpty && !(trail_instance_id ?? "").isEmpty && (usernameArr.contains(username ?? "")){
                 wasLoggedIn = true
@@ -77,6 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("In wasLoggedIn")
             InstanceDAO.team_id = team_id!
             InstanceDAO.trail_instance_id = trail_instance_id!
+            InstanceDAO.username = username!
             InstanceDAO.isLeader = isLeader
             InstanceDAO.completedList = completedList as? Array<String> ?? []
             //InstanceDAO.activityArr = activityArr as? Array<Activity> ?? []
@@ -157,6 +153,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                 
             }
+            
+            saveCredentialsToSession()
             
             let initialViewController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
             window?.rootViewController = initialViewController
@@ -254,11 +252,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let def = UserDefaults.standard
         def.set(InstanceDAO.team_id, forKey: "team_id")
+        print("Saved team_id \(InstanceDAO.team_id) to session")
         def.set(InstanceDAO.trail_instance_id, forKey: "trail_instance_id")
+        print("Saved trail_instance_id \(InstanceDAO.trail_instance_id) to session")
         def.set(InstanceDAO.username, forKey: "username")
+        print("Saved username \(InstanceDAO.username) to session")
         def.set(InstanceDAO.isLeader, forKey: "isLeader")
+        print("Saved isLeader \(InstanceDAO.isLeader) to session")
         def.set(InstanceDAO.completedList, forKey: "completedList")
+        print("Saved completedList \(InstanceDAO.completedList) to session")
         def.set(InstanceDAO.startHotspots, forKey: "startHotspots")
+        print("Saved startHotspots \(InstanceDAO.startHotspots) to session")
         def.synchronize()
         
     }

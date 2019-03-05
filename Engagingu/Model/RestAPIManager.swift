@@ -376,7 +376,7 @@ class RestAPIManager {
     
     static func httpGetImage(URLStr: String, hotspot: String, question: String){
         
-        let semaphore = DispatchSemaphore(value: 1)
+        let semaphore = DispatchSemaphore(value: 0)
         
         guard let url = URL(string: URLStr) else {
             print("URL CANNOT BE CREATED")
