@@ -38,6 +38,7 @@ class DragAndDropController: UIViewController, UIDragInteractionDelegate, UIDrop
     var dragTextViewArr: [UITextView] = []
     var dropTextViewArr: [UITextView] = []
     var optionLabelArr: [UILabel] = []
+    var resultArr: [Result] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,6 +131,7 @@ class DragAndDropController: UIViewController, UIDragInteractionDelegate, UIDrop
                             print("score: ", score)
                         }
                         
+                        resultArr.append(Result(question: optionText, userAnswer: dropTextView.text, expectedAnswer: correctAnswer))
                     }
                     
                     // Post Results to server

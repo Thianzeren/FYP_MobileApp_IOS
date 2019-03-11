@@ -39,6 +39,9 @@ class QuizViewController: UIViewController {
     var questionNumber: Int = 0
     var score: Int = 0
     
+    // Store question and answers of user
+    var resultArr: [Result] = []
+    
     // Question's correct answer variables
     var questionAnswer: Int = 0
     
@@ -195,6 +198,11 @@ class QuizViewController: UIViewController {
         if (InstanceDAO.isLeader){
             
             if (confirmButton.title(for: .normal) == "Complete Quiz"){
+                
+                //Perform segue
+                performSegue(withIdentifier: "toTabBarSegue", sender: nil)
+                
+            }else if(questionNumber == questionBank.count - 1 && hasSeenCorrectAnswer){ //If answered last question
                 //Post results to server
                 
                 var resultDict: [String: String] = ["team_id": InstanceDAO.team_id]
@@ -216,10 +224,6 @@ class QuizViewController: UIViewController {
                 InstanceDAO.completedList.append(hotspot)
                 InstanceDAO.isFirstTime = false
                 
-                //Perform segue
-                performSegue(withIdentifier: "toTabBarSegue", sender: nil)
-                
-            }else if(questionNumber == questionBank.count - 1 && hasSeenCorrectAnswer){ //If answered last question
                 // Hide answer buttons and squares
                 firstAnswer.isHidden = true
                 secondAnswer.isHidden = true
@@ -313,6 +317,40 @@ class QuizViewController: UIViewController {
                 confirmButton.setTitle("Next Question", for: .normal)
                 hasSeenCorrectAnswer = true
                 
+                // Update to result array
+                var selectedAnswerStr = ""
+                var questionAnswerStr = ""
+                
+                if(selectedAnswer == 1){
+                    selectedAnswerStr = firstAnswer.text
+                    
+                }else if(selectedAnswer == 2){
+                    selectedAnswerStr = secondAnswer.text
+                    
+                }else if(selectedAnswer == 3){
+                    selectedAnswerStr = thirdAnswer.text
+                    
+                }else{
+                    selectedAnswerStr = fourthAnswer.text
+                    
+                }
+                
+                if(questionAnswer == 1){
+                    questionAnswerStr = firstAnswer.text
+                    
+                }else if(questionAnswer == 2){
+                    questionAnswerStr = secondAnswer.text
+                    
+                }else if(questionAnswer == 3){
+                    questionAnswerStr = thirdAnswer.text
+                    
+                }else{
+                    questionAnswerStr = fourthAnswer.text
+                    
+                }
+                
+                
+                resultArr.append(Result(question: question, userAnswer: selectedAnswerStr, expectedAnswer: questionAnswerStr))
             }
             
         }else { // For Member

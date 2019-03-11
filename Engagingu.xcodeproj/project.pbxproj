@@ -49,6 +49,8 @@
 		E12FEFA521F2F3090074F877 /* LeaderboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12FEFA421F2F3090074F877 /* LeaderboardTableViewCell.swift */; };
 		E12FEFA721F2F3210074F877 /* ActivityFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12FEFA621F2F3210074F877 /* ActivityFeedTableViewCell.swift */; };
 		E12FEFA921F2FDD50074F877 /* SocketHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12FEFA821F2FDD50074F877 /* SocketHandler.swift */; };
+		E13F62882236621600A047AD /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13F62872236621600A047AD /* Structs.swift */; };
+		E13F628A2236627700A047AD /* ResultScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13F62892236627700A047AD /* ResultScreenViewController.swift */; };
 		E1500BC621EECB0F0032E8FA /* SubmissionPopUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1500BC521EECB0F0032E8FA /* SubmissionPopUpController.swift */; };
 		E176A13E21C1487F005A5C30 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176A13D21C1487F005A5C30 /* TabBarController.swift */; };
 		E176A14221C290E1005A5C30 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176A14121C290E1005A5C30 /* QuizViewController.swift */; };
@@ -132,6 +134,8 @@
 		E12FEFA421F2F3090074F877 /* LeaderboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewCell.swift; sourceTree = "<group>"; };
 		E12FEFA621F2F3210074F877 /* ActivityFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityFeedTableViewCell.swift; sourceTree = "<group>"; };
 		E12FEFA821F2FDD50074F877 /* SocketHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketHandler.swift; sourceTree = "<group>"; };
+		E13F62872236621600A047AD /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
+		E13F62892236627700A047AD /* ResultScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultScreenViewController.swift; sourceTree = "<group>"; };
 		E1461DCB22269D5900928BBE /* Engagingu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Engagingu.entitlements; sourceTree = "<group>"; };
 		E1500BC521EECB0F0032E8FA /* SubmissionPopUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionPopUpController.swift; sourceTree = "<group>"; };
 		E176A13D21C1487F005A5C30 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -323,6 +327,7 @@
 				AF2AF80321FE909100B75A50 /* Pencil.swift */,
 				AF2C6CEE2229BF3A0072C303 /* WordSearchViewController.swift */,
 				AF51084722192ABD00EAB0FD /* WordSearchTableViewCell.swift */,
+				E13F62892236627700A047AD /* ResultScreenViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -342,6 +347,7 @@
 				AF78DD91218B759500B0CF10 /* RestAPIManager.swift */,
 				E1A67DE221913DC300581D1C /* InstanceDAO.swift */,
 				E12FEFA821F2FDD50074F877 /* SocketHandler.swift */,
+				E13F62872236621600A047AD /* Structs.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -650,6 +656,7 @@
 				AF3DBCEF21F7077E005FBE40 /* TutorialController.swift in Sources */,
 				E10D9FB421DF042900C6D682 /* SubmissionViewController.swift in Sources */,
 				E1F5133821BFC24B00964726 /* MapController.swift in Sources */,
+				E13F628A2236627700A047AD /* ResultScreenViewController.swift in Sources */,
 				E124529221F8B9E20036AC87 /* AnagramViewController.swift in Sources */,
 				E1843794221ECB8A008A1EA9 /* FAQController.swift in Sources */,
 				E1E945C622015C0B005E7E1A /* DragAndDropController.swift in Sources */,
@@ -658,6 +665,7 @@
 				E1B5928021E597E600643DF7 /* SubmissionTableViewCell.swift in Sources */,
 				E12FEFA321F2ECFA0074F877 /* ActivityFeedController.swift in Sources */,
 				E176A14421C2936D005A5C30 /* NarrativeViewController.swift in Sources */,
+				E13F62882236621600A047AD /* Structs.swift in Sources */,
 				E12FEFA121F1D9B10074F877 /* LeaderboardController.swift in Sources */,
 				E12FEFA921F2FDD50074F877 /* SocketHandler.swift in Sources */,
 				AF51084922192ABD00EAB0FD /* WordSearchTableViewCell.swift in Sources */,
