@@ -22,112 +22,115 @@ class LoginNameController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func startButton(_ sender: Any) {
-        guard let username = usernameField.text, !username.isEmpty else {
+        
+        print(usernameField.text)
+        if !(usernameField.text! == "") {
+            
+            let username = usernameField.text
+            //Store username in instanceDAO
+            InstanceDAO.username = username!
+            
+            //Send username to db via POST JSON
+            print(username)
+            let userDict: [String: String] = ["username": username!]
+            
+            guard let jsonData = try? JSONSerialization.data(withJSONObject: userDict) else { return
+                print("Error: cannot create jsonData")
+            }
+            
+            //Debug Print
+            let jsonDataStr = String(data: jsonData, encoding: String.Encoding.utf8) ?? "Data could not be printed"
+            print(jsonDataStr)
+            
+            guard let registerUserURL = InstanceDAO.serverEndpoints["registerUser"] else {
+                print("Unable to get server endpoint for registerUser")
+                return
+            }
+            //Using httpPost method from APIManager
+            let responseDict = RestAPIManager.syncHttpPost(jsonData: jsonData, URLStr: registerUserURL)
+
+            let team_id = responseDict["team_id"] as? Int
+    //        print(team_id)
+            
+            if let id = team_id {
+                InstanceDAO.team_id = String(id)
+            }
+            
+            // Get LeaderMember status
+            guard let getLeaderMemberURL = InstanceDAO.serverEndpoints["getAllLeaderMember"] else {
+                print("Unable to get server endpoint for getAllLeaderMember")
+                return
+            }
+            RestAPIManager.httpGetLeaderMemberStatus(URLStr: getLeaderMemberURL)
+            
+            // Get starting hotspots
+            guard let startHotspotURL = InstanceDAO.serverEndpoints["getStartingHotspots"] else {
+                print("Unable to get server endpoint for getStartingHotspots")
+                return
+            }
+            RestAPIManager.httpGetStartingHotspots(URLStr: startHotspotURL  + InstanceDAO.trail_instance_id)
+            
+            // Get hotspot location
+            guard let allHotspotURL = InstanceDAO.serverEndpoints["getAllHotspots"] else {
+                print("Unable to get server endpoint for getAllHotspots")
+                return
+            }
+            RestAPIManager.httpGetHotspots(URLStr: allHotspotURL + InstanceDAO.trail_instance_id)
+            
+            // Get quiz questions
+            guard let quizQuestionsURL = InstanceDAO.serverEndpoints["getAllQuizzes"] else {
+                print("Unable to get server endpoint for quizQuestionsURL")
+                return
+            }
+            RestAPIManager.httpGetQuizzes(URLStr: quizQuestionsURL + InstanceDAO.trail_instance_id)
+            
+            // Get selfie question
+            guard let selfieQuestionsURL = InstanceDAO.serverEndpoints["getAllSelfies"] else {
+                print("Unable to get server endpoint for selfieQuestionsURL")
+                return
+            }
+            RestAPIManager.httpGetSelfies(URLStr: selfieQuestionsURL  + InstanceDAO.trail_instance_id)
+            
+            // Get Anagram Questions
+            guard let anagramURL = InstanceDAO.serverEndpoints["getAllAnagrams"] else {
+                print("Unable to get server endpoint for anagramURL")
+                return
+            }
+            RestAPIManager.httpGetAnagram(URLStr: anagramURL + InstanceDAO.trail_instance_id)
+            
+            // Get Drag And Drop Questions
+            guard let dragAndDropURL = InstanceDAO.serverEndpoints["getAllDragAndDrops"] else {
+                print("Unable to get server endpoint for dragAndDropURL")
+                return
+            }
+            RestAPIManager.httpGetDragAndDrop(URLStr: dragAndDropURL + InstanceDAO.trail_instance_id)
+            
+            // Get Drawing Questions
+            guard let drawingURL = InstanceDAO.serverEndpoints["getAllDrawings"] else {
+                print("Unable to get server endpoint for drawingURL")
+                return
+            }
+            RestAPIManager.httpGetDrawing(URLStr: drawingURL + InstanceDAO.trail_instance_id)
+            
+            // Get Word Search words
+            guard let wordSearchURL = InstanceDAO.serverEndpoints["getAllWordSearch"] else {
+                print("Unable to get server endpoint for wordSearchURL")
+                return
+            }
+            RestAPIManager.httpGetWordSearch(URLStr: wordSearchURL + InstanceDAO.trail_instance_id)
+            
+            // Save to UserDefaults for session
+            saveCredentialsToSession()
+            
+            // Connect Socket to Server
+            SocketHandler.addHandlers()
+            SocketHandler.connectSocket()
+            
+            performSegue(withIdentifier: "toTutorialSegue", sender: nil)
+        }else {
             print("String is nil or empty")
             createAlert(title: "Please enter a username", message: "")
-            return
         }
-        
-        //Store username in instanceDAO
-        InstanceDAO.username = username
-        
-        //Send username to db via POST JSON
-        print(username)
-        let userDict: [String: String] = ["username": username]
-        
-        guard let jsonData = try? JSONSerialization.data(withJSONObject: userDict) else { return
-            print("Error: cannot create jsonData")
-        }
-        
-        //Debug Print
-        let jsonDataStr = String(data: jsonData, encoding: String.Encoding.utf8) ?? "Data could not be printed"
-        print(jsonDataStr)
-        
-        guard let registerUserURL = InstanceDAO.serverEndpoints["registerUser"] else {
-            print("Unable to get server endpoint for registerUser")
-            return
-        }
-        //Using httpPost method from APIManager
-        let responseDict = RestAPIManager.syncHttpPost(jsonData: jsonData, URLStr: registerUserURL)
-
-        let team_id = responseDict["team_id"] as? Int
-//        print(team_id)
-        
-        if let id = team_id {
-            InstanceDAO.team_id = String(id)
-        }
-        
-        // Get LeaderMember status
-        guard let getLeaderMemberURL = InstanceDAO.serverEndpoints["getAllLeaderMember"] else {
-            print("Unable to get server endpoint for getAllLeaderMember")
-            return
-        }
-        RestAPIManager.httpGetLeaderMemberStatus(URLStr: getLeaderMemberURL)
-        
-        // Get starting hotspots
-        guard let startHotspotURL = InstanceDAO.serverEndpoints["getStartingHotspots"] else {
-            print("Unable to get server endpoint for getStartingHotspots")
-            return
-        }
-        RestAPIManager.httpGetStartingHotspots(URLStr: startHotspotURL  + InstanceDAO.trail_instance_id)
-        
-        // Get hotspot location
-        guard let allHotspotURL = InstanceDAO.serverEndpoints["getAllHotspots"] else {
-            print("Unable to get server endpoint for getAllHotspots")
-            return
-        }
-        RestAPIManager.httpGetHotspots(URLStr: allHotspotURL + InstanceDAO.trail_instance_id)
-        
-        // Get quiz questions
-        guard let quizQuestionsURL = InstanceDAO.serverEndpoints["getAllQuizzes"] else {
-            print("Unable to get server endpoint for quizQuestionsURL")
-            return
-        }
-        RestAPIManager.httpGetQuizzes(URLStr: quizQuestionsURL + InstanceDAO.trail_instance_id)
-        
-        // Get selfie question
-        guard let selfieQuestionsURL = InstanceDAO.serverEndpoints["getAllSelfies"] else {
-            print("Unable to get server endpoint for selfieQuestionsURL")
-            return
-        }
-        RestAPIManager.httpGetSelfies(URLStr: selfieQuestionsURL  + InstanceDAO.trail_instance_id)
-        
-        // Get Anagram Questions
-        guard let anagramURL = InstanceDAO.serverEndpoints["getAllAnagrams"] else {
-            print("Unable to get server endpoint for anagramURL")
-            return
-        }
-        RestAPIManager.httpGetAnagram(URLStr: anagramURL + InstanceDAO.trail_instance_id)
-        
-        // Get Drag And Drop Questions
-        guard let dragAndDropURL = InstanceDAO.serverEndpoints["getAllDragAndDrops"] else {
-            print("Unable to get server endpoint for dragAndDropURL")
-            return
-        }
-        RestAPIManager.httpGetDragAndDrop(URLStr: dragAndDropURL + InstanceDAO.trail_instance_id)
-        
-        // Get Drawing Questions
-        guard let drawingURL = InstanceDAO.serverEndpoints["getAllDrawings"] else {
-            print("Unable to get server endpoint for drawingURL")
-            return
-        }
-        RestAPIManager.httpGetDrawing(URLStr: drawingURL + InstanceDAO.trail_instance_id)
-        
-        // Get Word Search words
-        guard let wordSearchURL = InstanceDAO.serverEndpoints["getAllWordSearch"] else {
-            print("Unable to get server endpoint for wordSearchURL")
-            return
-        }
-        RestAPIManager.httpGetWordSearch(URLStr: wordSearchURL + InstanceDAO.trail_instance_id)
-        
-        // Save to UserDefaults for session
-        saveCredentialsToSession()
-        
-        // Connect Socket to Server
-        SocketHandler.addHandlers()
-        SocketHandler.connectSocket()
-        
-        performSegue(withIdentifier: "toTutorialSegue", sender: nil)
         
     }
     

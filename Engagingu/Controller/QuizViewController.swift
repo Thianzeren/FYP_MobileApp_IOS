@@ -40,7 +40,7 @@ class QuizViewController: UIViewController {
     var score: Int = 0
     
     // Store question and answers of user
-    var resultArr: [Result] = []
+    var outcomeArr: [Outcome] = []
     
     // Question's correct answer variables
     var questionAnswer: Int = 0
@@ -197,12 +197,14 @@ class QuizViewController: UIViewController {
         // 4) if he/she hasn't submitted answer, show correct answer
         if (InstanceDAO.isLeader){
             
-            if (confirmButton.title(for: .normal) == "Complete Quiz"){
-                
-                //Perform segue
-                performSegue(withIdentifier: "toTabBarSegue", sender: nil)
-                
-            }else if(questionNumber == questionBank.count - 1 && hasSeenCorrectAnswer){ //If answered last question
+//            if (confirmButton.title(for: .normal) == "Complete Quiz"){
+//
+//                //Perform segue
+//                performSegue(withIdentifier: "toTabBarSegue", sender: nil)
+//
+//            }else
+            
+            if(questionNumber == questionBank.count - 1 && hasSeenCorrectAnswer){ //If answered last question
                 //Post results to server
                 
                 var resultDict: [String: String] = ["team_id": InstanceDAO.team_id]
@@ -224,23 +226,27 @@ class QuizViewController: UIViewController {
                 InstanceDAO.completedList.append(hotspot)
                 InstanceDAO.isFirstTime = false
                 
-                // Hide answer buttons and squares
-                firstAnswer.isHidden = true
-                secondAnswer.isHidden = true
-                thirdAnswer.isHidden = true
-                fourthAnswer.isHidden = true
-
-                // Change button text to "Complete Quiz"
-                confirmButton.setTitle("Complete Quiz", for: .normal)
-                confirmText.text = nil
+//                // Hide answer buttons and squares
+//                firstAnswer.isHidden = true
+//                secondAnswer.isHidden = true
+//                thirdAnswer.isHidden = true
+//                fourthAnswer.isHidden = true
+//
+//                // Change button text to "Complete Quiz"
+//                confirmButton.setTitle("Complete Quiz", for: .normal)
+//                confirmText.text = nil
+//
+//                // Display final score
+//                let numOfQuestions = questionBank.count
+//                let congratsText = "Congratulations, you got " + String(score) + "/" + String(numOfQuestions) + " Correct!"
+//                question.text = congratsText
+//
+//                //hide Q&A label
+//                questionLabel.isHidden = true
                 
-                // Display final score
-                let numOfQuestions = questionBank.count
-                let congratsText = "Congratulations, you got " + String(score) + "/" + String(numOfQuestions) + " Correct!"
-                question.text = congratsText
                 
-                //hide Q&A label
-                questionLabel.isHidden = true
+                // Send to result screen && Perform Segue
+                performSegue(withIdentifier: "toResultScreenSegue", sender: nil)
                 
             }else if(hasSeenCorrectAnswer){
                 
@@ -317,40 +323,40 @@ class QuizViewController: UIViewController {
                 confirmButton.setTitle("Next Question", for: .normal)
                 hasSeenCorrectAnswer = true
                 
-                // Update to result array
+                // Update to outcome array
                 var selectedAnswerStr = ""
                 var questionAnswerStr = ""
                 
                 if(selectedAnswer == 1){
-                    selectedAnswerStr = firstAnswer.text
+                    selectedAnswerStr = firstAnswer.currentTitle!
                     
                 }else if(selectedAnswer == 2){
-                    selectedAnswerStr = secondAnswer.text
+                    selectedAnswerStr = secondAnswer.currentTitle!
                     
                 }else if(selectedAnswer == 3){
-                    selectedAnswerStr = thirdAnswer.text
+                    selectedAnswerStr = thirdAnswer.currentTitle!
                     
                 }else{
-                    selectedAnswerStr = fourthAnswer.text
+                    selectedAnswerStr = fourthAnswer.currentTitle!
                     
                 }
                 
                 if(questionAnswer == 1){
-                    questionAnswerStr = firstAnswer.text
+                    questionAnswerStr = firstAnswer.currentTitle!
                     
                 }else if(questionAnswer == 2){
-                    questionAnswerStr = secondAnswer.text
+                    questionAnswerStr = secondAnswer.currentTitle!
                     
                 }else if(questionAnswer == 3){
-                    questionAnswerStr = thirdAnswer.text
+                    questionAnswerStr = thirdAnswer.currentTitle!
                     
                 }else{
-                    questionAnswerStr = fourthAnswer.text
+                    questionAnswerStr = fourthAnswer.currentTitle!
                     
                 }
                 
                 
-                resultArr.append(Result(question: question, userAnswer: selectedAnswerStr, expectedAnswer: questionAnswerStr))
+                outcomeArr.append(Outcome(question: question.text, userAnswer: selectedAnswerStr, expectedAnswer: questionAnswerStr))
             }
             
         }else { // For Member
@@ -394,6 +400,20 @@ class QuizViewController: UIViewController {
             
         }
         
+        
+    }
+    
+    //     In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        
+        if(segue.identifier == "toResultScreenSegue"){
+            
+            let destVC = segue.destination as! ResultScreenController
+            destVC.setVariables(outcomeArr: outcomeArr, hotspot: hotspot, mission: "Quiz", score: String(score))
+            
+        }
         
     }
     

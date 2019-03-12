@@ -38,7 +38,7 @@ class DragAndDropController: UIViewController, UIDragInteractionDelegate, UIDrop
     var dragTextViewArr: [UITextView] = []
     var dropTextViewArr: [UITextView] = []
     var optionLabelArr: [UILabel] = []
-    var resultArr: [Result] = []
+    var outcomeArr: [Outcome] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,108 +73,108 @@ class DragAndDropController: UIViewController, UIDragInteractionDelegate, UIDrop
     @IBAction func submitAnswer(_ sender: Any) {
         
         if(InstanceDAO.isLeader){
-            if(submitBtn.title(for: .normal) == "Home"){
-                performSegue(withIdentifier: "toTabBarSegue", sender: nil)
-            }else {
-                var hasEmptyDrops = false
+//            if(submitBtn.title(for: .normal) == "Home"){
+//                performSegue(withIdentifier: "toTabBarSegue", sender: nil)
+//            }else {
+            var hasEmptyDrops = false
+            
+            // Check if any of the drop views are empty
+            for dropTextView in dropTextViewArr {
                 
-                // Check if any of the drop views are empty
-                for dropTextView in dropTextViewArr {
-                    
-                    if dropTextView.text == "" {
-                        hasEmptyDrops = true
-                    }
-                    
+                if dropTextView.text == "" {
+                    hasEmptyDrops = true
                 }
                 
-                if (hasEmptyDrops) { // If it is empty, show alert to inform user
+            }
+            
+            if (hasEmptyDrops) { // If it is empty, show alert to inform user
+                
+                // Alert to ask to try again
+                // create the alert
+                let alert = UIAlertController(title: "You have not filled up all boxes", message: "Please Try Again", preferredStyle: UIAlertController.Style.alert)
+                
+                // add an action (button)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
                     
-                    // Alert to ask to try again
-                    // create the alert
-                    let alert = UIAlertController(title: "You have not filled up all boxes", message: "Please Try Again", preferredStyle: UIAlertController.Style.alert)
+                    alert.dismiss(animated: true, completion: nil)
                     
-                    // add an action (button)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
+                }))
+                
+                // show the alert
+                self.present(alert, animated: true, completion: nil)
+                
+            }else { // Calculate score and redirect to result page
+                
+                // Iterate through each dropTextView
+                for i in 0 ..< dropTextViewArr.count{
+                    
+                    let optionText = optionLabelArr[i].text
+                    var correctAnswer = ""
+                    
+                    // Obtain correct answer for corresponding label
+                    innerLoop: for qnaPair in qnaArr {
                         
-                        alert.dismiss(animated: true, completion: nil)
+                        let label = qnaPair.drag_and_drop_question
+                        let answer = qnaPair.drag_and_drop_answer
                         
-                    }))
-                    
-                    // show the alert
-                    self.present(alert, animated: true, completion: nil)
-                    
-                }else { // Calculate score and redirect to result page
-                    
-                    // Iterate through each dropTextView
-                    for i in 0 ..< dropTextViewArr.count{
-                        
-                        let optionText = optionLabelArr[i].text
-                        var correctAnswer = ""
-                        
-                        // Obtain correct answer for corresponding label
-                        innerLoop: for qnaPair in qnaArr {
-                            
-                            let label = qnaPair.drag_and_drop_question
-                            let answer = qnaPair.drag_and_drop_answer
-                            
-                            if optionText == label {
-                                correctAnswer = answer
-                                break innerLoop
-                            }
-                            
+                        if optionText == label {
+                            correctAnswer = answer
+                            break innerLoop
                         }
                         
-                        // Check if answer is correct
-                        let dropTextView = dropTextViewArr[i]
-                        if dropTextView.text == correctAnswer {
-                            score += 1
-                            print("score: ", score)
-                        }
-                        
-                        resultArr.append(Result(question: optionText, userAnswer: dropTextView.text, expectedAnswer: correctAnswer))
                     }
                     
-                    // Post Results to server
-                    var resultDict: [String: String] = ["team_id": InstanceDAO.team_id]
-                    resultDict["trail_instance_id"] = InstanceDAO.trail_instance_id
-                    resultDict["score"] = String(score)
-                    resultDict["hotspot"] = hotspot
-                    
-                    guard let jsonData = try? JSONSerialization.data(withJSONObject: resultDict) else { return
-                        print("Error: cannot create jsonData")
+                    // Check if answer is correct
+                    let dropTextView = dropTextViewArr[i]
+                    if dropTextView.text == correctAnswer {
+                        score += 1
+                        print("score: ", score)
                     }
                     
-                    guard let updateScoreURL = InstanceDAO.serverEndpoints["updateScore"] else {
-                        print("Unable to get server endpoint for updateScoreURL")
-                        return
-                    }
-                    RestAPIManager.asyncHttpPost(jsonData: jsonData, URLStr: updateScoreURL)
-                    
-                    // Update CompletedList & isFirstTime check
-                    InstanceDAO.completedList.append(hotspot)
-                    InstanceDAO.isFirstTime = false
-                    
-                    // Show results
-                    let results = "Congratulations, You got " + String(score) + "/" + String(qnaArr.count) + " correct!"
-                    questionLabel.text = results
-                    submitBtn.setTitle("Home", for: .normal)
-                    
-                    for i in 0 ..< dragTextViewArr.count {
-                        
-                        let dragTextView = dragTextViewArr[i]
-                        dragTextView.isHidden = true
-                        
-                        let dropTextView = dropTextViewArr[i]
-                        dropTextView.isHidden = true
-                        
-                        let optionLabel = optionLabelArr[i]
-                        optionLabel.isHidden = true
-                        
-                    }
-                    
-    //                //Perform segue
-    //                performSegue(withIdentifier: "toTabBarSegue", sender: nil)
+                    outcomeArr.append(Outcome(question: optionText!, userAnswer: dropTextView.text, expectedAnswer: correctAnswer))
                 }
+                
+                // Post Results to server
+                var resultDict: [String: String] = ["team_id": InstanceDAO.team_id]
+                resultDict["trail_instance_id"] = InstanceDAO.trail_instance_id
+                resultDict["score"] = String(score)
+                resultDict["hotspot"] = hotspot
+                
+                guard let jsonData = try? JSONSerialization.data(withJSONObject: resultDict) else { return
+                    print("Error: cannot create jsonData")
+                }
+                
+                guard let updateScoreURL = InstanceDAO.serverEndpoints["updateScore"] else {
+                    print("Unable to get server endpoint for updateScoreURL")
+                    return
+                }
+                RestAPIManager.asyncHttpPost(jsonData: jsonData, URLStr: updateScoreURL)
+                
+                // Update CompletedList & isFirstTime check
+                InstanceDAO.completedList.append(hotspot)
+                InstanceDAO.isFirstTime = false
+                
+                // Show results
+//                let results = "Congratulations, You got " + String(score) + "/" + String(qnaArr.count) + " correct!"
+//                questionLabel.text = results
+//                submitBtn.setTitle("Home", for: .normal)
+//
+//                for i in 0 ..< dragTextViewArr.count {
+//
+//                    let dragTextView = dragTextViewArr[i]
+//                    dragTextView.isHidden = true
+//
+//                    let dropTextView = dropTextViewArr[i]
+//                    dropTextView.isHidden = true
+//
+//                    let optionLabel = optionLabelArr[i]
+//                    optionLabel.isHidden = true
+//
+//                }
+                
+                //Perform segue
+                performSegue(withIdentifier: "toResultScreenSegue", sender: nil)
+//                }
             }
         }else { // If Member
             // Update CompletedList & isFirstTime check
@@ -233,6 +233,16 @@ class DragAndDropController: UIViewController, UIDragInteractionDelegate, UIDrop
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if(segue.identifier == "toResultScreenSegue"){
+            
+            let destVC = segue.destination as! ResultScreenController
+            destVC.setVariables(outcomeArr: outcomeArr, hotspot: hotspot, mission: "DragAndDrop", score: String(score))
+            
+        }
+        
+    }
     // Methods for UIDropInteractionDelegate
     
     // Define what data type can be dropped

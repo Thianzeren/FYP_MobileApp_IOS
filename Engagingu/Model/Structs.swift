@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 struct Hotspot: Decodable{ //create a Hotspot class use for the jsondecoder
@@ -109,7 +110,7 @@ struct DrawingQns: Decodable {
     let question: String
 }
 
-struct Result {
+struct Outcome {
     
     let question: String
     let userAnswer: String
