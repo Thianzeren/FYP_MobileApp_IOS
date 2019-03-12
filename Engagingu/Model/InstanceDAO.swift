@@ -35,6 +35,7 @@ struct InstanceDAO {
         "getAllSubmissionsURL" : serverIP + "/upload/getAllSubmissionURL?team=",
         "getSubmission" : serverIP + "/upload/getSubmission?url=",
         "getLeaderboard" : serverIP + "/team/hotspotStatus?trail_instance_id=",
+        "getActivityFeed" : serverIP + "/team/activityFeed",
         "getAllUsers" : serverIP + "/user/retrieveAllUsers",
         "getAllLeaderMember" : serverIP + "/user/retrieveAllUser",
         "getAllDrawings" : serverIP + "/upload/getDrawingQuestion?trail_instance_id=",

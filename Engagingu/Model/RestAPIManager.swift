@@ -660,4 +660,44 @@ class RestAPIManager {
         
         //semaphore.wait()
     }
+    
+    static func httpGetActivityFeed(URLStr: String){
+        
+        //let semaphore = DispatchSemaphore(value: 0)
+        
+        guard let url = URL(string: URLStr) else {
+            //semaphore.signal()
+            return }
+        
+        URLSession.shared.dataTask(with: url){(data, response, error) in
+            //check error
+            //check response status ok
+            
+            guard let data = data else {
+                //semaphore.signal()
+                return }
+            
+            do {
+                let activities = try
+                    JSONDecoder().decode([Activity].self, from: data)
+                
+                InstanceDAO.activityArr.removeAll()
+                
+                for activity in activities{
+                    InstanceDAO.activityArr.append(activity)
+                }
+                
+                print("ACTIVITY")
+                print(InstanceDAO.activityArr)
+                
+                //semaphore.signal()
+            } catch let jsonErr{
+                print("Error serializing json:", jsonErr)
+            }
+            
+            
+            }.resume()
+        
+        //semaphore.wait()
+    }
 }

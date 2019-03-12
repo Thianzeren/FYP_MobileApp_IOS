@@ -39,7 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let isLeader = def.bool(forKey: "isLeader")
         let completedList = def.array(forKey: "completedList")
         let startHotspots = def.dictionary(forKey: "startHotspots")
-        //let activityArr = def.array(forKey: "activityArr")
         
         print("UserDefaults team_id: \(team_id)")
         print("UserDefaults trail_instance_id: \(trail_instance_id)")
@@ -141,6 +140,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             RestAPIManager.httpGetLeaderMemberStatus(URLStr: getLeaderMemberURL)
             
+            // Get Activity status
+            guard let getActivityFeedURL = InstanceDAO.serverEndpoints["getActivityFeed"] else {
+                print("Unable to get server endpoint for getAllActivity")
+                return false
+            }
+            RestAPIManager.httpGetActivityFeed(URLStr: getActivityFeedURL)
+            
             // Connect Socket to Server
             SocketHandler.addHandlers()
             SocketHandler.connectSocket()
@@ -238,6 +244,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        // Get Activity status
+        guard let getActivityFeedURL = InstanceDAO.serverEndpoints["getActivityFeed"] else {
+            print("Unable to get server endpoint for getAllActivity")
+            return
+        }
+        RestAPIManager.httpGetActivityFeed(URLStr: getActivityFeedURL)
         
     }
 
