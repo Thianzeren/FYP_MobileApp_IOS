@@ -16,6 +16,7 @@ class ResultScreenController: UIViewController {
     @IBOutlet weak var scoreLabel: UITextView!
     @IBOutlet weak var tableView: UITableView!
     
+    
     var hotspot = ""
     var mission = ""
     var score = ""
@@ -23,15 +24,15 @@ class ResultScreenController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
         hotspotTextField.text = hotspot
-        missionTextField.text = mission + "Mission Results"
+        missionTextField.text = mission + " Mission Results"
         
         let outcomeSize = outcomeArr.count
         scoreLabel.text = "You got " + score + "/" + String(outcomeSize) + " correct!"
-        
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,6 +59,8 @@ extension ResultScreenController: UITableViewDataSource, UITableViewDelegate{
         return outcomeArr.count
     }
     
+  
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let outcome = outcomeArr[indexPath.row]
@@ -69,5 +72,7 @@ extension ResultScreenController: UITableViewDataSource, UITableViewDelegate{
         return cell
         
     }
+
+    
     
 }

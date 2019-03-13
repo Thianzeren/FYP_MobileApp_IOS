@@ -100,7 +100,7 @@ struct WordSearch: Decodable{
     
     let hotspot: String
     let words: [String]
-    let title: String
+   // let title: String
     
 }
 

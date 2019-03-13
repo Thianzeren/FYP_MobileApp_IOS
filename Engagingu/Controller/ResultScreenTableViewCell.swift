@@ -10,15 +10,24 @@ import UIKit
 
 class ResultScreenTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var question: UITextView!
-    @IBOutlet weak var userAnswer: UITextView!
-    @IBOutlet weak var expectedAnswer: UITextView!
     
+    @IBOutlet weak var question: UILabel!
+    
+    @IBOutlet weak var userAnswer: UILabel!
+    
+    @IBOutlet weak var expectedAnswer: UILabel!
     func setOutcome(question: String, userAnswer: String, expectedAnswer: String){
         
-        self.question.text = "Q: " + question
-        self.userAnswer.text = "A: " + userAnswer
-        self.expectedAnswer.text = "A: " + expectedAnswer
+        self.question.text = "Question: " + question
+        self.userAnswer.text = "Your Answer: " + userAnswer
+        self.expectedAnswer.text = "Correct Answer: " + expectedAnswer
+        if(userAnswer == expectedAnswer){
+            self.userAnswer.textColor = UIColor.green
+        }else{
+            self.userAnswer.textColor = UIColor.red
+        }
+        self.expectedAnswer.textColor = UIColor.green
+        
         
     }
 
