@@ -18,8 +18,8 @@ struct InstanceDAO {
     static var username: String = "defaultName"
     static var completedList: Array<String> = Array()
     
-    static var serverIP: String = "http://13.229.115.32:3000"
-//    static var serverIP: String = "http://54.255.245.23:3000"
+//    static var serverIP: String = "http://13.229.115.32:3000"
+    static var serverIP: String = "http://54.255.245.23:3000"
     
     static var serverEndpoints: [String:String] = [
         "getInstanceId" : serverIP + "/getInstance",

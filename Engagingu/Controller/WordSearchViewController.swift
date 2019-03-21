@@ -46,10 +46,11 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
     //for leader
     @IBOutlet weak var submit: UIButton!
     //for leader after submitting
-    @IBOutlet weak var result: UIButton!
+    //@IBOutlet weak var result: UIButton!
     //hotspot name
     var hotspot: String = ""
     
+    @IBOutlet weak var scrollview: UIScrollView!
     //tracking number of rows in UI Collection View
     var counter: Int = 0
     
@@ -107,7 +108,7 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
         //leader or Member
         if (InstanceDAO.isLeader){
             home.isHidden = true
-            result.isHidden = true
+            //result.isHidden = true
         }else{
             submit.isHidden = true
             firstWord.isHidden = true
@@ -115,7 +116,7 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
             thirdWord.isHidden = true
             fourthWord.isHidden = true
             fifthWord.isHidden = true
-            result.isHidden = true
+            //result.isHidden = true
         }
         
         print_grid()
@@ -438,13 +439,15 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
         print(correctList)
         //highlight cell green
         if correctList.count > 0 {
+            
             for word in correctList {
                 let storageOfWordsPosition: Array<Int> = emptyDict[word]!
                 for num in stride (from:0, to:storageOfWordsPosition.count, by:2){
                     //item is column, section is row
                     let cell = collectionGrid.cellForItem(at: IndexPath.init(item: storageOfWordsPosition[num+1], section: storageOfWordsPosition[num]))
                     cell?.backgroundColor = UIColor.green
-                    score = score + 1
+                    //score = score + 1
+                    
                 }
             }
         }
@@ -460,10 +463,23 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
         }
         //Hide the submit button
         submit.isHidden = true
-        result.isHidden = false
+        //result.isHidden = false
+        score = correctList.count
+        question.text = "Congratulations, you got " + String(score) + "/" + String(5) + " Correct!"
+        //using same code as member for home button to return to maps
+        home.isHidden = false
+        // so that the congrats page wont hv all this boxes
+        firstWord.isHidden = true
+        secondWord.isHidden = true
+        thirdWord.isHidden = true
+        fourthWord.isHidden = true
+        fifthWord.isHidden = true
+        scrollview.setContentOffset(.zero, animated: true)
+        scrollview.isScrollEnabled = false
+    
     }
     
-    @IBAction func resultPage(_ sender: Any) {
+    /*@IBAction func resultPage(_ sender: Any) {
         question.text = "Congratulations, you got " + String(score) + "/" + String(5) + " Correct!"
         //using same code as member for home button to return to maps
         home.isHidden = false
@@ -474,7 +490,7 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
         fourthWord.isHidden = true
         fifthWord.isHidden = true
 
-    }
+    }*/
     
     @IBAction func backToMaps(_ sender: Any) {
         if(InstanceDAO.isLeader){
@@ -500,5 +516,5 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
         performSegue(withIdentifier: "toTabBarSegue", sender: nil)
     }
     
-    
 }
+
