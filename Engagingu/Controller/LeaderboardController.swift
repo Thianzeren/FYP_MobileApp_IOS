@@ -13,8 +13,11 @@ class LeaderboardController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var sortedTeamArr: [(String, Int)] = []
     
+    @IBOutlet weak var team: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        team.text = "You are in Team " + InstanceDAO.team_id
 
     }
     override func viewWillAppear(_ animated: Bool) {

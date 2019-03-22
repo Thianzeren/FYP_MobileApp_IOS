@@ -11,11 +11,13 @@ import UIKit
 class ActivityFeedController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var team: UILabel!
     
     var activityArr: [Activity] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        team.text = "You are in Team " + InstanceDAO.team_id
         
     }
     
