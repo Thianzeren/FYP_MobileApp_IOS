@@ -13,7 +13,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var takePicBtn: UIButton!
     @IBOutlet weak var uploadImgBtn: UIButton!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var selfieQuestion: UITextView!
+    @IBOutlet weak var selfieQuestion: UILabel!
     var question: String = ""
     var hotspot: String = ""
     var image: UIImage?
@@ -38,8 +38,6 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         imagePickerController = UIImagePickerController()
         imagePickerController!.delegate = self
-        //centralised the questions 
-        selfieQuestion.textContainerInset = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
     }
     
     @IBAction func chooseImage(_ sender: Any) {
