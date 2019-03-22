@@ -26,8 +26,6 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var confirmText: UITextView!
     // Outlet for confirm button
     @IBOutlet weak var confirmButton: UIButton!
-    // Outlet for Q&A
-    @IBOutlet weak var questionLabel: UITextView!
     
     //back button for member
     @IBOutlet weak var backButton: UIBarButtonItem!
@@ -160,7 +158,7 @@ class QuizViewController: UIViewController {
 //        print(quiz_options)
 //        print(quiz_answer)
         
-        question.text = quiz_question
+        self.question.text = quiz_question
 
         var count: Int = 0
         for option in quiz_options{
