@@ -4,6 +4,7 @@ import UIKit
 class LoginNameController: UIViewController, UITextFieldDelegate {
     //properties
     @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var submitButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -11,6 +12,7 @@ class LoginNameController: UIViewController, UITextFieldDelegate {
         
         self.usernameField.delegate = self
         usernameField.setBottomBorder()
+        submitButton.float()
         
         //Listen for keyboard events, addObserers. Obbservers are removed when > IOS 9
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)

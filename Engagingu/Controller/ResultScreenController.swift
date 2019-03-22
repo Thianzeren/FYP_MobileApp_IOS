@@ -15,7 +15,7 @@ class ResultScreenController: UIViewController {
     @IBOutlet weak var missionTextField: UITextField!
     @IBOutlet weak var scoreLabel: UITextView!
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var home: UIButton!
     
     var hotspot = ""
     var mission = ""
@@ -24,7 +24,7 @@ class ResultScreenController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        home.float()
         // Do any additional setup after loading the view.
         
         hotspotTextField.text = hotspot

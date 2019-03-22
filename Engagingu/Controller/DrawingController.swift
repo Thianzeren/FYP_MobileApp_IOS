@@ -8,6 +8,15 @@
 
 import UIKit
 
+extension UIButton {
+    func addShadow (color : UIColor){
+        layer.shadowRadius = 5
+        layer.shadowOpacity = 0.8
+        layer.shadowColor = color.cgColor
+        
+    }
+}
+
 class DrawingController: UIViewController {
 
     @IBOutlet weak var drawing: UIImageView!
@@ -23,6 +32,7 @@ class DrawingController: UIViewController {
     
     var lastTouch = CGPoint.zero
     
+    @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var black: UIButton!
     @IBOutlet weak var grey: UIButton!
     @IBOutlet weak var red: UIButton!
@@ -39,6 +49,7 @@ class DrawingController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        submitButton.float()
         //hide the image so that drawing is disabled until pencil is pressed
         //drawing.isHidden = true
         print(question)
@@ -132,12 +143,103 @@ class DrawingController: UIViewController {
         guard let pencil = Pencil(tag: sender.tag) else {
             return
         }
+        
         color = pencil.color
         if pencil == .eraser {
             opacity = 1.0
         }
+        
+        //to add shadows to the pencil that was pressed
+        if pencil == .black {
+            clearAllShadows()
+            black.addShadow(color: color)
+        }
+        
+        if pencil == .red {
+            clearAllShadows()
+            red.addShadow(color: color)
+        }
+     
+        if pencil == .grey {
+            clearAllShadows()
+            grey.addShadow(color: color)
+        }
+        if pencil == .darkblue {
+            clearAllShadows()
+            darkBlue.addShadow(color: color)
+        }
+        if pencil == .lightBlue {
+            clearAllShadows()
+            lightBlue.addShadow(color: color)
+        }
+        if pencil == .darkGreen {
+            clearAllShadows()
+            darkGreen.addShadow(color: color)
+        }
+        if pencil == .lightGreen {
+            clearAllShadows()
+            lightGreen.addShadow(color: color)
+        }
+        if pencil == .brown {
+            clearAllShadows()
+            brown.addShadow(color: color)
+        }
+        if pencil == .orange {
+            clearAllShadows()
+            orange.addShadow(color: color)
+        }
+        
+        if pencil == .yellow {
+            clearAllShadows()
+            yellow.addShadow(color: color)
+        }
+        if pencil == .eraser {
+            clearAllShadows()
+            //eraser nv use addShadow method as the background will be white when pass in the parameter
+            //hence this method below will meke it default black
+            eraser.layer.shadowRadius = 5
+            eraser.layer.shadowOpacity = 0.8
+        }
     }
-    
+    //clear all shadows
+    func clearAllShadows (){
+        red.layer.shadowRadius = 0
+        red.layer.shadowOpacity = 0
+        
+        black.layer.shadowRadius = 0
+        black.layer.shadowOpacity = 0
+        
+        grey.layer.shadowRadius = 0
+        grey.layer.shadowOpacity = 0
+        
+        darkBlue.layer.shadowRadius = 0
+        darkBlue.layer.shadowOpacity = 0
+        
+        lightBlue.layer.shadowRadius = 0
+        lightBlue.layer.shadowOpacity = 0
+        
+        lightGreen.layer.shadowRadius = 0
+        lightGreen.layer.shadowOpacity = 0
+        
+        darkGreen.layer.shadowRadius = 0
+        darkGreen.layer.shadowOpacity = 0
+        
+        brown.layer.shadowRadius = 0
+        brown.layer.shadowOpacity = 0
+        
+        eraser.layer.shadowRadius = 0
+        eraser.layer.shadowOpacity = 0
+        
+        orange.layer.shadowRadius = 0
+        orange.layer.shadowOpacity = 0
+        
+        yellow.layer.shadowRadius = 0
+        yellow.layer.shadowOpacity = 0
+        
+        bin.layer.shadowRadius = 0
+        bin.layer.shadowOpacity = 0
+        
+    }
     @IBAction func submitDrawing(_ sender: Any) {
         if (InstanceDAO.isLeader) {
             var uploadStatus = false

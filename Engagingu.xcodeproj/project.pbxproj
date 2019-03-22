@@ -14,7 +14,7 @@
 		AF2AF80821FED09000B75A50 /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF2AF80721FED08F00B75A50 /* RobotoCondensed-Bold.ttf */; };
 		AF2C6CED2229B3570072C303 /* DrawingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2C6CEC2229B3560072C303 /* DrawingController.swift */; };
 		AF2C6CEF2229BF3A0072C303 /* WordSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2C6CEE2229BF3A0072C303 /* WordSearchViewController.swift */; };
-		AF3DBCEF21F7077E005FBE40 /* TutorialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3DBCEE21F7077E005FBE40 /* TutorialController.swift */; };
+		AF3DBCEF21F7077E005FBE40 /* TutorialController(old).swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3DBCEE21F7077E005FBE40 /* TutorialController(old).swift */; };
 		AF51084922192ABD00EAB0FD /* WordSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51084722192ABD00EAB0FD /* WordSearchTableViewCell.swift */; };
 		AF6C8B42218D4CDF006AC6C0 /* LoginTrailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C8B3F218D4CDF006AC6C0 /* LoginTrailController.swift */; };
 		AF6C8B43218D4CDF006AC6C0 /* LoginNameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C8B40218D4CDF006AC6C0 /* LoginNameController.swift */; };
@@ -41,6 +41,7 @@
 		AF78DD92218B759500B0CF10 /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78DD91218B759500B0CF10 /* RestAPIManager.swift */; };
 		AFAF5FB021EF8DE800E29FD1 /* roboto-condensed.light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFAF5FAF21EF8DE800E29FD1 /* roboto-condensed.light.ttf */; };
 		AFAF5FB121EF8E0300E29FD1 /* roboto-condensed.regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFAF5FAE21EF8DC300E29FD1 /* roboto-condensed.regular.ttf */; };
+		AFB4EA142245228300E251AD /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB4EA132245228300E251AD /* TutorialViewController.swift */; };
 		E106B49A21C3BE35001DEB88 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = E106B49921C3BE35001DEB88 /* Podfile */; };
 		E10D9FB421DF042900C6D682 /* SubmissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10D9FB321DF042900C6D682 /* SubmissionViewController.swift */; };
 		E124529221F8B9E20036AC87 /* AnagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E124529121F8B9E20036AC87 /* AnagramViewController.swift */; };
@@ -92,7 +93,7 @@
 		AF2AF80721FED08F00B75A50 /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
 		AF2C6CEC2229B3560072C303 /* DrawingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingController.swift; sourceTree = "<group>"; };
 		AF2C6CEE2229BF3A0072C303 /* WordSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSearchViewController.swift; sourceTree = "<group>"; };
-		AF3DBCEE21F7077E005FBE40 /* TutorialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialController.swift; sourceTree = "<group>"; };
+		AF3DBCEE21F7077E005FBE40 /* TutorialController(old).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TutorialController(old).swift"; sourceTree = "<group>"; };
 		AF51084722192ABD00EAB0FD /* WordSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSearchTableViewCell.swift; sourceTree = "<group>"; };
 		AF6C8B3F218D4CDF006AC6C0 /* LoginTrailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTrailController.swift; sourceTree = "<group>"; };
 		AF6C8B40218D4CDF006AC6C0 /* LoginNameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNameController.swift; sourceTree = "<group>"; };
@@ -124,6 +125,7 @@
 		AF78DD91218B759500B0CF10 /* RestAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPIManager.swift; sourceTree = "<group>"; };
 		AFAF5FAE21EF8DC300E29FD1 /* roboto-condensed.regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "roboto-condensed.regular.ttf"; sourceTree = "<group>"; };
 		AFAF5FAF21EF8DE800E29FD1 /* roboto-condensed.light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "roboto-condensed.light.ttf"; sourceTree = "<group>"; };
+		AFB4EA132245228300E251AD /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		C72385D4ED204E3E11D145AB /* Pods-Engagingu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Engagingu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Engagingu/Pods-Engagingu.debug.xcconfig"; sourceTree = "<group>"; };
 		DF573A3D860BDBBA777F2706 /* Pods-EngaginguUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EngaginguUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EngaginguUITests/Pods-EngaginguUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E106B49921C3BE35001DEB88 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
@@ -309,7 +311,8 @@
 				E1843793221ECB8A008A1EA9 /* FAQController.swift */,
 				AF6C8B3F218D4CDF006AC6C0 /* LoginTrailController.swift */,
 				AF6C8B40218D4CDF006AC6C0 /* LoginNameController.swift */,
-				AF3DBCEE21F7077E005FBE40 /* TutorialController.swift */,
+				AFB4EA132245228300E251AD /* TutorialViewController.swift */,
+				AF3DBCEE21F7077E005FBE40 /* TutorialController(old).swift */,
 				E1A67DE821944C6B00581D1C /* TeamAllocationController.swift */,
 				E176A13D21C1487F005A5C30 /* TabBarController.swift */,
 				E1F5133721BFC24B00964726 /* MapController.swift */,
@@ -656,7 +659,7 @@
 				E1A67DE321913DC300581D1C /* InstanceDAO.swift in Sources */,
 				E12FEFA521F2F3090074F877 /* LeaderboardTableViewCell.swift in Sources */,
 				AF2C6CED2229B3570072C303 /* DrawingController.swift in Sources */,
-				AF3DBCEF21F7077E005FBE40 /* TutorialController.swift in Sources */,
+				AF3DBCEF21F7077E005FBE40 /* TutorialController(old).swift in Sources */,
 				E10D9FB421DF042900C6D682 /* SubmissionViewController.swift in Sources */,
 				E1F5133821BFC24B00964726 /* MapController.swift in Sources */,
 				E18EA4632237580F002B75CE /* ResultScreenTableViewCell.swift in Sources */,
@@ -670,6 +673,7 @@
 				E12FEFA321F2ECFA0074F877 /* ActivityFeedController.swift in Sources */,
 				E176A14421C2936D005A5C30 /* NarrativeViewController.swift in Sources */,
 				E13F62882236621600A047AD /* Structs.swift in Sources */,
+				AFB4EA142245228300E251AD /* TutorialViewController.swift in Sources */,
 				E12FEFA121F1D9B10074F877 /* LeaderboardController.swift in Sources */,
 				E12FEFA921F2FDD50074F877 /* SocketHandler.swift in Sources */,
 				AF51084922192ABD00EAB0FD /* WordSearchTableViewCell.swift in Sources */,

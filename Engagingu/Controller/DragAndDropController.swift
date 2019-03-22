@@ -42,7 +42,7 @@ class DragAndDropController: UIViewController, UIDragInteractionDelegate, UIDrop
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        submitBtn.float()
         // Populate Views
         initiateViews()
         

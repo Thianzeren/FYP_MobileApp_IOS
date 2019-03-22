@@ -21,7 +21,7 @@ class TeamAllocationController: UIViewController {
         
         // Make button disappear first
         startBtn.isHidden = true
-        
+        startBtn.float()
         // Get socket and add handler
         let socket = SocketHandler.getSocket()
         socket.on("startTrail"){ data, ack in

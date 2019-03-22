@@ -103,7 +103,8 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        home.float()
+        submit.float()
         //to add in below here: Get qns from DB
         
         //leader or Member

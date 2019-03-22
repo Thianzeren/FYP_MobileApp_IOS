@@ -19,6 +19,7 @@ class SubmissionPopUpController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hidePopUp()
+        downloadBtnLabel.float()
         
     }
     

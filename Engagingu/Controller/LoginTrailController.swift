@@ -18,17 +18,27 @@ extension UITextField{
         
     }
 }
+extension UIButton {
+    func float(){
+        layer.cornerRadius = frame.height/2
+        layer.shadowOpacity = 0.25
+        layer.shadowOffset = CGSize (width: 0, height: 10)
+        layer.shadowRadius = 5
+    }
+}
+
 
 class LoginTrailController: UIViewController, UITextFieldDelegate {
    
     @IBOutlet weak var trailIDPin: UITextField!
+    @IBOutlet weak var submitButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.trailIDPin.delegate = self
         trailIDPin.setBottomBorder()
-        
+        submitButton.float()
         //Listen for keyboard events, addObserers. Obbservers are removed when > IOS 9
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)

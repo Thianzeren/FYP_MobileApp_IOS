@@ -13,7 +13,8 @@ class NarrativeViewController: UIViewController {
    
     @IBOutlet weak var header: UITextView!
     @IBOutlet weak var narrative: UITextView!
-//    @IBOutlet weak var topNavBar: UINavigationItem!
+    @IBOutlet weak var startMissionButton: UIButton!
+    //    @IBOutlet weak var topNavBar: UINavigationItem!
     
     var headerText = "Header"
     var narrativeText = "Narrative"
@@ -25,7 +26,7 @@ class NarrativeViewController: UIViewController {
         narrative.isScrollEnabled = false
         header.text! = headerText
         narrative.text! = narrativeText
-        
+        startMissionButton.float()
         //topNavBar.title = "EngagingU"
         // Do any additional setup after loading the view.
         

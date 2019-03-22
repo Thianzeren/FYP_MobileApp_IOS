@@ -64,6 +64,7 @@ class QuizViewController: UIViewController {
         secondAnswer.backgroundColor = silver
         thirdAnswer.backgroundColor = silver
         fourthAnswer.backgroundColor = silver
+        confirmButton.float()
         
         if (!InstanceDAO.isLeader){
             //member

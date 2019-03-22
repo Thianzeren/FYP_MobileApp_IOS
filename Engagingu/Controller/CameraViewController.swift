@@ -24,6 +24,8 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
          // Do any additional setup after loading the view.
        
         question = InstanceDAO.selfieDict[hotspot] ?? ""
+        takePicBtn.float()
+        uploadImgBtn.float()
         
         if(InstanceDAO.isLeader){
             selfieQuestion.text = question

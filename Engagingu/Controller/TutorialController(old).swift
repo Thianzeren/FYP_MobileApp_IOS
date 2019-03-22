@@ -12,7 +12,6 @@ class TutorialController: UIViewController {
 
   
     @IBOutlet weak var introduction: UILabel!
-    
     @IBOutlet weak var welcomeMessage: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()

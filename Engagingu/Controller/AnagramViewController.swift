@@ -22,7 +22,7 @@ class AnagramViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        submitBtn.float()
         // Create border for input box
         let myColor = UIColor.black
         wordInput.layer.borderWidth = 1.0
