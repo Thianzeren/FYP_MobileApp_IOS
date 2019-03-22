@@ -11,8 +11,10 @@ import UIKit
 class QuizViewController: UIViewController {
 
     //@IBOutlet weak var topNavBar: UINavigationBar!
-    @IBOutlet weak var question: UITextView!
-    @IBOutlet weak var questionViewHC : NSLayoutConstraint!
+    //@IBOutlet weak var question: UITextView!
+    
+    @IBOutlet weak var question: UILabel!
+   // @IBOutlet weak var questionViewHC : NSLayoutConstraint!
     
     // Outlet for buttons
     @IBOutlet weak var firstAnswer: UIButton!
@@ -356,7 +358,7 @@ class QuizViewController: UIViewController {
                 }
                 
                 
-                outcomeArr.append(Outcome(question: question.text, userAnswer: selectedAnswerStr, expectedAnswer: questionAnswerStr))
+                outcomeArr.append(Outcome(question: question.text!, userAnswer: selectedAnswerStr, expectedAnswer: questionAnswerStr))
             }
             
         }else { // For Member

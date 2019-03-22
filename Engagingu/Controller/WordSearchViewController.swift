@@ -78,7 +78,8 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
     var capitalised_list: Array<String> = []
     
     //question from DB
-    @IBOutlet weak var question: UITextView!
+    @IBOutlet weak var question: UILabel!
+    
     
     //score keeper
     var score : Int = 0
