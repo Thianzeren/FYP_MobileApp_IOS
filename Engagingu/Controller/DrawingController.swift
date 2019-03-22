@@ -135,6 +135,7 @@ class DrawingController: UIViewController {
     }
     
     @IBAction func clearDrawing(_ sender: Any) {
+        clearAllShadows()
         drawing.image = nil
     }
     
@@ -201,6 +202,8 @@ class DrawingController: UIViewController {
             eraser.layer.shadowOpacity = 0.8
         }
     }
+    
+    
     //clear all shadows
     func clearAllShadows (){
         red.layer.shadowRadius = 0
