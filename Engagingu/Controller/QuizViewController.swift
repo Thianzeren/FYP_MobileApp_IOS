@@ -31,8 +31,9 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var backButton: UIBarButtonItem!
     
     // UIColor
-    var greenColor: UIColor = UIColor(red: 146/255, green: 208/255, blue: 80/255, alpha: 0.5)
-    var redColor: UIColor = UIColor(red: 232/255, green: 88/255, blue: 88/255, alpha: 0.5)
+    var greenColor: UIColor = UIColor(red: 146/255, green: 208/255, blue: 80/255, alpha: 0.7)
+    var redColor: UIColor = UIColor(red: 232/255, green: 88/255, blue: 88/255, alpha: 0.7)
+    var silver: UIColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1)
     
     var questionBank: [Quiz] = []
     var hotspot: String = ""
@@ -59,10 +60,10 @@ class QuizViewController: UIViewController {
         secondAnswer.setTitle(nil, for: .normal)
         thirdAnswer.setTitle(nil, for: .normal)
         fourthAnswer.setTitle(nil, for: .normal)
-        firstAnswer.backgroundColor = UIColor.lightGray
-        secondAnswer.backgroundColor = UIColor.lightGray
-        thirdAnswer.backgroundColor = UIColor.lightGray
-        fourthAnswer.backgroundColor = UIColor.lightGray
+        firstAnswer.backgroundColor = silver
+        secondAnswer.backgroundColor = silver
+        thirdAnswer.backgroundColor = silver
+        fourthAnswer.backgroundColor = silver
         
         if (!InstanceDAO.isLeader){
             //member
@@ -99,9 +100,9 @@ class QuizViewController: UIViewController {
         firstAnswer.backgroundColor = greenColor
         
         //change the other button background to grey
-        secondAnswer.backgroundColor = UIColor.lightGray
-        thirdAnswer.backgroundColor = UIColor.lightGray
-        fourthAnswer.backgroundColor = UIColor.lightGray
+        secondAnswer.backgroundColor = silver
+        thirdAnswer.backgroundColor = silver
+        fourthAnswer.backgroundColor = silver
 
     }
     
@@ -113,9 +114,9 @@ class QuizViewController: UIViewController {
         secondAnswer.backgroundColor = greenColor
         
         // Change other button text colours to default
-        firstAnswer.backgroundColor = UIColor.lightGray
-        thirdAnswer.backgroundColor = UIColor.lightGray
-        fourthAnswer.backgroundColor = UIColor.lightGray
+        firstAnswer.backgroundColor = silver
+        thirdAnswer.backgroundColor = silver
+        fourthAnswer.backgroundColor = silver
     }
     
     @IBAction func selectThirdAnswer(_ sender: Any) {
@@ -126,9 +127,9 @@ class QuizViewController: UIViewController {
         thirdAnswer.backgroundColor = greenColor
 
         // Change other button colours to nil
-        secondAnswer.backgroundColor = UIColor.lightGray
-        firstAnswer.backgroundColor = UIColor.lightGray
-        fourthAnswer.backgroundColor = UIColor.lightGray
+        secondAnswer.backgroundColor = silver
+        firstAnswer.backgroundColor = silver
+        fourthAnswer.backgroundColor = silver
 
     }
     
@@ -141,9 +142,9 @@ class QuizViewController: UIViewController {
 
         // Change other button colours to nil
 
-        secondAnswer.backgroundColor = UIColor.lightGray
-        thirdAnswer.backgroundColor = UIColor.lightGray
-        firstAnswer.backgroundColor = UIColor.lightGray
+        secondAnswer.backgroundColor = silver
+        thirdAnswer.backgroundColor = silver
+        firstAnswer.backgroundColor = silver
 
     }
     
@@ -254,10 +255,10 @@ class QuizViewController: UIViewController {
                 
                 //Reset choice colors
 
-                firstAnswer.backgroundColor = UIColor.lightGray
-                secondAnswer.backgroundColor = UIColor.lightGray
-                thirdAnswer.backgroundColor = UIColor.lightGray
-                fourthAnswer.backgroundColor = UIColor.lightGray
+                firstAnswer.backgroundColor = silver
+                secondAnswer.backgroundColor = silver
+                thirdAnswer.backgroundColor = silver
+                fourthAnswer.backgroundColor = silver
                 
                 updateQuiz()
                 
@@ -375,10 +376,10 @@ class QuizViewController: UIViewController {
                 print(questionNumber)
                 
                 //Reset choice colors
-                firstAnswer.backgroundColor = UIColor.lightGray
-                secondAnswer.backgroundColor = UIColor.lightGray
-                thirdAnswer.backgroundColor = UIColor.lightGray
-                fourthAnswer.backgroundColor = UIColor.lightGray
+                firstAnswer.backgroundColor = silver
+                secondAnswer.backgroundColor = silver
+                thirdAnswer.backgroundColor = silver
+                fourthAnswer.backgroundColor = silver
                 firstAnswer.isUserInteractionEnabled = false
                 secondAnswer.isUserInteractionEnabled = false
                 thirdAnswer.isUserInteractionEnabled = false
