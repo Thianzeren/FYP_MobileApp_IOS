@@ -60,11 +60,28 @@ class SocketHandler {
             
         }
         
-//        socket.on("notification") {data, ack in
-//
-//
-//
-//        }
+        socket.on("notification") {data, ack in
+            
+            print("SOCKET BODY FROM notification")
+            print(data)
+            
+            let jsonData = data as? [[String:String]]
+            let msg = jsonData![0]
+            let message = msg["message"]
+            
+            // Show alert at current top view
+            var topWindow: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
+            topWindow?.rootViewController = UIViewController()
+            topWindow?.windowLevel = UIWindow.Level.alert + 1
+            let alert: UIAlertController =  UIAlertController(title: message, message: "", preferredStyle: .alert)
+            alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: { (alertAction) in
+                topWindow?.isHidden = true
+                topWindow = nil
+            }))
+            
+            topWindow?.makeKeyAndVisible()
+            topWindow?.rootViewController?.present(alert, animated: true, completion:nil)
+        }
         
 //        socket.on("startTrail"){ data, ack in
 //            

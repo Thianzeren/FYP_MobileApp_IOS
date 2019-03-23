@@ -22,7 +22,13 @@ class RestAPIManager {
             return [:]
         }
         
-        URLSession.shared.dataTask(with: url){ (data, response, err) in
+        URLSession.shared.dataTask(with: url){ (data, response, error) in
+            
+            print("syncHttpGet Response: \(response)")
+            if let error = error {
+                print("DataTask error: " + error.localizedDescription + "\n")
+                semaphore.signal()
+            }
             
             guard let data = data else {
                 print("No data received from GET request")
@@ -84,6 +90,13 @@ class RestAPIManager {
             let config = URLSessionConfiguration.default
             let session = URLSession(configuration: config)
             let task = session.dataTask(with: request) { data, response, error in
+                
+                print("syncHttpPost Response: \(response)")
+                if let error = error {
+                    print("DataTask error: " + error.localizedDescription + "\n")
+                    semaphore.signal()
+                }
+                
                 guard let data = data, error == nil else{
                     print(error?.localizedDescription ?? "No data")
                     semaphore.signal()
@@ -125,7 +138,7 @@ class RestAPIManager {
             return [:]
         }
         
-        URLSession.shared.dataTask(with: url){ (data, response, err) in
+        URLSession.shared.dataTask(with: url){ (data, response, error) in
             
             guard let data = data else {
                 print("No data received from GET request")
@@ -179,6 +192,13 @@ class RestAPIManager {
             let config = URLSessionConfiguration.default
             let session = URLSession(configuration: config)
             let task = session.dataTask(with: request) { data, response, error in
+                
+                print("asyncHttpPost Response: \(response)")
+                
+                if let error = error {
+                    print("DataTask error: " + error.localizedDescription + "\n")
+                }
+                
                 guard let data = data, error == nil else{
                     print(error?.localizedDescription ?? "No data")
                     return
@@ -215,6 +235,12 @@ class RestAPIManager {
         URLSession.shared.dataTask(with: url){(data, response, error) in
             //check error
             //check response status ok
+            
+            print("httpGetHotspots Response: \(response)")
+            
+            if let error = error {
+                print("DataTask error: " + error.localizedDescription + "\n")
+            }
             
             guard let data = data else {
 //                semaphore.signal()
@@ -253,6 +279,12 @@ class RestAPIManager {
             //check error
             //check response status ok
             
+            print("httpGetStartingHotspots Response: \(response)")
+            
+            if let error = error {
+                print("DataTask error: " + error.localizedDescription + "\n")
+            }
+            
             guard let data = data else { return }
             
             do {
@@ -283,6 +315,12 @@ class RestAPIManager {
             //check error
             //check response status ok
             
+            print("httpGetQuizzes Response: \(response)")
+            
+            if let error = error {
+                print("DataTask error: " + error.localizedDescription + "\n")
+            }
+            
             guard let data = data else { return }
             
             do {
@@ -312,6 +350,12 @@ class RestAPIManager {
         URLSession.shared.dataTask(with: url){(data, response, error) in
             //check error
             //check response status ok
+            
+            print("httpGetSelfies Response: \(response)")
+            
+            if let error = error {
+                print("DataTask error: " + error.localizedDescription + "\n")
+            }
             
             guard let data = data else { return }
             
@@ -344,6 +388,13 @@ class RestAPIManager {
         URLSession.shared.dataTask(with: url){(data, response, error) in
             //check error
             //check response status ok
+            
+            print("httpGetImageURLs Response: \(response)")
+            
+            if let error = error {
+                print("DataTask error: " + error.localizedDescription + "\n")
+                semaphore.signal()
+            }
             
             guard let data = data else {
                 semaphore.signal
@@ -388,6 +439,13 @@ class RestAPIManager {
             //check error
             //check response status ok
             
+            print("httpGetImage Response: \(response)")
+            
+            if let error = error {
+                print("DataTask error: " + error.localizedDescription + "\n")
+                semaphore.signal()
+            }
+            
             guard let data = data else {
                 print("NO DATA RETRIEVED")
                 semaphore.signal()
@@ -417,7 +475,14 @@ class RestAPIManager {
         URLSession.shared.dataTask(with: url){(data, response, error) in
             //check error
             //check response status ok
-
+            
+            print("httpGetLeaderboard Response: \(response)")
+            
+            if let error = error {
+                print("DataTask error: " + error.localizedDescription + "\n")
+                semaphore.signal()
+            }
+            
             guard let data = data else {
                semaphore.signal()
                 return
@@ -460,6 +525,12 @@ class RestAPIManager {
         URLSession.shared.dataTask(with: url){(data, response, error) in
             //check error
             //check response status ok
+            
+            print("httpGetAnagram Response: \(response)")
+            
+            if let error = error {
+                print("DataTask error: " + error.localizedDescription + "\n")
+            }
             
             guard let data = data else {
 //                semaphore.signal()
@@ -505,6 +576,12 @@ class RestAPIManager {
             //check error
             //check response status ok
             
+            print("httpGetDragAndDrop Response: \(response)")
+            
+            if let error = error {
+                print("DataTask error: " + error.localizedDescription + "\n")
+            }
+            
             guard let data = data else {
 //                semaphore.signal()
                 print("No data available")
@@ -548,6 +625,12 @@ class RestAPIManager {
         URLSession.shared.dataTask(with: url){(data, response, error) in
             //check error
             //check response status ok
+            
+            print("httpGetDrawing Response: \(response)")
+            
+            if let error = error {
+                print("DataTask error: " + error.localizedDescription + "\n")
+            }
             
             guard let data = data else {
                 //                semaphore.signal()
@@ -593,6 +676,12 @@ class RestAPIManager {
             //check error
             //check response status ok
             
+            print("httpGetWordSearch Response: \(response)")
+            
+            if let error = error {
+                print("DataTask error: " + error.localizedDescription + "\n")
+            }
+            
             guard let data = data else {
                 //                semaphore.signal()
                 print("No data available")
@@ -635,6 +724,12 @@ class RestAPIManager {
             //check error
             //check response status ok
             
+            print("httpGetLeaderMemberStatus Response: \(response)")
+            
+            if let error = error {
+                print("DataTask error: " + error.localizedDescription + "\n")
+            }
+            
             guard let data = data else {
                 //semaphore.signal()
                 return }
@@ -673,6 +768,12 @@ class RestAPIManager {
             //check error
             //check response status ok
             
+            print("httpGetActivityFeed Response: \(response)")
+            
+            if let error = error {
+                print("DataTask error: " + error.localizedDescription + "\n")
+            }
+            
             guard let data = data else {
                 //semaphore.signal()
                 return }
@@ -685,10 +786,24 @@ class RestAPIManager {
                 
                 for activity in activities{
                     InstanceDAO.activityArr.append(activity)
+                    
+                    let team = activity.team
+                    let hotspot = activity.hotspot
+                    
+                    if team == InstanceDAO.team_id {
+                        
+                        if !InstanceDAO.completedList.contains(hotspot){
+                            InstanceDAO.completedList.append(hotspot)
+                        }
+                        
+                    }
                 }
                 
                 print("ACTIVITY")
                 print(InstanceDAO.activityArr)
+                
+                // Populate completed hotspots
+                
                 
                 //semaphore.signal()
             } catch let jsonErr{
