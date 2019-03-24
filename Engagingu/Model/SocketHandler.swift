@@ -70,26 +70,29 @@ class SocketHandler {
             let message = msg["message"]
             
             // Show alert at current top view
-            var topWindow: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
-            topWindow?.rootViewController = UIViewController()
-            topWindow?.windowLevel = UIWindow.Level.alert + 1
-            let alert: UIAlertController =  UIAlertController(title: message, message: "", preferredStyle: .alert)
-            alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: { (alertAction) in
-                topWindow?.isHidden = true
-                topWindow = nil
-            }))
+            if let message = message {
+                showAlert(message: message)
+            }
             
-            topWindow?.makeKeyAndVisible()
-            topWindow?.rootViewController?.present(alert, animated: true, completion:nil)
         }
         
-//        socket.on("startTrail"){ data, ack in
-//            
-//            InstanceDAO.hasStartedTrail = true
-//            
-//        }
-        
 //        socket.onAny {print("Got event: \($0.event), with items: \($0.items!)")}
+        
+    }
+    
+    static func showAlert(message: String) {
+        
+        var topWindow: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
+        topWindow?.rootViewController = UIViewController()
+        topWindow?.windowLevel = UIWindow.Level.alert + 1
+        let alert: UIAlertController =  UIAlertController(title: message, message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: { (alertAction) in
+            topWindow?.isHidden = true
+            topWindow = nil
+        }))
+        
+        topWindow?.makeKeyAndVisible()
+        topWindow?.rootViewController?.present(alert, animated: true, completion:nil)
         
     }
 

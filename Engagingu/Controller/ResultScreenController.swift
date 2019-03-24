@@ -50,6 +50,10 @@ class ResultScreenController: UIViewController {
         
     }
     
+    @IBAction func toHome(_ sender: Any) {
+        
+        performSegue(withIdentifier: "toTabBarSegue", sender: nil)
+    }
     
 }
 

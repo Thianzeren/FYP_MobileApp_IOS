@@ -24,7 +24,11 @@ class RestAPIManager {
         
         URLSession.shared.dataTask(with: url){ (data, response, error) in
             
-            print("syncHttpGet Response: \(response)")
+            if let urlResponse = response as? HTTPURLResponse {
+                let status = urlResponse.statusCode
+                print("syncHttpGet Response: \(status)")
+            }
+            
             if let error = error {
                 print("DataTask error: " + error.localizedDescription + "\n")
                 semaphore.signal()
@@ -91,7 +95,11 @@ class RestAPIManager {
             let session = URLSession(configuration: config)
             let task = session.dataTask(with: request) { data, response, error in
                 
-                print("syncHttpPost Response: \(response)")
+                if let urlResponse = response as? HTTPURLResponse {
+                    let status = urlResponse.statusCode
+                    print("syncHttpPost Response: \(status)")
+                }
+                
                 if let error = error {
                     print("DataTask error: " + error.localizedDescription + "\n")
                     semaphore.signal()
@@ -139,6 +147,15 @@ class RestAPIManager {
         }
         
         URLSession.shared.dataTask(with: url){ (data, response, error) in
+            
+            if let urlResponse = response as? HTTPURLResponse {
+                let status = urlResponse.statusCode
+                print("asyncHttpGet Response: \(status)")
+            }
+            
+            if let error = error {
+                print("DataTask error: " + error.localizedDescription + "\n")
+            }
             
             guard let data = data else {
                 print("No data received from GET request")
@@ -193,7 +210,11 @@ class RestAPIManager {
             let session = URLSession(configuration: config)
             let task = session.dataTask(with: request) { data, response, error in
                 
-                print("asyncHttpPost Response: \(response)")
+                
+                if let urlResponse = response as? HTTPURLResponse {
+                    let status = urlResponse.statusCode
+                    print("asyncHttpPost Response: \(status)")
+                }
                 
                 if let error = error {
                     print("DataTask error: " + error.localizedDescription + "\n")
@@ -236,7 +257,10 @@ class RestAPIManager {
             //check error
             //check response status ok
             
-            print("httpGetHotspots Response: \(response)")
+            if let urlResponse = response as? HTTPURLResponse {
+                let status = urlResponse.statusCode
+                print("httpGetHotspots Response: \(status)")
+            }
             
             if let error = error {
                 print("DataTask error: " + error.localizedDescription + "\n")
@@ -279,7 +303,10 @@ class RestAPIManager {
             //check error
             //check response status ok
             
-            print("httpGetStartingHotspots Response: \(response)")
+            if let urlResponse = response as? HTTPURLResponse {
+                let status = urlResponse.statusCode
+                print("httpGetStartingHotspots Response: \(status)")
+            }
             
             if let error = error {
                 print("DataTask error: " + error.localizedDescription + "\n")
@@ -315,7 +342,10 @@ class RestAPIManager {
             //check error
             //check response status ok
             
-            print("httpGetQuizzes Response: \(response)")
+            if let urlResponse = response as? HTTPURLResponse {
+                let status = urlResponse.statusCode
+                print("httpGetQuizzes Response: \(status)")
+            }
             
             if let error = error {
                 print("DataTask error: " + error.localizedDescription + "\n")
@@ -351,7 +381,10 @@ class RestAPIManager {
             //check error
             //check response status ok
             
-            print("httpGetSelfies Response: \(response)")
+            if let urlResponse = response as? HTTPURLResponse {
+                let status = urlResponse.statusCode
+                print("httpGetSelfies Response: \(status)")
+            }
             
             if let error = error {
                 print("DataTask error: " + error.localizedDescription + "\n")
@@ -389,7 +422,10 @@ class RestAPIManager {
             //check error
             //check response status ok
             
-            print("httpGetImageURLs Response: \(response)")
+            if let urlResponse = response as? HTTPURLResponse {
+                let status = urlResponse.statusCode
+                print("httpGetImageURLs Response: \(status)")
+            }
             
             if let error = error {
                 print("DataTask error: " + error.localizedDescription + "\n")
@@ -439,7 +475,10 @@ class RestAPIManager {
             //check error
             //check response status ok
             
-            print("httpGetImage Response: \(response)")
+            if let urlResponse = response as? HTTPURLResponse {
+                let status = urlResponse.statusCode
+                print("httpGetImage Response: \(status)")
+            }
             
             if let error = error {
                 print("DataTask error: " + error.localizedDescription + "\n")
@@ -476,7 +515,10 @@ class RestAPIManager {
             //check error
             //check response status ok
             
-            print("httpGetLeaderboard Response: \(response)")
+            if let urlResponse = response as? HTTPURLResponse {
+                let status = urlResponse.statusCode
+                print("httpGetLeaderboard Response: \(response)")
+            }
             
             if let error = error {
                 print("DataTask error: " + error.localizedDescription + "\n")
@@ -526,7 +568,10 @@ class RestAPIManager {
             //check error
             //check response status ok
             
-            print("httpGetAnagram Response: \(response)")
+            if let urlResponse = response as? HTTPURLResponse {
+                let status = urlResponse.statusCode
+                print("httpGetAnagram Response: \(status)")
+            }
             
             if let error = error {
                 print("DataTask error: " + error.localizedDescription + "\n")
@@ -576,7 +621,10 @@ class RestAPIManager {
             //check error
             //check response status ok
             
-            print("httpGetDragAndDrop Response: \(response)")
+            if let urlResponse = response as? HTTPURLResponse {
+                let status = urlResponse.statusCode
+                print("httpGetDragAndDrop Response: \(status)")
+            }
             
             if let error = error {
                 print("DataTask error: " + error.localizedDescription + "\n")
@@ -626,7 +674,10 @@ class RestAPIManager {
             //check error
             //check response status ok
             
-            print("httpGetDrawing Response: \(response)")
+            if let urlResponse = response as? HTTPURLResponse {
+                let status = urlResponse.statusCode
+                print("httpGetDrawing Response: \(status)")
+            }
             
             if let error = error {
                 print("DataTask error: " + error.localizedDescription + "\n")
@@ -676,7 +727,10 @@ class RestAPIManager {
             //check error
             //check response status ok
             
-            print("httpGetWordSearch Response: \(response)")
+            if let urlResponse = response as? HTTPURLResponse {
+                let status = urlResponse.statusCode
+                print("httpGetWordSearch Response: \(status)")
+            }
             
             if let error = error {
                 print("DataTask error: " + error.localizedDescription + "\n")
@@ -724,7 +778,10 @@ class RestAPIManager {
             //check error
             //check response status ok
             
-            print("httpGetLeaderMemberStatus Response: \(response)")
+            if let urlResponse = response as? HTTPURLResponse {
+                let status = urlResponse.statusCode
+                print("httpGetLeaderMemberStatus Response: \(status)")
+            }
             
             if let error = error {
                 print("DataTask error: " + error.localizedDescription + "\n")
@@ -768,7 +825,10 @@ class RestAPIManager {
             //check error
             //check response status ok
             
-            print("httpGetActivityFeed Response: \(response)")
+            if let urlResponse = response as? HTTPURLResponse {
+                let status = urlResponse.statusCode
+                print("httpGetActivityFeed Response: \(status)")
+            }
             
             if let error = error {
                 print("DataTask error: " + error.localizedDescription + "\n")
@@ -784,18 +844,23 @@ class RestAPIManager {
                 
                 InstanceDAO.activityArr.removeAll()
                 
-                for activity in activities{
-                    InstanceDAO.activityArr.append(activity)
+                if InstanceDAO.isLeader == false {
                     
-                    let team = activity.team
-                    let hotspot = activity.hotspot
+                    InstanceDAO.completedList.removeAll()
                     
-                    if team == InstanceDAO.team_id {
+                    for activity in activities{
+                        InstanceDAO.activityArr.append(activity)
                         
-                        if !InstanceDAO.completedList.contains(hotspot){
-                            InstanceDAO.completedList.append(hotspot)
+                        let team = activity.team
+                        let hotspot = activity.hotspot
+                        
+                        if team == InstanceDAO.team_id {
+                            
+                            if !InstanceDAO.completedList.contains(hotspot){
+                                InstanceDAO.completedList.append(hotspot)
+                            }
+                            
                         }
-                        
                     }
                 }
                 

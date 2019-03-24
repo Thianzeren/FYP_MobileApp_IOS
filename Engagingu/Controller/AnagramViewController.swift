@@ -112,8 +112,6 @@ class AnagramViewController: UIViewController, UITextFieldDelegate {
             performSegue(withIdentifier: "toTabBarSegue", sender: nil)
         }
         
-        
-        
     }
     
     @objc func keyboardWillChange(notification: Notification){
