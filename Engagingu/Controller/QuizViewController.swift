@@ -74,17 +74,23 @@ class QuizViewController: UIViewController {
             thirdAnswer.isUserInteractionEnabled = false
             fourthAnswer.isUserInteractionEnabled = false
             confirmButton.setTitle("Next Question", for: .normal)
+            
         }else{
-            //leader cannt see back button
-            backButton.image = nil
+            //leader cant see back button
+            backButton.isEnabled = false
+            backButton.tintColor = UIColor.clear
 
         }
+        
         // Initialise question bank
         questionBank = InstanceDAO.quizDict[hotspot]!.quiz
         
         // Initialise 1st question
         updateQuiz()
         
+        if(questionNumber == questionBank.count - 1){
+            confirmButton.setTitle("Home", for: .normal)
+        }
         super.viewDidLoad()
         
         //Self adjust the height of the question
@@ -385,21 +391,12 @@ class QuizViewController: UIViewController {
                 print(questionNumber)
                 
                 //Reset choice colors
-                firstAnswer.backgroundColor = silver
-                secondAnswer.backgroundColor = silver
-                thirdAnswer.backgroundColor = silver
-                fourthAnswer.backgroundColor = silver
                 firstAnswer.isUserInteractionEnabled = false
                 secondAnswer.isUserInteractionEnabled = false
                 thirdAnswer.isUserInteractionEnabled = false
                 fourthAnswer.isUserInteractionEnabled = false
                 
                 updateQuiz()
-                
-                hasSeenCorrectAnswer = false
-                selectedAnswer = 0
-                
-                confirmText.text = nil
                 
                 if(questionNumber == questionBank.count - 1){
                     confirmButton.setTitle("Home", for: .normal)
@@ -442,7 +439,28 @@ class QuizViewController: UIViewController {
     
     @IBAction func backToPreviousView(_ sender: Any) {
         print("Back button tapped")
-        dismiss(animated: true, completion: nil)
+        
+        if questionNumber == 0 {
+            dismiss(animated: true, completion: nil)
+        } else {
+            questionNumber -= 1
+            print(questionNumber)
+            
+            //Reset choice colors
+            firstAnswer.isUserInteractionEnabled = false
+            secondAnswer.isUserInteractionEnabled = false
+            thirdAnswer.isUserInteractionEnabled = false
+            fourthAnswer.isUserInteractionEnabled = false
+            
+            updateQuiz()
+            
+            if(questionNumber == questionBank.count - 1){
+                confirmButton.setTitle("Home", for: .normal)
+            }else {
+                confirmButton.setTitle("Next Question", for: .normal)
+            }
+        }
+        
     }
  
 
