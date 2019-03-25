@@ -105,7 +105,11 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
         super.viewDidLoad()
         home.float()
         submit.float()
-        //to add in below here: Get qns from DB
+       
+        //Listen for keyboard events, addObserers. Obbservers are removed when > IOS 9
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object:nil)
         
         //leader or Member
         if (InstanceDAO.isLeader){
@@ -416,7 +420,9 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
     
    @IBAction func checkWordsSubmitted(_ sender: Any) {
         //store all textfield in array
-        let enteredWords: Array<String> = [firstWord.text!.uppercased(), secondWord.text!.uppercased(), thirdWord.text!.uppercased(), fourthWord.text!.uppercased(), fifthWord.text!.uppercased()]
+        // caps all to compare with list
+        // remove white spaces
+        let enteredWords: Array<String> = [firstWord.text!.uppercased().trimmingCharacters(in: .whitespacesAndNewlines), secondWord.text!.uppercased().trimmingCharacters(in: .whitespacesAndNewlines), thirdWord.text!.uppercased().trimmingCharacters(in: .whitespacesAndNewlines), fourthWord.text!.uppercased().trimmingCharacters(in: .whitespacesAndNewlines), fifthWord.text!.uppercased().trimmingCharacters(in: .whitespacesAndNewlines)]
     
         //disable user from editing
         firstWord.isUserInteractionEnabled = false
@@ -551,6 +557,26 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
             
         }
        
+    }
+    //to move the screeen up when keyboard function is pressed
+    @objc func keyboardWillChange(notification: Notification){
+        //        print("Keyboard will show: \(notification.name.rawValue)")
+        
+        // Get keyboard height
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            
+            // Check if notification is related to show/change frame
+            if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification{
+                
+                // Shift frame upwards by rect height
+                view.frame.origin.y = -1 * keyboardHeight
+            }else{
+                view.frame.origin.y = 0
+            }
+            
+        }
     }
     
 }

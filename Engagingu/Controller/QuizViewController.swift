@@ -31,7 +31,7 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var backButton: UIBarButtonItem!
     
     // UIColor
-    var greenColor: UIColor = UIColor(red: 146/255, green: 208/255, blue: 80/255, alpha: 0.7)
+    var greenColor: UIColor = UIColor(red: 34/255, green: 139/255, blue: 34/255, alpha: 0.7)
     var redColor: UIColor = UIColor(red: 232/255, green: 88/255, blue: 88/255, alpha: 0.7)
     var silver: UIColor = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1)
     
