@@ -179,7 +179,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
             
         }else{
             // create the alert
-            let alert = UIAlertController(title: "Upload Unsuccessful", message: "Please reupload your image", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Failed to upload photo to server", message: "Please ensure you have good internet connection and try again", preferredStyle: UIAlertController.Style.alert)
             
             // add an action (button)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))

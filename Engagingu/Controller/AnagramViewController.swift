@@ -52,42 +52,73 @@ class AnagramViewController: UIViewController, UITextFieldDelegate {
             if(wordInput.text?.lowercased() == hiddenWord){
                 //Send score to database
                 
-                //display alert for correct word & perform segue back to tab bar
+                // Send score to database
+                var resultDict: [String: String] = ["team_id": InstanceDAO.team_id]
+                resultDict["trail_instance_id"] = InstanceDAO.trail_instance_id
+                resultDict["score"] = String(self.score)
+                resultDict["hotspot"] = self.hotspot
                 
-                // create the alert
-                let alert = UIAlertController(title: "You Got It!", message: "Click OK to continue", preferredStyle: UIAlertController.Style.alert)
+                guard let jsonData = try? JSONSerialization.data(withJSONObject: resultDict) else { return
+                    print("Error: cannot create jsonData")
+                }
                 
-                // add an action (button)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
-                    
-                    // Send score to database
-                    var resultDict: [String: String] = ["team_id": InstanceDAO.team_id]
-                    resultDict["trail_instance_id"] = InstanceDAO.trail_instance_id
-                    resultDict["score"] = String(self.score)
-                    resultDict["hotspot"] = self.hotspot
-                    
-                    guard let jsonData = try? JSONSerialization.data(withJSONObject: resultDict) else { return
-                        print("Error: cannot create jsonData")
-                    }
-                    
-                    guard let updateScoreURL = InstanceDAO.serverEndpoints["updateScore"]else {
-                        print("Unable to get server endpoint for updateScoreURL")
-                        return
-                    }
-                    RestAPIManager.asyncHttpPost(jsonData: jsonData, URLStr: updateScoreURL)
-                    
+                guard let updateScoreURL = InstanceDAO.serverEndpoints["updateScore"]else {
+                    print("Unable to get server endpoint for updateScoreURL")
+                    return
+                }
+                
+                let responseDict = RestAPIManager.syncHttpPost(jsonData: jsonData, URLStr: updateScoreURL)
+                
+                var responseCode = 0
+                
+                if !responseDict.isEmpty {
+                    responseCode = responseDict["response"] as! Int
+                }
+                
+                if responseCode == 200 {
                     // Update CompletedList & isFirstTime check
                     InstanceDAO.completedList.append(self.hotspot)
                     InstanceDAO.isFirstTime = false
                     
-                    alert.dismiss(animated: true, completion: nil)
+                    // Display alert for correct word & perform segue back to tab bar
+                    // create the alert
+                    let alert = UIAlertController(title: "You Got It!", message: "Click OK to continue", preferredStyle: UIAlertController.Style.alert)
                     
-                    self.performSegue(withIdentifier: "toTabBarSegue", sender: nil)
+                    // add an action (button)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
+                        
+                        
+                        
+                        //                    // Update CompletedList & isFirstTime check
+                        //                    InstanceDAO.completedList.append(self.hotspot)
+                        //                    InstanceDAO.isFirstTime = false
+                        //
+                        //                    alert.dismiss(animated: true, completion: nil)
+                        //
+                                            self.performSegue(withIdentifier: "toTabBarSegue", sender: nil)
+                        
+                    }))
                     
-                }))
+                    // show the alert
+                    self.present(alert, animated: true, completion: nil)
+                    
+                    
+                } else {
+                    
+                    // Alert to ask to try again
+                    // create the alert
+                    let alert = UIAlertController(title: "Failed to submit score to server", message: "Please ensure you have good internet connection and try again", preferredStyle: UIAlertController.Style.alert)
+                    
+                    // add an action (button)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
+                        
+                    }))
+                    
+                    // show the alert
+                    self.present(alert, animated: true, completion: nil)
+                    
+                }
                 
-                // show the alert
-                self.present(alert, animated: true, completion: nil)
                 
             }else{
                 

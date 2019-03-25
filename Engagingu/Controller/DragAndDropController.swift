@@ -148,11 +148,37 @@ class DragAndDropController: UIViewController, UIDragInteractionDelegate, UIDrop
                     print("Unable to get server endpoint for updateScoreURL")
                     return
                 }
-                RestAPIManager.asyncHttpPost(jsonData: jsonData, URLStr: updateScoreURL)
                 
-                // Update CompletedList & isFirstTime check
-                InstanceDAO.completedList.append(hotspot)
-                InstanceDAO.isFirstTime = false
+                let responseDict = RestAPIManager.syncHttpPost(jsonData: jsonData, URLStr: updateScoreURL)
+                
+                var responseCode = 0
+                
+                if !responseDict.isEmpty {
+                    responseCode = responseDict["response"] as! Int
+                }
+                
+                if responseCode == 200 {
+                    // Update CompletedList & isFirstTime check
+                    InstanceDAO.completedList.append(hotspot)
+                    InstanceDAO.isFirstTime = false
+                    
+                    // Perform Segue to result screen
+                    performSegue(withIdentifier: "toResultScreenSegue", sender: nil)
+                } else {
+                    
+                    // Alert to ask to try again
+                    // create the alert
+                    let alert = UIAlertController(title: "Failed to submit score to server", message: "Please ensure you have good internet connection and try again", preferredStyle: UIAlertController.Style.alert)
+                    
+                    // add an action (button)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
+                        
+                    }))
+                    
+                    // show the alert
+                    self.present(alert, animated: true, completion: nil)
+                    
+                }
                 
                 // Show results
 //                let results = "Congratulations, You got " + String(score) + "/" + String(qnaArr.count) + " correct!"

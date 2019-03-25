@@ -64,11 +64,22 @@ class MapController: UIViewController, GMSMapViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         print("View Did Appear Map Controller")
         
+        //re intiate hotspots and display new updated hotspot
         initiateHotspots()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = 5
         locationManager.startUpdatingLocation()
         locationManager.delegate = self
+        
+        // set camera to current location
+        let camera = GMSCameraPosition.camera(withLatitude: locationManager.location?.coordinate.latitude ?? defaultCoordinates[0],
+                                              longitude: locationManager.location?.coordinate.longitude ?? defaultCoordinates[1],
+                                              zoom: zoomLevel)
+        
+        mapView.animate(to: camera)
+        
+        // Save credentials to session
+        saveCredentialsToSession()
         
         // When all trail is finished
         if(InstanceDAO.completedList.count == InstanceDAO.hotspotDict.count){
@@ -143,7 +154,6 @@ class MapController: UIViewController, GMSMapViewDelegate {
         let hotspots = InstanceDAO.hotspotDict
         let startHotspots = InstanceDAO.startHotspots
         
-        
         if(InstanceDAO.isFirstTime){ // Only show starting hotspot
 
             let teamStartHotspot = startHotspots[InstanceDAO.team_id]
@@ -191,6 +201,25 @@ class MapController: UIViewController, GMSMapViewDelegate {
         
         destVC.headerText = selectedMarker.title!
         destVC.narrativeText = selectedMarker.userData as! String
+    }
+    
+    func saveCredentialsToSession(){
+        
+        let def = UserDefaults.standard
+        def.set(InstanceDAO.team_id, forKey: "team_id")
+        print("Saved team_id \(InstanceDAO.team_id) to session")
+        def.set(InstanceDAO.trail_instance_id, forKey: "trail_instance_id")
+        print("Saved trail_instance_id \(InstanceDAO.trail_instance_id) to session")
+        def.set(InstanceDAO.username, forKey: "username")
+        print("Saved username \(InstanceDAO.username) to session")
+        def.set(InstanceDAO.isLeader, forKey: "isLeader")
+        print("Saved isLeader \(InstanceDAO.isLeader) to session")
+        def.set(InstanceDAO.completedList, forKey: "completedList")
+        print("Saved completedList \(InstanceDAO.completedList) to session")
+        def.set(InstanceDAO.startHotspots, forKey: "startHotspots")
+        print("Saved startHotspots \(InstanceDAO.startHotspots) to session")
+        def.synchronize()
+        
     }
     
 }

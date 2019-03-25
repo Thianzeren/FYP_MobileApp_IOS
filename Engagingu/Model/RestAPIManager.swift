@@ -97,6 +97,7 @@ class RestAPIManager {
                 
                 if let urlResponse = response as? HTTPURLResponse {
                     let status = urlResponse.statusCode
+                    result["response"] = status
                     print("syncHttpPost Response: \(status)")
                 }
                 

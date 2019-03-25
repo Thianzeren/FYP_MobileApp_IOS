@@ -39,6 +39,7 @@ class QuizViewController: UIViewController {
     var hotspot: String = ""
     var questionNumber: Int = 0
     var score: Int = 0
+    // var numOfCorrect: Int = 0
     
     // Store question and answers of user
     var outcomeArr: [Outcome] = []
@@ -222,33 +223,40 @@ class QuizViewController: UIViewController {
                     print("Unable to get server endpoint for updateScoreURL")
                     return
                 }
-                RestAPIManager.asyncHttpPost(jsonData: jsonData, URLStr: updateScoreURL)
                 
-                // Update CompletedList & isFirstTime check
-                InstanceDAO.completedList.append(hotspot)
-                InstanceDAO.isFirstTime = false
+                // RestAPIManager.asyncHttpPost(jsonData: jsonData, URLStr: updateScoreURL)
+                let responseDict = RestAPIManager.syncHttpPost(jsonData: jsonData, URLStr: updateScoreURL)
                 
-//                // Hide answer buttons and squares
-//                firstAnswer.isHidden = true
-//                secondAnswer.isHidden = true
-//                thirdAnswer.isHidden = true
-//                fourthAnswer.isHidden = true
-//
-//                // Change button text to "Complete Quiz"
-//                confirmButton.setTitle("Complete Quiz", for: .normal)
-//                confirmText.text = nil
-//
-//                // Display final score
-//                let numOfQuestions = questionBank.count
-//                let congratsText = "Congratulations, you got " + String(score) + "/" + String(numOfQuestions) + " Correct!"
-//                question.text = congratsText
-//
-//                //hide Q&A label
-//                questionLabel.isHidden = true
+                var responseCode = 0
                 
+                if !responseDict.isEmpty {
+                    responseCode = responseDict["response"] as! Int
+                }
                 
-                // Send to result screen && Perform Segue
-                performSegue(withIdentifier: "toResultScreenSegue", sender: nil)
+                if responseCode == 200 {
+                    // Update CompletedList & isFirstTime check
+                    InstanceDAO.completedList.append(hotspot)
+                    InstanceDAO.isFirstTime = false
+                    
+                    // Perform Segue to result screen
+                    performSegue(withIdentifier: "toResultScreenSegue", sender: nil)
+                } else {
+                    
+                    // Alert to ask to try again
+                    // create the alert
+                    let alert = UIAlertController(title: "Failed to submit score to server", message: "Please ensure you have good internet connection and try again", preferredStyle: UIAlertController.Style.alert)
+                    
+                    // add an action (button)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
+                        
+                    }))
+                    
+                    // show the alert
+                    self.present(alert, animated: true, completion: nil)
+                    
+                }
+//                // Send to result screen && Perform Segue
+//                performSegue(withIdentifier: "toResultScreenSegue", sender: nil)
                 
             }else if(hasSeenCorrectAnswer){
                 
@@ -416,6 +424,19 @@ class QuizViewController: UIViewController {
             destVC.setVariables(outcomeArr: outcomeArr, hotspot: hotspot, mission: "Quiz", score: String(score))
             
         }
+        
+    }
+    
+    func loadWaitScreen() {
+        let alert = UIAlertController(title: nil, message: "Loading...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
         
     }
     

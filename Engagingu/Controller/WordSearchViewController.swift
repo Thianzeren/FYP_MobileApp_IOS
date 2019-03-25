@@ -495,6 +495,7 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
     }*/
     
     @IBAction func backToMaps(_ sender: Any) {
+        
         if(InstanceDAO.isLeader){
             var resultDict: [String: String] = ["team_id": InstanceDAO.team_id]
             resultDict["trail_instance_id"] = InstanceDAO.trail_instance_id
@@ -509,13 +510,47 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
                 print("Unable to get server endpoint for updateScoreURL")
                 return
             }
-            RestAPIManager.asyncHttpPost(jsonData: jsonData, URLStr: updateScoreURL)
             
-            InstanceDAO.completedList.append(hotspot)
+            //RestAPIManager.asyncHttpPost(jsonData: jsonData, URLStr: updateScoreURL)
+            
+            let responseDict = RestAPIManager.syncHttpPost(jsonData: jsonData, URLStr: updateScoreURL)
+            
+            var responseCode = 0
+            
+            if !responseDict.isEmpty {
+                responseCode = responseDict["response"] as! Int
+            }
+            
+            if responseCode == 200 {
+                // Update CompletedList & isFirstTime check
+                InstanceDAO.completedList.append(hotspot)
+                InstanceDAO.isFirstTime = false
+                
+                // Perform Segue to result screen
+                performSegue(withIdentifier: "toTabBarSegue", sender: nil)
+            } else {
+                
+                // Alert to ask to try again
+                // create the alert
+                let alert = UIAlertController(title: "Failed to submit score to server", message: "Please ensure you have good internet connection and try again", preferredStyle: UIAlertController.Style.alert)
+                
+                // add an action (button)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
+                    
+                }))
+                
+                // show the alert
+                self.present(alert, animated: true, completion: nil)
+                
+            }
+            
+        }else {
+            
+            InstanceDAO.isFirstTime = false
+            performSegue(withIdentifier: "toTabBarSegue", sender: nil)
+            
         }
        
-        InstanceDAO.isFirstTime = false
-        performSegue(withIdentifier: "toTabBarSegue", sender: nil)
     }
     
 }
