@@ -12,11 +12,11 @@ class AnagramViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var wordInput: UITextField!
     @IBOutlet weak var wordLabel: UILabel!
-    @IBOutlet weak var clueLabel: UITextView!
+   // @IBOutlet weak var clueLabel: UITextView!
     @IBOutlet weak var submitBtn: UIButton!
     
     var score: Int = 1
-    var clue: String = ""
+    //var clue: String = ""
     var hotspot: String = ""
     var hiddenWord: String = ""
     
@@ -29,13 +29,14 @@ class AnagramViewController: UIViewController, UITextFieldDelegate {
         wordInput.layer.borderColor = myColor.cgColor
         
         wordLabel.text = String(hiddenWord.shuffled())
-        clueLabel.text = clue
+        //clueLabel.text = clue
         
         self.wordInput.delegate = self
         
         if(!InstanceDAO.isLeader){
             wordInput.isHidden = true
             submitBtn.setTitle("Home", for: .normal)
+            
         }
         
         //Listen for keyboard events, addObserers. Obbservers are removed when > IOS 9
@@ -49,7 +50,7 @@ class AnagramViewController: UIViewController, UITextFieldDelegate {
         
         if(InstanceDAO.isLeader){
             // Check if input is same as hidden word
-            if(wordInput.text?.lowercased() == hiddenWord){
+            if(wordInput.text?.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == hiddenWord){
                 //Send score to database
                 
                 // Send score to database
@@ -144,6 +145,7 @@ class AnagramViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
+    
     
     @objc func keyboardWillChange(notification: Notification){
         //        print("Keyboard will show: \(notification.name.rawValue)")

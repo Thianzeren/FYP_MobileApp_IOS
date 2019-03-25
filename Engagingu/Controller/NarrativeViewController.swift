@@ -83,7 +83,7 @@ class NarrativeViewController: UIViewController {
             
             destVC.hotspot = headerText
             destVC.hiddenWord = InstanceDAO.anagramDict[headerText] ?? ""
-            destVC.clue = ""
+            //destVC.clue = ""
             
         }else if(segue.identifier == "toDragAndDropSegue"){
             

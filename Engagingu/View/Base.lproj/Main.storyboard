@@ -1510,7 +1510,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZjG-jC-902">
-                                <rect key="frame" x="75" y="141" width="225" height="300.5"/>
+                                <rect key="frame" x="75" y="126" width="225" height="300.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ZjG-jC-902" secondAttribute="height" multiplier="3:4" id="Re0-Rh-xz8"/>
                                 </constraints>
@@ -1553,7 +1553,7 @@
                             <constraint firstItem="iUd-qZ-RoO" firstAttribute="height" secondItem="IjX-ut-x9l" secondAttribute="height" multiplier="0.18" id="7lo-KJ-F9Z"/>
                             <constraint firstItem="iVE-VG-MiW" firstAttribute="top" secondItem="Omp-fd-xwx" secondAttribute="bottom" constant="10" id="7mv-6d-D3W"/>
                             <constraint firstItem="Jy3-ly-7db" firstAttribute="centerX" secondItem="iUd-qZ-RoO" secondAttribute="centerX" id="84v-Ns-h5d"/>
-                            <constraint firstItem="Omp-fd-xwx" firstAttribute="top" secondItem="ZjG-jC-902" secondAttribute="bottom" constant="25" id="Jb9-l7-J60"/>
+                            <constraint firstItem="Omp-fd-xwx" firstAttribute="top" secondItem="ZjG-jC-902" secondAttribute="bottom" constant="40" id="Jb9-l7-J60"/>
                             <constraint firstItem="iUd-qZ-RoO" firstAttribute="top" secondItem="pjU-3d-Lfn" secondAttribute="bottom" id="PGX-8h-OQr"/>
                             <constraint firstItem="pjU-3d-Lfn" firstAttribute="top" secondItem="skH-I3-8I6" secondAttribute="top" id="Par-i4-PTp"/>
                             <constraint firstItem="Jy3-ly-7db" firstAttribute="centerY" secondItem="iUd-qZ-RoO" secondAttribute="centerY" id="SsK-N6-fAk"/>
@@ -2142,15 +2142,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" contentMode="scaleAspectFit" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" bouncesZoom="NO" keyboardDismissMode="interactive" editable="NO" text="Clue:" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="flE-Du-Veh">
-                                <rect key="frame" x="37.5" y="267" width="300" height="133.5"/>
-                                <color key="backgroundColor" red="1" green="0.6705882353" blue="0.0078431372550000003" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="24"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xqu-ix-g3G">
-                                <rect key="frame" x="94" y="520.5" width="187.5" height="33.5"/>
+                                <rect key="frame" x="94" y="494" width="187.5" height="40"/>
                                 <color key="backgroundColor" red="0.08235294118" green="0.10980392160000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="20"/>
                                 <state key="normal" title="SUBMIT">
@@ -2160,17 +2153,18 @@
                                     <action selector="submitAnswer:" destination="AWd-Wh-oYJ" eventType="touchUpInside" id="FBn-5Z-7WQ"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZED-43-SAX">
-                                <rect key="frame" x="56.5" y="447.5" width="262.5" height="33"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter word here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZED-43-SAX">
+                                <rect key="frame" x="56.5" y="380.5" width="262.5" height="53.5"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wordtounscramble" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEp-VT-rpi">
-                                <rect key="frame" x="56.5" y="174" width="262.5" height="53.5"/>
-                                <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wordtounscramble" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEp-VT-rpi">
+                                <rect key="frame" x="37.5" y="263.5" width="300" height="67"/>
+                                <fontDescription key="fontDescription" name="RobotoCondensed-Regular" family="Roboto Condensed" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="1" height="-1"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unscarmble the word related to this hotspot" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ooy-nR-2e7">
                                 <rect key="frame" x="9.5" y="90" width="356" height="52"/>
@@ -2181,31 +2175,26 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="mEp-VT-rpi" firstAttribute="width" secondItem="nYk-86-VPy" secondAttribute="width" multiplier="0.7" id="0qm-Hj-C88"/>
-                            <constraint firstItem="xqu-ix-g3G" firstAttribute="height" secondItem="nYk-86-VPy" secondAttribute="height" multiplier="0.05" id="6bj-FE-dBs"/>
-                            <constraint firstItem="ymX-7N-UXW" firstAttribute="bottom" secondItem="xqu-ix-g3G" secondAttribute="bottom" constant="20" id="8WV-r8-a5H"/>
+                            <constraint firstItem="mEp-VT-rpi" firstAttribute="width" secondItem="nYk-86-VPy" secondAttribute="width" multiplier="0.8" id="0qm-Hj-C88"/>
+                            <constraint firstItem="xqu-ix-g3G" firstAttribute="height" secondItem="nYk-86-VPy" secondAttribute="height" multiplier="0.06" id="6bj-FE-dBs"/>
+                            <constraint firstItem="ymX-7N-UXW" firstAttribute="bottom" secondItem="xqu-ix-g3G" secondAttribute="bottom" constant="40" id="8WV-r8-a5H"/>
                             <constraint firstItem="Hhb-W2-vXz" firstAttribute="leading" secondItem="PKV-OK-6wK" secondAttribute="leading" id="966-jQ-MTD"/>
                             <constraint firstItem="Hhb-W2-vXz" firstAttribute="width" secondItem="nYk-86-VPy" secondAttribute="width" id="9rQ-bA-KNp"/>
-                            <constraint firstItem="ZED-43-SAX" firstAttribute="height" secondItem="nYk-86-VPy" secondAttribute="height" multiplier="0.05" id="Axq-7b-g6a"/>
-                            <constraint firstItem="xqu-ix-g3G" firstAttribute="top" secondItem="ZED-43-SAX" secondAttribute="bottom" constant="40" id="BCo-BS-GJx"/>
+                            <constraint firstItem="ZED-43-SAX" firstAttribute="height" secondItem="nYk-86-VPy" secondAttribute="height" multiplier="0.08" id="Axq-7b-g6a"/>
+                            <constraint firstItem="xqu-ix-g3G" firstAttribute="top" secondItem="ZED-43-SAX" secondAttribute="bottom" constant="60" id="BCo-BS-GJx"/>
                             <constraint firstItem="Ooy-nR-2e7" firstAttribute="width" secondItem="PKV-OK-6wK" secondAttribute="width" multiplier="0.95" id="D29-r6-4qa"/>
                             <constraint firstItem="mEp-VT-rpi" firstAttribute="centerX" secondItem="ymX-7N-UXW" secondAttribute="centerX" id="EGO-6c-BI8"/>
                             <constraint firstItem="Hhb-W2-vXz" firstAttribute="top" secondItem="ymX-7N-UXW" secondAttribute="top" id="Hzk-O9-rzb"/>
                             <constraint firstItem="Ooy-nR-2e7" firstAttribute="centerY" secondItem="PKV-OK-6wK" secondAttribute="centerY" id="JYv-Y3-9Iw"/>
                             <constraint firstItem="ZED-43-SAX" firstAttribute="width" secondItem="nYk-86-VPy" secondAttribute="width" multiplier="0.7" id="NMI-yh-fvu"/>
                             <constraint firstItem="ymX-7N-UXW" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PKV-OK-6wK" secondAttribute="trailing" symbolic="YES" id="OHU-8W-qqt"/>
-                            <constraint firstItem="flE-Du-Veh" firstAttribute="top" secondItem="mEp-VT-rpi" secondAttribute="bottom" constant="39.5" id="Ora-NL-dq2"/>
                             <constraint firstItem="PKV-OK-6wK" firstAttribute="leading" secondItem="ymX-7N-UXW" secondAttribute="leading" id="RcO-KT-9IC"/>
                             <constraint firstItem="PKV-OK-6wK" firstAttribute="top" secondItem="Hhb-W2-vXz" secondAttribute="bottom" constant="20" id="SKb-K4-C43"/>
-                            <constraint firstItem="mEp-VT-rpi" firstAttribute="height" secondItem="nYk-86-VPy" secondAttribute="height" multiplier="0.08" id="XpN-S0-TRU"/>
+                            <constraint firstItem="mEp-VT-rpi" firstAttribute="height" secondItem="nYk-86-VPy" secondAttribute="height" multiplier="0.1" id="XpN-S0-TRU"/>
                             <constraint firstItem="ZED-43-SAX" firstAttribute="centerX" secondItem="ymX-7N-UXW" secondAttribute="centerX" id="b3e-Kb-7gP"/>
-                            <constraint firstItem="flE-Du-Veh" firstAttribute="height" secondItem="nYk-86-VPy" secondAttribute="height" multiplier="0.2" id="b8W-my-IDQ"/>
+                            <constraint firstItem="mEp-VT-rpi" firstAttribute="centerY" secondItem="ymX-7N-UXW" secondAttribute="centerY" id="bVc-Te-iYv"/>
                             <constraint firstItem="PKV-OK-6wK" firstAttribute="width" secondItem="nYk-86-VPy" secondAttribute="width" id="fQW-ET-CJr"/>
-                            <constraint firstItem="mEp-VT-rpi" firstAttribute="top" secondItem="PKV-OK-6wK" secondAttribute="bottom" constant="8" id="jNV-1L-tw4"/>
-                            <constraint firstItem="ZED-43-SAX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="flE-Du-Veh" secondAttribute="bottom" constant="26" id="khh-vm-tlg"/>
                             <constraint firstItem="PKV-OK-6wK" firstAttribute="height" secondItem="nYk-86-VPy" secondAttribute="height" multiplier="0.15" id="pEn-Gh-qaA"/>
-                            <constraint firstItem="flE-Du-Veh" firstAttribute="centerX" secondItem="ymX-7N-UXW" secondAttribute="centerX" id="r3W-L6-joB"/>
-                            <constraint firstItem="flE-Du-Veh" firstAttribute="width" secondItem="nYk-86-VPy" secondAttribute="width" multiplier="0.8" id="rYN-yT-JXa"/>
                             <constraint firstItem="Ooy-nR-2e7" firstAttribute="centerX" secondItem="PKV-OK-6wK" secondAttribute="centerX" id="sIM-NF-jHw"/>
                             <constraint firstItem="xqu-ix-g3G" firstAttribute="width" secondItem="nYk-86-VPy" secondAttribute="width" multiplier="0.5" id="y2W-jc-WHI"/>
                             <constraint firstItem="xqu-ix-g3G" firstAttribute="centerX" secondItem="ymX-7N-UXW" secondAttribute="centerX" id="yuE-sM-tKI"/>
@@ -2215,7 +2204,6 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="clueLabel" destination="flE-Du-Veh" id="ABy-aL-BJr"/>
                         <outlet property="submitBtn" destination="xqu-ix-g3G" id="FlT-WS-zRQ"/>
                         <outlet property="wordInput" destination="ZED-43-SAX" id="Yv8-tP-cv1"/>
                         <outlet property="wordLabel" destination="mEp-VT-rpi" id="cGe-wH-ezR"/>
@@ -2635,7 +2623,6 @@
         <image name="story_HowToPlay" width="156" height="156"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yww-GS-NvA"/>
         <segue reference="5nm-dq-bhW"/>
         <segue reference="6kr-1K-vio"/>
         <segue reference="VmJ-25-u0P"/>
