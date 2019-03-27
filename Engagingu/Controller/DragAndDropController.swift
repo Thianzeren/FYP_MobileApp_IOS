@@ -105,33 +105,35 @@ class DragAndDropController: UIViewController, UIDragInteractionDelegate, UIDrop
                 
             }else { // Calculate score and redirect to result page
                 
-                // Iterate through each dropTextView
-                for i in 0 ..< dropTextViewArr.count{
-                    
-                    let optionText = optionLabelArr[i].text
-                    var correctAnswer = ""
-                    
-                    // Obtain correct answer for corresponding label
-                    innerLoop: for qnaPair in qnaArr {
+                if score == 0 {
+                    // Iterate through each dropTextView
+                    for i in 0 ..< dropTextViewArr.count{
                         
-                        let label = qnaPair.drag_and_drop_question
-                        let answer = qnaPair.drag_and_drop_answer
+                        let optionText = optionLabelArr[i].text
+                        var correctAnswer = ""
                         
-                        if optionText == label {
-                            correctAnswer = answer
-                            break innerLoop
+                        // Obtain correct answer for corresponding label
+                        innerLoop: for qnaPair in qnaArr {
+                            
+                            let label = qnaPair.drag_and_drop_question
+                            let answer = qnaPair.drag_and_drop_answer
+                            
+                            if optionText == label {
+                                correctAnswer = answer
+                                break innerLoop
+                            }
+                            
                         }
                         
+                        // Check if answer is correct
+                        let dropTextView = dropTextViewArr[i]
+                        if dropTextView.text == correctAnswer {
+                            score += 1
+                            print("score: ", score)
+                        }
+                        
+                        outcomeArr.append(Outcome(question: optionText!, userAnswer: dropTextView.text, expectedAnswer: correctAnswer))
                     }
-                    
-                    // Check if answer is correct
-                    let dropTextView = dropTextViewArr[i]
-                    if dropTextView.text == correctAnswer {
-                        score += 1
-                        print("score: ", score)
-                    }
-                    
-                    outcomeArr.append(Outcome(question: optionText!, userAnswer: dropTextView.text, expectedAnswer: correctAnswer))
                 }
                 
                 // Post Results to server

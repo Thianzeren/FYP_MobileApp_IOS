@@ -112,10 +112,10 @@ class MapController: UIViewController, GMSMapViewDelegate {
         if let dist = distance {
             
             // Distance where user is allowed to click on hotspot in metres
-            let distanceThreshold: Double = 50
+//            let distanceThreshold: Double = 50
             
             // Distance for debugging (to remove geofence)
-//            let distanceThreshold: Double = 100000
+            let distanceThreshold: Double = 100000
             
 //            print("SelectedMarkerLocation: \(selectedMarkerLocation)")
 //            print("CurrentLocation: \(currentLocation)")

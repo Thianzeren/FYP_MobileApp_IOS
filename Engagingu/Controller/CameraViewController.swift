@@ -153,6 +153,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
                 }
                 
             }
+            
             task.resume();
             semaphore.wait();
             

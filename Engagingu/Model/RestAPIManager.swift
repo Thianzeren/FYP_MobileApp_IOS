@@ -129,8 +129,9 @@ class RestAPIManager {
                 }
 
             }
-            task.resume();
-            semaphore.wait();
+            task.resume()
+            
+            semaphore.wait()
 
         }
         
@@ -863,6 +864,12 @@ class RestAPIManager {
                             
                         }
                     }
+                }else {
+                    
+                    for activity in activities{
+                        InstanceDAO.activityArr.append(activity)
+                    }
+                    
                 }
                 
                 print("ACTIVITY")
