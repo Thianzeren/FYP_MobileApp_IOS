@@ -88,7 +88,7 @@ class QuizViewController: UIViewController {
         // Initialise 1st question
         updateQuiz()
         
-        if(questionNumber == questionBank.count - 1){
+        if(questionNumber == questionBank.count - 1 && InstanceDAO.isLeader == false){
             confirmButton.setTitle("Home", for: .normal)
         }
         super.viewDidLoad()
