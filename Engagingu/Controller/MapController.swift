@@ -17,7 +17,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
     var currentLocation: CLLocation?
     var mapView: GMSMapView!
     var placesClient: GMSPlacesClient!
-    var zoomLevel: Float = 15.0
+    var zoomLevel: Float = 17.0
     var selectedMarker: GMSMarker!
     var distanceToTriggier = 5 // In Meteres
     
@@ -112,10 +112,10 @@ class MapController: UIViewController, GMSMapViewDelegate {
         if let dist = distance {
             
             // Distance where user is allowed to click on hotspot in metres
-//            let distanceThreshold: Double = 50
+            let distanceThreshold: Double = 50
             
             // Distance for debugging (to remove geofence)
-            let distanceThreshold: Double = 100000
+//            let distanceThreshold: Double = 100000
             
 //            print("SelectedMarkerLocation: \(selectedMarkerLocation)")
 //            print("CurrentLocation: \(currentLocation)")

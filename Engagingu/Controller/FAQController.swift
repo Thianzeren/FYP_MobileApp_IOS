@@ -18,7 +18,13 @@ class FAQController: UIViewController {
     @IBAction func logout(_ sender: Any) {
         
         print("INLOGOUT")
+        
+        // reset user defaults
         resetDefaults()
+        
+        // reset InstanceDAO variables
+        InstanceDAO.resetInstance()
+        
         
         performSegue(withIdentifier: "toLoginTrailSegue", sender: nil)
         

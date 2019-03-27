@@ -180,27 +180,6 @@ class DragAndDropController: UIViewController, UIDragInteractionDelegate, UIDrop
                     
                 }
                 
-                // Show results
-//                let results = "Congratulations, You got " + String(score) + "/" + String(qnaArr.count) + " correct!"
-//                questionLabel.text = results
-//                submitBtn.setTitle("Home", for: .normal)
-//
-//                for i in 0 ..< dragTextViewArr.count {
-//
-//                    let dragTextView = dragTextViewArr[i]
-//                    dragTextView.isHidden = true
-//
-//                    let dropTextView = dropTextViewArr[i]
-//                    dropTextView.isHidden = true
-//
-//                    let optionLabel = optionLabelArr[i]
-//                    optionLabel.isHidden = true
-//
-//                }
-                
-                //Perform segue
-                performSegue(withIdentifier: "toResultScreenSegue", sender: nil)
-//                }
             }
         }else { // If Member
             // Update CompletedList & isFirstTime check

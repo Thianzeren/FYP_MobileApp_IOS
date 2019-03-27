@@ -43,6 +43,11 @@ struct InstanceDAO {
         "updateLocation" : serverIP + "/team/teamLocation"
     ]
     
+    // For Submissions
+    static var submissions: [Media] = []
+    
+    // Array of activity objects
+    static var activityArr: [Activity] = []
     
     // Key: Hotspot name, Value: Hotspot object
     static var hotspotDict: [String:Hotspot] = [:]
@@ -68,9 +73,6 @@ struct InstanceDAO {
     // Key: Hotspot name, Value: Array of String (Words)
     static var wordSearchDict: [String:WordSearch] = [:]
     
-    // For Submissions
-    static var submissions: [Media] = []
-    
     // Key: Team number, Value: hotspot name
     static var startHotspots: [String:String] = [:]
     
@@ -80,9 +82,6 @@ struct InstanceDAO {
     // Key: Username, Value: user object
     static var userDict: [String:User] = [:]
     
-    // Array of activity objects
-    static var activityArr: [Activity] = []
-    
     // Check if is first time entering
     static var isFirstTime: Bool = true
     
@@ -91,5 +90,33 @@ struct InstanceDAO {
     
     // Check if can start trail
     static var hasStartedTrail: Bool = false
+    
+    static func resetInstance() {
+        
+        team_id = "0"
+        trail_instance_id = "defaultId"
+        username = "defaultName"
+        completedList.removeAll()
+        
+        submissions.removeAll()
+        activityArr.removeAll()
+        
+        hotspotDict.removeAll()
+        quizDict.removeAll()
+        selfieDict.removeAll()
+        anagramDict.removeAll()
+        dragAndDropDict.removeAll()
+        drawingDict.removeAll()
+        urlDict.removeAll()
+        wordSearchDict.removeAll()
+        startHotspots.removeAll()
+        leaderboardDict.removeAll()
+        userDict.removeAll()
+        
+        isFirstTime = true
+        isLeader = false
+        hasStartedTrail = false
+        
+    }
     
 }

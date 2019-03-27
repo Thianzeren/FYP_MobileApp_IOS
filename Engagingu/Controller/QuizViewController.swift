@@ -261,8 +261,6 @@ class QuizViewController: UIViewController {
                     self.present(alert, animated: true, completion: nil)
                     
                 }
-//                // Send to result screen && Perform Segue
-//                performSegue(withIdentifier: "toResultScreenSegue", sender: nil)
                 
             }else if(hasSeenCorrectAnswer){
                 
