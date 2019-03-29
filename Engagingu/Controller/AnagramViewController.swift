@@ -6,6 +6,8 @@
 //  Copyright © 2019 Raylene. All rights reserved.
 //
 
+
+
 import UIKit
 
 class AnagramViewController: UIViewController, UITextFieldDelegate {
@@ -19,6 +21,10 @@ class AnagramViewController: UIViewController, UITextFieldDelegate {
     //var clue: String = ""
     var hotspot: String = ""
     var hiddenWord: String = ""
+    var wordInputwithoutspace = ""
+    var listOfEnteredCharacters: [String] = []
+    var oldWord = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,13 +50,59 @@ class AnagramViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object:nil)
         
+        wordInput.addTarget(self, action: #selector(AnagramViewController.textFieldDidChanged(_:)), for: UIControl.Event.editingChanged)
+        
+    }
+
+    @IBAction func textFieldDidChanged(_ sender: UITextField) {
+        //change the user input to lowercaps so that can compare to wordLabel
+        let userInput = sender.text!.lowercased()
+        
+        //when user add letter
+        if (userInput.count > oldWord.count) {
+                let lastletter = userInput.last!
+                //if new character is in the wordlabel
+                //1. append the character to list
+                //2. remove it from the wordlabel
+                //update the oldword to userinput --> purpose is to compare the strings when letter is deleted
+                if ((wordLabel.text?.contains(lastletter))!) {
+                    listOfEnteredCharacters.append(String(lastletter))
+                    print(listOfEnteredCharacters)
+                    let position = wordLabel.text?.firstIndex(of: lastletter)
+                    wordLabel.text?.remove(at: position!)
+                    oldWord = userInput
+                }
+        }
+        //when user delete a letter
+        else if (userInput.count < oldWord.count){
+            let letterRemoved = oldWord.last
+        
+            //the letter deleted is from the wordLabel
+            if listOfEnteredCharacters.contains(String(letterRemoved!)){
+                wordLabel.text?.append(letterRemoved!)
+                let index = listOfEnteredCharacters.firstIndex(of: String(letterRemoved!))
+                listOfEnteredCharacters.remove(at: index!)
+            }
+            //this update of oldWord is not place in the if block above
+            //because it needs to account when there is deletion of spacing
+            oldWord = userInput
+        }
+     
     }
     
     @IBAction func submitAnswer(_ sender: Any) {
-        
+        //in case user enter wrong word, clear wordinputwithoutspace
+        wordInputwithoutspace = ""
         if(InstanceDAO.isLeader){
             // Check if input is same as hidden word
-            if(wordInput.text?.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == hiddenWord){
+            //but first remove all the empty spaces
+            for letter in (wordInput.text!){
+                if letter != " " {
+                    wordInputwithoutspace.append(letter)
+                }
+            }
+            
+            if(wordInputwithoutspace.lowercased() == hiddenWord){
                 //Send score to database
                 
                 // Send score to database
