@@ -115,7 +115,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
 //            let distanceThreshold: Double = 50
             
             // Distance for debugging (to remove geofence)
-            let distanceThreshold: Double = 100000
+            let distanceThreshold: Double = 50
             
 //            print("SelectedMarkerLocation: \(selectedMarkerLocation)")
 //            print("CurrentLocation: \(currentLocation)")

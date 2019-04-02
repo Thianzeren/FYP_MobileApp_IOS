@@ -34,6 +34,7 @@ class AnagramViewController: UIViewController, UITextFieldDelegate {
         wordInput.layer.borderWidth = 1.0
         wordInput.layer.borderColor = myColor.cgColor
         
+        hiddenWord = hiddenWord.lowercased()
         wordLabel.text = String(hiddenWord.shuffled())
         //clueLabel.text = clue
         
@@ -101,8 +102,10 @@ class AnagramViewController: UIViewController, UITextFieldDelegate {
                     wordInputwithoutspace.append(letter)
                 }
             }
-            
+            print(wordInputwithoutspace)
+            print(hiddenWord)
             if(wordInputwithoutspace.lowercased() == hiddenWord){
+                
                 //Send score to database
                 
                 // Send score to database

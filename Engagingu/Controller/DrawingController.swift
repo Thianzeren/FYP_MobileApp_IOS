@@ -247,9 +247,9 @@ class DrawingController: UIViewController {
         if (InstanceDAO.isLeader) {
             var uploadStatus = false
             var image = drawing.image
-            image = fixOrientation(img: image!)
             
             if image != nil{
+                image = fixOrientation(img: image!)
                 
                 guard let uploadSubmissionURL = InstanceDAO.serverEndpoints["uploadSubmission"] else {
                     print("Unable to get server endpoint for uploadSubmission")
@@ -325,6 +325,15 @@ class DrawingController: UIViewController {
                 if(result["success"] as? String == "true") {
                     uploadStatus = true
                 }
+            }else {
+                // create the alert
+                let alert = UIAlertController(title: "Drawing is blank", message: "Please draw something before submitting", preferredStyle: UIAlertController.Style.alert)
+                
+                // add an action (button)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                
+                // show the alert
+                self.present(alert, animated: true, completion: nil)
             }
             
             if(uploadStatus){
