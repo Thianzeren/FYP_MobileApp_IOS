@@ -31,6 +31,9 @@ class RestAPIManager {
             
             if let error = error {
                 print("DataTask error: " + error.localizedDescription + "\n")
+                if error._code ==  NSURLErrorTimedOut {
+                    print("Time Out")
+                }
                 semaphore.signal()
             }
             
@@ -92,6 +95,8 @@ class RestAPIManager {
 
             //Create and run a URLSession data task
             let config = URLSessionConfiguration.default
+            config.timeoutIntervalForRequest = 5
+            config.timeoutIntervalForResource = 5
             let session = URLSession(configuration: config)
             let task = session.dataTask(with: request) { data, response, error in
                 
