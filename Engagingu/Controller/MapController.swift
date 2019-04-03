@@ -12,6 +12,8 @@ import GooglePlaces
 
 class MapController: UIViewController, GMSMapViewDelegate {
     
+    @IBOutlet weak var timeLeft: UILabel!
+    @IBOutlet weak var mapViewFrame: UIView!
     var defaultCoordinates = [1,2968, 103.8522]
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
@@ -19,7 +21,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
     var placesClient: GMSPlacesClient!
     var zoomLevel: Float = 17.0
     var selectedMarker: GMSMarker!
-    var distanceToTriggier = 5 // In Meteres
+    var distanceToTriggier = 5 // In Metres
     
     override func viewDidLoad() {
         
@@ -33,14 +35,15 @@ class MapController: UIViewController, GMSMapViewDelegate {
                                               longitude: locationManager.location?.coordinate.longitude ?? defaultCoordinates[1],
                                               zoom: zoomLevel)
         
-        mapView = GMSMapView.map(withFrame: view.bounds, camera: camera)
+        mapView = GMSMapView.map(withFrame: mapViewFrame.bounds, camera: camera)
         mapView.settings.myLocationButton = true
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.isMyLocationEnabled = true
         mapView.delegate = self
         
         // Add the map to the view, hide it until we've got a location update.
-        view.addSubview(mapView)
+        mapViewFrame.addSubview(mapView)
+//        self.mapViewFrame.bringSubviewToFront(timeLeft)
         mapView.isHidden = true
         
         // Refresh hotspots
@@ -115,7 +118,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
 //            let distanceThreshold: Double = 50
             
             // Distance for debugging (to remove geofence)
-            let distanceThreshold: Double = 50
+            let distanceThreshold: Double = 10000
             
 //            print("SelectedMarkerLocation: \(selectedMarkerLocation)")
 //            print("CurrentLocation: \(currentLocation)")
