@@ -97,7 +97,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
         if let dist = distance {
             
             // Distance where user is allowed to click on hotspot in metres
-            let distanceThreshold: Double = 10000
+            let distanceThreshold: Double = 50
             
             if (Double(dist) <= distanceThreshold){
                 
