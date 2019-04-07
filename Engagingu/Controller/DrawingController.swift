@@ -1,19 +1,14 @@
-//
 //  DrawingController.swift
 //  Engagingu
-//
-//  Created by Raylene on 15/1/19.
-//  Copyright © 2019 Raylene. All rights reserved.
-//
-
 import UIKit
+//DrawingController allows for user to select different colours of pencil and draw
 
 extension UIButton {
+    //design of the pencil button
     func addShadow (color : UIColor){
         layer.shadowRadius = 5
         layer.shadowOpacity = 0.8
         layer.shadowColor = color.cgColor
-        
     }
 }
 
@@ -21,8 +16,8 @@ class DrawingController: UIViewController {
 
     @IBOutlet weak var drawing: UIImageView!
     @IBOutlet weak var questionTextView: UITextView!
+    //initialise the pencil properties
     var lastPoint = CGPoint.zero
-    //set to white to initialise color + prevent drawing if the pencil option is not pressed
     var color = UIColor.black
     var brushWidth: CGFloat = 10.0
     var opacity: CGFloat = 1.0
@@ -47,13 +42,11 @@ class DrawingController: UIViewController {
     @IBOutlet weak var bin: UIButton!
     @IBOutlet weak var homeButton: UIButton!
     
+    //if the role is member, pencil buttons will be hidden
     override func viewDidLoad() {
         super.viewDidLoad()
         submitButton.float()
-        //hide the image so that drawing is disabled until pencil is pressed
-        //drawing.isHidden = true
-        print(question)
-        print(hotspot)
+
         questionTextView.text = question
         drawing.backgroundColor = UIColor.white
         drawing.layer.borderColor = UIColor.black.cgColor
@@ -87,6 +80,7 @@ class DrawingController: UIViewController {
         swiped = false
         lastPoint = touch.location(in: drawing)
     }
+    //Track the last point and current point and connect it
     func drawLine(from fromPoint: CGPoint, to toPoint: CGPoint) {
         
        // UIGraphicsBeginImageContext(drawing.frame.size)
@@ -134,17 +128,18 @@ class DrawingController: UIViewController {
         }
     }
     
+    //remove all drawings
     @IBAction func clearDrawing(_ sender: Any) {
         clearAllShadows()
         drawing.image = nil
     }
     
+    //determine the color of the pencil chosen
+    //Sets the colour of the pencil chosen and add shadows to the selected pencil
     @IBAction func pencilPressed(_ sender: UIButton) {
-       // drawing.isHidden = false
         guard let pencil = Pencil(tag: sender.tag) else {
             return
         }
-        
         color = pencil.color
         if pencil == .eraser {
             opacity = 1.0
@@ -243,6 +238,8 @@ class DrawingController: UIViewController {
         bin.layer.shadowOpacity = 0
         
     }
+    
+    // Submits drawing done to backend endpoint
     @IBAction func submitDrawing(_ sender: Any) {
         if (InstanceDAO.isLeader) {
             var uploadStatus = false
@@ -293,7 +290,11 @@ class DrawingController: UIViewController {
                 let semaphore = DispatchSemaphore(value: 0)
                 var result: [String:Any] = [:]
                 
-                let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                let config = URLSessionConfiguration.default
+                config.timeoutIntervalForRequest = 5
+                config.timeoutIntervalForResource = 5
+                let session = URLSession(configuration: config)
+                let task = session.dataTask(with: request) { (data, response, error) in
                     
                     guard let data = data, error == nil else{
                         print(error?.localizedDescription ?? "No data")
@@ -308,8 +309,6 @@ class DrawingController: UIViewController {
                             return
                         }
                         
-                        print(responseDict)
-                        print(result)
                         result = responseDict
                         semaphore.signal()
                         

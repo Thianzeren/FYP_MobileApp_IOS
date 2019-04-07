@@ -1,14 +1,9 @@
 //
 //  DragAndDropController.swift
 //  Engagingu
-//
-//  Created by Nicholas on 29/1/19.
-//  Copyright © 2019 Raylene. All rights reserved.
-//
-
 import UIKit
 import MobileCoreServices
-
+// DragAndDropController creates the drag and drop mission with 4 choices to match 4 labels
 class DragAndDropController: UIViewController, UIDragInteractionDelegate, UIDropInteractionDelegate {
 
     @IBOutlet weak var questionLabel: UILabel!
@@ -46,7 +41,7 @@ class DragAndDropController: UIViewController, UIDragInteractionDelegate, UIDrop
         // Populate Views
         initiateViews()
         
-//         Get Drag And Drop question and answers
+        // Get Drag And Drop question and answers
         let dragAndDrop = InstanceDAO.dragAndDropDict[hotspot]!
         questionLabel.text = dragAndDrop.question
         qnaArr = dragAndDrop.drag_and_drop
@@ -72,10 +67,12 @@ class DragAndDropController: UIViewController, UIDragInteractionDelegate, UIDrop
     
     @IBAction func submitAnswer(_ sender: Any) {
         
+        // if is leader: carries on with other checks, else: redirect to home
+        // if empty: shows alert that it not options are filled up
+        // else: calculate score and send score to backend
+        
         if(InstanceDAO.isLeader){
-//            if(submitBtn.title(for: .normal) == "Home"){
-//                performSegue(withIdentifier: "toTabBarSegue", sender: nil)
-//            }else {
+
             var hasEmptyDrops = false
             
             // Check if any of the drop views are empty
@@ -260,8 +257,6 @@ class DragAndDropController: UIViewController, UIDragInteractionDelegate, UIDrop
     // Check what operation to perform when something is dragged on to the view
     func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
         
-        //        let location = session.location(in: self.view)
-        
         var dropOperation: UIDropOperation?
         
         if session.canLoadObjects(ofClass: String.self) {
@@ -291,7 +286,7 @@ class DragAndDropController: UIViewController, UIDragInteractionDelegate, UIDrop
         
         if session.canLoadObjects(ofClass: String.self) {
             
-            session.loadObjects(ofClass: String.self) { (items) in
+            _ = session.loadObjects(ofClass: String.self) { (items) in
                 let values = items as [String]
                 
                 if let dropView = interaction.view as? UITextView{

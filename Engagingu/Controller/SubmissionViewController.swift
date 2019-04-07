@@ -1,12 +1,8 @@
-//
 //  SubmissionViewController.swift
 //  Engagingu
-//
-//  Created by Nicholas on 4/1/19.
-//  Copyright © 2019 Raylene. All rights reserved.
-//
 
 import UIKit
+//SubmissionViewContoller display the wefie/drawing done by the team
 
 protocol TableViewCellDelegate: class {
     // Declare a delegate function holding a reference to `SubmissionTableViewCell` instance
@@ -21,23 +17,19 @@ class SubmissionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.reloadData()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         loadWaitScreen()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         print("View Did Appear SubmissionViewController")
-        
         loadImages()
         
     }
     
     func loadImages(){
-        
         // get image urls
         guard let getImagePathsURL = InstanceDAO.serverEndpoints["getAllSubmissionsURL"] else {
             print("Unable to get server endpoint for getImagePathsURL")
@@ -46,7 +38,6 @@ class SubmissionViewController: UIViewController {
         
         let group = DispatchGroup()
         group.enter()
-        
         DispatchQueue.main.async {
             RestAPIManager.httpGetImageURLs(URLStr: getImagePathsURL + InstanceDAO.team_id + "&trail_instance_id=" + InstanceDAO.trail_instance_id)
             
@@ -67,12 +58,9 @@ class SubmissionViewController: UIViewController {
                         print("Unable to get server endpoint for getImageURL")
                         return
                     }
-
                     // Get image
                     RestAPIManager.httpGetImage(URLStr: getImageURL + value.submissionURL, hotspot: hotspot, question: question)
-                    
                 }
-                
                 self.previousUrlDictSize = urlDict.count
             }
             
@@ -81,27 +69,20 @@ class SubmissionViewController: UIViewController {
             group.leave()
         }
         
-        
         group.notify(queue: .main){
-            
             self.tableView.delegate = self
             self.tableView.dataSource = self
-            
             self.tableView.reloadData()
-            
             self.dismiss(animated: false, completion: nil)
         }
-        
     }
     
     func loadWaitScreen() {
         let alert = UIAlertController(title: nil, message: "Loading...", preferredStyle: .alert)
-        
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.style = UIActivityIndicatorView.Style.gray
         loadingIndicator.startAnimating();
-        
         alert.view.addSubview(loadingIndicator)
         present(alert, animated: true, completion: nil)
 
@@ -110,6 +91,7 @@ class SubmissionViewController: UIViewController {
 }
 
 extension SubmissionViewController: UITableViewDataSource, UITableViewDelegate, TableViewCellDelegate {
+    //Change to SubmissionPopupViewController when uer tap on the image
     func tableViewCell(_ cell: SubmissionTableViewCell, buttonTapped: UIButton) {
         // You have the cell where the touch event happend, you can get the indexPath like the below
         let indexPath = self.tableView.indexPath(for: cell)
@@ -138,11 +120,12 @@ extension SubmissionViewController: UITableViewDataSource, UITableViewDelegate, 
             
         }
     }
-    
+    //this method returns the number of rows the tableview should have
+    //the number of rows == number of elements in the InstanceDAO.submissions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return InstanceDAO.submissions.count
     }
-    
+    //this method display the submissions
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let media = InstanceDAO.submissions[indexPath.row]
         

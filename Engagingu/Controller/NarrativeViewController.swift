@@ -1,25 +1,17 @@
-//
 //  NarrativeViewController.swift
 //  Engagingu
-//
-//  Created by Nicholas on 13/12/18.
-//  Copyright © 2018 Raylene. All rights reserved.
-//
 
 import UIKit
-
+//NarrativeViewController display the narrative of the selected hotspot
 class NarrativeViewController: UIViewController {
 
-   
     @IBOutlet weak var header: UITextView!
     @IBOutlet weak var narrative: UITextView!
     @IBOutlet weak var startMissionButton: UIButton!
-    //    @IBOutlet weak var topNavBar: UINavigationItem!
     
     var headerText = "Header"
     var narrativeText = "Narrative"
    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         //Ensure view starts from first line for user to read
@@ -31,7 +23,7 @@ class NarrativeViewController: UIViewController {
         // Do any additional setup after loading the view.
         
     }
-    
+    //startMission set the segue to the respective missions view
     @IBAction func startMission(_ sender: Any) {
         
         print("HEADER TEXT")
@@ -58,11 +50,7 @@ class NarrativeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         narrative.isScrollEnabled = true
     }
-    
-    
-//     MARK: - Navigation
 
-//     In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
@@ -104,7 +92,7 @@ class NarrativeViewController: UIViewController {
         }
         
     }
-    
+    //go back to mapView
     @IBAction func backToPreviousView(_ sender: Any) {
         print("Back button tapped")
         dismiss(animated: true, completion: nil)

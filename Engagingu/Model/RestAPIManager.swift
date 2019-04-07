@@ -9,8 +9,12 @@
 import UIKit
 import Foundation
 
+// RestAPIManager consists of http GET and POST methods to retrieve and send data to the backend
 class RestAPIManager {
     
+    // input: URL String, output: Dictionary with [String:Any] for the response
+    // Retrieves JSON response from backend and converts to dictionary.
+    // Synchronous method that stops main thread
     static func syncHttpGet(URLStr: String) -> [String:Any]{
         
         var result: [String:Any] = [:]
@@ -43,11 +47,6 @@ class RestAPIManager {
                 return
             }
             
-            //Debug Print
-//            let jsonStr = String(data:data, encoding: .utf8)
-//            print("Json Response")
-//            print(jsonStr)
-            
             do{
                 guard let resultDict = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:Any] else {
                     semaphore.signal()
@@ -68,12 +67,12 @@ class RestAPIManager {
         
         semaphore.wait()
         
-        //        print("RESULT:")
-        //        print(result)
-        
         return result
     }
     
+    // input: URL String, output: Dictionary with [String:Any] for the response
+    // Sends JSON message to backend
+    // Synchronous method that stops main thread
     static func syncHttpPost(jsonData: Data, URLStr: String) -> [String:Any]{
         
         let semaphore = DispatchSemaphore(value: 0)
@@ -124,7 +123,6 @@ class RestAPIManager {
                         return
                     }
 
-                    print(responseDict)
                     result = responseDict
                     semaphore.signal()
                     
@@ -140,10 +138,12 @@ class RestAPIManager {
 
         }
         
-        print(result)
         return result
     }
     
+    // input: URL String, output: Dictionary with [String:Any] for the response
+    // Retrieves JSON response from backend and converts to dictionary
+    // Asynchronous, done in background
     static func asyncHttpGet(URLStr: String) -> [String:Any]{
         
         var result: [String:Any] = [:]
@@ -169,18 +169,11 @@ class RestAPIManager {
                 return
             }
             
-            //Debug Print
-//            let jsonStr = String(data:data, encoding: .utf8)
-//            print("Json Response")
-//            print(jsonStr)
-            
             do{
                 guard let resultDict = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:Any] else {
                     return
                 }
-                
-                //                print("Result Dict:")
-                //                print(resultDict)
+
                 result = resultDict
                 
             }catch let jsonErr {
@@ -189,16 +182,15 @@ class RestAPIManager {
             
             }.resume()
         
-        //        print("RESULT:")
-        //        print(result)
-        
         return result
     }
     
+    // input: URL String, output: Dictionary with [String:Any] for the response
+    // Sends JSON message to backend
+    // Asynchronous, done in background
     static func asyncHttpPost(jsonData: Data, URLStr: String) -> [String:Any]{
         
         var result: [String:Any] = [:]
-        //let jsonStr = String(data: jsonData, encoding: String.Encoding.utf8) ?? "Data could not be printed"
         
         if !jsonData.isEmpty{
             
@@ -250,13 +242,13 @@ class RestAPIManager {
             
         }
         
-        print(result)
         return result
     }
     
+    // input: URL String, output: none
+    // Retrieves all hotspot information from backend
+    // Asynchronous, done in background
     static func httpGetHotspots(URLStr: String){
-        
-//        let semaphore = DispatchSemaphore(value: 0)
         
         guard let url = URL(string: URLStr) else { return }
         
@@ -274,7 +266,6 @@ class RestAPIManager {
             }
             
             guard let data = data else {
-//                semaphore.signal()
                 return
             }
             
@@ -286,22 +277,17 @@ class RestAPIManager {
                     InstanceDAO.hotspotDict[hotspot.name] = hotspot
                 }
                 
-//                print("HOTSPOT")
-//                print(InstanceDAO.hotspotDict)
-                
-//                semaphore.signal()
             } catch let jsonErr{
                 print("Error serializing json:", jsonErr)
-//                semaphore.signal()
             }
-            
             
         }.resume()
         
-//        semaphore.wait()
-        
     }
     
+    // input: URL String, output: none
+    // Retrieves all team's starting hotspot information from backend
+    // Asynchronous, done in background
     static func httpGetStartingHotspots(URLStr: String){
         
         guard let url = URL(string: URLStr) else { return }
@@ -329,9 +315,6 @@ class RestAPIManager {
                     InstanceDAO.startHotspots[String(teamStartHotspot.team)] = teamStartHotspot.startingHotspot
                 }
                 
-                print("TEAM START HOTSPOT")
-                print(InstanceDAO.startHotspots)
-                
             } catch let jsonErr{
                 print("Error serializing json:", jsonErr)
             }
@@ -341,6 +324,9 @@ class RestAPIManager {
         
     }
     
+    // input: URL String, output: none
+    // Retrieves all quiz information from backend
+    // Asynchronous, done in background
     static func httpGetQuizzes(URLStr: String){
         
         guard let url = URL(string: URLStr) else { return }
@@ -368,9 +354,6 @@ class RestAPIManager {
                     InstanceDAO.quizDict[quiz.hotspot] = quiz
                 }
                 
-                print("QUIZZES")
-                print(InstanceDAO.quizDict)
-                
             } catch let jsonErr{
                 print("Error serializing json:", jsonErr)
             }
@@ -380,6 +363,9 @@ class RestAPIManager {
         
     }
     
+    // input: URL String, output: none
+    // Retrieves all selfies information from backend
+    // Asynchronous, done in background
     static func httpGetSelfies(URLStr: String){
         
         guard let url = URL(string: URLStr) else { return }
@@ -407,9 +393,6 @@ class RestAPIManager {
                     InstanceDAO.selfieDict[selfie.hotspot] = selfie.question
                 }
                 
-                print("SELFIES")
-                print(InstanceDAO.selfieDict)
-                
             } catch let jsonErr{
                 print("Error serializing json:", jsonErr)
             }
@@ -419,6 +402,9 @@ class RestAPIManager {
         
     }
     
+    // input: URL String, output: none
+    // Retrieves all image urls from backend
+    // Synchronous method stops main thread
     static func httpGetImageURLs(URLStr: String){
         
         let semaphore = DispatchSemaphore(value: 0)
@@ -452,8 +438,6 @@ class RestAPIManager {
                     InstanceDAO.urlDict[url.hotspot] = url
                 }
                 
-                print("IMAGEURLS")
-                print(InstanceDAO.urlDict)
                 semaphore.signal()
                 
             } catch let jsonErr{
@@ -468,6 +452,9 @@ class RestAPIManager {
         
     }
     
+    // input: URL String, output: none
+    // Retrieves all submission images from backend
+    // Synchronous method stops main thread
     static func httpGetImage(URLStr: String, hotspot: String, question: String){
         
         let semaphore = DispatchSemaphore(value: 0)
@@ -509,6 +496,9 @@ class RestAPIManager {
         
     }
 
+    // input: URL String, output: none
+    // Retrieves all leaderboard information from backend
+    // Asynchronous, done in background
     static func httpGetLeaderboard(URLStr: String){
         
         let semaphore = DispatchSemaphore(value: 0)
@@ -524,7 +514,7 @@ class RestAPIManager {
             
             if let urlResponse = response as? HTTPURLResponse {
                 let status = urlResponse.statusCode
-                print("httpGetLeaderboard Response: \(response)")
+                print("httpGetLeaderboard Response: \(status)")
             }
             
             if let error = error {
@@ -544,9 +534,6 @@ class RestAPIManager {
                 for leaderboard in leaderboards{
                     InstanceDAO.leaderboardDict[String(leaderboard.team)] = leaderboard.hotspots_completed
                 }
-
-                print("LEADERBOARD")
-                print(InstanceDAO.leaderboardDict)
                 
                 semaphore.signal()
 
@@ -554,19 +541,18 @@ class RestAPIManager {
                 print("Error serializing json:", jsonErr)
             }
 
-
         }.resume()
         
         semaphore.wait()
 
     }
     
+    // input: URL String, output: none
+    // Retrieves all anagram information from backend
+    // Asynchronous, done in background
     static func httpGetAnagram(URLStr: String){
         
-//        let semaphore = DispatchSemaphore(value: 0)
-        
         guard let url = URL(string: URLStr) else {
-//            semaphore.signal()
             print("URL cannot be created")
             return
         }
@@ -585,7 +571,6 @@ class RestAPIManager {
             }
             
             guard let data = data else {
-//                semaphore.signal()
                 print("No data available")
                 return
             }
@@ -598,11 +583,6 @@ class RestAPIManager {
                     InstanceDAO.anagramDict[anagram.hotspot] = anagram.anagram
                 }
                 
-                print("ANAGRAM")
-                print(InstanceDAO.anagramDict)
-                
-//                semaphore.signal()
-                
             } catch let jsonErr{
                 print("Error serializing json:", jsonErr)
             }
@@ -610,16 +590,14 @@ class RestAPIManager {
             
         }.resume()
         
-//        semaphore.wait()
-        
     }
     
+    // input: URL String, output: none
+    // Retrieves all drag and drop information from backend
+    // Asynchronous, done in background
     static func httpGetDragAndDrop(URLStr: String){
         
-//        let semaphore = DispatchSemaphore(value: 0)
-        
         guard let url = URL(string: URLStr) else {
-//            semaphore.signal()
             print("URL cannot be created")
             return
         }
@@ -638,7 +616,6 @@ class RestAPIManager {
             }
             
             guard let data = data else {
-//                semaphore.signal()
                 print("No data available")
                 return
             }
@@ -651,11 +628,6 @@ class RestAPIManager {
                     InstanceDAO.dragAndDropDict[dragAndDrop.hotspot] = dragAndDrop
                 }
                 
-                print("DRAG AND DROP")
-                print(InstanceDAO.dragAndDropDict)
-                
-//                semaphore.signal()
-                
             } catch let jsonErr{
                 print("Error serializing json:", jsonErr)
             }
@@ -663,16 +635,14 @@ class RestAPIManager {
             
             }.resume()
         
-//        semaphore.wait()
-        
     }
     
+    // input: URL String, output: none
+    // Retrieves all drawing information from backend
+    // Asynchronous, done in background
     static func httpGetDrawing(URLStr: String){
         
-        //        let semaphore = DispatchSemaphore(value: 0)
-        
         guard let url = URL(string: URLStr) else {
-            //            semaphore.signal()
             print("URL cannot be created")
             return
         }
@@ -691,7 +661,6 @@ class RestAPIManager {
             }
             
             guard let data = data else {
-                //                semaphore.signal()
                 print("No data available")
                 return
             }
@@ -704,11 +673,6 @@ class RestAPIManager {
                     InstanceDAO.drawingDict[drawing.hotspot] = drawing.question
                 }
                 
-                print("DRAWING")
-                print(InstanceDAO.drawingDict)
-                
-                //                semaphore.signal()
-                
             } catch let jsonErr{
                 print("Error serializing json:", jsonErr)
             }
@@ -716,13 +680,12 @@ class RestAPIManager {
             
             }.resume()
         
-        //        semaphore.wait()
-        
     }
     
+    // input: URL String, output: none
+    // Retrieves all word search information from backend
+    // Asynchronous, done in background
     static func httpGetWordSearch(URLStr: String){
-        
-        //        let semaphore = DispatchSemaphore(value: 0)
         
         guard let url = URL(string: URLStr) else {
             //            semaphore.signal()
@@ -757,11 +720,6 @@ class RestAPIManager {
                     InstanceDAO.wordSearchDict[wordSearch.hotspot] = wordSearch
                 }
                 
-                print("WORD SEARCH")
-                print(InstanceDAO.wordSearchDict)
-                
-                //                semaphore.signal()
-                
             } catch let jsonErr{
                 print("Error serializing json:", jsonErr)
             }
@@ -769,16 +727,14 @@ class RestAPIManager {
             
             }.resume()
         
-        //        semaphore.wait()
-        
     }
     
+    // input: URL String, output: none
+    // Retrieves all team's leader and member information from backend
+    // Asynchronous, done in background
     static func httpGetLeaderMemberStatus(URLStr: String){
         
-        //let semaphore = DispatchSemaphore(value: 0)
-        
         guard let url = URL(string: URLStr) else {
-            //semaphore.signal()
             return }
         
         URLSession.shared.dataTask(with: url){(data, response, error) in
@@ -806,10 +762,6 @@ class RestAPIManager {
                     InstanceDAO.userDict[user.username] = user
                 }
                 
-                print("USERS")
-                print(InstanceDAO.userDict)
-                
-                //semaphore.signal()
             } catch let jsonErr{
                 print("Error serializing json:", jsonErr)
             }
@@ -817,15 +769,14 @@ class RestAPIManager {
             
             }.resume()
         
-        //semaphore.wait()
     }
     
+    // input: URL String, output: none
+    // Retrieves all activity feed information from backend
+    // Asynchronous, done in background
     static func httpGetActivityFeed(URLStr: String){
         
-        //let semaphore = DispatchSemaphore(value: 0)
-        
         guard let url = URL(string: URLStr) else {
-            //semaphore.signal()
             return }
         
         URLSession.shared.dataTask(with: url){(data, response, error) in
@@ -842,7 +793,6 @@ class RestAPIManager {
             }
             
             guard let data = data else {
-                //semaphore.signal()
                 return }
             
             do {
@@ -877,13 +827,6 @@ class RestAPIManager {
                     
                 }
                 
-                print("ACTIVITY")
-                print(InstanceDAO.activityArr)
-                
-                // Populate completed hotspots
-                
-                
-                //semaphore.signal()
             } catch let jsonErr{
                 print("Error serializing json:", jsonErr)
             }
@@ -891,6 +834,5 @@ class RestAPIManager {
             
             }.resume()
         
-        //semaphore.wait()
     }
 }

@@ -1,16 +1,12 @@
 //
 //  HomeController.swift
 //  Engaging U
-//
-//  Created by Admin on 3/11/18.
-//  Copyright © 2018 Admin. All rights reserved.
-//
 
 import UIKit
-
+// LoginTrailController checks if trailID is same as the trailID generated from webapp
 extension UITextField{
+    //design of the TrailID textbox
     func setBottomBorder(){
-        
         self.layer.shadowColor = UIColor.gray.cgColor
         self.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
         self.layer.shadowOpacity = 1.0
@@ -19,6 +15,7 @@ extension UITextField{
     }
 }
 extension UIButton {
+    //design of the submit button
     func float(){
         layer.cornerRadius = frame.height/2
         layer.shadowOpacity = 0.25
@@ -35,7 +32,6 @@ class LoginTrailController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.trailIDPin.delegate = self
         trailIDPin.setBottomBorder()
         submitButton.float()
@@ -45,12 +41,6 @@ class LoginTrailController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object:nil)
         
     }
-    
-    //navigation
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //        // Get the new view controller using segue.destination.
-    //        // Pass the selected object to the new view controller.
-    //    }
     
     @IBAction func connectBtn(_ sender: Any) {
         
@@ -85,21 +75,7 @@ class LoginTrailController: UIViewController, UITextFieldDelegate {
             
             self.dismiss(animated: true, completion: {
                 
-                // Shortcut to camera for testing
-                if(trailID == "camera"){
-                    self.performSegue(withIdentifier: "toCameraSegue", sender: nil)
-                }
-                if(trailID == "dragdrop"){
-                    self.performSegue(withIdentifier: "toDragAndDropSegue", sender: nil)
-                }
-                if(trailID == "drawing"){
-                    self.performSegue(withIdentifier: "toDrawingSegue", sender: nil)
-                }
-                if(trailID == "word"){
-                    self.performSegue(withIdentifier: "toWordSearchSegue", sender: nil)
-                }
-                // Remember to remove "fypadmin" check
-                if(trailID == InstanceDAO.trail_instance_id || trailID == "fypadmin"){
+                if(trailID == InstanceDAO.trail_instance_id){
                     self.performSegue(withIdentifier: "toNameSegue", sender: nil)
                 }else{
                     self.createAlert(title: "Incorrect or Missing Pin Please Try Again", message: "")
@@ -120,23 +96,19 @@ class LoginTrailController: UIViewController, UITextFieldDelegate {
         }))
         self.present(alert, animated: true, completion:nil)
     }
-    
+    //Loading bar while witing for other members to join
+    //loading bar disappear when webapp start trail
     func loadWaitScreen() {
         let alert = UIAlertController(title: nil, message: "Loading...", preferredStyle: .alert)
-        
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.style = UIActivityIndicatorView.Style.gray
         loadingIndicator.startAnimating();
-        
         alert.view.addSubview(loadingIndicator)
         present(alert, animated: true, completion: nil)
-        
     }
     
     @objc func keyboardWillChange(notification: Notification){
-//        print("Keyboard will show: \(notification.name.rawValue)")
-        
         // Get keyboard height
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
@@ -153,7 +125,7 @@ class LoginTrailController: UIViewController, UITextFieldDelegate {
 
         }
     }
-    
+    //dismiss keyboard when user click on return button on the keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false

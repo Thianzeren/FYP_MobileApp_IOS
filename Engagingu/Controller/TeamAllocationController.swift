@@ -1,13 +1,8 @@
-//
 //  TeamAllocationController.swift
 //  Engagingu
-//
-//  Created by Nicholas on 8/11/18.
-//  Copyright © 2018 Raylene. All rights reserved.
-//
 
 import UIKit
-
+//TeamAllocationController displays the team number and role (leader/member)
 class TeamAllocationController: UIViewController {
     
     @IBOutlet weak var groupInstructions: UILabel!
@@ -16,12 +11,16 @@ class TeamAllocationController: UIViewController {
     @IBOutlet weak var startBtn: UIButton!
     let indicator: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
     
+    //This function stops displaying the loading bar
+    //and show the startTrail button
+    //when the admin officially start trail on the webapp
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Make button disappear first
         startBtn.isHidden = true
         startBtn.float()
+        
         // Get socket and add handler
         let socket = SocketHandler.getSocket()
         socket.on("startTrail"){ data, ack in
@@ -31,11 +30,11 @@ class TeamAllocationController: UIViewController {
             self.startBtn.isHidden = false;
 
         }
-
+        //dynamic increase of font size to fit the textbox
         groupInstructions.font = optimisedfindAdaptiveFontWithName(fontName: "Roboto Condensed", message: groupInstructions, minSize: 10, maxSize: 28)
         print("\(String(describing: groupInstructions.font))")
     }
-    
+    //This method decides on the text to show user based on the roles (leader/member)
     override func viewDidAppear(_ animated: Bool) {
         
         // Check if user is leader or member
@@ -65,7 +64,6 @@ class TeamAllocationController: UIViewController {
         // Save to session
         saveCredentialsToSession()
         
-//        self.startBtn.isHidden = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -90,7 +88,7 @@ class TeamAllocationController: UIViewController {
         indicator.startAnimating()
         
     }
-    
+    //save to user default
     func saveCredentialsToSession(){
         
         let def = UserDefaults.standard
@@ -131,7 +129,6 @@ class TeamAllocationController: UIViewController {
                 tempMax = testedSize
             }
         }
-        
         
         //returning the size -1 (to have enought space right and left)
         return UIFont(name: fontName, size: tempMin - 1)

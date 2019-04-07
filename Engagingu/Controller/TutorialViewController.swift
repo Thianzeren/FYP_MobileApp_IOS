@@ -1,16 +1,13 @@
-//
 //  TutorialViewController.swift
 //  Engagingu
-//
-//  Created by Raylene on 22/3/19.
-//  Copyright © 2019 Raylene. All rights reserved.
-//
+
 
 import UIKit
-
+//TutorialViewController is for designing the button
 class TutorialViewController: UIViewController {
 
     @IBOutlet weak var letsGoButton: UIButton!
+    //Float the button
     override func viewDidLoad() {
         super.viewDidLoad()
         letsGoButton.float()

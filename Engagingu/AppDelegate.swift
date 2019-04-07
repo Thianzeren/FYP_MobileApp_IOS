@@ -40,13 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let completedList = def.array(forKey: "completedList")
         let startHotspots = def.dictionary(forKey: "startHotspots")
         
-        print("UserDefaults team_id: \(team_id)")
-        print("UserDefaults trail_instance_id: \(trail_instance_id)")
-        print("UserDefaults username: \(username)")
-        print("UserDefaults isLeader: \(isLeader)")
-        print("UserDefaults completedList: \(completedList)")
-        print("UserDefaults startHotspots: \(startHotspots)")
-        
         //Retrieve all usernames from DB to check if user has entered before
         guard let retrieveUsernamesURL = InstanceDAO.serverEndpoints["getAllUsers"] else {
             print("Unable to get server endpoint for retrieveUsernamesURL")
@@ -62,19 +55,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }else {
                 print("was not logged in")
             }
+            
         }else{
             print("Username Array was not retrieved from database")
         }
         
         if (wasLoggedIn) {
             
-            print("In wasLoggedIn")
             InstanceDAO.team_id = team_id!
             InstanceDAO.trail_instance_id = trail_instance_id!
             InstanceDAO.username = username!
             InstanceDAO.isLeader = isLeader
             InstanceDAO.completedList = completedList as? Array<String> ?? []
-            //InstanceDAO.activityArr = activityArr as? Array<Activity> ?? []
             InstanceDAO.startHotspots = startHotspots as? [String:String] ?? [:]
             
             // Get starting hotspots
@@ -155,11 +147,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 if(completedList.count > 0){
                     InstanceDAO.isFirstTime = false
-                    print("AppDelegate isFirstTime: \(InstanceDAO.isFirstTime)")
+//                    print("AppDelegate isFirstTime: \(InstanceDAO.isFirstTime)")
                 }
                 
             }
             
+            // Save to session
             saveCredentialsToSession()
             
             let initialViewController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
@@ -175,8 +168,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.makeKeyAndVisible()
         }
         
-        registerForPushNotifications()
-        
         return true
 
     }
@@ -186,27 +177,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let dictionary = defaults.dictionaryRepresentation()
         dictionary.keys.forEach { key in
             defaults.removeObject(forKey: key)
-        }
-    }
-    
-    func registerForPushNotifications() {
-        UNUserNotificationCenter.current() // 1
-            .requestAuthorization(options: [.alert, .sound, .badge]) {
-                [weak self] granted, error in
-                
-                print("Permission granted: \(granted)")
-                guard granted else { return }
-                self?.getNotificationSettings()
-        }
-    }
-    
-    func getNotificationSettings() {
-        UNUserNotificationCenter.current().getNotificationSettings { settings in
-            print("Notification settings: \(settings)")
-            guard settings.authorizationStatus == .authorized else { return }
-            DispatchQueue.main.async {
-                UIApplication.shared.registerForRemoteNotifications()
-            }
         }
     }
     

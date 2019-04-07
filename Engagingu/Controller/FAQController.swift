@@ -1,9 +1,5 @@
 //
 //  FAQController.swift
-//  
-//
-//  Created by Nicholas on 19/2/19.
-//
 
 import UIKit
 

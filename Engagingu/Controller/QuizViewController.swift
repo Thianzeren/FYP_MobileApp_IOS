@@ -1,21 +1,13 @@
-//
 //  QuizViewController.swift
 //  Engagingu
-//
-//  Created by Nicholas on 13/12/18.
-//  Copyright © 2018 Raylene. All rights reserved.
-//
 
 import UIKit
-
+//QuizViewController display the questions and options
+//It validates and display the right answers to the users
+//For members, they can go back to the previous question
 class QuizViewController: UIViewController {
 
-    //@IBOutlet weak var topNavBar: UINavigationBar!
-    //@IBOutlet weak var question: UITextView!
-    
     @IBOutlet weak var question: UILabel!
-   // @IBOutlet weak var questionViewHC : NSLayoutConstraint!
-    
     // Outlet for buttons
     @IBOutlet weak var firstAnswer: UIButton!
     @IBOutlet weak var secondAnswer: UIButton!
@@ -54,8 +46,6 @@ class QuizViewController: UIViewController {
     var hasSeenCorrectAnswer = false
     
     override func viewDidLoad() {
-
-        //topNavBar.topItem!.title = "Engaging U"
         
         firstAnswer.setTitle(nil, for: .normal)
         secondAnswer.setTitle(nil, for: .normal)
@@ -92,14 +82,8 @@ class QuizViewController: UIViewController {
             confirmButton.setTitle("Home", for: .normal)
         }
         super.viewDidLoad()
-        
-        //Self adjust the height of the question
-        //questionViewHC.constant = self.question.contentSize.height
-        
-       
     }
     
-   
     @IBAction func selectFirstAnswer(_ sender: Any) {
         // Change selected Answer
         selectedAnswer = 1
@@ -162,11 +146,6 @@ class QuizViewController: UIViewController {
         let quiz_options: [String] = quiz.quiz_options
         let quiz_answer: Int = quiz.quiz_answer
         
-//        print(quiz)
-//        print(quiz_question)
-//        print(quiz_options)
-//        print(quiz_answer)
-        
         self.question.text = quiz_question
 
         var count: Int = 0
@@ -199,19 +178,14 @@ class QuizViewController: UIViewController {
     @IBAction func submitAnswer(_ sender: Any) {
         
         // Submit button has 4 situations:
-        // 0) check if isLeader
-        // 1) if he/she has seen the result page, button redirects to map
-        // 2) if it is the last question, and correct answer already shown, show final result page
-        // 3) if he/she has seen the correct answer, reset colors and update score, question and options
-        // 4) if he/she hasn't submitted answer, show correct answer
+        // 0) check if isLeader: if yes carry on with other checks, else show next question
+        // 1) if he/she has seen the result page: button redirects to map
+        // 2) if it is the last question and correct answer already shown: send score to backend, redirect to result page
+        // 3) if he/she has seen the correct answer: reset colors and update score, question and options
+        // 4) if no answer selected: show pop-up alert
+        // 5) if answer is selected: show correct option in green and wrong option in red
+        
         if (InstanceDAO.isLeader){
-            
-//            if (confirmButton.title(for: .normal) == "Complete Quiz"){
-//
-//                //Perform segue
-//                performSegue(withIdentifier: "toTabBarSegue", sender: nil)
-//
-//            }else
             
             if(questionNumber == questionBank.count - 1 && hasSeenCorrectAnswer){ //If answered last question
                 //Post results to server
@@ -369,7 +343,6 @@ class QuizViewController: UIViewController {
                     
                 }
                 
-                
                 outcomeArr.append(Outcome(question: question.text!, userAnswer: selectedAnswerStr, expectedAnswer: questionAnswerStr))
             }
             
@@ -386,13 +359,6 @@ class QuizViewController: UIViewController {
             }else {
             
                 questionNumber += 1
-                print(questionNumber)
-                
-                //Reset choice colors
-                firstAnswer.isUserInteractionEnabled = false
-                secondAnswer.isUserInteractionEnabled = false
-                thirdAnswer.isUserInteractionEnabled = false
-                fourthAnswer.isUserInteractionEnabled = false
                 
                 updateQuiz()
                 
@@ -422,22 +388,8 @@ class QuizViewController: UIViewController {
         
     }
     
-    func loadWaitScreen() {
-        let alert = UIAlertController(title: nil, message: "Loading...", preferredStyle: .alert)
-        
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.gray
-        loadingIndicator.startAnimating();
-        
-        alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
-        
-    }
-    
     @IBAction func backToPreviousView(_ sender: Any) {
-        print("Back button tapped")
-        
+
         if questionNumber == 0 {
             dismiss(animated: true, completion: nil)
         } else {

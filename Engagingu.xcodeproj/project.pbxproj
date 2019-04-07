@@ -14,7 +14,6 @@
 		AF2AF80821FED09000B75A50 /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF2AF80721FED08F00B75A50 /* RobotoCondensed-Bold.ttf */; };
 		AF2C6CED2229B3570072C303 /* DrawingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2C6CEC2229B3560072C303 /* DrawingController.swift */; };
 		AF2C6CEF2229BF3A0072C303 /* WordSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2C6CEE2229BF3A0072C303 /* WordSearchViewController.swift */; };
-		AF3DBCEF21F7077E005FBE40 /* TutorialController(old).swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3DBCEE21F7077E005FBE40 /* TutorialController(old).swift */; };
 		AF51084922192ABD00EAB0FD /* WordSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51084722192ABD00EAB0FD /* WordSearchTableViewCell.swift */; };
 		AF6C8B42218D4CDF006AC6C0 /* LoginTrailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C8B3F218D4CDF006AC6C0 /* LoginTrailController.swift */; };
 		AF6C8B43218D4CDF006AC6C0 /* LoginNameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C8B40218D4CDF006AC6C0 /* LoginNameController.swift */; };
@@ -93,7 +92,6 @@
 		AF2AF80721FED08F00B75A50 /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; };
 		AF2C6CEC2229B3560072C303 /* DrawingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingController.swift; sourceTree = "<group>"; };
 		AF2C6CEE2229BF3A0072C303 /* WordSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSearchViewController.swift; sourceTree = "<group>"; };
-		AF3DBCEE21F7077E005FBE40 /* TutorialController(old).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TutorialController(old).swift"; sourceTree = "<group>"; };
 		AF51084722192ABD00EAB0FD /* WordSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSearchTableViewCell.swift; sourceTree = "<group>"; };
 		AF6C8B3F218D4CDF006AC6C0 /* LoginTrailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTrailController.swift; sourceTree = "<group>"; };
 		AF6C8B40218D4CDF006AC6C0 /* LoginNameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNameController.swift; sourceTree = "<group>"; };
@@ -312,7 +310,6 @@
 				AF6C8B3F218D4CDF006AC6C0 /* LoginTrailController.swift */,
 				AF6C8B40218D4CDF006AC6C0 /* LoginNameController.swift */,
 				AFB4EA132245228300E251AD /* TutorialViewController.swift */,
-				AF3DBCEE21F7077E005FBE40 /* TutorialController(old).swift */,
 				E1A67DE821944C6B00581D1C /* TeamAllocationController.swift */,
 				E176A13D21C1487F005A5C30 /* TabBarController.swift */,
 				E1F5133721BFC24B00964726 /* MapController.swift */,
@@ -659,7 +656,6 @@
 				E1A67DE321913DC300581D1C /* InstanceDAO.swift in Sources */,
 				E12FEFA521F2F3090074F877 /* LeaderboardTableViewCell.swift in Sources */,
 				AF2C6CED2229B3570072C303 /* DrawingController.swift in Sources */,
-				AF3DBCEF21F7077E005FBE40 /* TutorialController(old).swift in Sources */,
 				E10D9FB421DF042900C6D682 /* SubmissionViewController.swift in Sources */,
 				E1F5133821BFC24B00964726 /* MapController.swift in Sources */,
 				E18EA4632237580F002B75CE /* ResultScreenTableViewCell.swift in Sources */,

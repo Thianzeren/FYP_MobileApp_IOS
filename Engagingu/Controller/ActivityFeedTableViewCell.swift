@@ -1,13 +1,8 @@
-//
 //  ActivityFeedTableViewCell.swift
 //  Engagingu
-//
-//  Created by Nicholas on 19/1/19.
-//  Copyright © 2019 Raylene. All rights reserved.
-//
 
 import UIKit
-
+//ActivityFeedTableViewCell initialises every row
 class ActivityFeedTableViewCell: UITableViewCell {
 
     @IBOutlet weak var teamLabel: UILabel!

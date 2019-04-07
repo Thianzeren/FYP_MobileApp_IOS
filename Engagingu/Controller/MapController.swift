@@ -1,18 +1,13 @@
-//
 //  MapController.swift
 //  Engagingu
-//
-//  Created by Nicholas on 11/12/18.
-//  Copyright © 2018 Raylene. All rights reserved.
-//
 
 import UIKit
 import GoogleMaps
 import GooglePlaces
 
+// MapController initialises google maps with the hotspot markers
 class MapController: UIViewController, GMSMapViewDelegate {
-    
-    @IBOutlet weak var timeLeft: UILabel!
+
     @IBOutlet weak var mapViewFrame: UIView!
     var defaultCoordinates = [1,2968, 103.8522]
     var locationManager = CLLocationManager()
@@ -21,7 +16,6 @@ class MapController: UIViewController, GMSMapViewDelegate {
     var placesClient: GMSPlacesClient!
     var zoomLevel: Float = 17.0
     var selectedMarker: GMSMarker!
-    var distanceToTriggier = 5 // In Metres
     
     override func viewDidLoad() {
         
@@ -35,32 +29,20 @@ class MapController: UIViewController, GMSMapViewDelegate {
                                               longitude: locationManager.location?.coordinate.longitude ?? defaultCoordinates[1],
                                               zoom: zoomLevel)
         
-        mapView = GMSMapView.map(withFrame: mapViewFrame.bounds, camera: camera)
+        mapView = GMSMapView.map(withFrame: view.bounds, camera: camera)
         mapView.settings.myLocationButton = true
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.isMyLocationEnabled = true
         mapView.delegate = self
         
-        // Add the map to the view, hide it until we've got a location update.
-        mapViewFrame.addSubview(mapView)
-//        self.mapViewFrame.bringSubviewToFront(timeLeft)
-        mapView.isHidden = true
+        // Add the map to the view
+        view.addSubview(mapView)
+        
+        // Animate camera to location
+        mapView.animate(to: camera)
         
         // Refresh hotspots
         initiateHotspots()
-        
-        if mapView.isHidden {
-            mapView.isHidden = false
-            mapView.camera = camera
-        } else {
-            mapView.animate(to: camera)
-        }
-//        // For Testing
-//        let marker = GMSMarker()
-//        marker.position = CLLocationCoordinate2D(latitude: 1.2953, longitude: 103.8506)
-//        marker.title = "Placeholder Testing Marker"
-//        marker.snippet = "Testing Snippet"
-//        marker.map = mapView
         
     }
     
@@ -115,14 +97,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
         if let dist = distance {
             
             // Distance where user is allowed to click on hotspot in metres
-//            let distanceThreshold: Double = 50
-            
-            // Distance for debugging (to remove geofence)
             let distanceThreshold: Double = 10000
-            
-//            print("SelectedMarkerLocation: \(selectedMarkerLocation)")
-//            print("CurrentLocation: \(currentLocation)")
-//            print("Distance: \(dist)")
             
             if (Double(dist) <= distanceThreshold){
                 
@@ -143,16 +118,14 @@ class MapController: UIViewController, GMSMapViewDelegate {
             }
         }
         
-        //performSegue(withIdentifier: "toNarrativeSegue", sender: self)
-        
     }
     
+    // Reintialise the marker that shows the hotspot
+    // If hotspot not completed, marker is in orange
+    // else marker is green
     func initiateHotspots() {
         
         mapView.clear()
-        
-//        // Add labs hotspot for testing
-//        InstanceDAO.hotspotDict["LABS"] = Hotspot(coordinates: ["1.2948","103.8499"], name: "SMU Labs", narrative: "SMU Labs Narrative Test")
         
         let hotspots = InstanceDAO.hotspotDict
         let startHotspots = InstanceDAO.startHotspots
@@ -161,8 +134,8 @@ class MapController: UIViewController, GMSMapViewDelegate {
 
             let teamStartHotspot = startHotspots[InstanceDAO.team_id]
             let hotspot = hotspots[teamStartHotspot!]
-
             let coordinates = hotspot!.coordinates
+            
             let marker = GMSMarker()
             marker.position = CLLocationCoordinate2D(latitude: Double(coordinates[0]) ?? defaultCoordinates[0] , longitude: Double(coordinates[1]) ?? defaultCoordinates[1])
             marker.title = hotspot!.name
@@ -234,8 +207,6 @@ extension MapController: CLLocationManagerDelegate{
         
         // update current location variable whenever location changes
         currentLocation = location
-        //print("Location: \(location)")
-        print(location.coordinate)
         
         if(InstanceDAO.isLeader){
             // send location to server
@@ -251,7 +222,7 @@ extension MapController: CLLocationManagerDelegate{
                 print("Unable to get server endpoint for updateScoreURL")
                 return
             }
-            RestAPIManager.asyncHttpPost(jsonData: jsonData, URLStr: updateLocationURL)
+            _ = RestAPIManager.asyncHttpPost(jsonData: jsonData, URLStr: updateLocationURL)
             
             print("Sent Location to Backend")
         }
@@ -263,13 +234,6 @@ extension MapController: CLLocationManagerDelegate{
             mapView.animate(to: camera)
         }
         
-//        if mapView.isHidden {
-//            mapView.isHidden = false
-//            mapView.camera = camera
-//        } else {
-//            mapView.animate(to: camera)
-//        }
-        
     }
     
     // Handle authorization for the location manager.
@@ -279,13 +243,12 @@ extension MapController: CLLocationManagerDelegate{
             print("Location access was restricted.")
         case .denied:
             print("User denied access to location.")
-            // Display the map using the default location.
-            mapView.isHidden = false
         case .notDetermined:
             print("Location status not determined.")
         case .authorizedAlways: fallthrough
         case .authorizedWhenInUse:
             print("Location status is OK.")
+
         }
     }
     

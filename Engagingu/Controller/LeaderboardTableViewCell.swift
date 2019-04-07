@@ -1,13 +1,7 @@
-//
 //  LeaderboardTableViewCell.swift
 //  Engagingu
-//
-//  Created by Nicholas on 19/1/19.
-//  Copyright © 2019 Raylene. All rights reserved.
-//
-
 import UIKit
-
+//LeaderboardTableViewCell initialise every row
 class LeaderboardTableViewCell: UITableViewCell {
     
     @IBOutlet weak var teamLabel: UILabel!

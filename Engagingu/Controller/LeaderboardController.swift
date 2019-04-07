@@ -1,13 +1,8 @@
-//
 //  LeaderboardController.swift
 //  Engagingu
-//
-//  Created by Nicholas on 18/1/19.
-//  Copyright © 2019 Raylene. All rights reserved.
-//
 
 import UIKit
-
+//LeaderboardController gets the score of each group and rank them. It also shows the team that they are in.
 class LeaderboardController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -23,7 +18,7 @@ class LeaderboardController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         loadWaitScreen()
     }
-    
+    //This method gets the teams and their score and sort them by their scores
     override func viewDidAppear(_ animated: Bool) {
         guard let getLeaderboardURL = InstanceDAO.serverEndpoints["getLeaderboard"] else {
             print("Unable to get server endpoint for getLeaderboard")
@@ -35,16 +30,15 @@ class LeaderboardController: UIViewController {
         
         DispatchQueue.main.async {
             RestAPIManager.httpGetLeaderboard(URLStr: getLeaderboardURL + InstanceDAO.trail_instance_id)
-            
+            //get the teams and scores
             let leaderboardDict = InstanceDAO.leaderboardDict
-            
+            //remove the oldscores from array
             self.sortedTeamArr.removeAll()
+            //append the new scores into array
             for(key, value) in leaderboardDict{
                 self.sortedTeamArr.append((key, value))
             }
-            
             self.sortedTeamArr = self.sortedTeamArr.sorted(by: { $0.1 > $1.1 })
-            
             print("SORTED TEAM ARR")
             print(self.sortedTeamArr)
             group.leave()
@@ -53,22 +47,17 @@ class LeaderboardController: UIViewController {
         group.notify(queue: .main){
             self.tableView.delegate = self
             self.tableView.dataSource = self
-            
             self.tableView.reloadData()
-            
             self.dismiss(animated: false, completion: nil)
         }
-        
     }
     
     func loadWaitScreen() {
         let alert = UIAlertController(title: nil, message: "Loading...", preferredStyle: .alert)
-        
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.style = UIActivityIndicatorView.Style.gray
         loadingIndicator.startAnimating();
-        
         alert.view.addSubview(loadingIndicator)
         present(alert, animated: true, completion: nil)
         
@@ -77,11 +66,14 @@ class LeaderboardController: UIViewController {
 }
 
 extension LeaderboardController: UITableViewDataSource, UITableViewDelegate {
-
+    //this method returns the number of rows the tableview should have
+    //the number of rows == the number of teams
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return InstanceDAO.leaderboardDict.count
     }
-    
+    //this method display the teams & scores where the
+    //top 3 teams will be highlighted in gold, silver and bronze alongside
+    //medals displayed for the top 3 teams
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let teamID = sortedTeamArr[indexPath.row].0

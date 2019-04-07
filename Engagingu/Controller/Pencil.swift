@@ -2,7 +2,7 @@
 
 import Foundation
 import UIKit
-
+//initialise the pencil properties
 enum Pencil {
     case black
     case grey

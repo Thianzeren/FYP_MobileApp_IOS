@@ -1,13 +1,11 @@
-//
 //  ResultScreenTableViewCell.swift
 //  Engagingu
-//
-//  Created by Nicholas on 12/3/19.
-//  Copyright © 2019 Raylene. All rights reserved.
-//
+
 
 import UIKit
-
+//This method intialises the rows
+//if the userAns is the correctAns it will be in green else red
+//correctAns is always green color
 class ResultScreenTableViewCell: UITableViewCell {
 
     

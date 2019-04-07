@@ -1,24 +1,14 @@
-//
 //  AnagramViewController.swift
 //  Engagingu
-//
-//  Created by Nicholas on 23/1/19.
-//  Copyright © 2019 Raylene. All rights reserved.
-//
-
-
-
 import UIKit
-
+//AnagramViewController gets the word from webapp and jumple up the word before displaying to user
 class AnagramViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var wordInput: UITextField!
     @IBOutlet weak var wordLabel: UILabel!
-   // @IBOutlet weak var clueLabel: UITextView!
     @IBOutlet weak var submitBtn: UIButton!
     
     var score: Int = 1
-    //var clue: String = ""
     var hotspot: String = ""
     var hiddenWord: String = ""
     var wordInputwithoutspace = ""
@@ -54,7 +44,7 @@ class AnagramViewController: UIViewController, UITextFieldDelegate {
         wordInput.addTarget(self, action: #selector(AnagramViewController.textFieldDidChanged(_:)), for: UIControl.Event.editingChanged)
         
     }
-
+    //listen for events happening in the textbox and update the wordInput accordingly
     @IBAction func textFieldDidChanged(_ sender: UITextField) {
         //change the user input to lowercaps so that can compare to wordLabel
         let userInput = sender.text!.lowercased()
@@ -221,7 +211,7 @@ class AnagramViewController: UIViewController, UITextFieldDelegate {
             
         }
     }
-    
+    //dismiss the keyboard when user click on the return button
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false

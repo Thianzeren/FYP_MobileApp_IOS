@@ -9,6 +9,7 @@
 import Foundation
 import SocketIO
 
+// Initialies Socket connected to backend to receive updates from backend.
 class SocketHandler {
     
     static let manager: SocketManager = SocketManager(socketURL: URL(string: InstanceDAO.serverIP)!, config: [.log(true), .compress])
@@ -30,14 +31,11 @@ class SocketHandler {
     static func addHandlers() {
         
         socket.on(clientEvent: .connect) {data, ack in
-            print("socket connected")
+//            print("socket connected")
         }
         
         socket.on("activityFeed") {data, ack in
-
-            print("SOCKET BODY FROM activityFeed")
-            print(data)
-            
+        
             let jsonData = data as? [[String:String]]
             let msg = jsonData![0]
             let activity = Activity(team: msg["team"] ?? "team", hotspot: msg["hotspot"] ?? "hotspot", time: msg["time"] ?? "time")
@@ -62,9 +60,6 @@ class SocketHandler {
         
         socket.on("notification") {data, ack in
             
-            print("SOCKET BODY FROM notification")
-            print(data)
-            
             let jsonData = data as? [[String:String]]
             let msg = jsonData![0]
             let message = msg["message"]
@@ -80,6 +75,8 @@ class SocketHandler {
         
     }
     
+    // input: message
+    // Shows pop up alert with message and "ok" button
     static func showAlert(message: String) {
         
         var topWindow: UIWindow? = UIWindow(frame: UIScreen.main.bounds)

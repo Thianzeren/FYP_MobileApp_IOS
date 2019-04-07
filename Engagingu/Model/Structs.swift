@@ -9,8 +9,10 @@
 import Foundation
 import UIKit
 
+// Stores all structs used in the application
 
-struct Hotspot: Decodable{ //create a Hotspot class use for the jsondecoder
+// Hotspot struct stores all information of hotspot
+struct Hotspot: Decodable{
     
     let coordinates: [String]
     let name: String
@@ -23,12 +25,15 @@ struct Hotspot: Decodable{ //create a Hotspot class use for the jsondecoder
     }
 }
 
+// User struct stores all information of user
 struct User: Decodable{
     
     let username: String
     let team: Int
     let isLeader: Int
 }
+
+// HotspotQuiz stores all information regarding the quiz
 struct HotspotQuiz: Decodable{
     
     let hotspot: String
@@ -36,33 +41,39 @@ struct HotspotQuiz: Decodable{
     
 }
 
+// Quiz stores the question, answers and options, is used in struct HotspotQuiz
 struct Quiz: Decodable{
     let quiz_question: String
     let quiz_answer: Int
     let quiz_options: [String]
 }
 
+// Selfie stores hotspot and selfie question
 struct Selfie: Decodable{
     let hotspot: String
     let question: String
 }
 
+// ImageURL stores the image's path and also the corresponding hotspot and question
 struct ImageURL: Decodable{
     let submissionURL: String
     let hotspot: String
     let question: String
 }
 
+// TeamStartHotspot stores starting hotspot allocated to the team
 struct TeamStartHotspot: Decodable{
     let team: Int
     let startingHotspot: String
 }
 
+// Leaderboard stores team and number of hotspots completed
 struct Leaderboard: Decodable{
     let team: Int
     let hotspots_completed: Int
 }
 
+// Activity stores all activity information for activity feed
 struct Activity: Decodable{
     let team: String
     let hotspot: String
@@ -75,6 +86,7 @@ struct Activity: Decodable{
     }
 }
 
+// Drag And Drop stores all drag and drop information
 struct DragAndDrop: Decodable{
     
     let hotspot: String
@@ -83,6 +95,7 @@ struct DragAndDrop: Decodable{
     
 }
 
+// QnA stores individual drag and drop question and answer
 struct QnA: Decodable{
     
     let drag_and_drop_question: String
@@ -90,26 +103,29 @@ struct QnA: Decodable{
     
 }
 
+// Anagram stores the hotspot name and anagram word
 struct Anagram: Decodable{
     
     let hotspot: String
     let anagram: String
 }
 
+// WordSearch stores the hotspot name and the words that are meant to be found
 struct WordSearch: Decodable{
     
     let hotspot: String
     let words: [String]
-   // let title: String
     
 }
 
+// DrawingQns stores the hotspot name and the question for the question mission
 struct DrawingQns: Decodable {
     
     let hotspot: String
     let question: String
 }
 
+// Outcome stores the question, user's answer and expected answer
 struct Outcome {
     
     let question: String
@@ -124,6 +140,7 @@ struct Outcome {
     
 }
 
+// Media stores information regarding the media iamges
 struct Media{
     let key: String
     let hotspot: String
@@ -143,8 +160,6 @@ struct Media{
         let dateString = dateFormatter.string(from: date)
         
         self.filename = "wefieTeam\(InstanceDAO.team_id + dateString).jpeg"
-        
-        print(filename)
         
         self.key = key
         self.hotspot = hotspot

@@ -1,20 +1,18 @@
-//
 //  TestingWordSearchViewController.swift
 //  Engagingu
-//
-//  Created by Raylene on 30/1/19.
-//  Copyright © 2019 Raylene. All rights reserved.
-//
 
 import UIKit
-//To extract the char from the string
+//WordSearchViewController takes in 5 words from the webapp and
+//create a wordsearch grid of 10x10
+//Letters are always randomly placed while forming the wordsearch grid
+
 extension String {
-    
+    //To extract the index from the string
     func index(at position: Int, from start: Index? = nil) -> Index? {
         let startingIndex = start ?? startIndex
         return index(startingIndex, offsetBy: position, limitedBy: endIndex)
     }
-    
+    //To extract the char from the strong
     func character(at position: Int) -> Character? {
         guard position >= 0, let indexPosition = index(at: position) else {
             return nil
@@ -28,7 +26,7 @@ extension String {
 class WordSearchViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITextFieldDelegate, UICollectionViewDelegateFlowLayout{
     
     let grid_size: Int = 10
-    
+    //initialise the grid with "_"
     var grid: [[String]] = [[String]](repeating: [String](repeating : "_" , count: 10), count: 10)
  
     var step_x : Int = 0  // placement occupied
@@ -45,8 +43,6 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var home: UIButton!
     //for leader
     @IBOutlet weak var submit: UIButton!
-    //for leader after submitting
-    //@IBOutlet weak var result: UIButton!
     //hotspot name
     var hotspot: String = ""
     
@@ -71,25 +67,17 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
     //user types in wrong word
     var wrongList: Array<String> = []
     
-    //list from DB
-    var list = ["gold", "maroon", "blue", "green", "brown"]
+    //list to store words from webapp
+    var list = ["gold"]
     
     //captalised list from DB --> empty array only in the main method then uppercased
     var capitalised_list: Array<String> = []
     
-    //question from DB
+    //question to display the congrats message
     @IBOutlet weak var question: UILabel!
-    
     
     //score keeper
     var score : Int = 0
-    
-    //function to print the grid
-    func print_grid(){
-        for x in 0 ..< (grid_size){
-            print (grid[x])
-        }
-    }
     
     // to return a random letter from A-Z
     let uppercaseLetters = (65...90).map {Character(UnicodeScalar($0))}
@@ -122,146 +110,32 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
             thirdWord.isHidden = true
             fourthWord.isHidden = true
             fifthWord.isHidden = true
-            //result.isHidden = true
         }
-        
-        print_grid()
         //to dismiss keyboard when press return
         self.firstWord.delegate = self
         self.secondWord.delegate = self
         self.thirdWord.delegate = self
         self.fourthWord.delegate = self
         self.fifthWord.delegate = self
-        
-        //let list = ["gold", "maroon", "blue", "green", "brown"]
-        
-       // var capitalised_list = [String]()
-        
-//        for i in list {
-//            let capital_word: String = i.uppercased()
-//            capitalised_list.append(capital_word)
-//        }
-//
-//        print (capitalised_list)
-//
-//
-//        //horizontal and vertical only
-//        let orientations = ["rightleft", "updown"]
-//
-//        for word in capitalised_list {
-//            let word_length: Int = word.count
-//
-//            //Create new Key-value pair
-//             emptyDict.updateValue([], forKey: word)
-//
-//            //In case out of room when trying to place a word
-//            var placed = false
-//            while !placed {
-//                let orientation = orientations.randomElement()
-//                //print(orientation)
-//
-//                if orientation == "updown"{
-//                    step_x = 1
-//                    step_y = 0
-//                }
-//                if orientation == "rightleft"{
-//                    step_x = 0
-//                    step_y = 1
-//                }
-//
-//                //choosing starting point for the word, with x and y coordinates
-//                x_position = Int(arc4random_uniform(UInt32(grid_size)))
-//                y_position = Int(arc4random_uniform(UInt32(grid_size)))
-//
-//                //checking if the length of word is out of bounds
-//                ending_x = x_position + word.count*step_x
-//                ending_y = y_position + word.count*step_y
-//
-//                if (ending_x < 0 || ending_x > grid_size) {
-//                    continue                                  //choose another starting position on grid
-//                }
-//                if (ending_y < 0 || ending_y > grid_size) {
-//                    continue
-//                }
-//
-//                var failed: Bool = false
-//
-//                //two things done here
-//                //first loop checks if the word can be place determine by
-//                //1. underscores
-//                //2. same character
-//                //if fails, then break out of this loop anc continue the bigger loop
-//
-//                for i in 0 ..< word_length {
-//                    let character: String = String(word.character(at:i)!)
-//                    //i is a number
-//                    //to find the new position of every char on the grid
-//                    //whether it is occupied
-//                    new_position_x = x_position + i*step_x
-//                    new_position_y = y_position + i*step_y
-//
-//                    let character_at_new_position: String = grid[new_position_x][new_position_y]
-//                    if (character_at_new_position != "_") {
-//                        //space is occupied
-//                        //check for possibility of overlapping
-//                        if character_at_new_position == (character) {
-//                            continue
-//                        }
-//                        else {
-//                            failed = true
-//                            break
-//                        }
-//                    }
-//
-//                }
-//
-//                if failed{
-//                    continue  //choose another starting position on grid
-//                }
-//
-//                else {
-//                    //Word can be place on grid
-//                    for i in 0 ..< word_length {
-//                        let character: String = String(word.character(at:i)!)
-//                        new_position_x = x_position + i*step_x
-//                        new_position_y = y_position + i*step_y
-//                        grid[new_position_x][new_position_y] = character
-//                        placed = true
-//
-//                        //store every placing of each character of the word
-//                        emptyDict[word]?.append(new_position_x)
-//                        emptyDict[word]?.append(new_position_y)
-//
-//                        print(emptyDict)
-//
-//                    }
-//                }
-//
-//            }
-//        }
-//        for x in 0 ..< grid_size {
-//            for y in 0 ..< grid_size {
-//                if grid[x][y] == "_" {
-//                    grid[x][y] = String(randomLetter())
-//                }
-//            }
-//        }
-//        //check
-//         print_grid()
     }
+    //This method capitalised the list of words from webapp
+    //1.For every word,a random orientation will be selected
+    //2.A random starting potition will be chosen
+    //3.Check if the word length falls outside the 2D array grid
+    //4a. if word falls outside grid, repeat step 2.
+    //4b. if word did not fall outside grid, loop through every character in word and check if it can be place
+        //4c. word can be place if the cell is occupied by "_" or if has the same character
+        //4d. If fails (character to be place overlaps with a different character), repeat step 2
+    //5. Store the word in 2D array grid and store every word and their position as a dictionary for highlighting (green/red) purposes
     
     override func viewWillAppear(_ animated: Bool) {
-        // get list from db
+        // get list of words from database
         list = InstanceDAO.wordSearchDict[hotspot]?.words ?? []
-        
         for i in list {
             let capital_word: String = i.uppercased()
             capitalised_list.append(capital_word)
         }
-        
-        print (capitalised_list)
-        
-        
+
         //horizontal and vertical only
         let orientations = ["rightleft", "updown"]
         
@@ -275,8 +149,7 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
             var placed = false
             while !placed {
                 let orientation = orientations.randomElement()
-                //print(orientation)
-                
+
                 if orientation == "updown"{
                     step_x = 1
                     step_y = 0
@@ -311,9 +184,6 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
                 
                 for i in 0 ..< word_length {
                     let character: String = String(word.character(at:i)!)
-                    //i is a number
-                    //to find the new position of every char on the grid
-                    //whether it is occupied
                     new_position_x = x_position + i*step_x
                     new_position_y = y_position + i*step_y
                     
@@ -363,9 +233,6 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
                 }
             }
         }
-        //check
-        print_grid()
-        
     }
    
     //dismiss keyboard
@@ -486,19 +353,6 @@ class WordSearchViewController: UIViewController, UICollectionViewDataSource, UI
         scrollview.isScrollEnabled = false
     
     }
-    
-    /*@IBAction func resultPage(_ sender: Any) {
-        question.text = "Congratulations, you got " + String(score) + "/" + String(5) + " Correct!"
-        //using same code as member for home button to return to maps
-        home.isHidden = false
-        // so that the congrats page wont hv all this boxes
-        firstWord.isHidden = true
-        secondWord.isHidden = true
-        thirdWord.isHidden = true
-        fourthWord.isHidden = true
-        fifthWord.isHidden = true
-
-    }*/
     
     @IBAction func backToMaps(_ sender: Any) {
         

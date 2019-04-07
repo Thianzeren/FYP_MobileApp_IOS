@@ -10,7 +10,9 @@ import UIKit
 import Foundation
 import GoogleMaps
 import GooglePlaces
-    
+
+// Stores all necessary data of user and trail
+
 struct InstanceDAO {
     
     static var team_id: String = "0"
@@ -24,33 +26,11 @@ struct InstanceDAO {
     // AWS Elastic IP
     static var serverIP: String = "http://13.228.173.165:3000"
     
-//    static var serverEndpoints: [String:String] = [
-//        "getInstanceId" : serverIP + "/getInstance",
-//        "registerUser" : serverIP + "/user/register",
-//        "getStartingHotspots" : serverIP + "/team/startingHotspot?trail_instance_id=",
-//        "getAllHotspots" : serverIP + "/hotspot/getAllHotspots?trail_instance_id=",
-//        "getAllQuizzes" : serverIP + "/quiz/getQuizzes?trail_instance_id=",
-//        "getAllSelfies" : serverIP + "/upload/getSubmissionQuestion?trail_instance_id=",
-//        "getAllAnagrams" : serverIP + "/anagram/getAnagrams?trail_instance_id=",
-//        "getAllDragAndDrops" : serverIP + "/draganddrop/getDragAndDrop?trail_instance_id=",
-//        "uploadSubmission" : serverIP + "/upload/uploadSubmission",
-//        "updateScore" : serverIP + "/team/updateScore",
-//        "getAllSubmissionsURL" : serverIP + "/upload/getAllSubmissionURL?team=",
-//        "getSubmission" : serverIP + "/upload/getSubmission?url=",
-//        "getLeaderboard" : serverIP + "/team/hotspotStatus?trail_instance_id=",
-//        "getActivityFeed" : serverIP + "/team/activityFeed",
-//        "getAllUsers" : serverIP + "/user/retrieveAllUsers",
-//        "getAllLeaderMember" : serverIP + "/user/retrieveAllUser",
-//        "getAllDrawings" : serverIP + "/upload/getDrawingQuestion?trail_instance_id=",
-//        "getAllWordSearch" : serverIP + "/wordsearch/getWordSearchWords?trail_instance_id=",
-//        "updateLocation" : serverIP + "/team/teamLocation"
-//    ]
-    
     static var serverEndpoints: [String:String] = [
         "getInstanceId" : serverIP + "//getInstance",
         "registerUser" : serverIP + "//user/register",
         "getStartingHotspots" : serverIP + "//team/startingHotspot?trail_instance_id=",
-        "getAllHotspots" : serverIP + "//hotspot/getAllHotspots?trail_instance_id=",
+        "getAllHotspots" : serverIP + "//location/getAllHotspots?trail_instance_id=",
         "getAllQuizzes" : serverIP + "//quiz/getQuizzes?trail_instance_id=",
         "getAllSelfies" : serverIP + "//upload/getSubmissionQuestion?trail_instance_id=",
         "getAllAnagrams" : serverIP + "//anagram/getAnagrams?trail_instance_id=",
@@ -116,6 +96,7 @@ struct InstanceDAO {
     // Check if can start trail
     static var hasStartedTrail: Bool = false
     
+    // Resets InstanceDAO back to default
     static func resetInstance() {
         
         team_id = "0"

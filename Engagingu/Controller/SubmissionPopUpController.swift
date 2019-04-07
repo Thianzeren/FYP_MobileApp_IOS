@@ -1,14 +1,10 @@
-//
 //  SubmissionPopUpController.swift
 //  Engagingu
-//
-//  Created by Nicholas on 16/1/19.
-//  Copyright © 2019 Raylene. All rights reserved.
-//
 
 import UIKit
 import Photos
-
+//SubmissionPopUpController creates a pop up when the user press the image and
+//for downloading
 class SubmissionPopUpController: UIViewController {
 
     @IBOutlet weak var hotspotLabel: UILabel!
@@ -23,12 +19,10 @@ class SubmissionPopUpController: UIViewController {
         
     }
     
-    
+    //download the image into phone
     @IBAction func downloadImage(_ sender: UIButton) {
-        
         let snapshot: UIImage = imageView.image!
         let status = PHPhotoLibrary.authorizationStatus()
-        
         print(status)
         
         PHPhotoLibrary.shared().performChanges({
@@ -45,7 +39,7 @@ class SubmissionPopUpController: UIViewController {
         })
         
     }
-    
+    //tap anywhere on the screen to dismiss pop up
     func hidePopUp(){
         let Tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissPopUp))
         view.addGestureRecognizer(Tap)

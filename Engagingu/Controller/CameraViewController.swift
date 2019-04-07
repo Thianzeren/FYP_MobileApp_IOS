@@ -1,13 +1,8 @@
-//
 //  CameraViewController.swift
 //  Engaging U
-//
-//  Created by Admin on 3/11/18.
-//  Copyright © 2018 Admin. All rights reserved.
-//
-
 import UIKit
 
+// CameraViewController allows them to take a photo for the selfie mission and sends it to backend
 class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var takePicBtn: UIButton!
@@ -36,8 +31,8 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
             uploadImgBtn.isHidden = true
             
         }
-
         
+        // Intialise picker (Camera/Gallery)
         imagePickerController = UIImagePickerController()
         imagePickerController!.delegate = self
     }
@@ -71,8 +66,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         }else { // If Member
             
-            // Update CompletedList & isFirstTime check
-//            InstanceDAO.completedList.append(hotspot)
+            // Update isFirstTime check
             InstanceDAO.isFirstTime = false
             
             performSegue(withIdentifier: "toTabBarSegue", sender: nil)
@@ -127,7 +121,11 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
             let semaphore = DispatchSemaphore(value: 0)
             var result: [String:Any] = [:]
             
-            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            let config = URLSessionConfiguration.default
+            config.timeoutIntervalForRequest = 5
+            config.timeoutIntervalForResource = 5
+            let session = URLSession(configuration: config)
+            let task = session.dataTask(with: request) { (data, response, error) in
                 
                 guard let data = data, error == nil else{
                     print(error?.localizedDescription ?? "No data")
