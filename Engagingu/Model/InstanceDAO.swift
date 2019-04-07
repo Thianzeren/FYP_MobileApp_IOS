@@ -20,32 +20,32 @@ struct InstanceDAO {
     static var username: String = "defaultName"
     static var completedList: Array<String> = Array()
     
-//    static var serverIP: String = "http://13.229.115.32:3000"
-//    static var serverIP: String = "http://54.255.245.23:3000"
-    
-    // AWS Elastic IP
-    static var serverIP: String = "http://13.228.173.165:3000"
+    // AWS Server IP
+    // (HTTP)
+    static var socketServerIP: String = "http://13.228.173.165:3000"
+    // HTTPS
+    static var serverIP: String = "https:amazingtrail.ml/api"
     
     static var serverEndpoints: [String:String] = [
-        "getInstanceId" : serverIP + "//getInstance",
-        "registerUser" : serverIP + "//user/register",
-        "getStartingHotspots" : serverIP + "//team/startingHotspot?trail_instance_id=",
-        "getAllHotspots" : serverIP + "//location/getAllHotspots?trail_instance_id=",
-        "getAllQuizzes" : serverIP + "//quiz/getQuizzes?trail_instance_id=",
-        "getAllSelfies" : serverIP + "//upload/getSubmissionQuestion?trail_instance_id=",
-        "getAllAnagrams" : serverIP + "//anagram/getAnagrams?trail_instance_id=",
-        "getAllDragAndDrops" : serverIP + "//draganddrop/getDragAndDrop?trail_instance_id=",
-        "uploadSubmission" : serverIP + "//upload/uploadSubmission",
-        "updateScore" : serverIP + "//team/updateScore",
-        "getAllSubmissionsURL" : serverIP + "//upload/getAllSubmissionURL?team=",
-        "getSubmission" : serverIP + "//upload/getSubmission?url=",
-        "getLeaderboard" : serverIP + "//team/hotspotStatus?trail_instance_id=",
-        "getActivityFeed" : serverIP + "//team/activityFeed",
-        "getAllUsers" : serverIP + "//user/retrieveAllUsers",
-        "getAllLeaderMember" : serverIP + "//user/retrieveAllUser",
-        "getAllDrawings" : serverIP + "//upload/getDrawingQuestion?trail_instance_id=",
-        "getAllWordSearch" : serverIP + "//wordsearch/getWordSearchWords?trail_instance_id=",
-        "updateLocation" : serverIP + "//team/teamLocation"
+        "getInstanceId" : serverIP + "/getInstance",
+        "registerUser" : serverIP + "/user/register",
+        "getStartingHotspots" : serverIP + "/team/startingHotspot?trail_instance_id=",
+        "getAllHotspots" : serverIP + "/location/getAllHotspots?trail_instance_id=",
+        "getAllQuizzes" : serverIP + "/quiz/getQuizzes?trail_instance_id=",
+        "getAllSelfies" : serverIP + "/upload/getSubmissionQuestion?trail_instance_id=",
+        "getAllAnagrams" : serverIP + "/anagram/getAnagrams?trail_instance_id=",
+        "getAllDragAndDrops" : serverIP + "/draganddrop/getDragAndDrop?trail_instance_id=",
+        "uploadSubmission" : serverIP + "/upload/uploadSubmission",
+        "updateScore" : serverIP + "/team/updateScore",
+        "getAllSubmissionsURL" : serverIP + "/upload/getAllSubmissionURL?team=",
+        "getSubmission" : serverIP + "/upload/getSubmission?url=",
+        "getLeaderboard" : serverIP + "/team/hotspotStatus?trail_instance_id=",
+        "getActivityFeed" : serverIP + "/team/activityFeed",
+        "getAllUsers" : serverIP + "/user/retrieveAllUsers",
+        "getAllLeaderMember" : serverIP + "/user/retrieveAllUser",
+        "getAllDrawings" : serverIP + "/upload/getDrawingQuestion?trail_instance_id=",
+        "getAllWordSearch" : serverIP + "/wordsearch/getWordSearchWords?trail_instance_id=",
+        "updateLocation" : serverIP + "/team/teamLocation"
     ]
     
     // For Submissions

@@ -12,7 +12,7 @@ import SocketIO
 // Initialies Socket connected to backend to receive updates from backend.
 class SocketHandler {
     
-    static let manager: SocketManager = SocketManager(socketURL: URL(string: InstanceDAO.serverIP)!, config: [.log(true), .compress])
+    static let manager: SocketManager = SocketManager(socketURL: URL(string: InstanceDAO.socketServerIP)!, config: [.log(true), .compress])
     static var socket: SocketIOClient =  manager.defaultSocket
 
     
@@ -82,7 +82,7 @@ class SocketHandler {
         var topWindow: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
         topWindow?.rootViewController = UIViewController()
         topWindow?.windowLevel = UIWindow.Level.alert + 1
-        let alert: UIAlertController =  UIAlertController(title: message, message: "", preferredStyle: .alert)
+        let alert: UIAlertController =  UIAlertController(title: "Message from Admins:", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: { (alertAction) in
             topWindow?.isHidden = true
             topWindow = nil
