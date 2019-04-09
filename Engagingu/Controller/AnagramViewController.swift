@@ -11,10 +11,8 @@ class AnagramViewController: UIViewController, UITextFieldDelegate {
     var score: Int = 1
     var hotspot: String = ""
     var hiddenWord: String = ""
+    var shuffledHidden: String = ""
     var wordInputwithoutspace = ""
-    var listOfEnteredCharacters: [String] = []
-    var oldWord = ""
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +23,7 @@ class AnagramViewController: UIViewController, UITextFieldDelegate {
         wordInput.layer.borderColor = myColor.cgColor
         
         hiddenWord = hiddenWord.lowercased()
+        shuffledHidden = String(hiddenWord.shuffled())
         wordLabel.text = String(hiddenWord.shuffled())
         //clueLabel.text = clue
         
@@ -48,37 +47,16 @@ class AnagramViewController: UIViewController, UITextFieldDelegate {
     @IBAction func textFieldDidChanged(_ sender: UITextField) {
         //change the user input to lowercaps so that can compare to wordLabel
         let userInput = sender.text!.lowercased()
+        var tempWord = shuffledHidden
         
-        //when user add letter
-        if (userInput.count > oldWord.count) {
-                let lastletter = userInput.last!
-                //if new character is in the wordlabel
-                //1. append the character to list
-                //2. remove it from the wordlabel
-                //update the oldword to userinput --> purpose is to compare the strings when letter is deleted
-                if ((wordLabel.text?.contains(lastletter))!) {
-                    listOfEnteredCharacters.append(String(lastletter))
-                    print(listOfEnteredCharacters)
-                    let position = wordLabel.text?.firstIndex(of: lastletter)
-                    wordLabel.text?.remove(at: position!)
-                    oldWord = userInput
-                }
-        }
-        //when user delete a letter
-        else if (userInput.count < oldWord.count){
-            let letterRemoved = oldWord.last
-        
-            //the letter deleted is from the wordLabel
-            if listOfEnteredCharacters.contains(String(letterRemoved!)){
-                wordLabel.text?.append(letterRemoved!)
-                let index = listOfEnteredCharacters.firstIndex(of: String(letterRemoved!))
-                listOfEnteredCharacters.remove(at: index!)
+        for char in userInput {
+            if tempWord.contains(char) {
+                let position = tempWord.firstIndex(of: char)
+                tempWord.remove(at: position!)
             }
-            //this update of oldWord is not place in the if block above
-            //because it needs to account when there is deletion of spacing
-            oldWord = userInput
         }
-     
+        wordLabel.text! = tempWord
+       
     }
     
     @IBAction func submitAnswer(_ sender: Any) {
