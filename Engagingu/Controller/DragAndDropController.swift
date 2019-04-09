@@ -43,7 +43,7 @@ class DragAndDropController: UIViewController, UIDragInteractionDelegate, UIDrop
         
         // Get Drag And Drop question and answers
         let dragAndDrop = InstanceDAO.dragAndDropDict[hotspot]!
-        questionLabel.text = dragAndDrop.question
+        questionLabel.text = dragAndDrop.question + "\n(Long press to drag)"
         qnaArr = dragAndDrop.drag_and_drop
 
         // Populate option labels & answer boxes

@@ -85,18 +85,23 @@ extension LeaderboardController: UITableViewDataSource, UITableViewDelegate {
         cell.setLabels(teamLabel: teamID, hotspotLabel: String(teamCompletedHotspots))
         //prevent from becoming grey
         cell.selectionStyle = .none
+        
         //colour for top 3 teams
         if (indexPath.row == 0) {
             cell.backgroundColor = UIColor(red: 255/255.0, green: 215/255.0, blue:0, alpha: 1.0)
             cell.imageView!.image = UIImage(named: "goldMedal")
         }
-        if (indexPath.row == 1){
+        else if (indexPath.row == 1){
             cell.backgroundColor = UIColor(red: 192/255.0, green: 192/255.0, blue:192/255.0, alpha: 1.0)
             cell.imageView!.image = UIImage(named: "silverMedal")
         }
-        if (indexPath.row == 2){
+        else if (indexPath.row == 2){
             cell.backgroundColor = UIColor(red: 205/255.0, green: 133/255.0, blue:63/255.0, alpha: 1.0)
             cell.imageView!.image = UIImage(named: "bronzeMedal")
+        }
+        else{
+            cell.backgroundColor = UIColor.white
+            cell.imageView!.image = nil
         }
         return cell
     }
