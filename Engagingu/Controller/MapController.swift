@@ -47,7 +47,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("View Did Appear Map Controller")
+//        print("View Did Appear Map Controller")
         
         //re intiate hotspots and display new updated hotspot
         initiateHotspots()
@@ -146,7 +146,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
         }else { // Show all hotspots
         
             for (name, hotspot) in hotspots{
-                print("name: \(name)")
+//                print("name: \(name)")
                 
                 let coordinates = hotspot.coordinates
                 let marker = GMSMarker()
@@ -183,19 +183,19 @@ class MapController: UIViewController, GMSMapViewDelegate {
         
         let def = UserDefaults.standard
         def.set(InstanceDAO.team_id, forKey: "team_id")
-        print("Saved team_id \(InstanceDAO.team_id) to session")
         def.set(InstanceDAO.trail_instance_id, forKey: "trail_instance_id")
-        print("Saved trail_instance_id \(InstanceDAO.trail_instance_id) to session")
         def.set(InstanceDAO.username, forKey: "username")
-        print("Saved username \(InstanceDAO.username) to session")
         def.set(InstanceDAO.isLeader, forKey: "isLeader")
-        print("Saved isLeader \(InstanceDAO.isLeader) to session")
         def.set(InstanceDAO.completedList, forKey: "completedList")
-        print("Saved completedList \(InstanceDAO.completedList) to session")
         def.set(InstanceDAO.startHotspots, forKey: "startHotspots")
-        print("Saved startHotspots \(InstanceDAO.startHotspots) to session")
         def.synchronize()
         
+//        print("Saved team_id \(InstanceDAO.team_id) to session")
+//        print("Saved trail_instance_id \(InstanceDAO.trail_instance_id) to session")
+//        print("Saved username \(InstanceDAO.username) to session")
+//        print("Saved isLeader \(InstanceDAO.isLeader) to session")
+//        print("Saved completedList \(InstanceDAO.completedList) to session")
+//        print("Saved startHotspots \(InstanceDAO.startHotspots) to session")
     }
     
 }
@@ -224,7 +224,7 @@ extension MapController: CLLocationManagerDelegate{
             }
             _ = RestAPIManager.asyncHttpPost(jsonData: jsonData, URLStr: updateLocationURL)
             
-            print("Sent Location to Backend")
+//            print("Sent Location to Backend")
         }
         
         if(InstanceDAO.isFirstTime){

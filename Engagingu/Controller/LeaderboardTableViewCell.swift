@@ -9,8 +9,8 @@ class LeaderboardTableViewCell: UITableViewCell {
     
     func setLabels(teamLabel: String, hotspotLabel: String){
         
-        self.teamLabel.text = "Team " + teamLabel
-        self.hotspotsCompletedLabel.text = hotspotLabel + "/" + String(InstanceDAO.hotspotDict.count) + "COMPLETED"
+        self.teamLabel.text = "TEAM " + teamLabel
+        self.hotspotsCompletedLabel.text = hotspotLabel + "/" + String(InstanceDAO.hotspotDict.count) + " COMPLETED"
         
     }
     
